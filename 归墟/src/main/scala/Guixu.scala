@@ -23,6 +23,7 @@ class 归墟Impl extends 归墟 {
 
   override type AddWater[I <: 水] = 归墟Impl
   override def add[I <: 水](i: I): 归墟Impl = new 归墟Impl {
+    override type I = 水
     override type T = 归墟Impl
     override val head: 水      = i
     override val tail: 归墟Impl = self
