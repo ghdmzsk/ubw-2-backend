@@ -14,11 +14,14 @@ trait HListYuan {
 
 }
 
+class ZeroItem
+object ZeroItem extends ZeroItem
+
 class YueyuanZero extends HListYuan {
   self =>
 
-  override type Head = YueyuanZero
-  override def head: YueyuanZero = self
+  override type Head = ZeroItem
+  override def head: ZeroItem = ZeroItem
 
   override type C = ReverseYQ
   override def c: ReverseYQ = ReverseYQ

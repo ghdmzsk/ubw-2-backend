@@ -14,11 +14,14 @@ trait HList {
   def add[I](i: I): Add[I]
 }
 
+class ZeroItem
+object ZeroItem extends ZeroItem
+
 class HNil extends HList {
   self =>
-  override type H = HNil
+  override type H = ZeroItem
   override type T = HNil
-  override val head: HNil = self
+  override val head: ZeroItem = ZeroItem
   override val tail: HNil = self
 
   override type Add[I] = Appendable[I, HNil]
