@@ -1,8 +1,5 @@
 import scala.language.higherKinds
 
-class 水
-object 水 extends 水
-
 trait Guixu {
   self =>
 
@@ -26,8 +23,9 @@ trait Guixu {
 }
 
 object Guixu extends Guixu {
+  self =>
 
-  override type I = 水
-  override val head: 水 = 水
+  override type I = Guixu
+  override val head: Guixu = self
 
 }

@@ -23,19 +23,19 @@ class 大海Zero[HH <: Chaju](override val 差距: HH) extends 大海 {
 
   override type 差距 = HH
 
-  override type Add[I] = HH#M[I, 大海Zero[HH]]
-  override def add[I](i: I): HH#M[I, 大海Zero[HH]] = 差距.tran(self: 大海Zero[HH], i)
+  override type Add[I] = 灌水的大海[HH#M[I, HNil], HH#Next]
+  override def add[I](i: I): 灌水的大海[HH#M[I, HNil], HH#Next] = new 灌水的大海(差距.tran(海水, i), 差距.tranGuixu(归墟, i), 差距.next)
 
   override def toString = "HNil"
 }
 
-class 灌水的大海[HH <: HList, II <: Chaju](override val 海水: HH, override val 归墟: Guixu, override val 差距: II) extends 大海 {
+class 灌水的大海[PP <: HList, HH <: Chaju](override val 海水: PP, override val 归墟: Guixu, override val 差距: HH) extends 大海 {
   self =>
-  override type 海水 = HH
-  override type 差距 = II
+  override type 海水 = PP
+  override type 差距 = HH
 
-  override type Add[I] = II#M[I, 灌水的大海[HH, II]]
-  override def add[I](i: I): II#M[I, 灌水的大海[HH, II]] = 差距.tran(self, i)
+  override type Add[I] = 灌水的大海[HH#M[I, PP], HH#Next]
+  override def add[I](i: I): 灌水的大海[HH#M[I, PP], HH#Next] = new 灌水的大海(差距.tran(海水, i), 差距.tranGuixu(归墟, i), 差距.next)
 
   override def toString = 海水.toString
 }

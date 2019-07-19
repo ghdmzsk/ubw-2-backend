@@ -22,7 +22,7 @@ class HNil extends HList {
   override type H = ZeroItem
   override type T = HNil
   override val head: ZeroItem = ZeroItem
-  override val tail: HNil = self
+  override val tail: HNil     = self
 
   override type Add[I] = Appendable[I, HNil]
   override def add[I](i: I): Appendable[I, HNil] = new Appendable(i, self)
