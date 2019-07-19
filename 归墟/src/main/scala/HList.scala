@@ -39,5 +39,5 @@ class Appendable[HH, TT <: HList](override val head: HH, override val tail: TT) 
   override type Add[I] = Appendable[I, Appendable[HH, TT]]
   override def add[I](i: I): Appendable[I, Appendable[HH, TT]] = new Appendable(i, self)
 
-  override def toString = tail.toString + ", " + head.toString
+  override def toString = head.toString + ", " + tail.toString
 }

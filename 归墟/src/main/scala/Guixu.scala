@@ -2,7 +2,6 @@ import scala.language.higherKinds
 
 trait Guixu {
   self =>
-
   type I
   type T = Guixu
 
@@ -17,15 +16,14 @@ trait Guixu {
     override type T = Guixu
     override val tail: Guixu = self
 
-    override def toString = head.toString + "," + self.toString
+    override def toString = head.toString + ", " + self.toString
   }
-
 }
 
 object Guixu extends Guixu {
   self =>
-
   override type I = Guixu
   override val head: Guixu = self
 
+  override def toString = "归墟"
 }
