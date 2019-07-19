@@ -18,7 +18,7 @@ class 大海之初[PP <: HList, HH <: Chaju](override val 海水: PP, override v
   self =>
   override type 海水 = PP
   override type 差距 = HH
-  override def 归墟: Guixu = Guixu
+  override def 归墟: Guixu = Guixu.value
 
   override type Add[I] = 灌水的大海[HH#M[I, PP], HH#Next]
   override def add[I](i: I): 灌水的大海[HH#M[I, PP], HH#Next] = new 灌水的大海(差距.tran(海水, i), 差距.tranGuixu(归墟, i), 差距.next)
