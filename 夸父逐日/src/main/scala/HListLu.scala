@@ -25,7 +25,9 @@ class 路 extends HList {
 
 }
 
-object 路 extends 路
+object 路 extends 路 {
+  override def toString = "路"
+}
 
 class AppendYuan[HH, TT <: HList](override val head: HH, override val tail: TT) extends HList {
   self =>
@@ -35,5 +37,7 @@ class AppendYuan[HH, TT <: HList](override val head: HH, override val tail: TT) 
 
   override type Add[T] = AppendYuan[T, AppendYuan[HH, TT]]
   override def add[T](i: T): AppendYuan[T, AppendYuan[HH, TT]] = new AppendYuan(i, self)
+
+  override def toString = head.toString + " :: " + tail.toString
 
 }

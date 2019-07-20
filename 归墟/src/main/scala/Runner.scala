@@ -1,7 +1,6 @@
 object Runner extends App {
 
-  class ZeroHListM  extends 大海之初(HNil.add("原来海水1").add("原来海水2"), Manyi.add.add.add)
-  object ZeroHListM extends ZeroHListM
+  val ZeroHListM = new 大海之初(HNil.add("原来海水1").add("原来海水2"), Manyi.add.add.add)
 
   val item = ZeroHListM.add(1).add("个").add("满").add("溢").add("的").add("HList").add("例").add("子")
   println(item.toString)    //满, 个, 1, 原来海水2, 原来海水1, HNil

@@ -20,10 +20,14 @@ trait Guixu {
   }
 }
 
-object Guixu extends Guixu {
-  self =>
-  override type I = Guixu
-  override val head: Guixu = self
+object Guixu {
 
-  override def toString = "归墟"
+  val value: Guixu = new Guixu {
+    self =>
+    override type I = Guixu
+    override val head: Guixu = self
+
+    override def toString = "归墟"
+  }
+
 }
