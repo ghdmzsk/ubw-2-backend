@@ -19,4 +19,5 @@ class ZhuriImpl[TT <: HList, KK <: HList](override val 太阳的路: TT, overrid
   override def 追逐: ZhuriImpl[TT#Tail, KK#Add[TT#Head]] = new ZhuriImpl(太阳的路.tail, 夸父的路.add(太阳的路.head))
 }
 
-class Init extends ZhuriImpl[路, 路](路, 路)
+class Init  extends ZhuriImpl[路, 路](路, 路)
+object Init extends Init
