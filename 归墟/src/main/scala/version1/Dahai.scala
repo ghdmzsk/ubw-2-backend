@@ -1,3 +1,5 @@
+package version1
+
 import scala.language.higherKinds
 
 trait 大海 {

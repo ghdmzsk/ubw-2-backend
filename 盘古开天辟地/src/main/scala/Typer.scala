@@ -1,4 +1,4 @@
-object Test01 extends App {
+object Test01 {
 
   trait Space {
     type Current

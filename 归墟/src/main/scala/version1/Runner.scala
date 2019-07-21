@@ -1,3 +1,5 @@
+package version1
+
 object Runner extends App {
 
   val ZeroHListM = new 大海之初(HNil.add("原来海水1").add("原来海水2"), Manyi.add.add.add)
