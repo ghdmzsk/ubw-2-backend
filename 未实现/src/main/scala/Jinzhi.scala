@@ -10,7 +10,6 @@ trait Jinzhi {
 
 trait JinZhiImpl[TT <: Jinzhi] extends Jinzhi {
   override def tail: TT
-
   override type Tail = TT
 }
 
@@ -45,7 +44,6 @@ class Manwei[CC, TT <: Jinzhi](val current: CC, override val tail: TT) extends J
   override def add[T](t: T): KongWei[TT#UpdateCurrent[Item2Impl[T, CC]]] = {
     new KongWeiImpl(tail.add(new Item2Impl(t, current)))
   }
-
 }
 
 class KongWeiZero extends JinZhiImpl[KongWeiZero] {
