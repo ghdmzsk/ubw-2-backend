@@ -29,6 +29,8 @@ class ZeroItemUnPack extends ItemUnPack {
   override type _2 = ItemUnPack_2[ZeroItemUnPack]
   override def _2: ItemUnPack_2[ZeroItemUnPack] = new ItemUnPack_2(self)
 
+  override def toString: String = "zero"
+
 }
 
 object ZeroItemUnPack extends ZeroItemUnPack
@@ -47,6 +49,8 @@ class ItemUnPack_1[RR <: ItemUnPack](override val sub: RR) extends ItemUnPack {
   override type _2 = ItemUnPack_2[ItemUnPack_1[RR]]
   override def _2: ItemUnPack_2[ItemUnPack_1[RR]] = new ItemUnPack_2(self)
 
+  override def toString: String = sub.toString + "._1"
+
 }
 
 class ItemUnPack_2[RR <: ItemUnPack](override val sub: RR) extends ItemUnPack {
@@ -62,5 +66,7 @@ class ItemUnPack_2[RR <: ItemUnPack](override val sub: RR) extends ItemUnPack {
 
   override type _2 = ItemUnPack_2[ItemUnPack_2[RR]]
   override def _2: ItemUnPack_2[ItemUnPack_2[RR]] = new ItemUnPack_2(self)
+
+  override def toString: String = sub.toString + "._2"
 
 }

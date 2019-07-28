@@ -120,7 +120,8 @@ object Runner extends App {
       .add2(new I8)
       .add2(new I9))
 
-  val a1         = KongWeiZero.value.add2(new I1).add2(new I2).add2(new I3).add2(new I4).add2(new I5).add2(new I6).add2(new I7).add2(new I8)
-  val a2: String = new InitUnpack(ZeroItemUnPack._1._2, a1).apply
+  val a1 = KongWeiZero.value.add2(new I1).add2(new I2).add2(new I3).add2(new I4)
+  val a2 = new InitUnpack(ZeroItemUnPack._2, a1).apply
+  println(a2)
 
 }
