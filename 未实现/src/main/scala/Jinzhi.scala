@@ -102,6 +102,7 @@ object Runner extends App {
 
   println(
     KongWeiZero.value
+<<<<<<< HEAD
       .add(new I1)
       .add(new I2)
       .add(new I3)
@@ -113,3 +114,21 @@ object Runner extends App {
       .add(new I9))
 
 }
+=======
+      .add2(new I1)
+      .add2(new I2)
+      .add2(new I3)
+      .add2(new I4)
+      .add2(new I5)
+      .add2(new I6)
+      .add2(new I7)
+      .add2(new I8)
+      .add2(new I9)
+  )
+
+  val a1 = KongWeiZero.value.add2(new I1).add2(new I2).add2(new I3).add2(new I4)
+  val a2 = new InitUnpack(ZeroItemUnPack._2, a1).apply
+  println(a2)
+
+}
+>>>>>>> 615657686158f91b809b2645ec96120f57aec7ab
