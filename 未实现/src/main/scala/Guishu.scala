@@ -14,7 +14,6 @@ class ManweiGuishu extends Guishu {
 
   override type _2 = Manwei_1_Q
   override def _2: Manwei_1_Q = Manwei_1_Q
-
 }
 
 object ManweiGuishu extends ManweiGuishu

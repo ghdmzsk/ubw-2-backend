@@ -12,6 +12,9 @@ trait ItemUnPack {
   type _2 <: ItemUnPack
   def _2: _2
 
+  type G[I <: Guishu] <: Qianjin
+  def qianjin[I <: Guishu](i: I): G[I]
+
 }
 
 class ZeroItemUnPack extends ItemUnPack {
@@ -28,6 +31,9 @@ class ZeroItemUnPack extends ItemUnPack {
 
   override type _2 = ItemUnPack_2[ZeroItemUnPack]
   override def _2: ItemUnPack_2[ZeroItemUnPack] = new ItemUnPack_2(self)
+
+  override type G[I <: Guishu] = UZero
+  override def qianjin[I <: Guishu](i: I): UZero = UZero
 
   override def toString: String = "zero"
 
@@ -49,6 +55,9 @@ class ItemUnPack_1[RR <: ItemUnPack](override val sub: RR) extends ItemUnPack {
   override type _2 = ItemUnPack_2[ItemUnPack_1[RR]]
   override def _2: ItemUnPack_2[ItemUnPack_1[RR]] = new ItemUnPack_2(self)
 
+  override type G[I <: Guishu] = I#_1
+  override def qianjin[I <: Guishu](i: I): I#_1 = i._1
+
   override def toString: String = sub.toString + "._1"
 
 }
@@ -66,6 +75,9 @@ class ItemUnPack_2[RR <: ItemUnPack](override val sub: RR) extends ItemUnPack {
 
   override type _2 = ItemUnPack_2[ItemUnPack_2[RR]]
   override def _2: ItemUnPack_2[ItemUnPack_2[RR]] = new ItemUnPack_2(self)
+
+  override type G[I <: Guishu] = I#_2
+  override def qianjin[I <: Guishu](i: I): I#_2 = i._2
 
   override def toString: String = sub.toString + "._2"
 
