@@ -44,46 +44,46 @@ trait Qianjin {
 }
 
 trait Manwei_1_Q extends Qianjin {
-  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#UU, II#NN#Tail, II#NN#Tail]]
+  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[ItemUnPack_2[II#UU], II#UU, II#NN#Tail, II#NN#Tail]]
   def qianjin[II <: ItemCompare](
     ii: II
-  ): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#UU, II#NN#Tail, II#NN#Tail]] = {
+  ): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[ItemUnPack_2[II#UU], II#UU, II#NN#Tail, II#NN#Tail]] = {
     println("1111" + ii.unPack)
     val aa: II#UU#Sub#G[II#NN#Tail#G] = ii.unPack.sub.qianjin(ii.jinzhi.tail.guishu)
-    aa.qianjin(new ItemCompareImpl(ii.unPack.sub, ii.unPack, ii.jinzhi.tail, ii.jinzhi.tail))
+    aa.qianjin(new ItemCompareImpl(new ItemUnPack_2(ii.unPack), ii.unPack, ii.jinzhi.tail, ii.jinzhi.tail))
   }
 }
 
 object Manwei_1_Q extends Manwei_1_Q
 
 trait Manwei_0_Q extends Qianjin {
-  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#CUU, II#NN#Tail, II#NN#Tail]]
-  def qianjin[II <: ItemCompare](ii: II): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#CUU, II#NN#Tail, II#NN#Tail]] = {
+  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[ItemUnPack_1[II#UU], II#CUU, II#NN#Tail, II#NN#Tail]]
+  def qianjin[II <: ItemCompare](ii: II): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[ItemUnPack_1[II#UU], II#CUU, II#NN#Tail, II#NN#Tail]] = {
     println("2222" + ii.unPack)
     val aa: II#UU#Sub#G[II#NN#Tail#G] = ii.unPack.sub.qianjin(ii.jinzhi.tail.guishu)
-    aa.qianjin(new ItemCompareImpl(ii.unPack.sub, ii.currentUnPack, ii.jinzhi.tail, ii.jinzhi.tail))
+    aa.qianjin(new ItemCompareImpl(new ItemUnPack_1(ii.unPack), ii.currentUnPack, ii.jinzhi.tail, ii.jinzhi.tail))
   }
 }
 
 object Manwei_0_Q extends Manwei_0_Q
 
 trait Kongwei_1_Q extends Qianjin {
-  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#UU, II#NN#Tail, II#CNN]]
-  def qianjin[II <: ItemCompare](ii: II): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#UU, II#NN#Tail, II#CNN]] = {
+  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[ItemUnPack_2[II#UU], II#UU, II#NN#Tail, II#CNN]]
+  def qianjin[II <: ItemCompare](ii: II): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[ItemUnPack_2[II#UU], II#UU, II#NN#Tail, II#CNN]] = {
     println("3333" + ii.unPack)
     val aa: II#UU#Sub#G[II#NN#Tail#G] = ii.unPack.sub.qianjin(ii.jinzhi.tail.guishu)
-    aa.qianjin(new ItemCompareImpl(ii.unPack.sub, ii.unPack, ii.jinzhi.tail, ii.currentJinzhi))
+    aa.qianjin(new ItemCompareImpl(new ItemUnPack_2(ii.unPack), ii.unPack, ii.jinzhi.tail, ii.currentJinzhi))
   }
 }
 
 object Kongwei_1_Q extends Kongwei_1_Q
 
 trait Kongwei_0_Q extends Qianjin {
-  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#CUU, II#NN#Tail, II#CNN]]
-  def qianjin[II <: ItemCompare](ii: II): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#CUU, II#NN#Tail, II#CNN]] = {
+  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[ItemUnPack_1[II#UU], II#CUU, II#NN#Tail, II#CNN]]
+  def qianjin[II <: ItemCompare](ii: II): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[ItemUnPack_1[II#UU], II#CUU, II#NN#Tail, II#CNN]] = {
     println("4444" + ii.unPack)
     val aa: II#UU#Sub#G[II#NN#Tail#G] = ii.unPack.sub.qianjin(ii.jinzhi.tail.guishu)
-    aa.qianjin(new ItemCompareImpl(ii.unPack.sub, ii.currentUnPack, ii.jinzhi.tail, ii.currentJinzhi))
+    aa.qianjin(new ItemCompareImpl(new ItemUnPack_1(ii.unPack), ii.currentUnPack, ii.jinzhi.tail, ii.currentJinzhi))
   }
 }
 
