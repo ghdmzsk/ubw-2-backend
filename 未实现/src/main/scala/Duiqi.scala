@@ -32,6 +32,7 @@ class InitUnpack[U <: ItemUnPack, N <: Jinzhi](val u: U, val j: N) extends ItemC
   def apply = {
     val a = u.qianjin(j.guishu).qianjin(new ItemCompareImpl(unPack, currentUnPack, jinzhi, currentJinzhi))
     println("123456789" + a.currentUnPack)
+    println("123456789" + a.currentJinzhi)
     a.currentUnPack.unPack(a.currentJinzhi.item)
   }
 
@@ -43,13 +44,13 @@ trait Qianjin {
 }
 
 trait Manwei_1_Q extends Qianjin {
-  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#UU, II#NN#Tail, II#CNN]]
+  type M[II <: ItemCompare] = II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#UU, II#NN#Tail, II#NN]]
   def qianjin[II <: ItemCompare](
     ii: II
-  ): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#UU, II#NN#Tail, II#CNN]] = {
+  ): II#UU#Sub#G[II#NN#Tail#G]#M[ItemCompareImpl[II#UU#Sub, II#UU, II#NN#Tail, II#NN]] = {
     println("1111" + ii.unPack)
     val aa: II#UU#Sub#G[II#NN#Tail#G] = ii.unPack.sub.qianjin(ii.jinzhi.tail.guishu)
-    aa.qianjin(new ItemCompareImpl(ii.unPack.sub, ii.unPack, ii.jinzhi.tail, ii.currentJinzhi))
+    aa.qianjin(new ItemCompareImpl(ii.unPack.sub, ii.unPack, ii.jinzhi.tail, ii.jinzhi))
   }
 }
 
