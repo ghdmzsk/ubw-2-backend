@@ -1,35 +1,6 @@
 import io.circe.{Encoder, Json, JsonObject, ObjectEncoder}
 
-import scala.reflect.macros.blackbox
-import scala.language.experimental.macros
-
-class EncoderContent[A, Poly](val encoder: Encoder[A]) extends AnyVal
-
-trait ByNameImplicit[T] {
-  def value: T
-}
-
-object ByNameImplicit {
-  implicit def implicit1[T]: ByNameImplicit[T] = macro ByNameImplicitMacro.ByNameImplicitMacroImpl.implicitFetch[T]
-}
-
-object ByNameImplicitMacro {
-
-  class ByNameImplicitMacroImpl(val c: blackbox.Context) {
-    import c.universe._
-
-    def implicitFetch[T: c.WeakTypeTag]: c.Expr[ByNameImplicit[T]] = {
-      val byNameImplicit = weakTypeOf[ByNameImplicit[T]]
-      val t              = weakTypeOf[T]
-      c.Expr[ByNameImplicit[T]] {
-        q"""new ${byNameImplicit} { override def value: ${t} = implicitly[${t}] }"""
-      }
-    }
-  }
-
-}
-
-object EncoderTest {
+object EncoderTest extends App {
 
   trait FooApply[T1, T2] {
     def apply(t1: T1): T2
@@ -44,10 +15,10 @@ object EncoderTest {
     def implicitEncoder[R, I <: TypeParam](
       implicit ll: FooApply[H, R],
       app: Application[KContext, R, I],
-      cv1: FooApply[H, I#H],
-      cv2: I#T#H
+      cv1: FooApply[H, I#T#H],
+      cv2: I#H
     ): H => Json = { h: H =>
-      app.application(ii).addName(cv1(h))(cv2)
+      app.application(ii).addName(cv2)(cv1(h))
     }
 
     def implicitEncoder1[R](implicit ll: FooApply[H, R]): EncoderApply2[H, R] = new EncoderApply2[H, R] {}
@@ -55,10 +26,10 @@ object EncoderTest {
     trait EncoderApply2[H, R] {
       def implicitEncoder[I <: TypeParam](
         implicit app: Application[KContext, R, I],
-        cv1: FooApply[H, I#H],
-        cv2: I#T#H
+        cv1: FooApply[H, I#T#H],
+        cv2: I#H
       ): H => Json = { h: H =>
-        app.application(ii).addName(cv1(h))(cv2)
+        app.application(ii).addName(cv2)(cv1(h))
       }
 
       def implicitEncoder2[I <: TypeParam](implicit app: Application[KContext, R, I]): EncoderApply2[I] =
@@ -66,10 +37,10 @@ object EncoderTest {
 
       class EncoderApply2[I <: TypeParam](app: Application[KContext, R, I]) {
         def implicitEncoder(
-          implicit cv1: FooApply[H, I#H],
-          cv2: I#T#H
+          implicit cv1: FooApply[H, I#T#H],
+          cv2: I#H
         ): H => Json = { h: H =>
-          app.application(ii).addName(cv1(h))(cv2)
+          app.application(ii).addName(cv2)(cv1(h))
         }
       }
     }
@@ -121,34 +92,21 @@ object EncoderTest {
   }
 
   implicit def propertyEncoder[T1](
-    implicit encoder: Encoder[T1]
+    implicit encoder: ByNameImplicit[Encoder[T1]]
   ): Application[KContext, T1, TypeParam2[String, T1]] = new Application[KContext, T1, TypeParam2[String, T1]] {
     override def application(context: Context[KContext]): JsonEncoder[T1, String] = new JsonEncoder[T1, String] {
       override def p(obj: T1, name: String, m: List[(String, Json)]): List[(String, Json)] =
-        ((name, encoder(obj))) :: m
+        ((name, encoder.value(obj))) :: m
     }
   }
 
   case class Foo(i1: String, i2: String, i3: Int, i4: String, i5: Int, i6: Int, i7: Int)
 
   implicit val ii1 = FooApply.func { foo: Foo =>
-    KongWeiZero.value.add(foo.i1).add(foo.i2) /*.add(foo.i3).add(foo.i4).add(foo.i5).add(foo.i6).add(foo.i7)*/
+    KongWeiZero.value.add(foo.i1).add(foo.i2).add(foo.i3).add(foo.i4).add(foo.i5).add(foo.i6).add(foo.i7)
   }
-  implicit val ii2 = { KongWeiZero.value.add("i1").add("i2") /*.add("i3").add("i4").add("i5").add("i6").add("i7")*/ }
+  implicit val ii2 = KongWeiZero.value.add("i1").add("i2").add("i3").add("i4").add("i5").add("i6").add("i7")
 
-  encoder[Foo].implicitEncoder1
-    .implicitEncoder2(
-      KongWeiZero.appendImplicit3(
-        KongWeiZero.appendImplicit2(
-          KongWeiZero.appendImplicit4,
-          KongWeiZero.appendImplicit1
-        )
-      )
-    )
-    .implicitEncoder
-    .apply(Foo("i1", "i2", 3, "i4", 5, 6, 7))
-
-  val aa: KongWei[Manwei[Item2Impl[String, String], KongWeiZero]] =
-    (throw new Exception("aa")): KongWei[KongWeiZero#UpdateCurrent[Item2Impl[String, String]]]
+  println(encoder[Foo].implicitEncoder.apply(Foo("i1", "i2", 3, "i4", 5, 6, 7)).noSpaces)
 
 }

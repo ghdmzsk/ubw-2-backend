@@ -23,86 +23,8 @@ class Item2Impl[T1, T2](override val i1: T1, override val i2: T2) extends Item2 
   override def toString: String = s"Item2(${i2}, ${i1})"
 }
 
-class KongWei[TT <: Jinzhi](override val tail: TT) extends Jinzhi {
-  override type Tail             = TT
-  override type UpdateCurrent[T] = Manwei[T, TT]
-  override def add[T](t: T): Manwei[T, TT] = new Manwei(t, tail)
-  override def toString: String            = s"${tail} :: 空位0"
-}
-
-class Manwei[CC, TT <: Jinzhi](val current: CC, override val tail: TT) extends Jinzhi {
-  override type Tail             = TT
-  override type UpdateCurrent[T] = KongWei[TT#UpdateCurrent[Item2Impl[T, CC]]]
-  override def add[T](t: T): KongWei[TT#UpdateCurrent[Item2Impl[T, CC]]] = {
-    new KongWei(tail.add(new Item2Impl(t, current)))
-  }
-  override def toString: String = s"${tail} :: 满位1(${current})"
-}
-
-class KongWeiZero extends Jinzhi {
-  self =>
-  override type Tail = KongWeiZero
-  override def tail: KongWeiZero = self
-  override type UpdateCurrent[T] = Manwei[T, KongWeiZero]
-  override def add[T](t: T): Manwei[T, KongWeiZero] = new Manwei[T, KongWeiZero](t, self)
-  override def toString: String                     = "无限0"
-}
-
-object KongWeiZero {
-  val value: KongWeiZero = new KongWeiZero
-
-  implicit def appendImplicit1[K <: KindContext]: Application[K, KongWeiZero, JinzhiType0] =
-    new Application[K, KongWeiZero, JinzhiType0] {
-      override def application(context: Context[K]): K#M[JinzhiType0] = {
-        context.start
-      }
-    }
-
-  implicit def appendImplicit2[
-    K <: KindContext,
-    H1,
-    H2 <: Jinzhi,
-    T1 <: TypeParam,
-    T2 <: JinzhiTypeParam
-  ](
-    implicit t1: Application[K, H1, T1],
-    t2: Application[K, H2, T2]
-  ): Application[K, Manwei[H1, H2], ManweiType[T1, T2]] =
-    new Application[K, Manwei[H1, H2], ManweiType[T1, T2]] {
-      override def application(context: Context[K]): K#M[ManweiType[T1, T2]] = {
-        def i[TT1 <: TypeParam, TT2 <: JinzhiTypeParam]: Plus[TT1, TT2, ManweiType[TT1, TT2]] =
-          new Plus[TT1, TT2, ManweiType[TT1, TT2]] {
-            override def plus(p: TT1#H, item: TT2#H): Manwei[TT1#H, TT2#H] = new Manwei(p, item)
-            override def takeHead(t: Manwei[TT1#H, TT2#H]): TT2#H          = t.tail
-            override def takeTail(t: Manwei[TT1#H, TT2#H]): TT1#H          = t.current
-            override def sub: Plus[TT1#T, TT2#T, ManweiType[TT1#T, TT2#T]] = i[TT1#T, TT2#T]
-          }
-        context.append(t1.application(context), t2.application(context), i[T1, T2])
-
-      }
-    }
-
-  implicit def appendImplicit3[
-    K <: KindContext,
-    H1 <: Jinzhi,
-    T1 <: JinzhiTypeParam
-  ](
-    implicit t1: Application[K, H1, T1]
-  ): Application[K, KongWei[H1], KongWeiType[T1]] =
-    new Application[K, KongWei[H1], KongWeiType[T1]] {
-      override def application(context: Context[K]): K#M[KongWeiType[T1]] = {
-        def i[TT1 <: JinzhiType0, TT2 <: JinzhiTypeParam]: Plus[TT1, TT2, KongWeiType[TT2]] =
-          new Plus[TT1, TT2, KongWeiType[TT2]] {
-            override def plus(p: KongWeiZero, item: TT2#H): KongWei[TT2#H] = new KongWei(item)
-            override def takeHead(t: KongWei[TT2#H]): TT2#H                = t.tail
-            override def takeTail(t: KongWei[TT2#H]): KongWeiZero          = KongWeiZero.value
-            override def sub: Plus[JinzhiType0, TT2#T, KongWeiType[TT2#T]] = i[TT1#T, TT2#T]
-          }
-        context.append(context.start, t1.application(context), i[JinzhiType0, T1])
-      }
-    }
-
-  implicit def appendImplicit4[
+object Item2Impl {
+  implicit def appendImplicit[
     K <: KindContext,
     H1,
     H2,
@@ -124,6 +46,90 @@ object KongWeiZero {
         context.append(t1.application(context), t2.application(context), i[T1, T2])
       }
     }
+}
+
+class KongWei[TT <: Jinzhi](override val tail: TT) extends Jinzhi {
+  override type Tail             = TT
+  override type UpdateCurrent[T] = Manwei[T, TT]
+  override def add[T](t: T): Manwei[T, TT] = new Manwei(t, tail)
+  override def toString: String            = s"${tail} :: 空位0"
+}
+
+object KongWei {
+  implicit def appendImplicit[
+    K <: KindContext,
+    H1 <: Jinzhi,
+    T1 <: JinzhiTypeParam
+  ](
+    implicit t1: Application[K, H1, T1]
+  ): Application[K, KongWei[H1], KongWeiType[T1]] =
+    new Application[K, KongWei[H1], KongWeiType[T1]] {
+      override def application(context: Context[K]): K#M[KongWeiType[T1]] = {
+        def i[TT1 <: JinzhiType0, TT2 <: JinzhiTypeParam]: Plus[TT1, TT2, KongWeiType[TT2]] =
+          new Plus[TT1, TT2, KongWeiType[TT2]] {
+            override def plus(p: KongWeiZero, item: TT2#H): KongWei[TT2#H] = new KongWei(item)
+            override def takeHead(t: KongWei[TT2#H]): TT2#H                = t.tail
+            override def takeTail(t: KongWei[TT2#H]): KongWeiZero          = KongWeiZero.value
+            override def sub: Plus[JinzhiType0, TT2#T, KongWeiType[TT2#T]] = i[TT1#T, TT2#T]
+          }
+        context.append(context.start, t1.application(context), i[JinzhiType0, T1])
+      }
+    }
+}
+
+class Manwei[CC, TT <: Jinzhi](val current: CC, override val tail: TT) extends Jinzhi {
+  override type Tail             = TT
+  override type UpdateCurrent[T] = KongWei[TT#UpdateCurrent[Item2Impl[T, CC]]]
+  override def add[T](t: T): KongWei[TT#UpdateCurrent[Item2Impl[T, CC]]] = {
+    new KongWei(tail.add(new Item2Impl(t, current)))
+  }
+  override def toString: String = s"${tail} :: 满位1(${current})"
+}
+
+object Manwei {
+  implicit def appendImplicit2[
+    K <: KindContext,
+    H1,
+    H2 <: Jinzhi,
+    T1 <: TypeParam,
+    T2 <: JinzhiTypeParam
+  ](
+    implicit t1: Application[K, H1, T1],
+    t2: Application[K, H2, T2]
+  ): Application[K, Manwei[H1, H2], ManweiType[T1, T2]] =
+    new Application[K, Manwei[H1, H2], ManweiType[T1, T2]] {
+      override def application(context: Context[K]): K#M[ManweiType[T1, T2]] = {
+        def i[TT1 <: TypeParam, TT2 <: JinzhiTypeParam]: Plus[TT1, TT2, ManweiType[TT1, TT2]] =
+          new Plus[TT1, TT2, ManweiType[TT1, TT2]] {
+            override def plus(p: TT1#H, item: TT2#H): Manwei[TT1#H, TT2#H] = new Manwei(p, item)
+            override def takeHead(t: Manwei[TT1#H, TT2#H]): TT2#H          = t.tail
+            override def takeTail(t: Manwei[TT1#H, TT2#H]): TT1#H          = t.current
+            override def sub: Plus[TT1#T, TT2#T, ManweiType[TT1#T, TT2#T]] = i[TT1#T, TT2#T]
+          }
+        context.append(t1.application(context), t2.application(context), i[T1, T2])
+      }
+    }
+}
+
+class KongWeiZero extends Jinzhi {
+  self =>
+  override type Tail = KongWeiZero
+  override def tail: KongWeiZero = self
+  override type UpdateCurrent[T] = Manwei[T, KongWeiZero]
+  override def add[T](t: T): Manwei[T, KongWeiZero] = new Manwei[T, KongWeiZero](t, self)
+  override def toString: String                     = "无限0"
+}
+
+object KongWeiZero {
+  val value: KongWeiZero = new KongWeiZero
+
+  implicit def appendImplicit1[K <: KindContext]: Application[K, KongWeiZero, JinzhiType0] =
+    new Application[K, KongWeiZero, JinzhiType0] {
+      override def application(context: Context[K]): K#M[JinzhiType0] = {
+        context.start
+      }
+    }
+
 }
 
 object Runner extends App {
