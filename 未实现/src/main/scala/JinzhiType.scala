@@ -1,18 +1,18 @@
 import scala.language.higherKinds
 
-class JinzhiType0 extends TypeParam {
+class JinzhiType0 extends JinzhiTypeParam {
   override type H = KongWeiZero
   override type T = JinzhiType0
 }
 
-object JinzhiType0 {
+/*object JinzhiType0 {
   implicit def appendImplicit[K <: KindContext]: Application[K, KongWeiZero, JinzhiType0] =
     new Application[K, KongWeiZero, JinzhiType0] {
       override def application(context: Context[K]): K#M[JinzhiType0] = {
         context.start
       }
     }
-}
+}*/
 
 trait JinzhiTypeParam extends TypeParam {
   override type H <: Jinzhi
@@ -24,7 +24,7 @@ class ManweiType[T1 <: TypeParam, T2 <: JinzhiTypeParam] extends JinzhiTypeParam
   override type T = ManweiType[T1#T, T2#T]
 }
 
-object ManweiType {
+/*object ManweiType {
   implicit def appendImplicit[
     K <: KindContext,
     H1,
@@ -48,20 +48,20 @@ object ManweiType {
 
       }
     }
-}
+}*/
 
 class KongWeiType[T1 <: JinzhiTypeParam] extends JinzhiTypeParam {
   override type H = KongWei[T1#H]
   override type T = KongWeiType[T1#T]
 }
 
-object KongWeiType {
+/*object KongWeiType {
   implicit def appendImplicit[
     K <: KindContext,
     H1 <: Jinzhi,
     T1 <: JinzhiTypeParam
   ](
-    t1: Application[K, H1, T1]
+    implicit t1: Application[K, H1, T1]
   ): Application[K, KongWei[H1], KongWeiType[T1]] =
     new Application[K, KongWei[H1], KongWeiType[T1]] {
       override def application(context: Context[K]): K#M[KongWeiType[T1]] = {
@@ -75,14 +75,14 @@ object KongWeiType {
         context.append(context.start, t1.application(context), i[JinzhiType0, T1])
       }
     }
-}
+}*/
 
 class Item2Type[T1 <: TypeParam, T2 <: TypeParam] extends TypeParam {
   override type H = Item2Impl[T1#H, T2#H]
   override type T = Item2Type[T1#T, T2#T]
 }
 
-object Item2Type {
+/*object Item2Type {
   implicit def appendImplicit[
     K <: KindContext,
     H1,
@@ -105,4 +105,4 @@ object Item2Type {
         context.append(t1.application(context), t2.application(context), i[T1, T2])
       }
     }
-}
+}*/

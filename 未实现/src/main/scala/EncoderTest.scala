@@ -1,36 +1,35 @@
 import io.circe.{Encoder, Json, JsonObject, ObjectEncoder}
 
+import scala.reflect.macros.blackbox
+import scala.language.experimental.macros
+
 class EncoderContent[A, Poly](val encoder: Encoder[A]) extends AnyVal
 
-object EncoderTest {
+trait ByNameImplicit[T] {
+  def value: T
+}
 
-  import scala.reflect.macros.blackbox
+object ByNameImplicit {
+  implicit def implicit1[T]: ByNameImplicit[T] = macro ByNameImplicitMacro.ByNameImplicitMacroImpl.implicitFetch[T]
+}
 
-  import scala.language.experimental.macros
+object ByNameImplicitMacro {
 
-  trait ByNameImplicit[T] {
-    def value: T
-  }
+  class ByNameImplicitMacroImpl(val c: blackbox.Context) {
+    import c.universe._
 
-  object ByNameImplicit {
-    implicit def implicit1[T]: ByNameImplicit[T] = macro ByNameImplicitMacro.ByNameImplicitMacroImpl.implicitFetch[T]
-  }
-
-  object ByNameImplicitMacro {
-
-    class ByNameImplicitMacroImpl(val c: blackbox.Context) {
-      import c.universe._
-
-      def implicitFetch[T: c.WeakTypeTag]: c.Expr[ByNameImplicit[T]] = {
-        val byNameImplicit = weakTypeOf[ByNameImplicit[T]]
-        val t              = weakTypeOf[T]
-        c.Expr[ByNameImplicit[T]] {
-          q"""new ${byNameImplicit} { override def value: ${t} = implicitly[${t}] }"""
-        }
+    def implicitFetch[T: c.WeakTypeTag]: c.Expr[ByNameImplicit[T]] = {
+      val byNameImplicit = weakTypeOf[ByNameImplicit[T]]
+      val t              = weakTypeOf[T]
+      c.Expr[ByNameImplicit[T]] {
+        q"""new ${byNameImplicit} { override def value: ${t} = implicitly[${t}] }"""
       }
     }
-
   }
+
+}
+
+object EncoderTest {
 
   trait FooApply[T1, T2] {
     def apply(t1: T1): T2
@@ -60,6 +59,18 @@ object EncoderTest {
         cv2: I#T#H
       ): H => Json = { h: H =>
         app.application(ii).addName(cv1(h))(cv2)
+      }
+
+      def implicitEncoder2[I <: TypeParam](implicit app: Application[KContext, R, I]): EncoderApply2[I] =
+        new EncoderApply2[I](app)
+
+      class EncoderApply2[I <: TypeParam](app: Application[KContext, R, I]) {
+        def implicitEncoder(
+          implicit cv1: FooApply[H, I#H],
+          cv2: I#T#H
+        ): H => Json = { h: H =>
+          app.application(ii).addName(cv1(h))(cv2)
+        }
       }
     }
   }
@@ -110,11 +121,11 @@ object EncoderTest {
   }
 
   implicit def propertyEncoder[T1](
-    implicit encoder: ByNameImplicit[Encoder[T1]]
+    implicit encoder: Encoder[T1]
   ): Application[KContext, T1, TypeParam2[String, T1]] = new Application[KContext, T1, TypeParam2[String, T1]] {
     override def application(context: Context[KContext]): JsonEncoder[T1, String] = new JsonEncoder[T1, String] {
       override def p(obj: T1, name: String, m: List[(String, Json)]): List[(String, Json)] =
-        ((name, encoder.value(obj))) :: m
+        ((name, encoder(obj))) :: m
     }
   }
 
@@ -125,6 +136,19 @@ object EncoderTest {
   }
   implicit val ii2 = { KongWeiZero.value.add("i1").add("i2") /*.add("i3").add("i4").add("i5").add("i6").add("i7")*/ }
 
-  encoder[Foo].implicitEncoder1.implicitEncoder.apply(Foo("i1", "i2", 3, "i4", 5, 6, 7))
+  encoder[Foo].implicitEncoder1
+    .implicitEncoder2(
+      KongWeiZero.appendImplicit3(
+        KongWeiZero.appendImplicit2(
+          KongWeiZero.appendImplicit4,
+          KongWeiZero.appendImplicit1
+        )
+      )
+    )
+    .implicitEncoder
+    .apply(Foo("i1", "i2", 3, "i4", 5, 6, 7))
+
+  val aa: KongWei[Manwei[Item2Impl[String, String], KongWeiZero]] =
+    (throw new Exception("aa")): KongWei[KongWeiZero#UpdateCurrent[Item2Impl[String, String]]]
 
 }
