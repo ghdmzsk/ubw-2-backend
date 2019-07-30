@@ -94,15 +94,15 @@ object Runner extends App {
   println(miao2)
 
   val miao3
-  : KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4]#UpdateCurrent[I5]#UpdateCurrent[
-    I6] = KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5).add(new I6)
+    : KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4]#UpdateCurrent[I5]#UpdateCurrent[
+      I6
+    ] = KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5).add(new I6)
 
   miao3: KongWei[Manwei[Item2Impl[I6, I5], Manwei[Item2Impl[Item2Impl[I4, I3], Item2Impl[I2, I1]], KongWeiZero]]]
   println(miao3)
 
   println(
     KongWeiZero.value
-<<<<<<< HEAD
       .add(new I1)
       .add(new I2)
       .add(new I3)
@@ -111,24 +111,7 @@ object Runner extends App {
       .add(new I6)
       .add(new I7)
       .add(new I8)
-      .add(new I9))
-
-}
-=======
-      .add2(new I1)
-      .add2(new I2)
-      .add2(new I3)
-      .add2(new I4)
-      .add2(new I5)
-      .add2(new I6)
-      .add2(new I7)
-      .add2(new I8)
-      .add2(new I9)
+      .add(new I9)
   )
 
-  val a1 = KongWeiZero.value.add2(new I1).add2(new I2).add2(new I3).add2(new I4)
-  val a2 = new InitUnpack(ZeroItemUnPack._2, a1).apply
-  println(a2)
-
 }
->>>>>>> 615657686158f91b809b2645ec96120f57aec7ab
