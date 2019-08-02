@@ -10,6 +10,17 @@ trait 水尺 {
   def 下一重: 下一重
 }
 
+class 下一重水尺[尾 <: 水尺](val per: 尾) extends 水尺 {
+  self =>
+
+  override type 检验[I <: 大海] = 尾#检验[I]#尾
+  override def 检验[I <: 大海](shendu: I): 尾#检验[I]#尾 = per.检验(shendu).tail
+
+  override type 下一重 = 下一重水尺[下一重水尺[尾]]
+  override def 下一重: 下一重 = new 下一重水尺(self)
+
+}
+
 class 初始水尺 extends 水尺 {
   self =>
 
@@ -22,14 +33,3 @@ class 初始水尺 extends 水尺 {
 }
 
 object 初始水尺 extends 初始水尺
-
-class 下一重水尺[II <: 水尺](val per: II) extends 水尺 {
-  self =>
-
-  override type 检验[I <: 大海] = II#检验[I]#尾
-  override def 检验[I <: 大海](shendu: I): II#检验[I]#尾 = per.检验(shendu).tail
-
-  override type 下一重 = 下一重水尺[下一重水尺[II]]
-  override def 下一重: 下一重 = new 下一重水尺(self)
-
-}
