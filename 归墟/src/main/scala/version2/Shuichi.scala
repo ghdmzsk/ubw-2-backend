@@ -2,34 +2,34 @@ package version2
 
 import scala.language.higherKinds
 
-trait Shuichi {
-  type Shendu[I <: HList] <: HList
-  def shendu[I <: HList](shendu: I): Shendu[I]
+trait 水尺 {
+  type 检验[I <: 大海] <: 大海
+  def 检验[I <: 大海](shendu: I): 检验[I]
 
-  type Add <: Shuichi
-  def add: Add
+  type 下一重 <: 水尺
+  def 下一重: 下一重
 }
 
-class ShuichiZero extends Shuichi {
+class 初始水尺 extends 水尺 {
   self =>
 
-  override type Shendu[I <: HList] = I
-  override def shendu[I <: HList](shendu: I): I = shendu
+  override type 检验[I <: 大海] = I
+  override def 检验[I <: 大海](shendu: I): I = shendu
 
-  override type Add = AppendShuichi[ShuichiZero]
-  override def add: AppendShuichi[ShuichiZero] = new AppendShuichi(self)
+  override type 下一重 = 下一重水尺[初始水尺]
+  override def 下一重: 下一重水尺[初始水尺] = new 下一重水尺(self)
 
 }
 
-object ShuichiZero extends ShuichiZero
+object 初始水尺 extends 初始水尺
 
-class AppendShuichi[II <: Shuichi](val per: II) extends Shuichi {
+class 下一重水尺[II <: 水尺](val per: II) extends 水尺 {
   self =>
 
-  override type Shendu[I <: HList] = II#Shendu[I]#T
-  override def shendu[I <: HList](shendu: I): II#Shendu[I]#T = per.shendu(shendu).tail
+  override type 检验[I <: 大海] = II#检验[I]#尾
+  override def 检验[I <: 大海](shendu: I): II#检验[I]#尾 = per.检验(shendu).tail
 
-  override type Add = AppendShuichi[AppendShuichi[II]]
-  override def add: Add = new AppendShuichi(self)
+  override type 下一重 = 下一重水尺[下一重水尺[II]]
+  override def 下一重: 下一重 = new 下一重水尺(self)
 
 }
