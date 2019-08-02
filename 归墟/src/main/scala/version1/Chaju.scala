@@ -2,51 +2,36 @@ package version1
 
 import scala.language.higherKinds
 
-trait Chaju {
+trait 水尺 {
 
-  type Next <: Chaju
-  def next: Next
+  type 检验[II <: 大海] <: 大海
+  def 检验[II <: 大海](m: II): 检验[II]
 
-  type M[Item, II <: HList] <: HList
-  def tran[Item, II <: HList](m: II, item: Item): M[Item, II]
-
-  def tranGuixu[Item](guixu: Guixu, item: Item): Guixu
-
-  type Add <: Chaju
-  def add: Add
+  type 下一重 <: 水尺
+  def 下一重: 下一重
 
 }
 
-class ChajuImpl[T <: Chaju](tail: T) extends Chaju {
+class 下一重水尺[尾 <: 水尺](尾: 尾) extends 水尺 {
   self =>
 
-  override type Next = T
-  override def next: T = tail
+  override type 检验[II <: 大海] = 尾#检验[II]#尾
+  override def 检验[II <: 大海](m: II): 尾#检验[II]#尾 = 尾.检验(m).尾
 
-  override type M[Item, II <: HList] = II#Add[Item]
-  override def tran[Item, II <: HList](m: II, item: Item): II#Add[Item] = m.add(item)
-
-  override def tranGuixu[Item](guixu: Guixu, item: Item): Guixu = guixu
-
-  override type Add = ChajuImpl[ChajuImpl[T]]
-  override def add: ChajuImpl[ChajuImpl[T]] = new ChajuImpl(self)
+  override type 下一重 = 下一重水尺[下一重水尺[尾]]
+  override def 下一重: 下一重水尺[下一重水尺[尾]] = new 下一重水尺(self)
 
 }
 
-class Manyi extends Chaju {
+class 初始水尺 extends 水尺 {
   self =>
 
-  override type Next = Manyi
-  override def next: Manyi = self
+  override type 检验[II <: 大海] = II
+  override def 检验[II <: 大海](m: II): II = m
 
-  override type M[Item, II <: HList] = II
-  override def tran[Item, II <: HList](m: II, item: Item): II = m
-
-  override def tranGuixu[Item](guixu: Guixu, item: Item): Guixu = guixu.add(item)
-
-  override type Add = ChajuImpl[Manyi]
-  override def add: ChajuImpl[Manyi] = new ChajuImpl(self)
+  override type 下一重 = 下一重水尺[初始水尺]
+  override def 下一重: 下一重水尺[初始水尺] = new 下一重水尺(self)
 
 }
 
-object Manyi extends Manyi
+object 初始水尺 extends 初始水尺

@@ -4,7 +4,7 @@ import scala.language.higherKinds
 
 object Typer {
 
-  type sc   = ShuichiZero#Add#Add#Add
+  type sc   = ShuichiZero#Add#Add#Add#Add
   type shui = HNil#Add[Int]#Add[String]#Add[Int]#Add[String]#Add[String]#Add[String]
 
   type a1 = sc#Shendu[shui]
@@ -17,14 +17,14 @@ object Typer {
 
   type a3 = sc#Shendu[b2]
   type b3 = a3#Con#M[b2]
-  val 溢水3: HNil#Add[Int]#Add[String]#Add[Int] = (throw new Exception("ii")): b3
+  val 溢水3: HNil#Add[Int]#Add[String]#Add[Int]#Add[String] = (throw new Exception("ii")): b3
 
   type a4 = sc#Shendu[b3]
   type b4 = a4#Con#M[b3]
-  val 溢水4: HNil#Add[Int]#Add[String]#Add[Int] = (throw new Exception("ii")): b4
+  val 溢水4: HNil#Add[Int]#Add[String]#Add[Int]#Add[String] = (throw new Exception("ii")): b4
 
   type a5 = sc#Shendu[b4]
   type b5 = a5#Con#M[b4]
-  val 溢水5: HNil#Add[Int]#Add[String]#Add[Int] = (throw new Exception("ii")): b5
+  val 溢水5: HNil#Add[Int]#Add[String]#Add[Int]#Add[String] = (throw new Exception("ii")): b5
 
 }

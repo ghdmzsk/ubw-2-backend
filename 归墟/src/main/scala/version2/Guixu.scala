@@ -2,21 +2,21 @@ package version2
 
 import scala.language.higherKinds
 
-trait Guixu {
+trait 归墟 {
   self =>
   type I
-  type T = Guixu
+  type Tail = 归墟
 
   val head: I
-  val tail: Guixu = self
+  val tail: 归墟 = self
 
-  type AddWater[I] = Guixu
-  def add[II](i: II): AddWater[I] = new Guixu {
+  type AddWater[I] = 归墟
+  def add[II](i: II): AddWater[I] = new 归墟 {
     override type I = II
     override val head: II = i
 
-    override type T = Guixu
-    override val tail: Guixu = self
+    override type Tail = 归墟
+    override val tail: 归墟 = self
 
     override def toString = head.toString + ", " + self.toString
   }
@@ -24,11 +24,10 @@ trait Guixu {
 
 object Guixu {
 
-  val value: Guixu = new Guixu {
+  val value: 归墟 = new 归墟 {
     self =>
-    override type I = Guixu
-    override val head: Guixu = self
-
+    override type I = 归墟
+    override val head: 归墟 = self
     override def toString = "归墟"
   }
 

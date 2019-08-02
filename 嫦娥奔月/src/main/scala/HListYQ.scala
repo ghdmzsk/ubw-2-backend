@@ -11,7 +11,7 @@ trait HListYQ {
   type Current = Source#Head
   def current: Source#Head = source.head
 
-  type CanReverse
+  type CanReverse <: HListYQ
   def canReverse: CanReverse
 
   type NextNext
