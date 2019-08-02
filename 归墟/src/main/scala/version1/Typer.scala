@@ -1,14 +1,36 @@
 package version1
 
-import java.util.Date
-
 object Typer {
 
-  //脱离实体的运算
-  type ZeroType = 大海之初[HNil, Manyi#Add#Add#Add]
-  val i1: ZeroType#Add[Int]#Add[Date]#Add[String]#Add[String]#Add[String]#Add[String]#Add[String]#Add[String] = throw new Exception("abc")
-  val i2: ZeroType#Add[Int]#Add[Date]#Add[String]#Add[String]#Add[String]                                     = i1
-  val i3: ZeroType#Add[Int]#Add[Date]#Add[String]                                                             = i1
-  val i4: HNil#Add[Int]#Add[Date]#Add[String]                                                                 = i1.海水
+  type 水尺 = 初始水尺#下一重#下一重#下一重#下一重#下一重
+  type 大海 = 大海之初#加水[Int]#加水[String]
+
+  type 舀水1 = 水尺#检验[大海]
+  type 大海1 = 舀水1#目前舀水#舀[大海, String]
+  val 大海1: 大海之初#加水[Int]#加水[String]#加水[String] = (throw new Exception("ii")): 大海1
+
+  type 舀水2 = 水尺#检验[大海1]
+  type 大海2 = 舀水2#目前舀水#舀[大海1, Int]
+  val 大海2: 大海之初#加水[Int]#加水[String]#加水[String]#加水[Int] = (throw new Exception("ii")): 大海2
+
+  type 舀水3 = 水尺#检验[大海2]
+  type 大海3 = 舀水3#目前舀水#舀[大海2, Long]
+  val 大海3: 大海之初#加水[Int]#加水[String]#加水[String]#加水[Int]#加水[Long] = (throw new Exception("ii")): 大海3
+
+  type 舀水4 = 水尺#检验[大海3]
+  type 大海4 = 舀水4#目前舀水#舀[大海3, Short]
+  val 大海4: 大海之初#加水[Int]#加水[String]#加水[String]#加水[Int]#加水[Long]#加水[Short] = (throw new Exception("ii")): 大海4
+
+  type 舀水5 = 水尺#检验[大海4]
+  type 大海5 = 舀水5#目前舀水#舀[大海4, String]
+  val 大海5: 大海之初#加水[Int]#加水[String]#加水[String]#加水[Int]#加水[Long]#加水[Short] = (throw new Exception("ii")): 大海5
+
+  type 舀水6 = 水尺#检验[大海5]
+  type 大海6 = 舀水6#目前舀水#舀[大海5, Short]
+  val 大海6: 大海之初#加水[Int]#加水[String]#加水[String]#加水[Int]#加水[Long]#加水[Short] = (throw new Exception("ii")): 大海6
+
+  type 舀水7 = 水尺#检验[大海6]
+  type 大海7 = 舀水7#目前舀水#舀[大海6, Short]
+  val 大海7: 大海之初#加水[Int]#加水[String]#加水[String]#加水[Int]#加水[Long]#加水[Short] = (throw new Exception("ii")): 大海7
 
 }

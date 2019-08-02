@@ -5,38 +5,47 @@ import scala.language.higherKinds
 /**
 HList 设计大体与 shapeless 相同，无需过度留意。
   */
-trait HList {
-  type H
-  type T <: HList
+trait 大海 {
+  type 首
+  val 首: 首
+  type 尾 <: 大海
+  val 尾: 尾
 
-  val head: H
-  val tail: T
+  type 目前舀水 <: 舀水
+  def 目前舀水: 目前舀水
 
-  type Add[I] <: HList
-  def add[I](i: I): Add[I]
+  type 加水[I] <: 大海
+  def 加水[I](i: I): 加水[I]
 }
 
-class HNil extends HList {
+class 大海之初 extends 大海 {
   self =>
-  override type H = HNil
-  override type T = HNil
-  override val head: HNil = self
-  override val tail: HNil = self
+  override type 首 = 大海之初
+  override val 首: 大海之初 = self
+  override type 尾 = 大海之初
+  override val 尾: 大海之初 = self
 
-  override type Add[I] = Appendable[I, HNil]
-  override def add[I](i: I): Appendable[I, HNil] = new Appendable(i, self)
+  override type 目前舀水 = 没有满溢
+  override def 目前舀水: 没有满溢 = 没有满溢
 
-  override def toString = "HNil"
+  override type 加水[I] = 有水的大海[I, 大海之初]
+  override def 加水[I](i: I): 有水的大海[I, 大海之初] = new 有水的大海(i, self)
+
+  override def toString: String = "HNil"
 }
 
-object HNil extends HNil
+object 大海之初 extends 大海之初
 
-class Appendable[HH, TT <: HList](override val head: HH, override val tail: TT) extends HList {
+class 有水的大海[HH, TT <: 大海](override val 首: HH, override val 尾: TT) extends 大海 {
   self =>
-  override type H      = HH
-  override type T      = TT
-  override type Add[I] = Appendable[I, Appendable[HH, TT]]
-  override def add[I](i: I): Appendable[I, Appendable[HH, TT]] = new Appendable(i, self)
+  override type 首 = HH
+  override type 尾 = TT
 
-  override def toString = head.toString + ", " + tail.toString
+  override type 目前舀水 = 满溢
+  override def 目前舀水: 满溢 = 满溢
+
+  override type 加水[I] = 有水的大海[I, 有水的大海[HH, TT]]
+  override def 加水[I](i: I): 有水的大海[I, 有水的大海[HH, TT]] = new 有水的大海(i, self)
+
+  override def toString: String = 首.toString + ", " + 尾.toString
 }

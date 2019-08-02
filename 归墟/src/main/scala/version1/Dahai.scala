@@ -2,39 +2,21 @@ package version1
 
 import scala.language.higherKinds
 
-trait 大海 {
-  type 海水 <: HList
-  def 海水: 海水
-
-  def 归墟: Guixu
-
-  type 差距 <: Chaju
-  def 差距: 差距
-
-  type Add[I] <: 大海
-  def add[I](i: I): 大海
-
+trait 舀水 {
+  type 舀[H <: 大海, I] <: 大海
+  def 舀[H <: 大海, I](大海: H, 归墟: 归墟, 水: I): (舀[H, I], 归墟)
 }
 
-class 大海之初[PP <: HList, HH <: Chaju](override val 海水: PP, override val 差距: HH) extends 大海 {
+class 没有满溢 extends 舀水 {
   self =>
-  override type 海水 = PP
-  override type 差距 = HH
-  override def 归墟: Guixu = Guixu.value
-
-  override type Add[I] = 灌水的大海[HH#M[I, PP], HH#Next]
-  override def add[I](i: I): 灌水的大海[HH#M[I, PP], HH#Next] = new 灌水的大海(差距.tran(海水, i), 差距.tranGuixu(归墟, i), 差距.next)
-
-  override def toString = "HNil"
+  override type 舀[H <: 大海, I] = H#加水[I]
+  override def 舀[H <: 大海, I](大海: H, 归墟: 归墟, 水: I): (H#加水[I], 归墟) = (大海.加水(水), 归墟)
 }
+object 没有满溢 extends 没有满溢
 
-class 灌水的大海[PP <: HList, HH <: Chaju](override val 海水: PP, override val 归墟: Guixu, override val 差距: HH) extends 大海 {
+class 满溢 extends 舀水 {
   self =>
-  override type 海水 = PP
-  override type 差距 = HH
-
-  override type Add[I] = 灌水的大海[HH#M[I, PP], HH#Next]
-  override def add[I](i: I): 灌水的大海[HH#M[I, PP], HH#Next] = new 灌水的大海(差距.tran(海水, i), 差距.tranGuixu(归墟, i), 差距.next)
-
-  override def toString = 海水.toString
+  override type 舀[H <: 大海, I] = H
+  override def 舀[H <: 大海, I](大海: H, 归墟: 归墟, 水: I): (H, 归墟) = (大海, 归墟.加水(水))
 }
+object 满溢 extends 满溢
