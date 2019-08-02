@@ -2,21 +2,50 @@ package version1
 
 import scala.language.higherKinds
 
-trait 舀水 {
-  type 舀[H <: 大海, I] <: 大海
-  def 舀[H <: 大海, I](大海: H, 归墟: 归墟, 水: I): (舀[H, I], 归墟)
+/**
+HList 设计大体与 shapeless 相同，无需过度留意。
+  */
+trait 大海 {
+  type 首
+  val 首: 首
+  type 尾 <: 大海
+  val 尾: 尾
+
+  type 目前舀水 <: 舀水
+  def 目前舀水: 目前舀水
+
+  type 加水[I] <: 大海
+  def 加水[I](i: I): 加水[I]
 }
 
-class 没有满溢 extends 舀水 {
+class 大海之初 extends 大海 {
   self =>
-  override type 舀[H <: 大海, I] = H#加水[I]
-  override def 舀[H <: 大海, I](大海: H, 归墟: 归墟, 水: I): (H#加水[I], 归墟) = (大海.加水(水), 归墟)
-}
-object 没有满溢 extends 没有满溢
+  override type 首 = 大海之初
+  override val 首: 大海之初 = self
+  override type 尾 = 大海之初
+  override val 尾: 大海之初 = self
 
-class 满溢 extends 舀水 {
-  self =>
-  override type 舀[H <: 大海, I] = H
-  override def 舀[H <: 大海, I](大海: H, 归墟: 归墟, 水: I): (H, 归墟) = (大海, 归墟.加水(水))
+  override type 目前舀水 = 没有满溢
+  override def 目前舀水: 没有满溢 = 没有满溢
+
+  override type 加水[I] = 有水的大海[I, 大海之初]
+  override def 加水[I](i: I): 有水的大海[I, 大海之初] = new 有水的大海(i, self)
+
+  override def toString: String = "HNil"
 }
-object 满溢 extends 满溢
+
+object 大海之初 extends 大海之初
+
+class 有水的大海[HH, TT <: 大海](override val 首: HH, override val 尾: TT) extends 大海 {
+  self =>
+  override type 首 = HH
+  override type 尾 = TT
+
+  override type 目前舀水 = 满溢
+  override def 目前舀水: 满溢 = 满溢
+
+  override type 加水[I] = 有水的大海[I, 有水的大海[HH, TT]]
+  override def 加水[I](i: I): 有水的大海[I, 有水的大海[HH, TT]] = new 有水的大海(i, self)
+
+  override def toString: String = 首.toString + ", " + 尾.toString
+}
