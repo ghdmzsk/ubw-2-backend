@@ -4,30 +4,31 @@ import scala.language.higherKinds
 
 trait 归墟 {
   self =>
-  type I
-  type Tail = 归墟
+  type 首
+  type 尾 = 归墟
 
-  val head: I
-  val tail: 归墟 = self
+  def 首: 首
+  def 尾: 尾 = self
 
-  type AddWater[I] = 归墟
-  def add[II](i: II): AddWater[I] = new 归墟 {
-    override type I = II
-    override val head: II = i
+  type 加水[I] = 归墟
+  def 加水[II](i: II): 加水[II] = new 归墟 {
+    override type 首 = II
+    override val 首: II = i
 
-    override type Tail = 归墟
-    override val tail: 归墟 = self
+    override type 尾 = 归墟
+    override val 尾: 归墟 = self
 
-    override def toString = head.toString + ", " + self.toString
+    override def toString = 首.toString + ", " + 尾.toString
   }
 }
 
-object Guixu {
+object 归墟 {
 
   val value: 归墟 = new 归墟 {
     self =>
-    override type I = 归墟
-    override val head: 归墟 = self
+    override type 首 = 归墟
+    override val 首: 归墟 = self
+
     override def toString = "归墟"
   }
 
