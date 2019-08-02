@@ -19,10 +19,10 @@ class 满溢 extends 去水 {
 
 object 满溢 extends 满溢
 
-class 没满溢 extends 去水 {
+class 没有满溢 extends 去水 {
   self =>
   override type 去[II <: 大海] = II
   override def 去[II <: 大海](m: II, guixu: 归墟): (II, 归墟) = (m, guixu)
 }
 
-object 没满溢 extends 没满溢
+object 没有满溢 extends 没有满溢

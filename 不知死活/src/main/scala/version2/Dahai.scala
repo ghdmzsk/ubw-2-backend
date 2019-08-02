@@ -23,8 +23,8 @@ class 大海之初 extends 大海 {
   override val head: 大海之初 = self
   override val tail: 大海之初 = self
 
-  override type 目前去水 = 没满溢
-  override def 目前去水: 没满溢 = 没满溢
+  override type 目前去水 = 没有满溢
+  override def 目前去水: 没有满溢 = 没有满溢
 
   override type 加水[I] = 有水的大海[I, 大海之初]
   override def 加水[I](i: I): 有水的大海[I, 大海之初] = new 有水的大海(i, self)
