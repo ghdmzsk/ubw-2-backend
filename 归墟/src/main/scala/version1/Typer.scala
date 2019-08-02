@@ -2,11 +2,11 @@ package version1
 
 object Typer {
 
-  type 水尺 = 初始水尺#下一重#下一重#下一重#下一重
-  type 大海 = 大海之初#加水[Int]#加水[String]
+  type 水尺  = 初始水尺#下一重#下一重#下一重#下一重
+  type 大海0 = 大海之初#加水[Int]#加水[String]
 
-  type 舀水1 = 水尺#检验[大海]
-  type 大海1 = 舀水1#目前舀水#舀[大海, String]
+  type 舀水1 = 水尺#检验[大海0]
+  type 大海1 = 舀水1#目前舀水#舀[大海0, String]
   val 大海1: 大海之初#加水[Int]#加水[String]#加水[String] = (throw new Exception("ii")): 大海1
 
   type 舀水2 = 水尺#检验[大海1]
