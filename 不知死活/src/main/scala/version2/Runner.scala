@@ -4,29 +4,29 @@ import scala.language.higherKinds
 
 object Runner extends App {
 
-  val 水尺           = 初始水尺.下一重.下一重.下一重.下一重
-  val shui         = 大海之初.加水(1).加水("水2").加水(3).加水("水4").加水("水5").加水("水6").加水("水7")
-  val a1           = 水尺.检验(shui)
-  val (b1, guixu1) = a1.目前去水.去(shui, 归墟.value)
-  val a2           = 水尺.检验(b1)
-  val (b2, guixu2) = a2.目前去水.去(b1, guixu1)
-  val a3           = 水尺.检验(b2)
-  val (b3, guixu3) = a3.目前去水.去(b2, guixu2)
-  val a4           = 水尺.检验(b3)
-  val (b4, guixu4) = a4.目前去水.去(b3, guixu3)
-  val a5           = 水尺.检验(b4)
-  val (b5, guixu5) = a5.目前去水.去(b4, guixu4)
-  val a6           = 水尺.检验(b5)
-  val (b6, guixu6) = a6.目前去水.去(b5, guixu5)
-  val a7           = 水尺.检验(b6)
-  val (b7, guixu7) = a7.目前去水.去(b6, guixu6)
-
-  println(s"大海: ${b1}, guixu: ${guixu1}")
-  println(s"大海: ${b2}, guixu: ${guixu2}")
-  println(s"大海: ${b3}, guixu: ${guixu3}")
-  println(s"大海: ${b4}, guixu: ${guixu4}")
-  println(s"大海: ${b5}, guixu: ${guixu5}")
-  println(s"大海: ${b6}, guixu: ${guixu6}")
-  println(s"大海: ${b7}, guixu: ${guixu7}")
+  val 水尺  = 初始水尺.下一重.下一重.下一重.下一重
+  val 大海1 = 大海之初.加水(1).加水("水2").加水(3).加水("水4").加水("水5").加水("水6").加水("水7")
+  println(s"大海: ${大海1}\n")
+  val 去水1 = 水尺.检验(大海1).目前去水
+  val 大海2 = 去水1.去(大海1)
+  println(s"大海: ${大海2}\n")
+  val 去水2 = 水尺.检验(大海2).目前去水
+  val 大海3 = 去水2.去(大海2)
+  println(s"大海: ${大海3}\n")
+  val 去水3 = 水尺.检验(大海3).目前去水
+  val 大海4 = 去水3.去(大海3)
+  println(s"大海: ${大海4}\n")
+  val 去水4 = 水尺.检验(大海4).目前去水
+  val 大海5 = 去水4.去(大海4)
+  println(s"大海: ${大海5}\n")
+  val 去水5 = 水尺.检验(大海5).目前去水
+  val 大海6 = 去水5.去(大海5)
+  println(s"大海: ${大海6}\n")
+  val 去水6 = 水尺.检验(大海6).目前去水
+  val 大海7 = 去水6.去(大海6)
+  println(s"大海: ${大海7}\n")
+  val 去水7 = 水尺.检验(大海7).目前去水
+  val 大海8 = 去水7.去(大海7)
+  println(s"大海: ${大海8}\n")
 
 }
