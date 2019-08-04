@@ -30,23 +30,23 @@ class 天地星辰流动[H, T <: 天地](override val 首: H, override val 尾: 
 
 }
 
-class 五彩宝石 extends 天地 {
+class 五彩石 extends 天地 {
   self =>
 
-  override type 首 = 五彩宝石
-  override type 尾 = 五彩宝石
+  override type 首 = 五彩石
+  override type 尾 = 五彩石
 
-  override def 首: 五彩宝石 = self
-  override def 尾: 五彩宝石 = self
+  override def 首: 五彩石 = self
+  override def 尾: 五彩石 = self
 
-  override type 初始化[T] = 天地星辰流动[T, 五彩宝石]
-  override def 初始化[T](t: T): 天地星辰流动[T, 五彩宝石] = new 天地星辰流动(t, self)
+  override type 初始化[T] = 天地星辰流动[T, 五彩石]
+  override def 初始化[T](t: T): 天地星辰流动[T, 五彩石] = new 天地星辰流动(t, self)
 
-  override type 运行[T] = 五彩宝石
-  override def 运行[T](t: T): 五彩宝石 = self
+  override type 运行[T] = 五彩石
+  override def 运行[T](t: T): 五彩石 = self
 
 }
 
-object 五彩宝石 {
-  val value: 五彩宝石 = new 五彩宝石
+object 五彩石 {
+  val value: 五彩石 = new 五彩石
 }
