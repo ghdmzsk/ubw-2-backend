@@ -1,48 +1,32 @@
-package version1
-
 import scala.language.higherKinds
 
-trait 燃烧比例 {
-  type 尾 <: 燃烧比例
-
-  def 尾: 尾
-
-  type 热量 <: 燃烧比例
+trait 肉 {
+  type 热量 <: 肉
   def 热量: 热量
-
-  type 部分烧尽[I <: 柴] <: 柴
-  def 部分烧尽[I <: 柴](m: I): 部分烧尽[I]
-
+  type 需要热量 <: 肉
+  def 需要热量: 肉
 }
 
-class 一片木头 extends 燃烧比例 {
+class 熟透的肉 extends 肉 {
   self =>
-  override type 尾 = 一片木头
+  override type 热量 = 熟透的肉
+  override def 热量: 熟透的肉 = 熟透的肉.value
 
-  override def 尾: 一片木头 = self
+  override def toString: String = "熟透的肉"
+  override type 需要热量 = 未熟的肉[熟透的肉]
+  override def 需要热量: 未熟的肉[熟透的肉] = new 未熟的肉[熟透的肉](self)
 
-  override type 热量 = 没有燃尽[一片木头]
-  override def 热量: 没有燃尽[一片木头] = new 没有燃尽(self)
-
-  override type 部分烧尽[I <: 柴] = I#下一段
-  override def 部分烧尽[I <: 柴](m: I): I#下一段 = m.下一段柴
-
-  override def toString: String = "化为灰烬"
 }
 
-object 化为灰烬 {
-  val value = new 一片木头
+object 熟透的肉 {
+  val value = new 熟透的肉
 }
 
-class 没有燃尽[TT <: 燃烧比例](override val 尾: TT) extends 燃烧比例 {
+class 未熟的肉[TT <: 肉](override val 热量: TT) extends 肉 {
   self =>
-  override type 尾 = TT
+  override type 热量 = TT
+  override def 需要热量: 未熟的肉[未熟的肉[TT]] = new 未熟的肉(self)
+  override type 需要热量 = 未熟的肉[未熟的肉[TT]]
 
-  override type 热量 = 没有燃尽[没有燃尽[TT]]
-  override def 热量: 没有燃尽[没有燃尽[TT]] = new 没有燃尽(self)
-
-  override type 部分烧尽[I <: 柴] = I
-  override def 部分烧尽[I <: 柴](m: I): I = m
-
-  override def toString: String = "燃烧比例" + ", " + 尾.toString
+  override def toString: String = "未熟的肉" + ", " + 熟透的肉.toString
 }

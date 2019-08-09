@@ -1,64 +1,46 @@
-package version1
-
 import scala.language.higherKinds
 
-trait 柴 {
+trait 锅 {
 
-  type 目前能量 <: 燃烧比例
+  type 尾 <: 锅
+  def 尾: 尾
 
-  def 目前能量: 目前能量
+  type 加肉[I <: 肉] <: 锅
+  def 加肉[I <: 肉](i: I): 加肉[I]
 
-  type 下一段 <: 柴
-
-  def 下一段柴: 下一段
-
-  type 燃烧 <: 柴
-
-  def 燃烧: 柴
-
-  type 初始化[I <: 燃烧比例] <: 柴
-
-  def 初始化[I <: 燃烧比例](i: I): 柴
+  type 升温 <: 锅
+  def 升温: 升温
 
 }
 
-class 燃干的柴 extends 柴 {
+class 没有肉的锅 extends 锅 {
   self =>
-  override type 目前能量 = 一片木头
 
-  override def 目前能量: 一片木头 = 化为灰烬.value
+  override type 尾 = 没有肉的锅
+  override def 尾: 没有肉的锅 = self
 
-  override type 下一段 = 燃干的柴
+  type 加肉[I <: 肉] = 有肉的锅[I, 没有肉的锅]
+  def 加肉[I <: 肉](i: I): 有肉的锅[I, 没有肉的锅] = new 有肉的锅[I, 没有肉的锅](i, self)
 
-  override def 下一段柴: 燃干的柴 = self
+  override type 升温 = 没有肉的锅
+  override def 升温: 没有肉的锅 = 没有肉的锅.value
 
-  override type 燃烧 = 燃干的柴
-
-  override def 燃烧: 燃干的柴 = self
-
-  override type 初始化[I <: 燃烧比例] = 没有燃尽的柴[I, 燃干的柴]
-
-  override def 初始化[I <: 燃烧比例](i: I): 没有燃尽的柴[I, 燃干的柴] = new 没有燃尽的柴(i, self)
-
-  override def toString: String = "燃干的柴"
+  override def toString: String = "没有肉的锅"
 }
 
-class 没有燃尽的柴[PP <: 燃烧比例, TT <: 柴](override val 目前能量: PP, override val 下一段柴: TT) extends 柴 {
+object 没有肉的锅 {
+  val value = new 没有肉的锅
+}
+
+class 有肉的锅[PP <: 肉, TT <: 锅](val 第一块肉: PP, override val 尾: TT) extends 锅 {
   self =>
-  override type 目前能量 = PP
+  override type 尾 = TT
 
-  override type 下一段 = TT
+  type 加肉[I <: 肉] = 有肉的锅[I, 有肉的锅[PP, TT]]
+  def 加肉[I <: 肉](i: I): 有肉的锅[I, 有肉的锅[PP, TT]] = new 有肉的锅[I, 有肉的锅[PP, TT]](i, self)
 
-  override type 燃烧 = PP#尾#部分烧尽[没有燃尽的柴[PP#尾, 下一段]]
+  override type 升温 = 有肉的锅[PP#热量, 尾#升温]
+  override def 升温: 有肉的锅[PP#热量, 尾#升温] = new 有肉的锅[PP#热量, 尾#升温](第一块肉.热量,尾.升温)
 
-  override def 燃烧: PP#尾#部分烧尽[没有燃尽的柴[PP#尾, 下一段]] = {
-    val ii = 目前能量.尾
-    ii.部分烧尽(new 没有燃尽的柴(目前能量.尾, 下一段柴))
-  }
-
-  override type 初始化[I <: 燃烧比例] = 没有燃尽的柴[I, 没有燃尽的柴[PP, TT]]
-
-  override def 初始化[I <: 燃烧比例](i: I): 没有燃尽的柴[I, 没有燃尽的柴[PP, TT]] = new 没有燃尽的柴(i, self)
-
-  override def toString: String = 目前能量.toString + ", " + 下一段柴.toString
+  override def toString: String = 第一块肉.toString + ", " + 尾.toString
 }
