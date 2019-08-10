@@ -43,7 +43,7 @@ class 范围外的铁(id: Int) extends 铁 {
     self
   }
   override type 初始化 = 范围外的铁
-  override def 初始化: 范围外的铁  = self
+  override def 初始化: 范围外的铁       = self
   override def toString: String = "范围外的铁"
 
 }
