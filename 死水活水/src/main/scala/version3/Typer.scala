@@ -19,7 +19,7 @@ object Typer {
   val 池塘3: 池塘之初#加水[Int]#加水[String]#加水[String]#加水[Int]#加水[Long] = (throw new Exception("ii")): 池塘3
 
   type 舀水4 = 舀水水尺#检验[池塘3]
-  type 池塘4 = 舀水4#目前舀水#舀[池塘3, Short]
+  type 池塘4 = 舀水4#目前舀水#舀[池塘3, Short] //已经满水
   val 池塘4: 池塘之初#加水[Int]#加水[String]#加水[String]#加水[Int]#加水[Short] = (throw new Exception("ii")): 池塘4
 
   type 去水5 = 去水水尺#检验[池塘4]
@@ -31,7 +31,7 @@ object Typer {
   val 池塘6: 池塘之初#加水[Int]#加水[String]#加水[String] = (throw new Exception("ii")): 池塘6
 
   type 去水7 = 去水水尺#检验[池塘6]
-  type 池塘7 = 去水7#目前去水#去[池塘6]
+  type 池塘7 = 去水7#目前去水#去[池塘6] //已经达到最低水位
   val 池塘7: 池塘之初#加水[Int]#加水[String] = (throw new Exception("ii")): 池塘7
 
   type 去水8 = 去水水尺#检验[池塘7]
