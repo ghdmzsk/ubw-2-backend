@@ -40,20 +40,20 @@ class 一块柴[S <: 燃料, T <: 柴](override val 当前燃料: S, override va
 
 }
 
-class 初始柴 extends 柴 {
+class 初始人生 extends 柴 {
   self =>
-  override type 尾    = 初始柴
-  override type 当前燃料 = 初始燃料
+  override type 尾    = 初始人生
+  override type 当前燃料 = 零燃料
   override def 尾    = self
-  override def 当前燃料 = 初始燃料.初始燃料
-  override type 初始化[I <: 燃料] = 一块柴[I, 初始柴]
-  override def 初始化[I <: 燃料](i: I): 一块柴[I, 初始柴] = new 一块柴(i, self)
+  override def 当前燃料 = 零燃料.零燃料
+  override type 初始化[I <: 燃料] = 一块柴[I, 初始人生]
+  override def 初始化[I <: 燃料](i: I): 一块柴[I, 初始人生] = new 一块柴(i, self)
 
-  override type 点火[I <: 火苗] = 初始柴
-  override def 点火[I <: 火苗](i: I): 初始柴 = self
+  override type 点火[I <: 火苗] = 初始人生
+  override def 点火[I <: 火苗](i: I): 初始人生 = self
 
 }
 
-object 初始柴 {
-  val 初始柴: 初始柴 = new 初始柴
+object 初始人生 {
+  val 初始人生: 初始人生 = new 初始人生
 }
