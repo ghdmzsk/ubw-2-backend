@@ -15,7 +15,6 @@ object Runner extends App {
   val hlist2  = "11" :: "12" :: "13" :: "14" :: "15" :: 16 :: 17 :: "18" :: 19 :: 20 :: hlist3
   val hlist1  = "1" :: 2 :: 3 :: "4" :: "5" :: 6 :: 7 :: "8" :: 9 :: 10 :: hlist2
 
-
   println(hlist1.toString)
 
   val i1: String = hlist1(F._7._6)
