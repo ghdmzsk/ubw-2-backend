@@ -1,16 +1,14 @@
 package version1
 
-import org.scalax.asuna.mapper.miaomiao2.Natural
-
 import scala.language.higherKinds
 
 trait Fetch {
 
-  type fetch[H <: Natural] <: Natural
-  def fetch[H <: Natural](h: H): fetch[H]
+  type fetch[H <: HList] <: HList
+  def fetch[H <: HList](h: H): fetch[H]
 
-  type data[H <: Natural] = fetch[H]#Head
-  def data[H <: Natural](h: H): fetch[H]#Head = fetch(h).biggest
+  type data[H <: HList] = fetch[H]#Head
+  def data[H <: HList](h: H): fetch[H]#Head = fetch(h).head
 
   type Next <: Fetch
   def next: Next
@@ -53,11 +51,11 @@ trait Fetch {
 class Fetch1 extends Fetch {
   self =>
 
-  override type fetch[H <: Natural] = H
-  override def fetch[H <: Natural](h: H): H = h
+  override type fetch[H <: HList] = H
+  override def fetch[H <: HList](h: H): H = h
 
-  override type data[H <: Natural] = H#Head
-  override def data[H <: Natural](h: H): H#Head = h.biggest
+  override type data[H <: HList] = H#Head
+  override def data[H <: HList](h: H): H#Head = h.head
 
   override type Next = FetchN[Fetch1]
   override def next: FetchN[Fetch1] = new FetchN(self)
@@ -74,8 +72,8 @@ object Fetch1 {
 class FetchN[I <: Fetch](val tail: I) extends Fetch {
   self =>
 
-  override type fetch[H <: Natural] = I#fetch[H]#Tail
-  override def fetch[H <: Natural](h: H): I#fetch[H]#Tail = tail.fetch(h).tail
+  override type fetch[H <: HList] = I#fetch[H]#Tail
+  override def fetch[H <: HList](h: H): I#fetch[H]#Tail = tail.fetch(h).tail
 
   override type Next = FetchN[FetchN[I]]
   override def next: FetchN[FetchN[I]] = new FetchN(self)
