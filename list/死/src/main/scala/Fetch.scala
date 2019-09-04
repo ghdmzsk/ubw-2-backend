@@ -2,7 +2,7 @@ package version2
 
 import scala.language.higherKinds
 
-trait Fetch {
+trait Fetch extends Any {
 
   type fetch[H <: HList] <: HList
   def fetch[H <: HList](h: H): fetch[H]
@@ -48,7 +48,7 @@ trait Fetch {
 
 }
 
-class Fetch1 extends Fetch {
+trait Fetch1 extends Any with Fetch {
   self =>
 
   override type fetch[H <: HList] = H
@@ -66,10 +66,10 @@ class Fetch1 extends Fetch {
 }
 
 object Fetch1 {
-  val fetch1 = new Fetch1
+  val fetch1 = new Fetch1 { }
 }
 
-class FetchN[I <: Fetch](val tail: I) extends Fetch {
+class FetchN[I <: Fetch](val tail: I) extends AnyVal with Fetch {
   self =>
 
   override type fetch[H <: HList] = I#fetch[H]#Tail
@@ -85,7 +85,7 @@ class FetchN[I <: Fetch](val tail: I) extends Fetch {
 }
 
 
-trait F {
+trait F extends Any {
   type _1 = Fetch1
   def _1: _1 = Fetch1.fetch1
 
