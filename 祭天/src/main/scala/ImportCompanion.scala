@@ -14,10 +14,10 @@ trait ImportCompanion[II <: HList] extends Any {
 
 }
 
-trait UnInit[Poly] {
+trait UnInit[Poly <: HList] {
 
-  def toJSON[T](model: T)(implicit init: EncoderInit[T, Poly]): Json                = init.encoder(model)
-  def decode[T](json: Json)(implicit init: DecoderInit[T, Poly]): Decoder.Result[T] = init.decoder.decodeJson(json)
+  def toJSON[T](model: T)(implicit init: EncoderDefine[T, Poly]): Json                = init.encoder(model)
+  def decode[T](json: Json)(implicit init: DecoderDefine[T, Poly]): Decoder.Result[T] = init.decoder.decodeJson(json)
 
 }
 
@@ -32,10 +32,14 @@ object Runner extends App {
 
   val i8 = 神坛(i1, i2, i3, i4, i5, i6)
 
-  object PolyJson extends UnInit[神坛包裹类]
+  object PolyJson extends UnInit[禽类 :: 神坛包裹类 :: HNil]
 
-  val str = PolyJson.toJSON(i8)
-  println(str.noSpaces)
-  println(PolyJson.decode[神坛](str))
+  val str1 = PolyJson.toJSON(i8)
+  println(str1.spaces2)
+  println(PolyJson.decode[神坛](str1))
+
+  val str2 = PolyJson.toJSON(i3)
+  println(str2.spaces2)
+  println(PolyJson.decode[鸡](str2))
 
 }
