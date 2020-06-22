@@ -33,43 +33,39 @@ object Runner extends App {
   println(hlist4) // Zero , Item4 , Item5 , Item6 , Item7
 
   type HList7 = Zero#Add[Item1]#Add[Item2]#Add[Item3]#Add[Item4]#Add[Item5]#Add[Item6]#Add[Item7]
-  val hlist7_1: HList7                = hlist4.plus(hlist3)
-  val hlist7_2: HList3#Plus[HList4]   = hlist3.plus(hlist4)
-  val hlist7_3: HList3#Plus[HList4]   = hlist4.rePlus(hlist3)
   val hlist7_4: HList3#RePlus[HList4] = hlist3.rePlus(hlist4)
   hlist7_4: HList7
-
-  println(hlist7_1) // Zero , Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7
-  println(hlist7_2) // Zero , Item4 , Item5 , Item6 , Item7 , Item1 , Item2 , Item3
-  println(hlist7_3) // Zero , Item4 , Item5 , Item6 , Item7 , Item1 , Item2 , Item3
   println(hlist7_4) // Zero , Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7
 
-  type II = HList3#RePlus[HList4]#RePlus[HList3#RePlus[HList4]]#RePlus[HList3#RePlus[HList4]]#RePlus[HList3#RePlus[HList4]]
-  val ii: II = hlist3.rePlus(hlist4).rePlus(hlist3.rePlus(hlist4)).rePlus(hlist3.rePlus(hlist4)).rePlus(hlist3.rePlus(hlist4))
+  type HList1 = Zero#Add[String]
+  val hlist1_1: Zero#Add[String] = Zero.value.add("22")
+  hlist1_1: HList1
+
+  type II = HList7#RePlus[HList7]#RePlus[HList7]#RePlus[HList3#RePlus[Zero#Add[String]]]
+  val ii: II =
+    hlist3.rePlus(hlist4).rePlus(hlist3.rePlus(hlist4)).rePlus(hlist3.rePlus(hlist4)).rePlus(hlist3.rePlus(hlist1_1))
 
   type BB = II#RePlus[II]#RePlus[II]#RePlus[II]#RePlus[HList7]
   val bb = ii.rePlus(ii).rePlus(ii).rePlus(ii).rePlus(hlist7_4)
 
-  bb: HList7#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[
-    HList7
-  ]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]#RePlus[HList7]
+  println(bb.tail.tail.tail.tail.head: Item3) // Item3
   println(bb)
-  /* Zero , Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
-  Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 */
+  /*Zero , Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , 22 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , 22 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , 22 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
+Item1 , Item2 , Item3 , 22 ,
+Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7*/
 
 }

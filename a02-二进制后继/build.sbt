@@ -1,3 +1,3 @@
 UbwSettings.scalaVersionSettings
 
-name := "a01-整数加法"
+name := "a02-二进制后继"
