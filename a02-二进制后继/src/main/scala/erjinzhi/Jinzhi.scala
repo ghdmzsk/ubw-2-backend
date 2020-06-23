@@ -1,3 +1,5 @@
+package erjinzhi
+
 trait Jinzhi {
 
   type Tail <: Jinzhi
