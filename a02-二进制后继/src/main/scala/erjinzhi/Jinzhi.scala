@@ -267,9 +267,16 @@ Item2(Item2(Item2(i9, i10), Item2(i11, i12)), Item2(Item2(i13, i14), Item2(i15, 
     override type _1   = One
   }
 
-  val aa = new MiImpl(
-    head = new ZeroValue,
-    _0 = new ZeroValue,
+  class StartMi[One <: Mi](override val _1: One) extends Mi { self =>
+    override type Head = ZeroValue
+    override type _0   = StartMi[One]
+    override type _1   = One
+
+    override def head: ZeroValue  = new ZeroValue
+    override def _0: StartMi[One] = self
+  }
+
+  val aa = new StartMi(
     _1 = new MiImpl(
       head = new I1,
       _0 = new MiImpl(
@@ -324,6 +331,6 @@ Item2(Item2(Item2(i9, i10), Item2(i11, i12)), Item2(Item2(i13, i14), Item2(i15, 
   aa._1._0._0._0._1.head: I17
   aa._1._0._0._1._0.head: I18
 
-
+  println(aa._0._0._0._0._1._1._0._0.head.item12ToString)
 
 }
