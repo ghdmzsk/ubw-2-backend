@@ -120,7 +120,6 @@ object Runner extends App {
     KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5)
 
   miao3: Manwei[KongWei[Manwei[KongWeiZero, Item2Impl[Item2Impl[I1, I2], Item2Impl[I3, I4]]]], I5]
-
   println(miao3) // 无限0 :: 满位1(Item2(Item2(i1, i2), Item2(i3, i4))) :: 空位0 :: 满位1(i5)
 
   val miao4: KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4]#UpdateCurrent[I5]#UpdateCurrent[I6] =
