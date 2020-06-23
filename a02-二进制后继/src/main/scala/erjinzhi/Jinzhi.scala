@@ -131,7 +131,7 @@ object Runner extends App {
 
   println(
     KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5).add(new I6).add(new I7).add(new I8).add(new I9)
-  ) //无限0 :: 满位1(Item2(Item2(Item2(i1, i2), Item2(i3, i4)), Item2(Item2(i5, i6), Item2(i7, i8)))) :: 空位0 :: 空位0 :: 满 位1(i9)
+  ) // 无限0 :: 满位1(Item2(Item2(Item2(i1, i2), Item2(i3, i4)), Item2(Item2(i5, i6), Item2(i7, i8)))) :: 空位0 :: 空位0 :: 满 位1(i9)
 
   val jinzhi4: KongWei[Manwei[KongWei[KongWei[Manwei[KongWeiZero, Item2Impl[
     Item2Impl[Item2Impl[Item2Impl[I1, I2], Item2Impl[I3, I4]], Item2Impl[Item2Impl[I5, I6], Item2Impl[I7, I8]]],
