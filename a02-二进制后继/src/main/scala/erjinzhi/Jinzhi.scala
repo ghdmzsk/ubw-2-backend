@@ -219,41 +219,23 @@ Item2(Item2(Item2(i9, i10), Item2(i11, i12)), Item2(Item2(i13, i14), Item2(i15, 
     .add(new I2)
     .add(new I1)
 
-  // 1        1    tick
   jinzhi5.tail.current.i0.item1ToString
-  // 10       2    tick
   jinzhi5.tail.current.i1.item2ToString
-  // 100      4    tick
   jinzhi5.tail.tail.tail.tail.current.i0.i0.i0.i1.item4ToString
-  // 101      5    tick
   jinzhi5.tail.tail.tail.tail.current.i0.i0.i1.i0.item5ToString
-  // 1000     8    tick
   jinzhi5.tail.tail.tail.tail.current.i0.i1.i0.i1.item8ToString
-  // 1001     9    tick
   jinzhi5.tail.tail.tail.tail.current.i0.i1.i1.i0.item9ToString
-  // 1010     10   tick
   jinzhi5.tail.tail.tail.tail.current.i0.i1.i1.i1.item10ToString
-  // 1011     11   tick
   jinzhi5.tail.tail.tail.tail.current.i1.i0.i0.i0.item11ToString
-  // 10000    16   tick
   jinzhi5.tail.tail.tail.tail.current.i1.i1.i0.i1.item16ToString
-  // 10001    17   tick
   jinzhi5.tail.tail.tail.tail.current.i1.i1.i1.i0.item17ToString
-  // 10010    18   tick
   jinzhi5.tail.tail.tail.tail.current.i1.i1.i1.i1.item18ToString
-  // 11       3    tick   tick
   jinzhi5.tail.tail.tail.tail.current.i0.i0.i0.i0.item3ToString
-  // 110      6    tick   tick
   jinzhi5.tail.tail.tail.tail.current.i0.i0.i1.i1.item6ToString
-  // 1100     12   tick   tick
   jinzhi5.tail.tail.tail.tail.current.i1.i0.i0.i1.item12ToString
-  // 1101     13   tick   tick
   jinzhi5.tail.tail.tail.tail.current.i1.i0.i1.i0.item13ToString
-  // 111      7    tick   tick   tick
   jinzhi5.tail.tail.tail.tail.current.i0.i1.i0.i0.item7ToString
-  // 1110     14   tick   tick   tick
   jinzhi5.tail.tail.tail.tail.current.i1.i0.i1.i1.item14ToString
-  // 1111     15   tick   tick   tick   tick
   jinzhi5.tail.tail.tail.tail.current.i1.i1.i0.i0.item15ToString
 
   trait Mi {
@@ -342,24 +324,6 @@ Item2(Item2(Item2(i9, i10), Item2(i11, i12)), Item2(Item2(i13, i14), Item2(i15, 
   aa._1._0._0._0._1.head: I17
   aa._1._0._0._1._0.head: I18
 
-  // 0        0
-  // 1        1    tick
-  // 10       2    tick
-  // 11       3    tick   tick
-  // 100      4    tick
-  // 101      5    tick
-  // 110      6    tick   tick
-  // 111      7    tick   tick   tick
-  // 1000     8    tick
-  // 1001     9    tick
-  // 1010     10   tick
-  // 1011     11   tick
-  // 1100     12   tick   tick
-  // 1101     13   tick   tick
-  // 1110     14   tick   tick   tick
-  // 1111     15   tick   tick   tick   tick
-  // 10000    16   tick
-  // 10001    17   tick
-  // 10010    18   tick
+
 
 }
