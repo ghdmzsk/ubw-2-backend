@@ -16,6 +16,7 @@ object Runner extends App {
     override def toString: String = "Item4"
   }
   class Item5 {
+    def item5ToString: String     = "I'm Item5."
     override def toString: String = "Item5"
   }
   class Item6 {
@@ -49,8 +50,9 @@ object Runner extends App {
   type BB = II#RePlus[II]#RePlus[II]#RePlus[II]#RePlus[HList7]
   val bb = ii.rePlus(ii).rePlus(ii).rePlus(ii).rePlus(hlist7_4)
 
-  println(bb.tail.tail.tail.tail.head: Item3)                                                          // Item3
-  println(bb.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.head.item4ToString) // I'm Item4.
+  println(bb.tail.tail.tail.tail.head: Item3)                                                                  // Item3
+  println(bb.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.tail.head.item4ToString)         // I'm Item4.
+  println((new Item5: BB#Tail#Tail#Tail#Tail#Tail#Tail#Tail#Tail#Tail#Tail#Tail#Tail#Tail#Head).item5ToString) // I'm Item5.
   println(bb)
   /*Zero , Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,
 Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7 ,

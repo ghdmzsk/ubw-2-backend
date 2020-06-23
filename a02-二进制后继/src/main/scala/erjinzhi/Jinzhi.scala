@@ -50,7 +50,6 @@ class KongWeiZero extends Jinzhi {
 
 object KongWeiZero {
   val value: KongWeiZero = new KongWeiZero
-
 }
 
 object Runner extends App {
@@ -83,13 +82,13 @@ object Runner extends App {
   }
 
   val miao1: KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4] =
-    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4)
+    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4) // 无限0 :: 满位1(Item2(Item2(i1, i2), Item2(i3, i4))) :: 空位0 :: 空位0
 
   miao1: KongWei[KongWei[Manwei[Item2Impl[Item2Impl[I4, I3], Item2Impl[I2, I1]], KongWeiZero]]]
   println(miao1)
 
   val miao2: KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4]#UpdateCurrent[I5] =
-    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5)
+    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5) // 无限0 :: 满位1(Item2(Item2(i1, i2), Item2(i3, i4))) :: 空位0 :: 满位1(i5)
 
   miao2: Manwei[I5, KongWei[Manwei[Item2Impl[Item2Impl[I4, I3], Item2Impl[I2, I1]], KongWeiZero]]]
   println(miao2)
@@ -99,10 +98,10 @@ object Runner extends App {
   ] = KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5).add(new I6)
 
   miao3: KongWei[Manwei[Item2Impl[I6, I5], Manwei[Item2Impl[Item2Impl[I4, I3], Item2Impl[I2, I1]], KongWeiZero]]]
-  println(miao3)
+  println(miao3) // 无限0 :: 满位1(Item2(Item2(i1, i2), Item2(i3, i4))) :: 满位1(Item2(i5, i6)) :: 空位0
 
   println(
     KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5).add(new I6).add(new I7).add(new I8).add(new I9)
-  )
+  ) //无限0 :: 满位1(Item2(Item2(Item2(i1, i2), Item2(i3, i4)), Item2(Item2(i5, i6), Item2(i7, i8)))) :: 空位0 :: 空位0 :: 满 位1(i9)
 
 }
