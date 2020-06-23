@@ -2,5 +2,5 @@
 *.idea
 /logs
 /sbt
-/sbt.bat 
+/sbt.bat
 /sbt-launch.jar
