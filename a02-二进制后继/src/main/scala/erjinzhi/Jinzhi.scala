@@ -82,16 +82,16 @@ object Runner extends App {
   }
 
   val miao1: KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4] =
-    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4) // 无限0 :: 满位1(Item2(Item2(i1, i2), Item2(i3, i4))) :: 空位0 :: 空位0
+    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4)
 
   miao1: KongWei[KongWei[Manwei[Item2Impl[Item2Impl[I4, I3], Item2Impl[I2, I1]], KongWeiZero]]]
-  println(miao1)
+  println(miao1) // 无限0 :: 满位1(Item2(Item2(i1, i2), Item2(i3, i4))) :: 空位0 :: 空位0
 
   val miao2: KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4]#UpdateCurrent[I5] =
-    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5) // 无限0 :: 满位1(Item2(Item2(i1, i2), Item2(i3, i4))) :: 空位0 :: 满位1(i5)
+    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5)
 
   miao2: Manwei[I5, KongWei[Manwei[Item2Impl[Item2Impl[I4, I3], Item2Impl[I2, I1]], KongWeiZero]]]
-  println(miao2)
+  println(miao2) // 无限0 :: 满位1(Item2(Item2(i1, i2), Item2(i3, i4))) :: 空位0 :: 满位1(i5)
 
   val miao3: KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4]#UpdateCurrent[I5]#UpdateCurrent[
     I6
