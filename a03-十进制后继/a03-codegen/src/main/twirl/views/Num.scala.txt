@@ -1,0 +1,67 @@
+@(jinzhi: Int)
+
+trait Jinzhi {
+    type Up <: Jinzhi
+    def up: Up
+    @for(i <- 0 to (jinzhi - 1)) {
+        type _@{i} <: Jinzhi
+        def _@{i}: _@{i}
+    }
+}
+
+@for(i <- 0 to (jinzhi - 1)) {
+    @if(i == 0) {
+        class Leaf_0 extends Jinzhi {
+            override type Up = Leaf_1
+            override def up: Leaf_1 = new Leaf_1
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Leaf_@{ii}
+                override def _@{ii}: Leaf_@{ii} = new Leaf_@{ii}
+            }
+        }
+    } else if(i < (jinzhi - 1)) {
+        class Leaf_@{i} extends Jinzhi {
+            self =>
+            override type Up = Leaf_@{i + 1}
+            override def up: Leaf_@{i + 1} = new Leaf_@{i + 1}
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Node_@{ii}[Leaf_@{i}]
+                override def _@{ii}: Node_@{ii}[Leaf_@{i}] = new Node_@{ii}(self)
+            }
+        }
+    } else {
+        class Leaf_@{i} extends Jinzhi {
+            self =>
+            override type Up = Node_0[Leaf_1]
+            override def up: Node_0[Leaf_1] = new Node_0(new Leaf_1)
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Node_@{ii}[Leaf_@{i}]
+                override def _@{ii}: Node_@{ii}[Leaf_@{i}] = new Node_@{ii}(self)
+            }
+        }
+    }
+}
+
+@for(i <- 0 to (jinzhi - 1)) {
+  @if(i < (jinzhi - 1)) {
+    class Node_@{i}[C <: Jinzhi](val c: C) extends Jinzhi {
+        self =>
+        override type Up = Node_@{i + 1}[C]
+        override def up: Up = new Node_@{i + 1}(c)
+        @for(ii <- 0 to (jinzhi - 1)) {
+            override type _@{ii} = Node_@{ii}[Node_@{i}[C]]
+            override def _@{ii}: Node_@{ii}[Node_@{i}[C]] = new Node_@{ii}(self)
+        }
+    }
+  } else {
+    class Node_@{i}[C <: Jinzhi](val c: C) extends Jinzhi {
+        self =>
+        override type Up = Node_0[C#Up]
+        override def up: Up = new Node_0(c.up)
+        @for(ii <- 0 to (jinzhi - 1)) {
+            override type _@{ii} = Node_@{ii}[Node_@{i}[C]]
+            override def _@{ii}: Node_@{ii}[Node_@{i}[C]] = new Node_@{ii}(self)
+        }
+    }
+  }
+}

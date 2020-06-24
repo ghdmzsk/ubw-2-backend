@@ -1,0 +1,25 @@
+package shijinzhi
+
+import java.io.PrintWriter
+import java.nio.file.{Files, Paths}
+
+import scala.io.Source
+import scala.util.Using
+
+object WriteCode {
+
+  def trimLines(i: String): String = Source.fromString(i).getLines.map(p => (p.trim, p)).filter(!_._1.isEmpty).map(_._2).mkString(System.lineSeparator)
+  val filePath                     = Paths.get(".").resolve("a03-十进制后继").resolve("a03-core").resolve("src").resolve("main").resolve("scala")
+
+  def main(arr: Array[String]): Unit = {
+    {
+      Files.createDirectories(filePath)
+      Using(new PrintWriter(filePath.resolve("NumberCount.scala").toFile, "utf-8")) { writer =>
+        val content = trimLines(views.txt.Num(jinzhi = 10).body)
+        writer.println(content)
+      }
+    }
+
+  }
+
+}
