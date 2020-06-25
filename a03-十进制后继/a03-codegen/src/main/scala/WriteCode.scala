@@ -44,6 +44,14 @@ object WriteCode {
       }
     }
 
+    {
+      Files.createDirectories(filePath)
+      Using(new PrintWriter(filePath.resolve("TypeRunner.scala").toFile, "utf-8")) { writer =>
+        val content = trimLines(views.txt.TypeRunner(maxItem = 222).body)
+        writer.println(content)
+      }
+    }
+
   }
 
 }
