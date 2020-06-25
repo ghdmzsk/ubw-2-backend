@@ -1,0 +1,139 @@
+@(jinzhi: Int)
+
+package shijinzhi
+
+trait Jinzhi {
+    type ItemAdd[J <: JinzhiItem, D] <: JinzhiItem
+    type ReverseItem[T <: Jinzhi] <: Jinzhi
+    type Reverse <: Jinzhi
+    def itemAdd[J <: JinzhiItem, D](j: J, d: D): ItemAdd[J, D]
+    def reverseItem[T <: Jinzhi](t: T): ReverseItem[T]
+    def reverse: Reverse
+    type Up <: Jinzhi
+    def up: Up
+    @for(i <- 0 to (jinzhi - 1)) {
+        type _@{i} <: Jinzhi
+        def _@{i}: _@{i}
+    }
+}
+
+@for(i <- 0 to (jinzhi - 1)) {
+    @if(i == 0) {
+        class Point extends Jinzhi {
+            self =>
+            override type ItemAdd[J <: JinzhiItem, D] = J
+            override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J = j
+            override type ReverseItem[J <: Jinzhi] = J
+            override type Reverse = Point
+            override def reverseItem[T <: Jinzhi](t: T): T = t
+            override def reverse: Point = self
+            override type Up = Leaf_1
+            override def up: Leaf_1 = new Leaf_1
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Leaf_@{ii}
+                override def _@{ii}: Leaf_@{ii} = new Leaf_@{ii}
+            }
+        }
+        class Leaf_0 extends Jinzhi {
+            self =>
+            override type ItemAdd[J <: JinzhiItem, D] = J#Replace0[J#_0#Add[D]]
+            override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace0[J#_0#Add[D]] = j.replace0(j._0.add(d))
+            override type ReverseItem[J <: Jinzhi] = Node_0[J]
+            override type Reverse = Leaf_0
+            override def reverseItem[T <: Jinzhi](t: T): Node_0[T] = new Node_0(t)
+            override def reverse: Leaf_0 = self
+            override type Up = Leaf_1
+            override def up: Leaf_1 = new Leaf_1
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Node_@{ii}[Leaf_0]
+                override def _@{ii}: Node_@{ii}[Leaf_0] = new Node_@{ii}(self)
+            }
+        }
+    } else if(i < (jinzhi - 1)) {
+        class Leaf_@{i} extends Jinzhi {
+            self =>
+            override type ItemAdd[J <: JinzhiItem, D] = J#Replace@{i}[J#_@{i}#Add[D]]
+            override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace@{i}[J#_@{i}#Add[D]] = j.replace@{i}(j._@{i}.add(d))
+            override type ReverseItem[J <: Jinzhi] = Node_@{i}[J]
+            override type Reverse = Leaf_@{i}
+            override def reverseItem[T <: Jinzhi](t: T): Node_@{i}[T] = new Node_@{i}(t)
+            override def reverse: Leaf_@{i} = self
+            override type Up = Leaf_@{i + 1}
+            override def up: Leaf_@{i + 1} = new Leaf_@{i + 1}
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Node_@{ii}[Leaf_@{i}]
+                override def _@{ii}: Node_@{ii}[Leaf_@{i}] = new Node_@{ii}(self)
+            }
+        }
+    } else {
+        class Leaf_@{i} extends Jinzhi {
+            self =>
+            override type ItemAdd[J <: JinzhiItem, D] = J#Replace@{jinzhi - 1}[J#_@{jinzhi - 1}#Add[D]]
+            override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace@{jinzhi - 1}[J#_@{jinzhi - 1}#Add[D]] = j.replace@{jinzhi - 1}(j._@{jinzhi - 1}.add(d))
+            override type ReverseItem[J <: Jinzhi] = Node_@{i}[J]
+            override type Reverse = Leaf_@{i}
+            override def reverseItem[T <: Jinzhi](t: T): Node_@{i}[T] = new Node_@{i}(t)
+            override def reverse: Leaf_@{i} = self
+            override type Up = Node_0[Leaf_1]
+            override def up: Node_0[Leaf_1] = new Node_0(new Leaf_1)
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Node_@{ii}[Leaf_@{i}]
+                override def _@{ii}: Node_@{ii}[Leaf_@{i}] = new Node_@{ii}(self)
+            }
+        }
+    }
+}
+
+@for(i <- 0 to (jinzhi - 1)) {
+@*
+if(i == 0) {
+        class Node_@{i}[C <: Jinzhi](val c: C) extends Jinzhi {
+            self =>
+            override type ItemAdd[J <: JinzhiItem, D] = J#Replace@{i}[C#ItemAdd[J#_@{i}, D]]
+            override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace@{i}[C#ItemAdd[J#_@{i}, D]] = j.replace@{i}(c.itemAdd(j._@{i}, d))
+            override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_0]
+            override type Reverse = ReverseItem[Point]
+            override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T]#_0 = c.reverseItem(t._0)
+            override def reverse: ReverseItem[Point] = reverseItem(new Point)
+            override type Up = Node_@{i + 1}[C]
+            override def up: Up = new Node_@{i + 1}(c)
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Node_@{ii}[Node_@{i}[C]]
+                override def _@{ii}: Node_@{ii}[Node_@{i}[C]] = new Node_@{ii}(self)
+            }
+        }
+    } else *@
+    @if(i < (jinzhi - 1)) {
+        class Node_@{i}[C <: Jinzhi](val c: C) extends Jinzhi {
+            self =>
+            override type ItemAdd[J <: JinzhiItem, D] = J#Replace@{i}[C#ItemAdd[J#_@{i}, D]]
+            override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace@{i}[C#ItemAdd[J#_@{i}, D]] = j.replace@{i}(c.itemAdd(j._@{i}, d))
+            override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_@{i}]
+            override type Reverse = ReverseItem[Point]
+            override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_@{i}] = c.reverseItem(t._@{i})
+            override def reverse: ReverseItem[Point] = reverseItem(new Point)
+            override type Up = Node_@{i + 1}[C]
+            override def up: Up = new Node_@{i + 1}(c)
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Node_@{ii}[Node_@{i}[C]]
+                override def _@{ii}: Node_@{ii}[Node_@{i}[C]] = new Node_@{ii}(self)
+            }
+        }
+    } else {
+        class Node_@{i}[C <: Jinzhi](val c: C) extends Jinzhi {
+            self =>
+            override type ItemAdd[J <: JinzhiItem, D] = J#Replace@{i}[C#ItemAdd[J#_@{i}, D]]
+            override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace@{i}[C#ItemAdd[J#_@{i}, D]] = j.replace@{i}(c.itemAdd(j._@{i}, d))
+            override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_@{i}]
+            override type Reverse = ReverseItem[Point]
+            override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_@{i}] = c.reverseItem(t._@{i})
+            override def reverse: ReverseItem[Point] = reverseItem(new Point)
+            override type Up = Node_0[C#Up]
+            override def up: Up = new Node_0(c.up)
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Node_@{ii}[Node_@{i}[C]]
+                override def _@{ii}: Node_@{ii}[Node_@{i}[C]] = new Node_@{ii}(self)
+            }
+        }
+    }
+}

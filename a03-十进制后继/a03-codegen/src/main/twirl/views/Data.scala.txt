@@ -1,0 +1,13 @@
+@(maxItem: Int)
+
+package shijinzhi
+
+@for(i <- 1 to maxItem) {
+    class Item_@{i} {
+        def item@{i}ToString: String = "I'm item@{i}."
+        override def toString: String = "Item_@{i}"
+    }
+    object Item_@{i} {
+        val value: Item_@{i} = new Item_@{i}
+    }
+}
