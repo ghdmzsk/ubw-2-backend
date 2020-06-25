@@ -1,0 +1,107 @@
+@(jinzhi: Int)
+
+package shijinzhi
+
+trait JinzhiItem {
+    type Add[T] <: JinzhiItem
+    def add[T](t: T): Add[T]
+    @for(i <- 0 to (jinzhi - 1)) {
+        type _@{i} <: JinzhiItem
+        def _@{i}: _@{i}
+        type Replace@{i}[T <: JinzhiItem] <: JinzhiItem
+        def replace@{i}[T <: JinzhiItem](t: T): Replace@{i}[T]
+    }
+}
+
+class JinzhiItemImpl[
+Data
+@for(i <- 0 to (jinzhi - 1)) {
+    , __@{i} <: JinzhiItem
+}](
+val th: Data
+@for(i <- 0 to (jinzhi - 1)) {
+    , override val _@{i}: __@{i}
+}) extends JinzhiItem {
+    type TH = Data
+    override type Add[T] = JinzhiItemImpl[
+    T
+    @for(ii <- 0 to (jinzhi - 1)) {
+        , __@{ii}
+    }]
+    def add[T](t: T): JinzhiItemImpl[
+    T
+    @for(ii <- 0 to (jinzhi - 1)) {
+        , __@{ii}
+    }] = new JinzhiItemImpl(
+    t
+    @for(ii <- 0 to (jinzhi - 1)) {
+        , _@{ii} = _@{ii}
+    })
+    @for(i <- 0 to (jinzhi - 1)) {
+        override type _@{i} = __@{i}
+        override type Replace@{i}[T <: JinzhiItem] = JinzhiItemImpl[
+        Data
+        @for(ii <- 0 to (jinzhi - 1)) {
+            , @if(i == ii) { T } else { __@{ii} }
+        }]
+        override def replace@{i}[T <: JinzhiItem](t: T): JinzhiItemImpl[
+        Data
+        @for(ii <- 0 to (jinzhi - 1)) {
+            , @if(i == ii) { T } else { __@{ii} }
+        }] = new JinzhiItemImpl(
+        th = th
+        @for(ii <- 0 to (jinzhi - 1)) {
+            , @if(i == ii) { _@{ii} = t } else { _@{ii} = _@{ii} }
+        })
+    }
+}
+
+trait JinzhiWeikaifa[
+@for(i <- 0 to (jinzhi - 2)) {
+    __@{i} <: JinzhiItem,
+} __@{jinzhi - 1} <: JinzhiItem
+] extends JinzhiItem {
+    self =>
+    override type Add[T] = JinzhiItemImpl[
+    T
+    @for(ii <- 0 to (jinzhi - 1)) {
+        , __@{ii}
+    }]
+    def add[T](t: T): JinzhiItemImpl[
+    T
+    @for(ii <- 0 to (jinzhi - 1)) {
+        , __@{ii}
+    }] = new JinzhiItemImpl(
+    th = t
+    @for(ii <- 0 to (jinzhi - 1)) {
+        , _@{ii} = self._@{ii}
+    })
+    @for(i <- 0 to (jinzhi - 1)) {
+        override type _@{i} = __@{i}
+        override def _@{i}: __@{i}
+        override type Replace@{i}[T <: JinzhiItem] = JinzhiWeikaifa[
+        @for(ii <- 0 to (jinzhi - 1)) {
+            @if(ii > 0) { , } @if(i == ii) { T } else { __@{ii} }
+        }]
+        override def replace@{i}[T <: JinzhiItem](t: T): JinzhiWeikaifa[
+        @for(ii <- 0 to (jinzhi - 1)) {
+            @if(ii > 0) { , } @if(i == ii) { T } else { __@{ii} }
+        }] = new JinzhiWeikaifa[
+            @for(ii <- 0 to (jinzhi - 1)) {
+                @if(ii > 0) { , } @if(i == ii) { T } else { __@{ii} }
+            }
+        ] {
+            @for(ii <- 0 to (jinzhi - 1)) {
+                @if(i == ii) { override def _@{ii}: T = t } else { override def _@{ii}: __@{ii} = self._@{ii} }
+            }
+        }
+    }
+}
+
+class JinzhiZero extends JinzhiWeikaifa[@for(i <- 0 to (jinzhi - 2)) { JinzhiZero, } JinzhiZero] {
+    self =>
+    @for(i <- 0 to (jinzhi - 1)) {
+        override type _@{i} = JinzhiZero
+        override def _@{i}: JinzhiZero = self
+    }
+}

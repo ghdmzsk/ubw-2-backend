@@ -1,0 +1,25 @@
+@(maxItem: Int)
+
+package shijinzhi
+
+object Runner {
+
+    def main(arr: Array[String]): Unit = {
+
+        val cc = Shijinzhi.zero
+        @for(i <- 1 to 222) {
+            .add(Item_@{i}.value)
+        }
+
+        println(cc.item._1.th.item1ToString)
+        println(cc.item._8.th.item8ToString)
+        println(cc.item._1._6.th.item16ToString)
+        println(cc.item._1._8.th.item18ToString)
+        println(cc.item._2._0.th.item20ToString)
+        println(cc.item._1._6._8.th.item168ToString)
+        println(cc.item._2._0._2.th.item202ToString)
+        println(cc.item._2._0._0.th.item200ToString)
+
+    }
+
+}

@@ -20,6 +20,30 @@ object WriteCode {
       }
     }
 
+    {
+      Files.createDirectories(filePath)
+      Using(new PrintWriter(filePath.resolve("JinzhiItem.scala").toFile, "utf-8")) { writer =>
+        val content = trimLines(views.txt.Item(jinzhi = 10).body)
+        writer.println(content)
+      }
+    }
+
+    {
+      Files.createDirectories(filePath)
+      Using(new PrintWriter(filePath.resolve("Data.scala").toFile, "utf-8")) { writer =>
+        val content = trimLines(views.txt.Data(maxItem = 222).body)
+        writer.println(content)
+      }
+    }
+
+    {
+      Files.createDirectories(filePath)
+      Using(new PrintWriter(filePath.resolve("Runner.scala").toFile, "utf-8")) { writer =>
+        val content = trimLines(views.txt.Runner(maxItem = 222).body)
+        writer.println(content)
+      }
+    }
+
   }
 
 }
