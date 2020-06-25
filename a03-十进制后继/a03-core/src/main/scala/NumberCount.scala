@@ -1,8 +1,10 @@
 package shijinzhi
 trait Jinzhi {
+  type Take[J <: JinzhiItem] <: JinzhiItem
   type ItemAdd[J <: JinzhiItem, D] <: JinzhiItem
   type ReverseItem[T <: Jinzhi] <: Jinzhi
   type Reverse <: Jinzhi
+  def take[J <: JinzhiItem](j: J): Take[J]
   def itemAdd[J <: JinzhiItem, D](j: J, d: D): ItemAdd[J, D]
   def reverseItem[T <: Jinzhi](t: T): ReverseItem[T]
   def reverse: Reverse
@@ -31,10 +33,12 @@ trait Jinzhi {
 }
 class Point extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = J
   override type ItemAdd[J <: JinzhiItem, D] = J#Add[D]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Add[D] = j.add(d)
   override type ReverseItem[J <: Jinzhi] = J
   override type Reverse                  = Point
+  override def take[J <: JinzhiItem](j: J): J    = j
   override def reverseItem[T <: Jinzhi](t: T): T = t
   override def reverse: Point                    = self
   override type Up = Node_1[Point]
@@ -60,12 +64,17 @@ class Point extends Jinzhi {
   override type _9 = Node_9[Point]
   override def _9: Node_9[Point] = new Node_9(self)
 }
+object Point {
+  val value: Point = new Point
+}
 class Node_0[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_0
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace0[C#ItemAdd[J#_0, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace0[C#ItemAdd[J#_0, D]] = j.replace0(c.itemAdd(j._0, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_0]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_0           = c.take(j)._0
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_0] = c.reverseItem(t._0)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_1[C]
@@ -93,10 +102,12 @@ class Node_0[C <: Jinzhi](val c: C) extends Jinzhi {
 }
 class Node_1[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_1
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace1[C#ItemAdd[J#_1, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace1[C#ItemAdd[J#_1, D]] = j.replace1(c.itemAdd(j._1, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_1]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_1           = c.take(j)._1
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_1] = c.reverseItem(t._1)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_2[C]
@@ -124,10 +135,12 @@ class Node_1[C <: Jinzhi](val c: C) extends Jinzhi {
 }
 class Node_2[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_2
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace2[C#ItemAdd[J#_2, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace2[C#ItemAdd[J#_2, D]] = j.replace2(c.itemAdd(j._2, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_2]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_2           = c.take(j)._2
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_2] = c.reverseItem(t._2)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_3[C]
@@ -155,10 +168,12 @@ class Node_2[C <: Jinzhi](val c: C) extends Jinzhi {
 }
 class Node_3[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_3
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace3[C#ItemAdd[J#_3, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace3[C#ItemAdd[J#_3, D]] = j.replace3(c.itemAdd(j._3, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_3]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_3           = c.take(j)._3
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_3] = c.reverseItem(t._3)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_4[C]
@@ -186,10 +201,12 @@ class Node_3[C <: Jinzhi](val c: C) extends Jinzhi {
 }
 class Node_4[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_4
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace4[C#ItemAdd[J#_4, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace4[C#ItemAdd[J#_4, D]] = j.replace4(c.itemAdd(j._4, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_4]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_4           = c.take(j)._4
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_4] = c.reverseItem(t._4)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_5[C]
@@ -217,10 +234,12 @@ class Node_4[C <: Jinzhi](val c: C) extends Jinzhi {
 }
 class Node_5[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_5
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace5[C#ItemAdd[J#_5, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace5[C#ItemAdd[J#_5, D]] = j.replace5(c.itemAdd(j._5, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_5]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_5           = c.take(j)._5
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_5] = c.reverseItem(t._5)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_6[C]
@@ -248,10 +267,12 @@ class Node_5[C <: Jinzhi](val c: C) extends Jinzhi {
 }
 class Node_6[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_6
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace6[C#ItemAdd[J#_6, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace6[C#ItemAdd[J#_6, D]] = j.replace6(c.itemAdd(j._6, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_6]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_6           = c.take(j)._6
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_6] = c.reverseItem(t._6)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_7[C]
@@ -279,10 +300,12 @@ class Node_6[C <: Jinzhi](val c: C) extends Jinzhi {
 }
 class Node_7[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_7
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace7[C#ItemAdd[J#_7, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace7[C#ItemAdd[J#_7, D]] = j.replace7(c.itemAdd(j._7, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_7]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_7           = c.take(j)._7
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_7] = c.reverseItem(t._7)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_8[C]
@@ -310,10 +333,12 @@ class Node_7[C <: Jinzhi](val c: C) extends Jinzhi {
 }
 class Node_8[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_8
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace8[C#ItemAdd[J#_8, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace8[C#ItemAdd[J#_8, D]] = j.replace8(c.itemAdd(j._8, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_8]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_8           = c.take(j)._8
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_8] = c.reverseItem(t._8)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_9[C]
@@ -341,10 +366,12 @@ class Node_8[C <: Jinzhi](val c: C) extends Jinzhi {
 }
 class Node_9[C <: Jinzhi](val c: C) extends Jinzhi {
   self =>
+  override type Take[J <: JinzhiItem]       = C#Take[J]#_9
   override type ItemAdd[J <: JinzhiItem, D] = J#Replace9[C#ItemAdd[J#_9, D]]
   override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace9[C#ItemAdd[J#_9, D]] = j.replace9(c.itemAdd(j._9, d))
   override type ReverseItem[J <: Jinzhi] = C#ReverseItem[J#_9]
   override type Reverse                  = ReverseItem[Point]
+  override def take[J <: JinzhiItem](j: J): C#Take[J]#_9           = c.take(j)._9
   override def reverseItem[T <: Jinzhi](t: T): C#ReverseItem[T#_9] = c.reverseItem(t._9)
   override def reverse: ReverseItem[Point]                         = reverseItem(new Point)
   override type Up = Node_0[C#Up]
