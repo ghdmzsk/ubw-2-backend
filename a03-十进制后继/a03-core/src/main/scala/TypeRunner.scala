@@ -36,18 +36,18 @@ object TypeRunner {
     ]#Add[Item_200]#Add[Item_201]#Add[Item_202]#Add[Item_203]#Add[Item_204]#Add[Item_205]#Add[Item_206]#Add[Item_207]#Add[Item_208]#Add[Item_209]#Add[Item_210]#Add[
       Item_211
     ]#Add[Item_212]#Add[Item_213]#Add[Item_214]#Add[Item_215]#Add[Item_216]#Add[Item_217]#Add[Item_218]#Add[Item_219]#Add[Item_220]#Add[Item_221]#Add[Item_222]
-    println((Item_1.value: Shi#Instance#_1#TH).item1ToString)
-    println((Item_2.value: Shi#Instance#_2#TH).item2ToString)
-    println((Item_8.value: Shi#Instance#_8#TH).item8ToString)
-    println((Item_9.value: Shi#Instance#_9#TH).item9ToString)
-    println((Item_10.value: Shi#Instance#_1#_0#TH).item10ToString)
-    println((Item_11.value: Shi#Instance#_1#_1#TH).item11ToString)
-    println((Item_16.value: Shi#Instance#_1#_6#TH).item16ToString)
-    println((Item_18.value: Shi#Instance#_1#_8#TH).item18ToString)
-    println((Item_20.value: Shi#Instance#_2#_0#TH).item20ToString)
-    println((Item_128.value: Shi#Instance#_1#_2#_8#TH).item128ToString)
-    println((Item_202.value: Shi#Instance#_2#_0#_2#TH).item202ToString)
-    println((Item_201.value: Shi#Instance#_2#_0#_1#TH).item201ToString)
-    println((Item_200.value: Shi#Instance#_2#_0#_0#TH).item200ToString)
+    println((Item_1.value: Shi#Apply[Point#_1]#TH).item1ToString)
+    println((Item_2.value: Shi#Apply[Point#_2]#TH).item2ToString)
+    println((Item_8.value: Shi#Apply[Point#_8]#TH).item8ToString)
+    println((Item_9.value: Shi#Apply[Point#_9]#TH).item9ToString)
+    println((Item_10.value: Shi#Apply[Point#_1#_0]#TH).item10ToString)
+    println((Item_11.value: Shi#Apply[Point#_1#_1]#TH).item11ToString)
+    println((Item_16.value: Shi#Apply[Point#_1#_6]#TH).item16ToString)
+    println((Item_18.value: Shi#Apply[Point#_1#_8]#TH).item18ToString)
+    println((Item_20.value: Shi#Apply[Point#_2#_0]#TH).item20ToString)
+    println((Item_128.value: Shi#Apply[Point#_1#_2#_8]#TH).item128ToString)
+    println((Item_202.value: Shi#Apply[Point#_2#_0#_2]#TH).item202ToString)
+    println((Item_201.value: Shi#Apply[Point#_2#_0#_1]#TH).item201ToString)
+    println((Item_200.value: Shi#Apply[Point#_2#_0#_0]#TH).item200ToString)
   }
 }

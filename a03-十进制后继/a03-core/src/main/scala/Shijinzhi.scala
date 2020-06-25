@@ -1,8 +1,9 @@
 package shijinzhi
 
 class Shijinzhi[T <: JinzhiItem, N <: Jinzhi](val item: T, val count: N) {
-  type Instance = T
-  type Add[D]   = Shijinzhi[N#Reverse#ItemAdd[T, D], N#Up]
+  type Instance           = T
+  type Add[D]             = Shijinzhi[N#Reverse#ItemAdd[T, D], N#Up]
+  type Apply[J <: Jinzhi] = J#Take[T]
   def add[D](d: D): Shijinzhi[N#Reverse#ItemAdd[T, D], N#Up] = new Shijinzhi(item = count.reverse.itemAdd(item, d), count = count.up)
   def apply[J <: Jinzhi](j: J): J#Take[T]                    = j.take(item)
 }
