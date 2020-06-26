@@ -1,0 +1,74 @@
+@(jinzhi: Int)
+
+package shijinzhi
+
+trait Counter {
+    type Take[J <: JinzhiItem] <: JinzhiItem
+    type ToSetter[J <: Setter] <: Setter
+    type Set <: Setter
+    def toSetter[T <: Setter](t: T): ToSetter[T]
+    def take[J <: JinzhiItem](j: J): Take[J]
+    def setter: Set
+    type Up <: Counter
+    def up: Up
+    @for(i <- 0 to (jinzhi - 1)) {
+        type _@{i} <: Counter
+        def _@{i}: _@{i}
+    }
+}
+
+class CounterPoint extends Counter {
+    self =>
+    override type Take[J <: JinzhiItem] = J
+    override def take[J <: JinzhiItem](j: J): J = j
+    override type Set = SetterPoint
+    override type ToSetter[J <: Setter] = J
+    override def toSetter[T <: Setter](t: T): T = t
+    override def setter: SetterPoint = SetterPoint.value
+    override type Up = Counter_1[CounterPoint]
+    override def up: Counter_1[CounterPoint] = new Counter_1(self)
+    @for(ii <- 0 to (jinzhi - 1)) {
+        override type _@{ii} = Counter_@{ii}[CounterPoint]
+        override def _@{ii}: Counter_@{ii}[CounterPoint] = new Counter_@{ii}(self)
+    }
+}
+
+object CounterPoint {
+    val value: CounterPoint = new CounterPoint
+}
+
+@for(i <- 0 to (jinzhi - 1)) {
+    @if(i < (jinzhi - 1)) {
+        class Counter_@{i}[C <: Counter](val c: C) extends Counter {
+            self =>
+            override type Take[J <: JinzhiItem] = C#Take[J]#_@{i}
+            override type Set = ToSetter[SetterPoint]
+            override def take[J <: JinzhiItem](j: J): C#Take[J]#_@{i} = c.take(j)._@{i}
+            override type ToSetter[J <: Setter] = C#ToSetter[J#_@{i}]
+            override def toSetter[T <: Setter](t: T): C#ToSetter[T#_@{i}] = c.toSetter(t._@{i})
+            override def setter: ToSetter[SetterPoint] = toSetter(SetterPoint.value)
+            override type Up = Counter_@{i + 1}[C]
+            override def up: Up = new Counter_@{i + 1}(c)
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Counter_@{ii}[Counter_@{i}[C]]
+                override def _@{ii}: Counter_@{ii}[Counter_@{i}[C]] = new Counter_@{ii}(self)
+            }
+        }
+    } else {
+        class Counter_@{i}[C <: Counter](val c: C) extends Counter {
+            self =>
+            override type Take[J <: JinzhiItem] = C#Take[J]#_@{i}
+            override type ToSetter[J <: Setter] = C#ToSetter[J#_@{i}]
+            override type Set = ToSetter[SetterPoint]
+            override def take[J <: JinzhiItem](j: J): C#Take[J]#_@{i} = c.take(j)._@{i}
+            override def toSetter[T <: Setter](t: T): C#ToSetter[T#_@{i}] = c.toSetter(t._@{i})
+            override def setter: ToSetter[SetterPoint] = toSetter(SetterPoint.value)
+            override type Up = Counter_0[C#Up]
+            override def up: Up = new Counter_0(c.up)
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Counter_@{ii}[Counter_@{i}[C]]
+                override def _@{ii}: Counter_@{ii}[Counter_@{i}[C]] = new Counter_@{ii}(self)
+            }
+        }
+    }
+}
