@@ -1,0 +1,50 @@
+@(jinzhi: Int)
+
+package shijinzhi
+
+trait Setter {
+    type ItemAdd[J <: JinzhiItem, D] <: JinzhiItem
+    def itemAdd[J <: JinzhiItem, D](j: J, d: D): ItemAdd[J, D]
+    @for(ii <- 0 to (jinzhi - 1)) {
+        type _@{ii} <: Setter
+        def _@{ii}: _@{ii}
+    }
+}
+
+class SetterPoint extends Setter {
+    self =>
+    override type ItemAdd[J <: JinzhiItem, D] = J#Add[D]
+    override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Add[D] = j.add(d)
+    @for(ii <- 0 to (jinzhi - 1)) {
+        override type _@{ii} = Setter_@{ii}[SetterPoint]
+        override def _@{ii}: Setter_@{ii}[SetterPoint] = new Setter_@{ii}(self)
+    }
+}
+
+object SetterPoint {
+    val value: SetterPoint = new SetterPoint
+}
+
+@for(i <- 0 to (jinzhi - 1)) {
+    @if(i < (jinzhi - 1)) {
+        class Setter_@{i}[C <: Setter](val c: C) extends Setter {
+            self =>
+            override type ItemAdd[J <: JinzhiItem, D] = J#Replace@{i}[C#ItemAdd[J#_@{i}, D]]
+            override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace@{i}[C#ItemAdd[J#_@{i}, D]] = j.replace@{i}(c.itemAdd(j._@{i}, d))
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Setter_@{ii}[Setter_@{i}[C]]
+                override def _@{ii}: Setter_@{ii}[Setter_@{i}[C]] = new Setter_@{ii}(self)
+            }
+        }
+    } else {
+        class Setter_@{i}[C <: Setter](val c: C) extends Setter {
+            self =>
+            override type ItemAdd[J <: JinzhiItem, D] = J#Replace@{i}[C#ItemAdd[J#_@{i}, D]]
+            override def itemAdd[J <: JinzhiItem, D](j: J, d: D): J#Replace@{i}[C#ItemAdd[J#_@{i}, D]] = j.replace@{i}(c.itemAdd(j._@{i}, d))
+            @for(ii <- 0 to (jinzhi - 1)) {
+                override type _@{ii} = Setter_@{ii}[Setter_@{i}[C]]
+                override def _@{ii}: Setter_@{ii}[Setter_@{i}[C]] = new Setter_@{ii}(self)
+            }
+        }
+    }
+}

@@ -14,8 +14,16 @@ object WriteCode {
   def main(arr: Array[String]): Unit = {
     {
       Files.createDirectories(filePath)
-      Using(new PrintWriter(filePath.resolve("NumberCount.scala").toFile, "utf-8")) { writer =>
-        val content = trimLines(views.txt.Num(jinzhi = 10).body)
+      Using(new PrintWriter(filePath.resolve("Setter.scala").toFile, "utf-8")) { writer =>
+        val content = trimLines(views.txt.Setter(jinzhi = 10).body)
+        writer.println(content)
+      }
+    }
+
+    {
+      Files.createDirectories(filePath)
+      Using(new PrintWriter(filePath.resolve("Counter.scala").toFile, "utf-8")) { writer =>
+        val content = trimLines(views.txt.Counter(jinzhi = 10).body)
         writer.println(content)
       }
     }
