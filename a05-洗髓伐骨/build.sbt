@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a04-core-01"
+name := "a05-洗髓伐骨"
