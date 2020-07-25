@@ -14,4 +14,4 @@ val file_a04   = file(".") / "a04-进制后续"
 val a04Codegen = project in (file_a04 / "a04-codegen")
 val a04Core01  = project in (file_a04 / "a04-core-01")
 
-val a05 = project in (file(".") / "a05-洗髓伐骨")
+val a05 = project in (file(".") / "a05-后悔药")

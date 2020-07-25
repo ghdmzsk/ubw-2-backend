@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a05-洗髓伐骨"
+name := "a05-后悔药"

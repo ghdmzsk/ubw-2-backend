@@ -31,11 +31,11 @@ class Appendable[T <: HList, H](val tail: T, val head: H) extends HList {
   self =>
 
   override type Add[I]  = Appendable[Appendable[T, H], I]
-  override type Drop[I] = T#Drop[H]#Add[I]
+  override type Drop[I] = Chouqu#Add[I]
   type Chouqu           = T#Drop[H]
 
   override def add[I](item: I): Appendable[Appendable[T, H], I] = new Appendable(self, item)
-  override def drop[I](item: I): T#Drop[H]#Add[I]               = tail.drop(head).add(item)
+  override def drop[I](item: I): Chouqu#Add[I]                  = chouqu.add(item)
   def chouqu: Chouqu                                            = tail.drop(head)
 
   override def toString: String = s"$tail :: $head"
