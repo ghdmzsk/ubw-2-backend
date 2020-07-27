@@ -15,3 +15,5 @@ val a04Codegen = project in (file_a04 / "a04-codegen")
 val a04Core01  = project in (file_a04 / "a04-core-01")
 
 val a05 = project in (file(".") / "a05-后悔药")
+val a06 = project in (file(".") / "a06-倾诉")
+
