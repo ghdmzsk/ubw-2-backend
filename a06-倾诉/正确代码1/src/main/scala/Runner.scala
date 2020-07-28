@@ -61,6 +61,11 @@ object Runner {
     val 结果3: 结果3 = 负5.真的加(hlist3)
     println(结果3) // 零 反向 Test1 反向 Test2
 
+    type 负3 = 零#成对后继[Test1]#成对后继[Test2]#成对后继[Test3]
+    val 负3: 负3 = 零.value.成对后继(new Test1).成对后继(new Test2).成对后继(new Test3)
+    println(hlist7_1.真的加(负5))
+    println(hlist7_1.真的加(负3))
+    println(负5.真的加(负5))
   }
 
 }
