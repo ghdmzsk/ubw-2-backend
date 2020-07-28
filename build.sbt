@@ -19,3 +19,6 @@ val a05 = project in (file(".") / "a05-后悔药")
 val file_a06   = file(".") / "a06-倾诉"
 val a06_1 = project in (file_a06 / "错误代码1")
 val a06_2 = project in (file_a06 / "正确代码1")
+val a06_3 = project in (file_a06 / "更正代码1")
+
+val a07 = project in (file(".") / "a07-消融")
