@@ -30,6 +30,9 @@ class 零 extends 非负整数 with 非正整数 {
   override type 加[T <: 非正整数] = T
   override def 加[T <: 非正整数](item: T): T = item
 
+  override type 真的加[T <: 非负整数] = T#加[零]
+  override def 真的加[T <: 非负整数](item: T): T#加[零] = item.加(self)
+
   override def toString: String = "零"
 
 }
@@ -60,9 +63,12 @@ trait 非正整数 extends 整数 {
   override type 后继[I] <: 整数
   override def 后继[I](item: I): 后继[I]
 
+  type 真的加[T <: 非负整数]
+  def 真的加[T <: 非负整数](item: T): 真的加[T]
+
 }
 
-class 负数[Tail <: 整数](val tail: Tail) extends 非正整数 {
+class 负数[Tail <: 非正整数](val tail: Tail) extends 非正整数 {
   self =>
 
   override type 负一 = 负数[负数[Tail]]
@@ -71,8 +77,8 @@ class 负数[Tail <: 整数](val tail: Tail) extends 非正整数 {
   override type 后继[I] = Tail
   override def 后继[I](item: I): Tail = self.tail
 
-  type 真的加[T <: 非负整数] = T#加[负数[Tail]]
-  def 真的加[T <: 非负整数](item: T): T#加[负数[Tail]] = item.加(self)
+  override type 真的加[T <: 非负整数] = T#加[负数[Tail]]
+  override def 真的加[T <: 非负整数](item: T): T#加[负数[Tail]] = item.加(self)
 
   override def toString: String = s"$tail 反向 item"
 

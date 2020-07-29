@@ -48,6 +48,10 @@ object Runner {
     val hlist3_1: HList3_1 = 负9.真的加(hlist7)
     val hlist3_2: HList3_2 = hlist3_1
     println(hlist3_2) // 零 反向 item 反向 item
+
+    type HList7_1 = 零#真的加[HList7]
+    val hlist7_1: HList7_1 = hlist7
+    println(hlist7_1) // 零 :: Test1 :: Test2 :: Test3 :: Test4 :: Test5 :: Test6 :: Test7
   }
 
 }
