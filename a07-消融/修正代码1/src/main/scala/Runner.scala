@@ -44,11 +44,33 @@ object Runner {
 
     type 整数_2_6 = HList2#消融1[HList6]
     val 整数_2_6: 整数_2_6 = hlist2.消融1(hlist6)
-    println(整数_2_6) // (负数部分: 零, 正数部分: 零 :: Test4 :: Test5 :: Test6 :: Test7)
+    type 整数_2_6_1 = 整数[零, 零#后继[Test4]#后继[Test5]#后继[Test6]#后继[Test7]]
+    val 整数_2_6_1: 整数_2_6_1 = 整数_2_6
+    println(整数_2_6_1) // (负数部分: 零, 正数部分: 零 :: Test4 :: Test5 :: Test6 :: Test7)
 
     type 整数_6_2 = HList6#消融1[HList2]
     val 整数_6_2: 整数_6_2 = hlist6.消融1(hlist2)
-    println(整数_6_2) // (负数部分: 零 :: Test4 :: Test5 :: Test6 :: Test7, 正数部分: 零)
+    type 整数_6_2_1 = 整数[零#后继[Test4]#后继[Test5]#后继[Test6]#后继[Test7], 零]
+    val 整数_6_2_1: 整数_6_2_1 = 整数_6_2
+    println(整数_6_2_1) // (负数部分: 零 :: Test4 :: Test5 :: Test6 :: Test7, 正数部分: 零)
+
+    type 整数_0_6 = 零#消融1[HList6]
+    val 整数_0_6: 整数_0_6 = 零.value.消融1(hlist6)
+    type 整数_0_6_1 = 整数[零, 零#后继[Test4]#后继[Test5]#后继[Test6]#后继[Test7]#后继[Test8]#后继[Test9]]
+    val 整数_0_6_1: 整数_0_6_1 = 整数_0_6
+    println(整数_0_6_1) // (负数部分: 零, 正数部分: 零 :: Test4 :: Test5 :: Test6 :: Test7 :: Test8 :: Test9)
+
+    type 整数_6_0 = HList6#消融1[零]
+    val 整数_6_0: 整数_6_0 = hlist6.消融1(零.value)
+    type 整数_6_0_1 = 整数[零#后继[Test4]#后继[Test5]#后继[Test6]#后继[Test7]#后继[Test8]#后继[Test9], 零]
+    val 整数_6_0_1: 整数_6_0_1 = 整数_6_0
+    println(整数_6_0_1) // (负数部分: 零 :: Test4 :: Test5 :: Test6 :: Test7 :: Test8 :: Test9, 正数部分: 零)
+
+    type 整数_0_0 = 零#消融1[零]
+    val 整数_0_0: 整数_0_0 = 零.value.消融1(零.value)
+    type 整数_0_0_1 = 整数[零, 零]
+    val 整数_0_0_1: 整数_0_0_1 = 整数_0_0
+    println(整数_0_0_1) // (负数部分: 零, 正数部分: 零)
   }
 
 }
