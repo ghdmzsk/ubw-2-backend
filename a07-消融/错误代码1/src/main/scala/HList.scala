@@ -82,16 +82,3 @@ class 正数[Tail <: 自然数, H](val tail: Tail, val head: H) extends 自然�
   override def toString: String = s"$tail :: $head"
 
 }
-
-class 正数2[Tail <: 自然数, H](val tail: Tail, val head: H) extends 自然数 {
-  self =>
-
-  override type 后继[I] = 正数2[正数2[Tail, H], I]
-  override def 后继[I](item: I): 正数2[正数2[Tail, H], I] = new 正数2(self, item)
-
-  override type 消融[T <: 自然数, P <: 赋值] = T#消融[Tail, P#Next]
-  override def 消融[T <: 自然数, P <: 赋值](item: T, p: P): T#消融[Tail, P#Next] = item.消融(tail, p.next)
-
-  override def toString: String = s"$tail :: $head"
-
-}
