@@ -15,3 +15,14 @@ val a04Codegen = project in (file_a04 / "a04-codegen")
 val a04Core01  = project in (file_a04 / "a04-core-01")
 
 val a05 = project in (file(".") / "a05-后悔药")
+
+val file_a06 = file(".") / "a06-倾诉"
+val a06_1    = project in (file_a06 / "错误代码1")
+val a06_2    = project in (file_a06 / "正确代码1")
+val a06_3    = project in (file_a06 / "更正代码1")
+
+val file_a07 = file(".") / "a07-消融"
+val a07_1    = project in (file_a07 / "错误代码1")
+val a07_2    = project in (file_a07 / "修正代码1")
+
+val a08 = project in (file(".") / "a08-整数加法")
