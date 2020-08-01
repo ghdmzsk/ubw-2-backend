@@ -16,7 +16,7 @@ class Zero extends HList {
   override type add[T] = Zhengshu[Zero, T]
   override def add[T](item: T): Zhengshu[Zero, T] = new Zhengshu(tail = self, head = item)
 
-  override type drop[H, T] = Zhengshu[Zero, T]
+  override type drop[H, T] = add[T]
   override def drop[H, T](head: H, item: T): Zhengshu[Zero, T] = new Zhengshu(tail = self, head = item)
 
   override def toString: String = s"Zero"
