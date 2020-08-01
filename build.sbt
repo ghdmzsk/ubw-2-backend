@@ -26,3 +26,4 @@ val a07_1    = project in (file_a07 / "错误代码1")
 val a07_2    = project in (file_a07 / "修正代码1")
 
 val a08 = project in (file(".") / "a08-整数加法")
+val a09 = project in (file(".") / "a09-改变")
