@@ -14,9 +14,6 @@ trait 自然数 {
   type Plus[T <: 自然数] <: 自然数
   def plus[T <: 自然数](h: T): Plus[T]
 
-  type RePlus[P <: 自然数] <: 自然数
-  def rePlus[T <: 自然数](h: T): RePlus[T]
-
 }
 
 trait 整数定义 {
@@ -41,8 +38,8 @@ class 整数[T1 <: 自然数, T2 <: 自然数](override val 负数部分: T1, ov
   override type 自己 = 整数[T1, T2]
   override def 自己: 整数[T1, T2] = self
 
-  override type 加[T <: 整数定义] = 负数部分#RePlus[T#负数部分]#消融1[正数部分#RePlus[T#正数部分]]
-  override def 加[T <: 整数定义](item: T): 负数部分#RePlus[T#负数部分]#消融1[正数部分#RePlus[T#正数部分]] = 负数部分.rePlus((item: T).负数部分).消融1(正数部分.rePlus(item.正数部分))
+  override type 加[T <: 整数定义] = T#负数部分#Plus[负数部分]#消融1[T#正数部分#Plus[正数部分]]
+  override def 加[T <: 整数定义](item: T): T#负数部分#Plus[负数部分]#消融1[T#正数部分#Plus[正数部分]] = item.负数部分.plus(负数部分).消融1(item.正数部分.plus(正数部分))
 
   override type 负数部分 = T1
   override type 正数部分 = T2
@@ -67,9 +64,6 @@ class 零 extends 自然数 {
 
   override type Plus[T <: 自然数] = T
   override def plus[T <: 自然数](h: T): T = h
-
-  override type RePlus[P <: 自然数] = P
-  override def rePlus[P <: 自然数](h: P): P = h
 
   override def toString: String = "零"
 
@@ -97,9 +91,6 @@ class 正数[Tail <: 自然数, H](val tail: Tail, val head: H) extends 自然�
 
   override type Plus[T <: 自然数] = Tail#Plus[T]#后继[H]
   override def plus[T <: 自然数](h: T): Tail#Plus[T]#后继[H] = tail.plus(h).后继(head)
-
-  override type RePlus[P <: 自然数] = P#Plus[正数[Tail, H]]
-  override def rePlus[P <: 自然数](h: P): P#Plus[正数[Tail, H]] = h.plus(self)
 
   override def toString: String = s"$tail :: $head"
 
