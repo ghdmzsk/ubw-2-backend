@@ -71,11 +71,13 @@ object Runner {
 
     type HList2 = 零#后继[Test2]#后继[Test3]
     val hlist2 = 别名.自然数零.后继(new Test2).后继(new Test3)
-    type 整数_0_1_1 = 整数[HList6, HList3]#加[别名.自然数整数版[HList2]]
-    val 整数_0_1_1: 整数_0_1_1 = 整数_6_3.加(别名.自然数整数版(hlist2))
-    type 整数_0_1_2 = 整数[零#后继[Test4], 零]
+    type HList1 = 零#后继[Test2]
+    val hlist1 = 别名.自然数零.后继(new Test2)
+    type 整数_0_1_1 = 整数[HList6, HList3]#加[整数[HList1, HList2]]
+    val 整数_0_1_1: 整数_0_1_1 = 整数_6_3.加(new 整数(负数部分 = hlist1, 正数部分 = hlist2))
+    type 整数_0_1_2 = 整数[零#后继[Test4]#后继[Test5], 零]
     val 整数_0_1_2: 整数_0_1_2 = 整数_0_1_1
-    println(整数_0_1_2) // (负数部分: 零 :: Test4, 正数部分: 零)
+    println(整数_0_1_2) // (负数部分: 零 :: Test4 :: Test5, 正数部分: 零)
 
     type HList2_1 = 零#后继[Test10]#后继[Test11]
     val hlist2_1 = 别名.自然数零.后继(new Test10).后继(new Test11)
