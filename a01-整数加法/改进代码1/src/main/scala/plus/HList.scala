@@ -36,10 +36,10 @@ class Zero extends HList {
   self =>
 
   override type Plus[T <: HList]   = T
-  override type RePlus[P <: HList] = P
+  override type RePlus[P <: HList] = P#Plus[Zero]
   override type Add[T]             = Appendable[Zero, T]
 
-  override def plus[T <: HList](h: T): T         = h: T
+  override def plus[T <: HList](h: T): T         = h
   override def rePlus[T <: HList](h: T): T       = h: T
   override def add[N](n: N): Appendable[Zero, N] = new Appendable(self, n)
 
