@@ -39,9 +39,9 @@ class Zero extends HList {
   override type RePlus[P <: HList] = P#Plus[Zero]
   override type Add[T]             = Appendable[Zero, T]
 
-  override def plus[T <: HList](h: T): T         = h
-  override def rePlus[T <: HList](h: T): T       = h: T
-  override def add[N](n: N): Appendable[Zero, N] = new Appendable(self, n)
+  override def plus[T <: HList](h: T): T              = h
+  override def rePlus[T <: HList](h: T): T#Plus[Zero] = h.plus(self)
+  override def add[N](n: N): Appendable[Zero, N]      = new Appendable(self, n)
 
   override def toString: String = "Zero"
 
