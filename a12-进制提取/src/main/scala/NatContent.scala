@@ -9,6 +9,8 @@ trait 自然数容器 {
   type NatPair <: 自然数对
   def natPair: NatPair
 
+  def get[Head](implicit i: 提取正整数自然数对[NatPair, Head]): Head = i.pii(natPair)
+
   type _0 <: 自然数容器
   def _0: _0
   type _1 <: 自然数容器

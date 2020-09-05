@@ -7,6 +7,17 @@ trait 自然数对 {
   def 正数部分: 正数部分
 }
 
+trait 提取正整数自然数对[Pair <: 自然数对, Head] {
+  def pii(正整数自然数对: Pair): Head
+}
+
+object 提取正整数自然数对 {
+  implicit def k[Tail <: 自然数, Head]: 提取正整数自然数对[正整数自然数对[Tail, Head], Head] =
+    new 提取正整数自然数对[正整数自然数对[Tail, Head], Head] {
+      override def pii(正整数自然数对: 正整数自然数对[Tail, Head]): Head = 正整数自然数对.正数部分.head
+    }
+}
+
 class 正整数自然数对[Tail <: 自然数, Head](val 负数部分: 自然数标记零, val 正数部分: 正整数[Tail, Head]) extends 自然数对 {
   self =>
   override type 负数部分 = 自然数标记零
