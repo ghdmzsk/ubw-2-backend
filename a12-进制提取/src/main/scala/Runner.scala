@@ -72,7 +72,7 @@ object Runner {
       .next(new Item3)
       .next(new Item2)
       .next(new Item1)
-    val item1                         = nat1._1._4.get
+    val item1                         = nat1._1._4.natPair.get
     val item2: Nat1#_1#_4#NatPair#GET = item1
     val item3: Item15                 = item2
     println(item3) // Item15
