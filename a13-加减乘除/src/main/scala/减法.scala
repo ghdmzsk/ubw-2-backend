@@ -17,6 +17,7 @@ trait 正自然数 {
   def next[T](t: T): Next[T]
 
   type 消去[T <: 负自然数] <: 自然数对
+  type 逆消去[T <: 负自然数, R] <: 自然数对
 }
 
 trait 负自然数 {
@@ -24,6 +25,7 @@ trait 负自然数 {
   def next[T](t: T): Next[T]
 
   type 消去[T <: 正自然数, R] <: 自然数对
+  type 逆消去[T <: 正自然数] <: 自然数对
 }
 
 class 正自然数零 extends 正自然数 {
@@ -31,7 +33,8 @@ class 正自然数零 extends 正自然数 {
   override type Next[T] = 正整数[正自然数零, T]
   override def next[T](t: T): 正整数[正自然数零, T] = new 正整数(tail = self, head = t)
 
-  override type 消去[T <: 负自然数] = 自然数对实现[T, 正自然数零]
+  override type 消去[T <: 负自然数]     = 自然数对实现[T, 正自然数零]
+  override type 逆消去[T <: 负自然数, R] = 自然数对实现[负整数[T, R], 正自然数零]
 
   override def toString: String = "自然数零"
 }
@@ -42,6 +45,7 @@ class 负自然数零 extends 负自然数 {
   override def next[T](t: T): 负整数[负自然数零, T] = new 负整数(tail = self, head = t)
 
   override type 消去[T <: 正自然数, R] = 自然数对实现[负自然数零, 正整数[T, R]]
+  override type 逆消去[T <: 正自然数]   = 自然数对实现[负自然数零, T]
 
   override def toString: String = "自然数零"
 }
@@ -53,7 +57,8 @@ class 正整数[Tail <: 正自然数, Head](val tail: Tail, val head: Head) exte
   override type Next[T] = 正整数[正整数[Tail, Head], T]
   override def next[T](t: T): 正整数[正整数[Tail, Head], T] = new 正整数(tail = self, head = t)
 
-  override type 消去[T <: 负自然数] = T#消去[Tail, Head]
+  override type 消去[T <: 负自然数]     = T#消去[Tail, Head]
+  override type 逆消去[T <: 负自然数, R] = T#逆消去[Tail]
 
   override def toString: String = s"$tail :: $head"
 }
@@ -64,6 +69,7 @@ class 负整数[Tail <: 负自然数, Head](val tail: Tail, val head: Head) exte
   override def next[T](t: T): 负整数[负整数[Tail, Head], T] = new 负整数(tail = self, head = t)
 
   override type 消去[T <: 正自然数, R] = T#消去[Tail]
+  override type 逆消去[T <: 正自然数]   = T#逆消去[Tail, Head]
 
   override def toString: String = s"$tail :: $head"
 }
