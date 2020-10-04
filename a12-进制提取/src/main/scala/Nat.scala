@@ -36,25 +36,25 @@ class 自然数零 extends 自然数 {
   override def 消去标记[T <: 自然数标记](item: T): 非正整数自然数对[T] = new 非正整数自然数对(负数部分 = item, 正数部分 = self)
 
   override type _0 = 自然数容器I[自然数零, 自然数标记零]
-  override def _0: 自然数容器I[自然数零, 自然数标记零] = new 自然数容器I(self, 自然数标记零.value)
+  override def _0: _0 = 自然数容器I(self, 自然数标记零.value)
   override type _1 = 自然数容器I[自然数零, 自然数容器I.Tag_1]
-  override def _1: 自然数容器I[自然数零, 自然数容器I.Tag_1] = new 自然数容器I(self, 自然数容器I.tag_1)
+  override def _1: _1 = 自然数容器I(self, 自然数容器I.tag_1)
   override type _2 = 自然数容器I[自然数零, 自然数容器I.Tag_2]
-  override def _2: 自然数容器I[自然数零, 自然数容器I.Tag_2] = new 自然数容器I(self, 自然数容器I.tag_2)
+  override def _2: _2 = 自然数容器I(self, 自然数容器I.tag_2)
   override type _3 = 自然数容器I[自然数零, 自然数容器I.Tag_3]
-  override def _3: 自然数容器I[自然数零, 自然数容器I.Tag_3] = new 自然数容器I(self, 自然数容器I.tag_3)
+  override def _3: _3 = 自然数容器I(self, 自然数容器I.tag_3)
   override type _4 = 自然数容器I[自然数零, 自然数容器I.Tag_4]
-  override def _4: 自然数容器I[自然数零, 自然数容器I.Tag_4] = new 自然数容器I(self, 自然数容器I.tag_4)
+  override def _4: _4 = 自然数容器I(self, 自然数容器I.tag_4)
   override type _5 = 自然数容器I[自然数零, 自然数容器I.Tag_5]
-  override def _5: 自然数容器I[自然数零, 自然数容器I.Tag_5] = new 自然数容器I(self, 自然数容器I.tag_5)
+  override def _5: _5 = 自然数容器I(self, 自然数容器I.tag_5)
   override type _6 = 自然数容器I[自然数零, 自然数容器I.Tag_6]
-  override def _6: 自然数容器I[自然数零, 自然数容器I.Tag_6] = new 自然数容器I(self, 自然数容器I.tag_6)
+  override def _6: _6 = 自然数容器I(self, 自然数容器I.tag_6)
   override type _7 = 自然数容器I[自然数零, 自然数容器I.Tag_7]
-  override def _7: 自然数容器I[自然数零, 自然数容器I.Tag_7] = new 自然数容器I(self, 自然数容器I.tag_7)
+  override def _7: _7 = 自然数容器I(self, 自然数容器I.tag_7)
   override type _8 = 自然数容器I[自然数零, 自然数容器I.Tag_8]
-  override def _8: 自然数容器I[自然数零, 自然数容器I.Tag_8] = new 自然数容器I(self, 自然数容器I.tag_8)
+  override def _8: _8 = 自然数容器I(self, 自然数容器I.tag_8)
   override type _9 = 自然数容器I[自然数零, 自然数容器I.Tag_9]
-  override def _9: 自然数容器I[自然数零, 自然数容器I.Tag_9] = new 自然数容器I(self, 自然数容器I.tag_9)
+  override def _9: _9 = 自然数容器I(self, 自然数容器I.tag_9)
 
   override def toString: String = "自然数零"
 }
@@ -71,25 +71,25 @@ class 正整数[Tail <: 自然数, Head](val tail: Tail, val head: Head) extends
   override def 消去标记[T <: 自然数标记](item: T): T#自然数消去[Tail, Head] = item.自然数消去(tail, head)
 
   override type _0 = 自然数容器I[正整数[Tail, Head], 自然数标记零]
-  override def _0: 自然数容器I[正整数[Tail, Head], 自然数标记零] = new 自然数容器I(self, 自然数标记零.value)
+  override def _0: _0 = 自然数容器I(self, 自然数标记零.value)
   override type _1 = 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_1]
-  override def _1: 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_1] = new 自然数容器I(self, 自然数容器I.tag_1)
+  override def _1: _1 = 自然数容器I(self, 自然数容器I.tag_1)
   override type _2 = 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_2]
-  override def _2: 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_2] = new 自然数容器I(self, 自然数容器I.tag_2)
+  override def _2: _2 = 自然数容器I(self, 自然数容器I.tag_2)
   override type _3 = 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_3]
-  override def _3: 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_3] = new 自然数容器I(self, 自然数容器I.tag_3)
+  override def _3: _3 = 自然数容器I(self, 自然数容器I.tag_3)
   override type _4 = 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_4]
-  override def _4: 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_4] = new 自然数容器I(self, 自然数容器I.tag_4)
+  override def _4: _4 = 自然数容器I(self, 自然数容器I.tag_4)
   override type _5 = 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_5]
-  override def _5: 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_5] = new 自然数容器I(self, 自然数容器I.tag_5)
+  override def _5: _5 = 自然数容器I(self, 自然数容器I.tag_5)
   override type _6 = 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_6]
-  override def _6: 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_6] = new 自然数容器I(self, 自然数容器I.tag_6)
+  override def _6: _6 = 自然数容器I(self, 自然数容器I.tag_6)
   override type _7 = 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_7]
-  override def _7: 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_7] = new 自然数容器I(self, 自然数容器I.tag_7)
+  override def _7: _7 = 自然数容器I(self, 自然数容器I.tag_7)
   override type _8 = 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_8]
-  override def _8: 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_8] = new 自然数容器I(self, 自然数容器I.tag_8)
+  override def _8: _8 = 自然数容器I(self, 自然数容器I.tag_8)
   override type _9 = 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_9]
-  override def _9: 自然数容器I[正整数[Tail, Head], 自然数容器I.Tag_9] = new 自然数容器I(self, 自然数容器I.tag_9)
+  override def _9: _9 = 自然数容器I(self, 自然数容器I.tag_9)
 
   override def toString: String = s"$tail :: $head"
 }
