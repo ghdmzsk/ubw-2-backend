@@ -1,6 +1,6 @@
 package a13
 
-import a13.减法.{正自然数零, 自然数对实现, 负自然数零}
+import a13.减法.{正自然数零, 负自然数零}
 import a13.加法.自然数零
 
 class 类型匹配[T] {
@@ -30,13 +30,13 @@ object 测试 {
 
   type 减去1 = 正自然数零#Next[Item01]#Next[Item02]#Next[Item03]#Next[Item04]#Next[Item05]#Next[Item06]
   type 减去2 = 负自然数零#Next[Item03]#Next[Item04]#Next[Item05]#Next[Item06]
-  type 减去3 = 自然数对实现[负自然数零, 正自然数零#Next[Item01]#Next[Item02]]
+  type 减去3 = 正自然数零#Next[Item01]#Next[Item02]
   类型匹配[减去1#消去[减去2]].匹配(类型匹配[减去3])
   类型匹配[减去2#逆消去[减去1]].匹配(类型匹配[减去3])
 
   type 减去4 = 正自然数零#Next[Item02]#Next[Item02]#Next[Item02]#Next[Item02]
   type 减去5 = 负自然数零#Next[Item01]#Next[Item03]#Next[Item04]#Next[Item05]#Next[Item06]#Next[Item07]
-  type 减去6 = 自然数对实现[负自然数零#Next[Item01]#Next[Item03], 正自然数零]
+  type 减去6 = 负自然数零#Next[Item01]#Next[Item03]
   类型匹配[减去4#消去[减去5]].匹配(类型匹配[减去6])
   类型匹配[减去5#逆消去[减去4]].匹配(类型匹配[减去6])
 
