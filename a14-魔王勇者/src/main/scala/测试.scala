@@ -27,6 +27,7 @@ object 测试 {
   type 小说世界勇者 = 勇者起源#Next[勇者血量]#Next[勇者血量]#Next[勇者血量]#Next[勇者血量]#Next[勇者血量]#Next[勇者血量]
   type 小说世界魔王 = 奖励起源#Next[誓约胜利之剑]#Next[无毁的湖光]#添加枷锁[魔王血量]#Next[魔王血量]#Next[魔王血量]#Next[魔王血量]
   type 勇者得到宝藏 = 勇者起源#Next[勇者血量]#Next[勇者血量]#Next[誓约胜利之剑]#Next[无毁的湖光]
+
   类型匹配[小说世界勇者#挑战[小说世界魔王]].匹配(类型匹配[勇者得到宝藏])
 
   def main(arr: Array[String]): Unit = {
