@@ -21,21 +21,21 @@ class 自然数对正数[Tail <: 自然数对, Head1, Head2] extends 自然数�
 
 trait 被乘数 extends 自然数 {
   override type Next[T] <: 被乘数
-  type 乘[T <: 乘数] <: 自然数对
+  type 乘以[T <: 乘数] <: 自然数对
 }
 
 class 被乘数零 extends 被乘数 {
   self =>
-  override type Next[T]    = 被乘数正数[被乘数零, T]
-  override type 乘[T <: 乘数] = 自然数对零
+  override type Next[T]     = 被乘数正数[被乘数零, T]
+  override type 乘以[T <: 乘数] = 自然数对零
 
   override def toString: String = "自然数零"
 }
 
 class 被乘数正数[Tail <: 被乘数, Head](val tail: Tail, val head: Head) extends 被乘数 {
   self =>
-  override type Next[T]    = 被乘数正数[被乘数正数[Tail, Head], T]
-  override type 乘[T <: 乘数] = Tail#乘[T]#加[T#复制[Head]]
+  override type Next[T]     = 被乘数正数[被乘数正数[Tail, Head], T]
+  override type 乘以[T <: 乘数] = T#复制[Head]#加[Tail#乘以[T]]
 
   override def toString: String = s"$tail :: $head"
 }
