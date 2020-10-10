@@ -1,6 +1,6 @@
 package a13
 
-import a13.乘法.{乘数零, 自然数对零, 被乘数零}
+import a13.乘法.{自然数对零, 自然数零}
 import a13.减法.{正自然数零, 负自然数零}
 import a13.加法.{加数零, 被加数零}
 
@@ -48,8 +48,8 @@ object 测试 {
   类型匹配[减去7#消去[减去8]].匹配(类型匹配[负自然数零])
   类型匹配[减去8#逆消去[减去7]].匹配(类型匹配[正自然数零])
 
-  type 乘以1 = 被乘数零#Next[Item01]#Next[Item02]
-  type 乘以2 = 乘数零#Next[Item03]#Next[Item04]#Next[Item05]
+  type 乘以1 = 自然数零#Next[Item01]#Next[Item02]
+  type 乘以2 = 自然数零#Next[Item03]#Next[Item04]#Next[Item05]
   type 乘以3 = 自然数对零#Next[Item01, Item03]#Next[Item01, Item04]#Next[Item01, Item05]#Next[Item02, Item03]#Next[Item02, Item04]#Next[Item02, Item05]
   类型匹配[乘以1#乘以[乘以2]].匹配(类型匹配[乘以3])
 
