@@ -2,39 +2,46 @@ package a13.加法
 
 trait 自然数 {
   type Next[T] <: 自然数
-  type 加[T <: 自然数] <: 自然数
-  type 再加[T <: 自然数] <: 自然数
-
-  def next[T](t: T): Next[T]
-  def 加[T <: 自然数](item: T): 加[T]
-  def 再加[T <: 自然数](item: T): 再加[T]
-
 }
 
-class 自然数零 extends 自然数 {
-  self =>
-  override type Next[T]      = 正整数[自然数零, T]
-  override type 加[T <: 自然数]  = T
-  override type 再加[T <: 自然数] = T#加[自然数零]
+trait 被加数 extends 自然数 {
+  override type Next[T] <: 被加数
+  type 加[T <: 加数] <: 被加数
+}
 
-  override def next[T](t: T): 正整数[自然数零, T]      = new 正整数(tail = self, head = t)
-  override def 加[T <: 自然数](item: T): T          = item
-  override def 再加[T <: 自然数](item: T): T#加[自然数零] = item.加(self)
+class 被加数零 extends 被加数 {
+  self =>
+  override type Next[T]    = 被加数正数[被加数零, T]
+  override type 加[T <: 加数] = T#反向加[被加数零]
 
   override def toString: String = "自然数零"
 }
 
-object 自然数零 extends 自然数零
-
-class 正整数[Tail <: 自然数, Head](val tail: Tail, val head: Head) extends 自然数 {
+class 被加数正数[Tail <: 被加数, Head](val tail: Tail, val head: Head) extends 被加数 {
   self =>
-  override type Next[T]      = 正整数[正整数[Tail, Head], T]
-  override type 加[T <: 自然数]  = 正整数[Tail#加[T], Head]
-  override type 再加[T <: 自然数] = T#加[正整数[Tail, Head]]
+  override type Next[T]    = 被加数正数[被加数正数[Tail, Head], T]
+  override type 加[T <: 加数] = T#反向加[被加数正数[Tail, Head]]
 
-  override def next[T](t: T): 正整数[正整数[Tail, Head], T]      = new 正整数(tail = self, head = t)
-  override def 加[T <: 自然数](item: T): 正整数[Tail#加[T], Head]  = new 正整数(tail = tail.加(item), head)
-  override def 再加[T <: 自然数](item: T): T#加[正整数[Tail, Head]] = item.加(self)
+  override def toString: String = s"$tail :: $head"
+}
+
+trait 加数 extends 自然数 {
+  override type Next[T] <: 加数
+  type 反向加[T <: 被加数] <: 被加数
+}
+
+class 加数零 extends 加数 {
+  self =>
+  override type Next[T]       = 加数正数[加数零, T]
+  override type 反向加[T <: 被加数] = T
+
+  override def toString: String = "自然数零"
+}
+
+class 加数正数[Tail <: 加数, Head](val tail: Tail, val head: Head) extends 加数 {
+  self =>
+  override type Next[T]       = 加数正数[加数正数[Tail, Head], T]
+  override type 反向加[T <: 被加数] = 被加数正数[Tail#反向加[T], Head]
 
   override def toString: String = s"$tail :: $head"
 }
