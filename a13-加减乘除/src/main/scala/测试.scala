@@ -72,6 +72,8 @@ object 测试 {
   type 商2  = 商零#Next[对3]#Next[对4]
   类型匹配[除以3#除以[除以4]].匹配(类型匹配[商2])
 
+  类型匹配[被除数零#除以[除数零]].匹配(类型匹配[商零])
+
   def main(arr: Array[String]): Unit = {
     println("22")
   }
