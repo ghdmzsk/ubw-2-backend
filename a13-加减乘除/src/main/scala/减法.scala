@@ -45,7 +45,7 @@ class 负自然数零 extends 负自然数 {
 
 object 正自然数零 extends 正自然数零
 
-class 正整数[Tail <: 正自然数, Head](val tail: Tail, val head: Head) extends 正自然数 {
+class 正整数[Tail <: 正自然数, Head] extends 正自然数 {
   self =>
   override type Next[T] = 正整数[正整数[Tail, Head], T]
   override def next[T](t: T): 正整数[正整数[Tail, Head], T] = new 正整数(tail = self, head = t)
@@ -56,7 +56,7 @@ class 正整数[Tail <: 正自然数, Head](val tail: Tail, val head: Head) exte
   override def toString: String = s"$tail :: $head"
 }
 
-class 负整数[Tail <: 负自然数, Head](val tail: Tail, val head: Head) extends 负自然数 {
+class 负整数[Tail <: 负自然数, Head] extends 负自然数 {
   self =>
   override type Next[T] = 负整数[负整数[Tail, Head], T]
   override def next[T](t: T): 负整数[负整数[Tail, Head], T] = new 负整数(tail = self, head = t)
