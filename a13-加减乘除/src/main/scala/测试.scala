@@ -97,6 +97,8 @@ object 测试 {
   type 商5   = 商零#Next[对10]#Next[对11]#Next[对12]
   类型匹配[除以9#除以[除以10]].匹配(类型匹配[商5])
 
+  类型匹配[被除数零#除以[除以10]].匹配(类型匹配[商零])
+
   def main(arr: Array[String]): Unit = {
     println("22")
   }
