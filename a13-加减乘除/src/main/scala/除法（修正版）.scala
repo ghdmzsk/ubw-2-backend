@@ -1,4 +1,4 @@
-package a13.除法1
+package a13.除法修正版
 
 trait 自然数 {
   type Next[T] <: 自然数
@@ -76,12 +76,10 @@ class 除数零 extends 除数 {
   override type Next[T]                               = 除数正数[除数零, T]
   override type 消去[I1 <: 被除数, I3 <: 自然数对, 原始除数 <: 除数] = 商正数[I1#除以[原始除数], I3]
   override type 消去1[I1 <: 被除数, I2]                    = 自然数对零
-  override type 操作商[I1 <: 商, I2 <: 自然数对]              = 商正数[I1, I2]
 }
 
 class 除数正数[Tail <: 除数, Head] extends 除数 {
   override type Next[T]                               = 除数正数[除数正数[Tail, Head], T]
   override type 消去[I1 <: 被除数, I3 <: 自然数对, 原始除数 <: 除数] = I1#被消去[Tail, Head, I3, 原始除数]
   override type 消去1[I1 <: 被除数, I2]                    = I1#被消去1[Tail, I2, Head]
-  override type 操作商[I1 <: 商, I2 <: 自然数对]              = I1
 }
