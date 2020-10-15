@@ -30,11 +30,9 @@ class 自然数零 extends 自然数 {
   override def toString: String = "自然数零"
 }
 
-class 自然数正数[Tail <: 自然数, Head](val tail: Tail, val head: Head) extends 自然数 {
+class 自然数正数[Tail <: 自然数, Head] extends 自然数 {
   self =>
   override type Next[T]      = 自然数正数[自然数正数[Tail, Head], T]
   override type 复制[T]        = 自然数对正数[Tail#复制[T], T, Head]
   override type 乘以[T <: 自然数] = T#复制[Head]#加[Tail#乘以[T]]
-
-  override def toString: String = s"$tail :: $head"
 }
