@@ -4,7 +4,7 @@ class 类型匹配[T]
 
 object 类型匹配 {
   def apply[T]                                              = new 类型匹配[T]
-  def apply[T](i: 类型匹配[T], ii: 类型匹配[T]): (类型匹配[T], 类型匹配[T]) = (i, i)
+  def apply[T](i: 类型匹配[T], ii: 类型匹配[T]): (类型匹配[T], 类型匹配[T]) = (i, ii)
 }
 
 object 测试 {
