@@ -17,9 +17,20 @@ trait Moon {
   type Next <: Moon
 }
 
-class MoonInit[N1 <: Nat, C] extends MoonExecute[N1, NatZero, C] {
-  override type Current = C
-  override type Next    = N1#M[NatZero, C]
+trait Appendable {
+  type Append[T] <: Appendable
+}
+
+class MoonZero[C] extends MoonInit[NatZero, C] with Appendable {
+  override type Current   = C
+  override type Next      = MoonInit[NatZero, C]
+  override type Append[T] = MoonInit[NatPositive[NatZero, C], T]
+}
+
+class MoonInit[N1 <: Nat, C] extends MoonExecute[N1, NatZero, C] with Appendable {
+  override type Current   = C
+  override type Next      = N1#M[NatZero, C]
+  override type Append[T] = MoonInit[NatPositive[N1, C], T]
 }
 
 class MoonExecute[N1 <: Nat, N2 <: Nat, C] extends Moon {
