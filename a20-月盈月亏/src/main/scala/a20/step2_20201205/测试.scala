@@ -1,4 +1,4 @@
-package a20.step2_2020120501
+package a20.step2_20201205
 
 object 测试 {
   class 新月
@@ -13,7 +13,7 @@ object 测试 {
     def 匹配[T](i1: 匹配[T], i2: 匹配[T]): List[匹配[T]] = List(i1, i2)
   }
 
-  type Moon1 = MoonInit[NatPositive[NatPositive[NatPositive[NatZero, 满月], 渐盈], 上弦], 新月]
+  type Moon1 = Moon#Apply[NatPositive[NatPositive[NatPositive[NatZero, 满月], 渐盈], 上弦], 新月]
 
   匹配.匹配(匹配[新月], 匹配[Moon1#Current])
   匹配.匹配(匹配[上弦], 匹配[Moon1#Next#Current])
