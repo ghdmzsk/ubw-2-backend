@@ -1,11 +1,11 @@
-package a20.step2_2020120501
+package a20.step2_20201205
 
 trait Nat {
   type M[I <: Nat, C] <: Moon
 }
 
 class NatZero extends Nat {
-  override type M[I <: Nat, C] = MoonInit[I, C]
+  override type M[I <: Nat, C] = Moon#Apply[I, C]
 }
 
 class NatPositive[Tail <: Nat, Head] extends Nat {
@@ -15,11 +15,7 @@ class NatPositive[Tail <: Nat, Head] extends Nat {
 trait Moon {
   type Current
   type Next <: Moon
-}
-
-class MoonInit[N1 <: Nat, C] extends Moon {
-  override type Current = C
-  override type Next    = N1#M[NatZero, C]
+  type Apply[I <: Nat, N] = MoonExecute[I, NatZero, N]
 }
 
 class MoonExecute[N1 <: Nat, N2 <: Nat, C] extends Moon {
