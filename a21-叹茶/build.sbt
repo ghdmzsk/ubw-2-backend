@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a20-月盈月亏"
+name := "a21-叹茶"
