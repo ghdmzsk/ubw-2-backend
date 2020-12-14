@@ -8,7 +8,7 @@ object Runner extends App {
   println(s"池塘: ${池塘0}\n")
 
   val 舀水1                                     = 舀水水尺.检验(池塘0)
-  val 池塘1: 池塘之初#加水[Int]#加水[String]#加水[String] = 舀水1.目前舀水.舀(池塘0, String)
+  val 池塘1: 池塘之初#加水[Int]#加水[String]#加水[String] = 舀水1.目前舀水.舀(池塘0, "水3": String)
   println(s"池塘: ${池塘1}\n")
 
   val 舀水2                                             = 舀水水尺.检验(池塘1)

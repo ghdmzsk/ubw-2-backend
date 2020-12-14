@@ -1,5 +1,7 @@
 UbwSettings.scalaVersionSettings
 
+addCommandAlias("fmt", "all scalafmtSbt")
+
 val rootDir = file(".")
 
 val file_a01 = rootDir / "a01-整数加法"
@@ -40,3 +42,4 @@ val a17 = project in (rootDir / "a17-432")
 val a18 = project in (rootDir / "a18-万事开头难")
 val a19 = project in (rootDir / "a19-一二三")
 val a20 = project in (rootDir / "a20-月盈月亏")
+val a21 = project in (rootDir / "a21-叹茶")

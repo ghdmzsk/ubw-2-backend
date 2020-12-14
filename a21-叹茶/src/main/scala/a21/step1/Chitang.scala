@@ -2,8 +2,7 @@ package version1
 
 import scala.language.higherKinds
 
-/**
-HList 设计大体与 shapeless 相同，无需过度留意。
+/** HList 设计大体与 shapeless 相同，无需过度留意。
   */
 trait 池塘 {
   type 首
