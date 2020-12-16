@@ -110,11 +110,19 @@ object 测试 {
   type r83 = r80#Next[Item81]#Next[Item82]#Next[Item83]
 
   类型匹配(类型匹配[nlhnjsnroewrnwe#_2_th], 类型匹配[Item2])
+  // 类型匹配(类型匹配[nlhnjsnroewrnwe#_1#_2_th], 类型匹配[Item5])
+  // 类型匹配(类型匹配[dfgdfgereter#_2#_1_th], 类型匹配[Item7])
+  类型匹配(
+    类型匹配[dfgdfgereter],
+    a19.step7.类型匹配[a19.step7.P_3_Step_2[
+      a19.step7.Item1,
+      a19.step7.Item2,
+      a19.step7.S_2[a19.step7.Item15, a19.step7.Item16, a19.step7.Item17],
+      a19.step7.S_2[a19.step7.Item12, a19.step7.Item13, a19.step7.Item14]
+    ]]
+  )
 
-  类型匹配(类型匹配[nlhnjsnroewrnwe#_1#_2_th], 类型匹配[Item5])
-  类型匹配(类型匹配[dfgdfgereter#_2#_1_th], 类型匹配[Item7])
-
-  类型匹配(类型匹配[dfgdfgereter#_1#_2#_1_th], 类型匹配[Item16])
+  /*类型匹配(类型匹配[dfgdfgereter#_1#_2#_1_th], 类型匹配[Item16])
   类型匹配(类型匹配[rhgrtrbrbrtbrtg#_1#_0#_2#_1_th], 类型匹配[Item34])
   类型匹配(类型匹配[r50#_1#_2#_1#_2_th], 类型匹配[Item50])
   类型匹配(类型匹配[r60#_2#_0#_2#_0_th], 类型匹配[Item60])
@@ -124,7 +132,7 @@ object 测试 {
   类型匹配(类型匹配[r83#_1#_0#_0#_0#_1_th], 类型匹配[Item82])
   类型匹配(类型匹配[r83#_1#_0#_0#_0#_2_th], 类型匹配[Item83])
   类型匹配(类型匹配[r83#_2#_0#_2#_0_th], 类型匹配[Item60])
-  类型匹配(类型匹配[r83#_2#_0#_2#_1_th], 类型匹配[Item61])
+  类型匹配(类型匹配[r83#_2#_0#_2#_1_th], 类型匹配[Item61])*/
 
   def main(arr: Array[String]): Unit = {
     println("22")

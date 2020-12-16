@@ -3,6 +3,7 @@ package a19.step7
 trait 进位准备 {
   type Next[T] <: 进位准备
   type 加数后上级进位操作[NoNeed <: 进位准备, Need <: 进位准备] <: 进位准备
+  type 变 <: 本阶变化
 }
 
 /*trait 来去 {
@@ -80,10 +81,16 @@ trait 本阶变化 {
   type 不进位[不进1 <: 变化] <: 本阶变化
 }
 
-class 本阶变化零[N1 <: 初始转换] extends 本阶变化 {
-  override type 变换[N]                   = N1#小转换[N1]
-  override type 进位[进1 <: 变化, 不进1 <: 变化] = 本阶变化进位[本阶变化零[N1], 进1]
-  override type 不进位[不进1 <: 变化]          = 本阶变化不进位[本阶变化零[N1], 不进1]
+class 本阶变化进位零[N1 <: 初始转换] extends 本阶变化 {
+  override type 变换[N]                   = N1#小转换[N]
+  override type 进位[进1 <: 变化, 不进1 <: 变化] = 本阶变化进位[本阶变化进位零[N1], 进1]
+  override type 不进位[不进1 <: 变化]          = 本阶变化不进位[本阶变化进位零[N1], 不进1]
+}
+
+class 本阶变化不进位零[N1 <: 初始转换] extends 本阶变化 {
+  override type 变换[N]                   = N1#小转换[N]
+  override type 进位[进1 <: 变化, 不进1 <: 变化] = 本阶变化不进位[本阶变化不进位零[N1], 不进1]
+  override type 不进位[不进1 <: 变化]          = 本阶变化不进位[本阶变化不进位零[N1], 不进1]
 }
 
 class 本阶变化进位[Tail <: 本阶变化, 进 <: 变化] extends 本阶变化 {
@@ -93,7 +100,7 @@ class 本阶变化进位[Tail <: 本阶变化, 进 <: 变化] extends 本阶变�
 }
 
 class 本阶变化不进位[Tail <: 本阶变化, 不进 <: 变化] extends 本阶变化 {
-  override type 变换[N]                   = 不进#转化[Tail#变换[不进]]
+  override type 变换[N]                   = 不进#转化[Tail#变换[N]]
   override type 进位[进1 <: 变化, 不进1 <: 变化] = 本阶变化不进位[本阶变化不进位[Tail, 不进], 不进1]
   override type 不进位[不进1 <: 变化]          = 本阶变化不进位[本阶变化不进位[Tail, 不进], 不进1]
 }
@@ -105,7 +112,16 @@ class P_3_Step_1[T1, T2, II1 <: 进位准备, II2 <: 进位准备] extends 进�
   type _1 = II1
   type _2 = II2
 
-  override type Next[T] = II1#加数后上级进位操作[P_3_Step_1[T1, T2, II1#Next[T], II2], P_3_Step_2[T1, T2, II1#Next[T], II2]]
+  // override type Next[T] = II1#加数后上级进位操作[P_3_Step_1[T1, T2, II1#Next[T], II2], P_3_Step_2[T1, T2, II1#Next[T], II2]]
+  override type Next[T] = 变#变换[T]
+
+  class 转进位 extends 变化 {
+    override type 转化[N <: 进位准备] = P_3_Step_2[T1, T2, N, II2]
+  }
+  class 转不进位 extends 变化 {
+    override type 转化[N <: 进位准备] = P_3_Step_1[T1, T2, N, II2]
+  }
+  override type 变 = II1#变#进位[转进位, 转不进位]
 }
 
 class P_3_Step_2[T1, T2, II1 <: 进位准备, II2 <: 进位准备] extends 进位准备 {
@@ -115,7 +131,16 @@ class P_3_Step_2[T1, T2, II1 <: 进位准备, II2 <: 进位准备] extends 进�
   type _1 = II1
   type _2 = II2
 
-  override type Next[T] = II2#加数后上级进位操作[P_3_Step_2[T1, T2, II1, II2#Next[T]], P_3_Step_1[T1, T2, II1, II2#Next[T]]]
+  //override type Next[T] = II2#加数后上级进位操作[P_3_Step_2[T1, T2, II1, II2#Next[T]], P_3_Step_1[T1, T2, II1, II2#Next[T]]]
+  override type Next[T] = 变#变换[T]
+
+  class 转进位 extends 变化 {
+    override type 转化[N <: 进位准备] = P_3_Step_1[T1, T2, II1, N]
+  }
+  class 转不进位 extends 变化 {
+    override type 转化[N <: 进位准备] = P_3_Step_2[T1, T2, II1, N]
+  }
+  override type 变 = II2#变#进位[转进位, 转不进位]
 }
 
 class S_0[T0] extends 进位准备 {
@@ -123,6 +148,11 @@ class S_0[T0] extends 进位准备 {
 
   override type Next[T]                             = S_1[T0, T]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = II
+
+  class 转 extends 初始转换 {
+    override type 小转换[T] = S_1[T0, T]
+  }
+  override type 变 = 本阶变化不进位零[转]
 }
 
 class S_1[T0, T1] extends 进位准备 {
@@ -131,6 +161,11 @@ class S_1[T0, T1] extends 进位准备 {
 
   override type Next[T]                             = S_2[T0, T1, T]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = Need
+
+  class 转 extends 初始转换 {
+    override type 小转换[T] = S_2[T0, T1, T]
+  }
+  override type 变 = 本阶变化进位零[转]
 }
 
 class S_2[T0, T1, T2] extends 进位准备 {
@@ -140,6 +175,14 @@ class S_2[T0, T1, T2] extends 进位准备 {
 
   override type Next[T]                             = I_0[T0, T1, T2, S_0[T]]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = II
+
+  /*class 转 extends 初始转换 {
+    override type 小转换[T] = I_0[T0, T1, T2, S_0[T]]
+  }*/
+  class 转 extends 初始转换 {
+    override type 小转换[T] = S_0[T]
+  }
+  override type 变 = 本阶变化不进位零[转]
 }
 
 class I_0[T0, T1, T2, II0 <: 进位准备] extends 进位准备 {
@@ -151,6 +194,14 @@ class I_0[T0, T1, T2, II0 <: 进位准备] extends 进位准备 {
 
   override type Next[T]                             = II0#加数后上级进位操作[I_0[T0, T1, T2, II0#Next[T]], I_0_To_1[T0, T1, T2, II0#Next[T]]]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = II
+
+  class 转进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_0_To_1[T0, T1, T2, N]
+  }
+  class 转不进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_0[T0, T1, T2, N]
+  }
+  override type 变 = II0#变#进位[转进位, 转不进位]
 }
 
 class I_0_To_1[T0, T1, T2, II0 <: 进位准备] extends 进位准备 {
@@ -162,6 +213,11 @@ class I_0_To_1[T0, T1, T2, II0 <: 进位准备] extends 进位准备 {
 
   override type Next[T]                             = I_1[T0, T1, T2, II0, S_0[T]]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = II
+
+  class 转不进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_1[T0, T1, T2, II0, N]
+  }
+  override type 变 = II0#变#不进位[转不进位]
 }
 
 class I_1[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备] extends 进位准备 {
@@ -174,6 +230,14 @@ class I_1[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备] extends 进位�
 
   override type Next[T]                             = II1#加数后上级进位操作[I_1[T0, T1, T2, II0, II1#Next[T]], I_1_To_2[T0, T1, T2, II0, II1#Next[T]]]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = II
+
+  class 转进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_1_To_2[T0, T1, T2, II0, N]
+  }
+  class 转不进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_1[T0, T1, T2, II0, N]
+  }
+  override type 变 = II1#变#进位[转进位, 转不进位]
 }
 
 class I_1_To_2[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备] extends 进位准备 {
@@ -186,6 +250,11 @@ class I_1_To_2[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备] extends 进
 
   override type Next[T]                             = I_2_Step_2[T0, T1, T2, II0, II1, S_0[T]]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = II
+
+  class 转不进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_2_Step_2[T0, T1, T2, II0, II1, N]
+  }
+  override type 变 = II1#变#不进位[转不进位]
 }
 
 class I_2_Step_0[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备, II2 <: 进位准备] extends 进位准备 {
@@ -199,6 +268,14 @@ class I_2_Step_0[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备, II2 <: �
 
   override type Next[T]                             = II0#加数后上级进位操作[I_2_Step_0[T0, T1, T2, II0#Next[T], II1, II2], I_2_Step_1[T0, T1, T2, II0#Next[T], II1, II2]]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = II
+
+  class 转进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_2_Step_1[T0, T1, T2, N, II1, II2]
+  }
+  class 转不进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_2_Step_0[T0, T1, T2, N, II1, II2]
+  }
+  override type 变 = II0#变#进位[转进位, 转不进位]
 }
 
 class I_2_Step_1[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备, II2 <: 进位准备] extends 进位准备 {
@@ -212,6 +289,14 @@ class I_2_Step_1[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备, II2 <: �
 
   override type Next[T]                             = II1#加数后上级进位操作[I_2_Step_1[T0, T1, T2, II0, II1#Next[T], II2], I_2_Step_2[T0, T1, T2, II0, II1#Next[T], II2]]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = II
+
+  class 转进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_2_Step_2[T0, T1, T2, II0, N, II2]
+  }
+  class 转不进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_2_Step_1[T0, T1, T2, II0, N, II2]
+  }
+  override type 变 = II1#变#进位[转进位, 转不进位]
 }
 
 class I_2_Step_2[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备, II2 <: 进位准备] extends 进位准备 {
@@ -225,4 +310,12 @@ class I_2_Step_2[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备, II2 <: �
 
   override type Next[T]                             = II2#加数后上级进位操作[I_2_Step_2[T0, T1, T2, II0, II1, II2#Next[T]], I_2_Step_0[T0, T1, T2, II0, II1, II2#Next[T]]]
   override type 加数后上级进位操作[II <: 进位准备, Need <: 进位准备] = II2#加数后上级进位操作[II, Need]
+
+  class 转进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_2_Step_0[T0, T1, T2, II0, II1, N]
+  }
+  class 转不进位 extends 变化 {
+    override type 转化[N <: 进位准备] = I_2_Step_2[T0, T1, T2, II0, II1, N]
+  }
+  override type 变 = II2#变#进位[转进位, 转不进位]
 }
