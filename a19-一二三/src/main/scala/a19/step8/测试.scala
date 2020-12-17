@@ -93,10 +93,10 @@ class Item83
 
 object 测试 {
 
-  type jihjkhjih       = 上层_2[Item1, Item2, S_2[Item3, Item4, Item5], S_0[Item6]]
-  type nlhnjsnroewrnwe = jihjkhjih#Next[Item7]#Next[Item8]#Next[Item9]#Next[Item10]#Next[Item11]
-  type dfgdfgereter    = nlhnjsnroewrnwe#Next[Item12]#Next[Item13]#Next[Item14]#Next[Item15]#Next[Item16]#Next[Item17]
-  type rhgrtrbrbrtbrtg = dfgdfgereter#Next[Item18]#Next[Item19]#Next[Item20]#Next[Item21]#Next[Item22]#Next[Item23]#Next[Item24]#Next[Item25]#Next[Item26]#Next[
+  type jihjkhjih1      = 上层_2[Item1, Item2, S_2[Item3, Item4, Item5], S_0[Item6]]
+  type nlhnjsnroewrnwe = jihjkhjih1#Next[Item7]#Next[Item8]#Next[Item9]#Next[Item10]#Next[Item11]
+  type dfgdfgereter    = nlhnjsnroewrnwe#Next[Item12]#Next[Item13]#Next[Item14]#Next[Item15]#Next[Item16]#Next[Item17]#Next[Item18]
+  type rhgrtrbrbrtbrtg = dfgdfgereter#Next[Item19]#Next[Item20]#Next[Item21]#Next[Item22]#Next[Item23]#Next[Item24]#Next[Item25]#Next[Item26]#Next[
     Item27
   ]#Next[Item28]#Next[Item29]#Next[Item30]#Next[Item31]#Next[Item32]#Next[Item33]#Next[Item34]#Next[Item35]#Next[Item36]
 
