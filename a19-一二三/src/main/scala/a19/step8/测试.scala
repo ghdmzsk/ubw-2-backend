@@ -107,6 +107,8 @@ object 测试 {
   type r80 = r70#Next[Item71]#Next[Item72]#Next[Item73]#Next[Item74]#Next[Item75]#Next[Item76]#Next[Item77]#Next[Item78]#Next[Item79]#Next[Item80]
   type r83 = r80#Next[Item81]#Next[Item82]#Next[Item83]
 
+  type n80 = r83#Pred#Pred#Pred
+
   类型匹配(类型匹配[r11#_2_th], 类型匹配[Item2])
 
   类型匹配(类型匹配[r11#_1#_2_th], 类型匹配[Item5])
@@ -123,6 +125,8 @@ object 测试 {
   类型匹配(类型匹配[r83#_1#_0#_0#_0#_2_th], 类型匹配[Item83])
   类型匹配(类型匹配[r83#_2#_0#_2#_0_th], 类型匹配[Item60])
   类型匹配(类型匹配[r83#_2#_0#_2#_1_th], 类型匹配[Item61])
+
+  val ii: n80 = (throw new Exception): r80
 
   def main(arr: Array[String]): Unit = {
     println("22")
