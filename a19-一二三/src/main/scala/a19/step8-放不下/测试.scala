@@ -126,7 +126,7 @@ object 测试 {
   类型匹配(类型匹配[r83#_2#_0#_2#_0_th], 类型匹配[Item60])
   类型匹配(类型匹配[r83#_2#_0#_2#_1_th], 类型匹配[Item61])
 
-  val ii: n80 = (throw new Exception): r80
+  // val ii: n80 = (throw new Exception): r80
 
   def main(arr: Array[String]): Unit = {
     println("22")
