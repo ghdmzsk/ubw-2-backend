@@ -24,4 +24,15 @@ object Runner {
     ]]
   )
 
+  type 底2 = 底Positive[底Positive[底Positive[底Zero, Item1], Item2], Item3]
+  类型匹配(
+    类型匹配[幂值3#阶乘[底2], 底Positive[底Positive[底Positive[
+      底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[
+        底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Zero, Item1], Item2], Item3], Item1], Item2], Item3], Item1], Item2],
+        Item3
+      ], Item1], Item2], Item3], Item1], Item2], Item3], Item1], Item2], Item3], Item1], Item2], Item3], Item1], Item2], Item3],
+      Item1
+    ], Item2], Item3]]
+  )
+
 }
