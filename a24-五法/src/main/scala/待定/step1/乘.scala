@@ -29,3 +29,15 @@ class A4 extends Ba[A4, Item4] {
   override type Tail = A1
   override type Head = Item1
 }
+
+object bb {
+
+  trait CC {
+    def cc: CC
+  }
+
+  lazy val ccbb: CC = new CC {
+    override lazy val cc: CC = ccbb
+  }
+
+}
