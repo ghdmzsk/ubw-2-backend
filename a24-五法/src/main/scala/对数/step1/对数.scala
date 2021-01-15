@@ -22,6 +22,7 @@ trait 底数One[Tail <: 底数] extends 底数 {
 }
 
 trait 真数 {
+  type 对[N <: 底数]
   type 内部对[N <: 底数] <: 广义对数
   type 地道索求[N <: 底数] <: 真数
   type 深度索求[N <: 底数, T <: 对数] <: 真数
@@ -29,7 +30,7 @@ trait 真数 {
 }
 
 class 真数Positive[Tail <: 真数, Head] extends 真数 {
-  type 对[N <: 底数]                      = N#天道消去[Tail, Head]
+  override type 对[N <: 底数]             = 内部对[N]
   override type 内部对[N <: 底数]           = N#天道消去[Tail, Head]
   override type 地道索求[N <: 底数]          = N#直对花心[Tail, Head]
   override type 深度索求[N <: 底数, T <: 对数] = N#深度被对[Tail, Head, T]
@@ -37,6 +38,7 @@ class 真数Positive[Tail <: 真数, Head] extends 真数 {
 }
 
 class 真数Zero extends 真数 {
+  override type 对[N <: 底数]             = 对数特殊负无穷
   override type 内部对[N <: 底数]           = 对数Zero
   override type 地道索求[N <: 底数]          = 真数Zero
   override type 深度索求[N <: 底数, T <: 对数] = 真数Zero
@@ -45,7 +47,8 @@ class 真数Zero extends 真数 {
 
 trait 广义对数
 
-class 对数Zero extends 广义对数
+class 对数Zero  extends 广义对数
+class 对数特殊负无穷 extends 广义对数
 
 trait 对数 extends 广义对数 {
   type 对[I <: 真数, Head, N <: 底数] <: 真数

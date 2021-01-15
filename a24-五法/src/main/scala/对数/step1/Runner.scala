@@ -41,6 +41,10 @@ object Runner {
   class Item28
   class Item29
 
+  type 真数0  = 真数Zero
+  type 对数值0 = 对数特殊负无穷
+  类型匹配(类型匹配[真数0#对[底数1], 对数值0])
+
   type 真数1  = 真数Positive[真数Zero, Item1]
   type 对数值1 = 对数Zero
   类型匹配(类型匹配[真数1#对[底数1], 对数值1])
