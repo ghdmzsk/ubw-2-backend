@@ -22,7 +22,7 @@ trait 底数One[Tail <: 底数] extends 底数 {
 }
 
 trait 真数 {
-  type 对[N <: 底数]
+  type 对[N <: 底数] <: 广义对数
   type 内部对[N <: 底数] <: 广义对数
   type 地道索求[N <: 底数] <: 真数
   type 深度索求[N <: 底数, T <: 对数] <: 真数

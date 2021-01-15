@@ -24,15 +24,14 @@ object Runner {
     ]]
   )
 
-  /*type 底2 = 底Positive[底Positive[底Positive[底Zero, Item1], Item2], Item3]
-  类型匹配(
-    类型匹配[幂值3#阶乘[底2], 底Positive[底Positive[底Positive[
-      底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[
-        底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Zero, Item1], Item2], Item3], Item1], Item2], Item3], Item1], Item2],
-        Item3
-      ], Item1], Item2], Item3], Item1], Item2], Item3], Item1], Item2], Item3], Item1], Item2], Item3], Item1], Item2], Item3],
-      Item1
-    ], Item2], Item3]]
-  )*/
+  type 底2 = 底Positive[底Positive[底Positive[底Zero, Item1], Item2], Item3]
+
+  type 结果1 = 底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[底Zero, Item1], Item2], Item3], Item1], Item2], Item3]
+  type 结果2 = 底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[结果1, Item1], Item2], Item3], Item1], Item2], Item3]
+  type 结果3 = 底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[结果2, Item1], Item2], Item3], Item1], Item2], Item3]
+  type 结果4 = 底Positive[底Positive[底Positive[底Positive[底Positive[底Positive[结果3, Item1], Item2], Item3], Item1], Item2], Item3]
+  type 结果5 = 底Positive[底Positive[底Positive[结果4, Item1], Item2], Item3]
+
+  类型匹配(类型匹配[幂值3#阶乘[底2], 结果5])
 
 }
