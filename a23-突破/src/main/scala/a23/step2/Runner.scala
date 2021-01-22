@@ -63,12 +63,12 @@ object Runner {
   类型匹配(类型匹配[挑战者2#挑战[困难2], 结果2])
 
   def main(attr: Array[String]): Unit = {
-    println("==========开始生成==========")
+    println("==========开始初始化==========")
     val 挑战者1 = new 挑战者Positive(new 挑战者Positive(new 挑战者Positive(new 挑战者Positive(new 挑战者Zero, new Item1), new Item2), new Item3), new Item4)
     val 困难1  = new 困难Positive(new 困难Positive(new 困难Positive(new 困难Zero, new MM5), new MM6), new MM7)
     val 挑战者2 = new 挑战者Positive(new 挑战者Positive(new 挑战者Zero, new ItemA1), new ItemA2)
     val 困难2  = new 困难Positive(new 困难Positive(new 困难Positive(new 困难Positive(new 困难Positive(new 困难Zero, new MMA3), new MMA4), new MMA5), new MMA6), new MMA7)
-    println("==========结束生成==========")
+    println("==========结束初始化==========")
 
     val 结果1 = 挑战者1.挑战(困难1)
     println(s"结果1：${结果1}")
@@ -76,7 +76,7 @@ object Runner {
     val 结果2 = 挑战者2.挑战(困难2)
     println(s"结果2：${结果2}")
 
-    /** ==========开始生成==========
+    /** ==========开始初始化==========
       * 构成奖励
       * 构成奖励
       * 构成奖励
@@ -91,7 +91,7 @@ object Runner {
       * 构成遗憾
       * 构成遗憾
       * 构成遗憾
-      * ==========结束生成==========
+      * ==========结束初始化==========
       * 被困难降低数值
       * 挑战困难
       * 被困难降低数值

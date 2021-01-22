@@ -18,13 +18,13 @@ object Runner {
     override def toString: String = "Item3"
   }
 
-  class 挑战者基础3 extends 挑战者[挑战者基础2, Item3](tail = () => 挑战者基础.挑战者基础2, head = new Item3) {
+  class 挑战者基础3 extends 挑战者[挑战者基础2, Item3](tail1 = () => 挑战者基础.挑战者基础2, head = new Item3) {
     override def toString: String = "挑战者基础"
   }
-  class 挑战者基础2 extends 挑战者[挑战者基础1, Item2](tail = () => 挑战者基础.挑战者基础1, head = new Item2) {
+  class 挑战者基础2 extends 挑战者[挑战者基础1, Item2](tail1 = () => 挑战者基础.挑战者基础1, head = new Item2) {
     override def toString: String = "挑战者基础"
   }
-  class 挑战者基础1 extends 挑战者[挑战者基础3, Item1](tail = () => 挑战者基础.挑战者基础3, head = new Item1) {
+  class 挑战者基础1 extends 挑战者[挑战者基础3, Item1](tail1 = () => 挑战者基础.挑战者基础3, head = new Item1) {
     override def toString: String = "挑战者基础"
   }
 
@@ -83,9 +83,12 @@ object Runner {
   类型匹配(类型匹配[挑战者2#挑战[困难2], 结果2])
 
   def main(arr: Array[String]): Unit = {
-    println("==========开始生成==========")
+    println("==========开始初始化==========")
+
     val 挑战者1 = new 挑战者(() => new 挑战者(() => new 挑战者(() => new 挑战者基础3, new Item4), new Item5), new Item6)
     val 困难1  = new 困难Positive(new 困难Positive(new 困难Zero, new MM7), new MM8)
+    挑战者1.tail.tail.tail.tail.tail.tail
+
     val 挑战者2 = new 挑战者(() => new 挑战者(() => new 挑战者(() => new 挑战者基础3, new Item4), new Item5), new Item6)
     val 困难2 = new 困难Positive(
       new 困难Positive(
@@ -97,7 +100,9 @@ object Runner {
       ),
       new MM14
     )
-    println("==========结束生成==========")
+    挑战者2.tail.tail.tail.tail.tail.tail
+
+    println("==========结束初始化==========")
 
     val 结果1 = 挑战者1.挑战(困难1)
     println(s"结果1：${结果1}")
@@ -105,11 +110,17 @@ object Runner {
     val 结果2 = 挑战者2.挑战(困难2)
     println(s"结果2：${结果2}")
 
-    /** ==========开始生成==========
+    /** ==========开始初始化==========
       * 构成奖励
       * 构成遗憾
       * 构成遗憾
       * 构成奖励
+      * 构成奖励
+      * 构成奖励
+      * 构成奖励
+      * 构成奖励
+      * 构成奖励
+      * 构成奖励
       * 构成遗憾
       * 构成遗憾
       * 构成遗憾
@@ -118,41 +129,35 @@ object Runner {
       * 构成遗憾
       * 构成遗憾
       * 构成遗憾
-      * ==========结束生成==========
+      * 构成奖励
+      * 构成奖励
+      * 构成奖励
+      * ==========结束初始化==========
       * 被困难降低数值
-      * 构成奖励
       * 挑战困难
       * 构成奖励
       * 构成奖励
       * 被困难降低数值
-      * 构成奖励
       * 挑战困难
       * 构成奖励
       * 构成奖励
       * 被困难降低数值
-      * 构成奖励
       * 获得胜利
       * 构成奖励
       * 结果1：挑战者(挑战者(挑战者(挑战者(挑战者(挑战者基础, Item4), MM7), Item5), MM8), Item6)
       * 被困难降低数值
-      * 构成奖励
       * 挑战困难
       * 构成奖励
       * 构成奖励
       * 被困难降低数值
-      * 构成奖励
       * 挑战困难
       * 构成奖励
       * 构成奖励
       * 被困难降低数值
-      * 构成奖励
       * 挑战困难
       * 构成奖励
       * 构成奖励
       * 被困难降低数值
-      * 构成奖励
-      * 构成奖励
-      * 构成奖励
       * 挑战困难
       * 构成奖励
       * 构成奖励

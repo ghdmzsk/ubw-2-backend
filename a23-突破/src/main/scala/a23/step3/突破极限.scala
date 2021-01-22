@@ -10,16 +10,17 @@ trait 困难 {
   def byConfirm[N <: 挑战者I, T](n: N, t: T): byConfirm[N, T]
 }
 
-class 挑战者[Tail1 <: 挑战者I, Head](val tail: () => Tail1, val head: Head) extends 挑战者I {
+class 挑战者[Tail1 <: 挑战者I, Head](val tail1: () => Tail1, val head: Head) extends 挑战者I {
   println("构成奖励")
 
+  lazy val tail: Tail1 = tail1()
   override type 挑战[N <: 困难] = N#byConfirm[Tail1, Head]
   override def 挑战[N <: 困难](n: N): N#byConfirm[Tail1, Head] = {
     println("被困难降低数值")
-    n.byConfirm(tail(), head)
+    n.byConfirm(tail, head)
   }
 
-  override def toString: String = s"挑战者(${tail()}, ${head})"
+  override def toString: String = s"挑战者(${tail}, ${head})"
 }
 
 class 困难Zero extends 困难 {
