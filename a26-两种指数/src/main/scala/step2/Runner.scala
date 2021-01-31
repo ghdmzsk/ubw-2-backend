@@ -16,18 +16,20 @@ object Runner {
   class Item6
   class Item7
 
-  /*type 被乘数1 = 被乘数Positive[被乘数Positive[被乘数Positive[被乘数Positive[被乘数Positive[被乘数Zero, Item1], Item2], Item3], Item4], Item5]
-  class 乘数Positive1 extends 乘数Positive[乘数Positive[乘数零1, Item6], Item7]
-  class 乘数零1        extends 乘数Zero[乘数Positive1]
-  type 积1 = 积Positive[积Positive[积Positive[积Positive[
-    积Positive[积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item6, Item1], Item7, Item1], Item6, Item2], Item7, Item2], Item6, Item3], Item7, Item3],
-    Item6,
-    Item4
-  ], Item7, Item4], Item6, Item5], Item7, Item5]
+  class 底1     extends 底Positive[底Positive[底Zero1, Item1], Item2]
+  class 底Zero1 extends 底Zero[底1]
+  type 指数1 = 指数Positive[指数Positive[指数Zero]]
+  type 容器1 = 容器Positive[容器Zero, 底1, 指数1]
+  type 自然数1 = 自然数Positive[
+    自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item1], Item2], Item1], Item2], Item1],
+    Item2
+  ]
 
-  类型匹配(类型匹配[被乘数1#乘以[乘数Positive1], 积1])
+  val aa: 底1#交[容器1] = 2
 
-  type 被乘数2 = 被乘数Positive[被乘数Positive[被乘数Positive[被乘数Zero, Item1], Item2], Item3]
+  //类型匹配(类型匹配[底1#交[容器1], 自然数1])
+
+  /*type 被乘数2 = 被乘数Positive[被乘数Positive[被乘数Positive[被乘数Zero, Item1], Item2], Item3]
   class 乘数Positive2 extends 乘数Positive[乘数Positive[乘数Positive[乘数Positive[乘数零2, Item4], Item5], Item6], Item7]
   class 乘数零2        extends 乘数Zero[乘数Positive2]
   type 积2 = 积Positive[积Positive[积Positive[积Positive[积Positive[积Positive[
