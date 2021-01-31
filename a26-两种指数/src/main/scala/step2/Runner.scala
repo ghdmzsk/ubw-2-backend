@@ -19,7 +19,7 @@ object Runner {
   class 底1     extends 底Positive[底Positive[底Zero1, Item1], Item2]
   class 底Zero1 extends 底Zero[底1]
   type 指数1 = 指数Positive[指数Positive[指数Zero]]
-  type 容器1 = 容器Positive[容器Zero, 底1, 指数1]
+  type 容器1 = 容器Positive[容器Positive[容器Zero, 底1, 指数1], 底1, 指数Positive[指数Zero]]
   type 自然数1 = 自然数Positive[
     自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item1], Item2], Item1], Item2], Item1],
     Item2
