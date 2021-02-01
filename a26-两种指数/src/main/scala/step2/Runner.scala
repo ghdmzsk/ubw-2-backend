@@ -18,15 +18,15 @@ object Runner {
 
   class 底3     extends 底Positive[底Positive[底Zero1, Item2], Item3]
   class 底Zero1 extends 底1[底3, Item1]
-  type 指数1  = 指数Positive[指数Positive[指数Zero]]
-  type 容器1  = 容器Positive[容器Positive[容器Positive[容器Zero, 底3, 指数1], 底3, 指数Positive[指数Zero]], 底3, 指数Zero]
+  type 指数1  = 指数Positive[指数Zero]
+  type 容器1  = 容器Positive[容器Positive[容器Zero, 底3, 指数1], 底3, 指数Zero]
   type 自然数1 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item3], Item1], Item2], Item3]
   type 自然数2 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数1, Item1], Item2], Item3], Item1], Item2], Item3]
   type 自然数3 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数2, Item1], Item2], Item3], Item1], Item2], Item3]
   type 自然数4 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数3, Item1], Item2], Item3], Item1], Item2], Item3]
   type 自然数5 = 自然数Positive[自然数Positive[自然数Positive[自然数4, Item1], Item2], Item3]
 
-  类型匹配(类型匹配[容器1#启动, 自然数5])
+  类型匹配(类型匹配[底3#交[容器1], 自然数5])
 
   /*type 被乘数2 = 被乘数Positive[被乘数Positive[被乘数Positive[被乘数Zero, Item1], Item2], Item3]
   class 乘数Positive2 extends 乘数Positive[乘数Positive[乘数Positive[乘数Positive[乘数零2, Item4], Item5], Item6], Item7]
