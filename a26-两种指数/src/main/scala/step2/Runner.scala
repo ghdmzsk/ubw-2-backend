@@ -26,7 +26,7 @@ object Runner {
   type 自然数4 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数3, Item1], Item2], Item3], Item1], Item2], Item3]
   type 自然数5 = 自然数Positive[自然数Positive[自然数Positive[自然数4, Item1], Item2], Item3]
 
-  类型匹配(类型匹配[指数值1#指数[底3]#Self, 自然数5])
+  类型匹配(类型匹配[指数运算#指[底3, 指数值1]#Self, 自然数5])
 
   class 底4     extends 底Positive[底Zero4, Item2]
   class 底Zero4 extends 底1[底4, Item1]
@@ -36,6 +36,6 @@ object Runner {
     Item2
   ]
 
-  类型匹配(类型匹配[指数值2#指数[底4], 自然数6])
+  类型匹配(类型匹配[指数运算#指[底4, 指数值2], 自然数6])
 
 }

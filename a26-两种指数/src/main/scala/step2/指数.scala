@@ -14,7 +14,6 @@ trait 底1[Total <: 底, Head] extends 底 {
 }
 
 trait 指数 {
-  type 指数[N <: 底] = 指[N, 容器Zero]
   type 指[N <: 底, I <: 容器] <: 自然数
   type 恢复[N1 <: 底, I <: 容器] <: 自然数
 }
@@ -25,6 +24,10 @@ class 指数Positive[Tail <: 指数] extends 指数 {
 class 指数1 extends 指数 {
   override type 指[N <: 底, I <: 容器]  = N#交[I]
   override type 恢复[N <: 底, I <: 容器] = N#交[I]
+}
+
+class 指数运算 {
+  type 指[N <: 底, T <: 指数] = T#指[N, 容器Zero]
 }
 
 trait 容器 {
