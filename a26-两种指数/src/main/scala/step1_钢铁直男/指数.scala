@@ -11,6 +11,7 @@ class 底Zero extends 底 {
 }
 
 class 底Positive[Tail <: 底, Head] extends 底 {
+  type Self                = 底Positive[Tail, Head]
   override type 乘以[N <: 底] = Tail#乘以[N]#加[N]
   override type 加[N <: 底]  = 底Positive[Tail#加[N], Head]
 }
