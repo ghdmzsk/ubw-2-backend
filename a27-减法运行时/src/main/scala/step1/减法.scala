@@ -1,17 +1,17 @@
 package step1
 
 trait 自然数
-trait 自然数Positive[Tail<: 自然数,Head]
+trait 自然数Positive[Tail <: 自然数, Head]
 trait 自然数Zero
 
 trait 被减数 {
-  type 被减[I <: 减数,T] <: 自然数
+  type 被减[I <: 减数, T] <: 自然数
 }
 trait 被减数Positive[Tail <: 底, Head] extends 被减数 {
-  override type 被减[I <: 减数,T]                   = 自然数Positive[Tail#交[I], Head]
+  override type 被减[I <: 减数, T] = 自然数Positive[Tail#交[I], Head]
 }
 trait 被减数Zero[Total <: 底, Head] extends 被减数 {
-  override type 被减[I <: 减数,T]                   = 自然数Positive[I#容器恢复[Total], Head]
+  override type 被减[I <: 减数, T] = 自然数Positive[I#容器恢复[Total], Head]
 }
 
 trait 指数 {
