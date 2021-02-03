@@ -1,4 +1,4 @@
-package step2
+package step1
 
 object Runner {
 
@@ -9,33 +9,70 @@ object Runner {
     def i[T](i1: T, i2: T): List[T]                    = List(i1, i2)
   }
 
-  class Item1
-  class Item2
-  class Item3
-  class Item4
-  class Item5
-  class Item6
-  class Item7
+  class Item1 {
+    override val toString: String = "Item1"
+  }
+  class Item2 {
+    override val toString: String = "Item2"
+  }
+  class Item3 {
+    override val toString: String = "Item3"
+  }
+  class Item4 {
+    override val toString: String = "Item4"
+  }
+  class Item5 {
+    override val toString: String = "Item5"
+  }
+  class Item6 {
+    override val toString: String = "Item6"
+  }
+  class Item7 {
+    override val toString: String = "Item7"
+  }
 
-  class 底3     extends 底Positive[底Positive[底Zero1, Item2], Item3]
-  class 底Zero1 extends 底1[底3, Item1]
-  type 指数值1 = 指数Positive[指数Positive[指数1]]
-  type 自然数1 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item3], Item1], Item2], Item3]
-  type 自然数2 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数1, Item1], Item2], Item3], Item1], Item2], Item3]
-  type 自然数3 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数2, Item1], Item2], Item3], Item1], Item2], Item3]
-  type 自然数4 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数3, Item1], Item2], Item3], Item1], Item2], Item3]
-  type 自然数5 = 自然数Positive[自然数Positive[自然数Positive[自然数4, Item1], Item2], Item3]
+  type 被减数1 = 被减数Positive[被减数Positive[被减数Zero, Item1], Item2]
+  type 减数1  = 减数Positive[减数Positive[减数Positive[减数Positive[减数Positive[减数Zero, Item3], Item4], Item5], Item6], Item7]
+  type 差1   = 减数Positive[减数Positive[减数Positive[减数Zero, Item3], Item4], Item5]
 
-  类型匹配(类型匹配[指数值1#指数[底3]#Self, 自然数5])
+  type 被减数2 = 被减数Positive[被减数Positive[被减数Positive[被减数Positive[被减数Zero, Item1], Item2], Item3], Item4]
+  type 减数2  = 减数Positive[减数Positive[减数Positive[减数Zero, Item5], Item6], Item7]
+  type 差2   = 被减数Positive[被减数Zero, Item1]
 
-  class 底4     extends 底Positive[底Zero4, Item2]
-  class 底Zero4 extends 底1[底4, Item1]
-  type 指数值2 = 指数Positive[指数Positive[指数1]]
-  type 自然数6 = 自然数Positive[
-    自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item1], Item2], Item1], Item2], Item1],
-    Item2
-  ]
+  type 被减数3 = 被减数Positive[被减数Positive[被减数Positive[被减数Positive[被减数Zero, Item1], Item2], Item3], Item4]
+  type 减数3  = 减数Positive[减数Positive[减数Positive[减数Positive[减数Zero, Item4], Item5], Item6], Item7]
+  type 差3   = 被减数Zero
 
-  类型匹配(类型匹配[指数值2#指数[底4], 自然数6])
+  def main(arr: Array[String]): Unit = {
+
+    val 被减数1: 被减数1 = new 被减数Positive(new 被减数Positive(new 被减数Zero, new Item1), new Item2)
+    val 减数1: 减数1   = new 减数Positive(new 减数Positive(new 减数Positive(new 减数Positive(new 减数Positive(new 减数Zero, new Item3), new Item4), new Item5), new Item6), new Item7)
+    val 差1: 差1     = 减数1.减(被减数1)
+    println(被减数1.length) // 2
+    println(减数1.length)  // 5
+    println(差1)          // 零 :: Item3 :: Item4 :: Item5
+    println(差1.length)   // 3
+
+    println("======================================")
+
+    val 被减数2: 被减数2 = new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Zero, new Item1), new Item2), new Item3), new Item4)
+    val 减数2: 减数2   = new 减数Positive(new 减数Positive(new 减数Positive(new 减数Zero, new Item5), new Item6), new Item7)
+    val 差2: 差2     = 减数2.减(被减数2)
+    println(被减数2.length) // 4
+    println(减数2.length)  // 3
+    println(差2)          // 零 :: Item1
+    println(差2.length)   // 1
+
+    println("======================================")
+
+    val 被减数3: 被减数3 = new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Zero, new Item1), new Item2), new Item3), new Item4)
+    val 减数3: 减数3   = new 减数Positive(new 减数Positive(new 减数Positive(new 减数Positive(new 减数Zero, new Item4), new Item5), new Item6), new Item7)
+    val 差3: 差3     = 减数3.减(被减数3)
+    println(被减数3.length) // 4
+    println(减数3.length)  // 4
+    println(差3)          // 零
+    println(差3.length)   // 0
+
+  }
 
 }

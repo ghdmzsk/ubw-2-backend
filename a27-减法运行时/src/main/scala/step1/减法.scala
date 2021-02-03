@@ -1,45 +1,41 @@
 package step1
 
-trait 自然数
-trait 自然数Positive[Tail <: 自然数, Head]
-trait 自然数Zero
+trait 自然数 {
+  def length: Int
+}
+trait 自然数Positive[Tail <: 自然数, Head] extends 自然数 {
+  def tail: Tail
+  def head: Head
+  override def length: Int      = tail.length + 1
+  override def toString: String = s"${tail} :: ${head}"
+}
+trait 自然数Zero extends 自然数 {
+  override def length: Int      = 0
+  override def toString: String = "零"
+}
 
-trait 被减数 {
+trait 被减数 extends 自然数 {
   type 被减[I <: 减数, T] <: 自然数
+  def 被减[I <: 减数, T](ii: 减数Positive[I, T]): 被减[I, T]
 }
-trait 被减数Positive[Tail <: 底, Head] extends 被减数 {
-  override type 被减[I <: 减数, T] = 自然数Positive[Tail#交[I], Head]
+class 被减数Positive[Tail <: 被减数, Head](override val tail: Tail, override val head: Head) extends 被减数 with 自然数Positive[Tail, Head] {
+  override type 被减[I <: 减数, T] = I#减[Tail]
+  override def 被减[I <: 减数, T](ii: 减数Positive[I, T]): I#减[Tail] = ii.tail.减(tail)
 }
-trait 被减数Zero[Total <: 底, Head] extends 被减数 {
-  override type 被减[I <: 减数, T] = 自然数Positive[I#容器恢复[Total], Head]
-}
-
-trait 指数 {
-  type 指数[N <: 底] = 指[N, 容器Zero]
-  type 指[N <: 底, I <: 容器] <: 自然数
-  type 恢复[N1 <: 底, I <: 容器] <: 自然数
-}
-class 指数Positive[Tail <: 指数] extends 指数 {
-  override type 指[N <: 底, I <: 容器]   = Tail#指[N, 容器Positive[I, N, Tail]]
-  override type 恢复[N1 <: 底, I <: 容器] = Tail#恢复[N1, 容器Positive[I, N1, Tail]]
-}
-class 指数1 extends 指数 {
-  override type 指[N <: 底, I <: 容器]  = N#交[I]
-  override type 恢复[N <: 底, I <: 容器] = N#交[I]
+class 被减数Zero extends 被减数 with 自然数Zero {
+  override type 被减[I <: 减数, T] = 减数Positive[I, T]
+  override def 被减[I <: 减数, T](ii: 减数Positive[I, T]): 减数Positive[I, T] = ii
 }
 
-trait 容器 {
-  type 容器恢复[N <: 底] <: 自然数
+trait 减数 extends 自然数 {
+  type 减[N <: 被减数] <: 自然数
+  def 减[N <: 被减数](n: N): 减[N]
 }
-class 容器Positive[Tail <: 容器, Head1 <: 底, Head2 <: 指数] extends 容器 {
-  override type 容器恢复[N <: 底] = Head1#退位[Tail, Head2, N]
+class 减数Positive[Tail <: 减数, Head](override val tail: Tail, override val head: Head) extends 减数 with 自然数Positive[Tail, Head] {
+  override type 减[N <: 被减数] = N#被减[Tail, Head]
+  override def 减[N <: 被减数](n: N): N#被减[Tail, Head] = n.被减(this)
 }
-class 容器Zero extends 容器 {
-  override type 容器恢复[N <: 底] = 自然数Zero
+class 减数Zero extends 减数 with 自然数Zero {
+  override type 减[N <: 被减数] = N
+  override def 减[N <: 被减数](n: N): N = n
 }
-
-trait 自然数
-class 自然数Positive[T <: 自然数, H] extends 自然数 {
-  type Self = 自然数Positive[T, H]
-}
-class 自然数Zero extends 自然数
