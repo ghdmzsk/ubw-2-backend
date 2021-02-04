@@ -9,12 +9,12 @@ trait 底 {
   def 退位(i: 容器, t: 指数, n: 底): 自然数
 }
 class 底Positive(tailI: () => 底, val head: Item) extends 底 {
-  private lazy val tail                    = tailI()
+  private lazy val tail: 底                 = tailI()
   override def 交(i: 容器): 自然数               = new 自然数Positive(tail.交(i), head)
   override def 退位(i: 容器, t: 指数, n: 底): 自然数 = t.恢复(n, new 容器Positive(i, tail, t))
 }
 class 底1(totalI: () => 底, val head: Item) extends 底 {
-  private lazy val total                   = totalI()
+  private lazy val total: 底                = totalI()
   override def 交(i: 容器): 自然数               = new 自然数Positive(i.容器恢复(total), head)
   override def 退位(i: 容器, t: 指数, n: 底): 自然数 = i.容器恢复(total)
 }
@@ -55,6 +55,6 @@ class 自然数Positive(tail: 自然数, head: Item) extends 自然数 {
   override val toString: String = s"$tail :: ${head.name}"
 }
 class 自然数Zero extends 自然数 {
-  override def length: Int      = 0
+  override val length: Int      = 0
   override val toString: String = "自然数Zero"
 }
