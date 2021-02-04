@@ -6,7 +6,7 @@ trait 底 {
 }
 trait 底Positive[Tail <: 底, Head] extends 底 {
   override type 交[I <: 容器]                   = 自然数Positive[Tail#交[I], Head]
-  override type 退位[I <: 容器, T <: 指数, N <: 底] = T#恢复[N, 容器Positive[I, Tail, T]]
+  override type 退位[I <: 容器, T <: 指数, N <: 底] = T#指[N, 容器Positive[I, Tail, T]]
 }
 trait 底1[Total <: 底, Head] extends 底 {
   override type 交[I <: 容器]                   = 自然数Positive[I#容器恢复[Total], Head]
@@ -15,15 +15,12 @@ trait 底1[Total <: 底, Head] extends 底 {
 
 trait 指数 {
   type 指[N <: 底, I <: 容器] <: 自然数
-  type 恢复[N1 <: 底, I <: 容器] <: 自然数
 }
 class 指数Positive[Tail <: 指数] extends 指数 {
-  override type 指[N <: 底, I <: 容器]   = Tail#指[N, 容器Positive[I, N, Tail]]
-  override type 恢复[N1 <: 底, I <: 容器] = Tail#恢复[N1, 容器Positive[I, N1, Tail]]
+  override type 指[N <: 底, I <: 容器] = Tail#指[N, 容器Positive[I, N, Tail]]
 }
 class 指数1 extends 指数 {
-  override type 指[N <: 底, I <: 容器]  = N#交[I]
-  override type 恢复[N <: 底, I <: 容器] = N#交[I]
+  override type 指[N <: 底, I <: 容器] = N#交[I]
 }
 
 class 指数运算 {

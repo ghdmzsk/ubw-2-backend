@@ -11,7 +11,7 @@ trait 底 {
 class 底Positive(tailI: () => 底, val head: Item) extends 底 {
   private lazy val tail: 底                 = tailI()
   override def 交(i: 容器): 自然数               = new 自然数Positive(tail.交(i), head)
-  override def 退位(i: 容器, t: 指数, n: 底): 自然数 = t.恢复(n, new 容器Positive(i, tail, t))
+  override def 退位(i: 容器, t: 指数, n: 底): 自然数 = t.指(n, new 容器Positive(i, tail, t))
 }
 class 底1(totalI: () => 底, val head: Item) extends 底 {
   private lazy val total: 底                = totalI()
@@ -21,7 +21,6 @@ class 底1(totalI: () => 底, val head: Item) extends 底 {
 
 trait 指数 {
   def 指(n: 底, i: 容器): 自然数
-  def 恢复(n1: 底, i: 容器): 自然数
 }
 
 object 指数 {
@@ -29,12 +28,10 @@ object 指数 {
 }
 
 class 指数Positive(tail: 指数) extends 指数 {
-  override def 指(n: 底, i: 容器): 自然数   = tail.指(n, new 容器Positive(i, n, tail))
-  override def 恢复(n1: 底, i: 容器): 自然数 = tail.恢复(n1, new 容器Positive(i, n1, tail))
+  override def 指(n: 底, i: 容器): 自然数 = tail.指(n, new 容器Positive(i, n, tail))
 }
 class 指数1 extends 指数 {
-  override def 指(n: 底, i: 容器): 自然数   = n.交(i)
-  override def 恢复(n1: 底, i: 容器): 自然数 = n1.交(i)
+  override def 指(n: 底, i: 容器): 自然数 = n.交(i)
 }
 
 trait 容器 {
