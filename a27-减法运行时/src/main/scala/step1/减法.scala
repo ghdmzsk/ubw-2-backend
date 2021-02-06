@@ -20,7 +20,11 @@ trait 被减数 extends 自然数 {
 }
 class 被减数Positive[Tail <: 被减数, Head](override val tail: Tail, override val head: Head) extends 被减数 with 自然数Positive[Tail, Head] {
   override type 被减[I <: 减数, T] = I#减[Tail]
-  override def 被减[I <: 减数, T](ii: 减数Positive[I, T]): I#减[Tail] = ii.tail.减(tail)
+  override def 被减[I <: 减数, T](ii: 减数Positive[I, T]): I#减[Tail] = {
+    val i1 = ii.tail
+    val i2 = this.tail
+    i1.减(i2)
+  }
 }
 class 被减数Zero extends 被减数 with 自然数Zero {
   override type 被减[I <: 减数, T] = 减数Positive[I, T]
