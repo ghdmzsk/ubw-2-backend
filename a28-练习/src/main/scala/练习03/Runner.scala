@@ -39,5 +39,4 @@ object Runner {
   类型匹配.i2(类型匹配.i1[除数值1#除[被除数值1], 商Positive[商Positive[商Positive[商Positive[商Zero]]]]])
   类型匹配.i2(类型匹配.i1[除数值3#除[被除数值1], 商Positive[商Positive[商Zero]]])
 
-
 }
