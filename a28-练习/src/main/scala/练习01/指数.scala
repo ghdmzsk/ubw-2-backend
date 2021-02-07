@@ -1,4 +1,4 @@
-package 练习1
+package 练习01
 
 trait 底 {
   type 交缠[T <: 太极] <: 自然数

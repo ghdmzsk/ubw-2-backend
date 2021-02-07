@@ -1,4 +1,4 @@
-package 练习1
+package 练习01
 
 object Runner {
 
