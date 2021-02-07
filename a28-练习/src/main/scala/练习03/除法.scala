@@ -4,7 +4,7 @@ trait 被除数 {
   type 被除[N <: 除数, Head] <: 商
 }
 class 被除数Positive[Tail <: 被除数, Head] extends 被除数 {
-  override type 被除[N <: 除数, Head] = N#除[Tail]
+  override type 被除[N <: 除数, H] = N#除[Tail]
 }
 class 被除数Zero extends 被除数 {
   override type 被除[N <: 除数, Head] = 商Zero
