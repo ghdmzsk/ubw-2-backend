@@ -27,17 +27,17 @@ object Runner {
     Item8
   ]
 
-  class 除数值2 extends 乘数Positive[乘数Positive[除数值3, Item9], Item10]
-  class 除数值3 extends 乘数Zero[除数值2]
+  class 除数值2 extends 除数Positive[除数Positive[除数值3, Item9], Item10]
+  class 除数值3 extends 除数Zero[除数值2]
 
-  class 除数值4 extends 乘数Positive[乘数Positive[乘数Positive[除数值5, Item9], Item10], Item11]
-  class 除数值5 extends 乘数Zero[除数值4]
+  class 除数值4 extends 除数Positive[除数Positive[除数Positive[除数值5, Item9], Item10], Item11]
+  class 除数值5 extends 除数Zero[除数值4]
 
-  class 除数值6 extends 乘数Positive[乘数Positive[乘数Positive[乘数Positive[除数值7, Item9], Item10], Item11], Item12]
-  class 除数值7 extends 乘数Zero[除数值6]
+  class 除数值6 extends 除数Positive[除数Positive[除数Positive[除数Positive[除数值7, Item9], Item10], Item11], Item12]
+  class 除数值7 extends 除数Zero[除数值6]
 
-  class 除数值8 extends 乘数Positive[乘数Positive[乘数Positive[乘数Positive[乘数Positive[除数值9, Item9], Item10], Item11], Item12], Item13]
-  class 除数值9 extends 乘数Zero[除数值8]
+  class 除数值8 extends 除数Positive[除数Positive[除数Positive[除数Positive[除数Positive[除数值9, Item9], Item10], Item11], Item12], Item13]
+  class 除数值9 extends 除数Zero[除数值8]
 
   类型匹配.i2(类型匹配.i1[除数值2#除[被除数值1], 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero]]]]])
   类型匹配.i2(类型匹配.i1[除数值4#除[被除数值1], 自然数Positive[自然数Positive[自然数Zero]]])

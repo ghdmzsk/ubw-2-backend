@@ -13,10 +13,10 @@ class 被除数Zero extends 被除数 {
 trait 除数 {
   type 除[T <: 被除数] <: 自然数
 }
-class 乘数Positive[Tail <: 除数, Head] extends 除数 {
+class 除数Positive[Tail <: 除数, Head] extends 除数 {
   override type 除[T <: 被除数] = T#被除[Tail, Head]
 }
-class 乘数Zero[Tail <: 除数] extends 除数 {
+class 除数Zero[Tail <: 除数] extends 除数 {
   override type 除[T <: 被除数] = 自然数Positive[Tail#除[T]]
 }
 
