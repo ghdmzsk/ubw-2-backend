@@ -16,10 +16,13 @@ object Runner {
   class Item8
 
   type T1[_] = 零
-  type 负数1   = 负数[({ type T7[T8] = 负数[T1, T8] })#T7, Item1]
-  type 负数2   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[T1, T5] })#T4, T3] })#T2, Item2]
-  type 负数3   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[({ type T6[_] = 负数[({ type T7[T8] = 负数[T1, T8] })#T7, Item1] })#T6, T5] })#T4, T3] })#T2, Item2]
-  type 负数4   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[({ type T6[_] = 负数1 })#T6, T5] })#T4, T3] })#T2, Item2]
+  type 负数1   = 负数[({ type T7[T8] = 负数[T1, T8] })#T7, Item7]
+  type 负数2   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[T1, T5] })#T4, T3] })#T2, Item8]
+  type 负数3   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[({ type T6[_] = 负数[({ type T7[T8] = 负数[T1, T8] })#T7, Item7] })#T6, T5] })#T4, T3] })#T2, Item8]
+  type 负数4   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[({ type T6[_] = 负数1 })#T6, T5] })#T4, T3] })#T2, Item8]
+  type 负数5   = 负数[T1, Item1]
+  type 负数6   = 负数[({ type T4[T5] = 负数[T1, T5] })#T4, Item7]
+  type 负数7   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[T1, T5] })#T4, Item7] })#T2, Item1]
 
   type 正数1 = 正数[零, Item1]
   type 正数2 = 正数[正数[零, Item1], Item2]
@@ -32,4 +35,9 @@ object Runner {
   i(new Tag[负数1#加[负数2]], new Tag[负数4])
   i(new Tag[负数3], new Tag[负数4])
 
+  i(new Tag[正数2#加[正数[正数[正数[零, Item3], Item4], Item5]]], new Tag[正数5])
+  i(new Tag[负数1#加[正数4]], new Tag[正数2])
+  i(new Tag[负数2#加[正数2]], new Tag[负数5])
+  i(new Tag[负数3#加[正数3]], new Tag[负数6])
+  i(new Tag[负数3#加[正数2]], new Tag[负数7])
 }
