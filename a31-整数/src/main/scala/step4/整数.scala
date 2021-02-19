@@ -5,8 +5,14 @@ trait 整数 {
   type 后继[T] <: 整数
 }
 
-class 正数零                  extends 整数
-class 正数[Tail <: 整数, Head] extends 整数
+class 正数零 extends 整数 {
+  override type 前驱    = 负数[({ type T1[I1] = 负数代理零 })#T1]#前驱
+  override type 后继[T] = 正数[正数零, T]
+}
+class 正数[Tail <: 整数, Head] extends 整数 {
+  override type 前驱    = Tail
+  override type 后继[T] = 正数[正数[Tail, Head], T]
+}
 
 class 负数[R[_] <: 负数容器] extends 整数 {
   override type 前驱    = 负数[({ type T1[I1] = 负数代理[R, I1] })#T1]
