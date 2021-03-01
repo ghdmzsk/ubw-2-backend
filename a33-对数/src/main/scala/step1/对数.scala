@@ -27,7 +27,6 @@ class 真数Zero[Reverse <: 真数] extends 真数 {
   override type 对[D <: 底, H]            = 对数Zero
   override type 被划圈[D <: 底, H, R <: 真数] = 对数Zero
   override type G点[D <: 底, T <: 真数]     = 对数Positive[D#深入[T]]
-
 }
 
 trait 对数
