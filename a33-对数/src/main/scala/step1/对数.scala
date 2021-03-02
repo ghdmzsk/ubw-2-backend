@@ -6,7 +6,7 @@ trait 底 {
 class 底Positive[Tail <: 底, Head] extends 底 {
   override type 划圈[T <: 真数, H, R1 <: 隐数, R2 <: 隐数] = T#被划圈[Tail, 隐数Positive[R1], R2]
 }
-class 底1[Tail <: 底] extends 底 {
+class 底2[Tail <: 底] extends 底 {
   override type 划圈[T <: 真数, H, R1 <: 隐数, R2 <: 隐数] = R2#G点[Tail, T, 隐数Positive[R1]]
 }
 
@@ -16,7 +16,7 @@ trait 真数 {
 class 真数Positive[Tail <: 真数, Head] extends 真数 {
   override type 被划圈[D <: 底, R1 <: 隐数, R2 <: 隐数] = D#划圈[Tail, Head, R1, R2]
 }
-class 真数Zero extends 真数 {
+class 真数1 extends 真数 {
   override type 被划圈[D <: 底, R1 <: 隐数, R2 <: 隐数] = 对数Zero
 }
 
@@ -27,7 +27,7 @@ class 隐数Positive[Tail <: 隐数] extends 隐数 {
   override type G点[D <: 底, T <: 真数, R <: 隐数] = T#被划圈[D, R, Tail]
 }
 class 隐数Zero extends 隐数 {
-  override type G点[D <: 底, T <: 真数, R <: 隐数] = 对数Positive[T#被划圈[D, 隐数Zero, R]]
+  override type G点[D <: 底, T <: 真数, R <: 隐数] = 对数Positive[T#被划圈[D, R, R]]
 }
 
 class log {
