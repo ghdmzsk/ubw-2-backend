@@ -1,6 +1,6 @@
 package step1
 
-object Runner {
+object Runner1 {
 
   class Tag[T]
 
@@ -39,9 +39,9 @@ object Runner {
   class Item31
   class Item32
   class Item33
-  class Item34
+  class Di1
 
-  class 底数2 extends 底Positive[底数1, Item34]
+  class 底数2 extends 底Positive[底数1, Di1]
   class 底数1 extends 底1[底数2]
 
   i(new Tag[log#run[底数2, 真数1]], new Tag[对数Zero])
