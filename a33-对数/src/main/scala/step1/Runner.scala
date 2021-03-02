@@ -39,8 +39,10 @@ object Runner {
   class Item31
   class Item32
   class Item33
+  class Item34
 
-  class 底数2 extends 底2[底数2]
+  class 底数2 extends 底Positive[底数1, Item34]
+  class 底数1 extends 底1[底数2]
 
   i(new Tag[log#run[底数2, 真数1]], new Tag[对数Zero])
 
