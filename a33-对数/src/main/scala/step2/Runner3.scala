@@ -36,10 +36,8 @@ object Runner3 {
     隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数10, Item3], Item2], Item1], Item3], Item2], Item1], Item3], Item2],
     Item1
   ], Item3]
-  type 隐数30 = 隐数Positive[隐数Positive[
-    隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数20, Item2], Item1], Item3], Item2], Item1], Item3], Item2], Item1],
-    Item3
-  ], Item2]
+  type 隐数26 = 隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数20, Item2], Item1], Item3], Item2], Item1], Item3]
+  type 隐数30 = 隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数20, Item2], Item1], Item3], Item2]
   type 隐数40 = 隐数Positive[隐数Positive[
     隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数30, Item1], Item3], Item2], Item1], Item3], Item2], Item1], Item3],
     Item2
@@ -52,6 +50,8 @@ object Runner3 {
     隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数50, Item2], Item1], Item3], Item2], Item1], Item3], Item2], Item1],
     Item3
   ], Item2]
-  i(new Tag[log#run[底数4, 指数Positive[指数Positive[指数1, Di1], Di2]]#Self], new Tag[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数60, Item1], Item3], Item2], Item1]])
-
+  i(
+    new Tag[log#run[底数4, 指数Positive[指数Positive[指数1, Di1], Di2]]#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T#T],
+    new Tag[隐数26]
+  )
 }

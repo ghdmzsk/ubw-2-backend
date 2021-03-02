@@ -24,7 +24,7 @@ trait 隐数 {
   type G点[D <: 底, T <: 指数, R <: 隐数] <: 隐数
 }
 class 隐数Positive[Tail <: 隐数, Head] extends 隐数 {
-  type Self                                  = 隐数Positive[Tail, Head]
+  type T                                     = Tail
   override type G点[D <: 底, T <: 指数, R <: 隐数] = D#划圈[T, R, Tail]
 }
 class 隐数1 extends 隐数 {
