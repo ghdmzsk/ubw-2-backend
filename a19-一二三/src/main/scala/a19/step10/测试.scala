@@ -1,10 +1,9 @@
 package a19.step10
 
-class 类型匹配[T]
+class Tag[T]
 
-object 类型匹配 {
-  def apply[T]                                              = new 类型匹配[T]
-  def apply[T](i: 类型匹配[T], ii: 类型匹配[T]): (类型匹配[T], 类型匹配[T]) = (i, ii)
+object Tag {
+  def apply[T] = new Tag[T]
 }
 
 class Item1
@@ -91,12 +90,13 @@ class Item81
 class Item82
 class Item83
 
-object 测试1 {
+object 测试2 {
+  def i[T](i: Tag[T], ii: Tag[T]): List[Tag[T]] = List(i, ii)
 
-  type jihjkhjih       = P_3_Step_2[Item1, Item2, S_2[Item3, Item4, Item5], S_0[Item6]]
+  type jihjkhjih       = M_0#Next[Item1]#Next[Item2]#Next[Item3]#Next[Item4]#Next[Item5]#Next[Item6]
   type nlhnjsnroewrnwe = jihjkhjih#Next[Item7]#Next[Item8]#Next[Item9]#Next[Item10]#Next[Item11]
-  type dfgdfgereter    = nlhnjsnroewrnwe#Next[Item12]#Next[Item13]#Next[Item14]#Next[Item15]#Next[Item16]#Next[Item17]
-  type rhgrtrbrbrtbrtg = dfgdfgereter#Next[Item18]#Next[Item19]#Next[Item20]#Next[Item21]#Next[Item22]#Next[Item23]#Next[Item24]#Next[Item25]#Next[Item26]#Next[
+  type dfgdfgereter    = nlhnjsnroewrnwe#Next[Item12]#Next[Item13]#Next[Item14]#Next[Item15]#Next[Item16]#Next[Item17]#Next[Item18]
+  type rhgrtrbrbrtbrtg = dfgdfgereter /*#Next[Item18]*/ #Next[Item19]#Next[Item20]#Next[Item21]#Next[Item22]#Next[Item23]#Next[Item24]#Next[Item25]#Next[Item26]#Next[
     Item27
   ]#Next[Item28]#Next[Item29]#Next[Item30]#Next[Item31]#Next[Item32]#Next[Item33]#Next[Item34]#Next[Item35]#Next[Item36]
 
@@ -109,22 +109,34 @@ object 测试1 {
   type r80 = r70#Next[Item71]#Next[Item72]#Next[Item73]#Next[Item74]#Next[Item75]#Next[Item76]#Next[Item77]#Next[Item78]#Next[Item79]#Next[Item80]
   type r83 = r80#Next[Item81]#Next[Item82]#Next[Item83]
 
-  类型匹配(类型匹配[nlhnjsnroewrnwe#_2_th], 类型匹配[Item2])
+  i(Tag[nlhnjsnroewrnwe#_1_th], Tag[Item1])
+  i(Tag[nlhnjsnroewrnwe#_2_th], Tag[Item2])
+  i(Tag[nlhnjsnroewrnwe#_1#_0_th], Tag[Item3])
+  i(Tag[nlhnjsnroewrnwe#_1#_1_th], Tag[Item4])
+  i(Tag[jihjkhjih#_1#_2_th], Tag[Item5])
+  i(Tag[jihjkhjih#_2#_0_th], Tag[Item6])
+  i(Tag[nlhnjsnroewrnwe#_2#_1_th], Tag[Item7])
+  i(Tag[nlhnjsnroewrnwe#_2#_2_th], Tag[Item8])
+  i(Tag[nlhnjsnroewrnwe#_1#_0#_0_th], Tag[Item9])
+  i(Tag[nlhnjsnroewrnwe#_1#_0#_1_th], Tag[Item10])
+  i(Tag[nlhnjsnroewrnwe#_1#_0#_2_th], Tag[Item11])
 
-  类型匹配(类型匹配[nlhnjsnroewrnwe#_1#_2_th], 类型匹配[Item5])
-  类型匹配(类型匹配[dfgdfgereter#_2#_1_th], 类型匹配[Item7])
+  i(Tag[nlhnjsnroewrnwe#_1#_2_th], Tag[Item5])
+  i(Tag[dfgdfgereter#_2#_1_th], Tag[Item7])
 
-  类型匹配(类型匹配[dfgdfgereter#_1#_2#_1_th], 类型匹配[Item16])
-  类型匹配(类型匹配[rhgrtrbrbrtbrtg#_1#_0#_2#_1_th], 类型匹配[Item34])
-  类型匹配(类型匹配[r50#_1#_2#_1#_2_th], 类型匹配[Item50])
-  类型匹配(类型匹配[r60#_2#_0#_2#_0_th], 类型匹配[Item60])
-  类型匹配(类型匹配[r70#_2#_1#_2#_1_th], 类型匹配[Item70])
-  类型匹配(类型匹配[r80#_2#_2#_2#_2_th], 类型匹配[Item80])
-  类型匹配(类型匹配[r83#_1#_0#_0#_0#_0_th], 类型匹配[Item81])
-  类型匹配(类型匹配[r83#_1#_0#_0#_0#_1_th], 类型匹配[Item82])
-  类型匹配(类型匹配[r83#_1#_0#_0#_0#_2_th], 类型匹配[Item83])
-  类型匹配(类型匹配[r83#_2#_0#_2#_0_th], 类型匹配[Item60])
-  类型匹配(类型匹配[r83#_2#_0#_2#_1_th], 类型匹配[Item61])
+  i(Tag[dfgdfgereter#_1#_2#_1_th], Tag[Item16])
+  i(Tag[dfgdfgereter#_1#_2#_2_th], Tag[Item17])
+  i(Tag[dfgdfgereter#_2#_0#_0_th], Tag[Item18])
+  // i(Tag[rhgrtrbrbrtbrtg#_1#_0#_2#_1_th], Tag[Item34])
+//  类型匹配(类型匹配[r50#_1#_2#_1#_2_th], 类型匹配[Item50])
+//  类型匹配(类型匹配[r60#_2#_0#_2#_0_th], 类型匹配[Item60])
+//  类型匹配(类型匹配[r70#_2#_1#_2#_1_th], 类型匹配[Item70])
+//  类型匹配(类型匹配[r80#_2#_2#_2#_2_th], 类型匹配[Item80])
+//  类型匹配(类型匹配[r83#_1#_0#_0#_0#_0_th], 类型匹配[Item81])
+//  类型匹配(类型匹配[r83#_1#_0#_0#_0#_1_th], 类型匹配[Item82])
+//  类型匹配(类型匹配[r83#_1#_0#_0#_0#_2_th], 类型匹配[Item83])
+//  类型匹配(类型匹配[r83#_2#_0#_2#_0_th], 类型匹配[Item60])
+//  类型匹配(类型匹配[r83#_2#_0#_2#_1_th], 类型匹配[Item61])
 
   def main(arr: Array[String]): Unit = {
     println("22")
