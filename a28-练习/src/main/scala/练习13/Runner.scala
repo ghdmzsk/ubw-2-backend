@@ -1,6 +1,6 @@
 package 练习13
 
-object Runner1 {
+object Runner {
 
   class Tag[T]
   def i[T](i1: Tag[T], i2: Tag[T]): List[Tag[T]] = List(i1, i2)
