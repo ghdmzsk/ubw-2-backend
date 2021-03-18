@@ -21,7 +21,7 @@ object 重组 {
 
   println("开始回溯")
 
-  class 情报体历史 extends HPositive[五十里中弹, HPositive[五十里流血, HPositive[五十里死亡准备, 重组]]]
+  class 情报体历史 extends HPositive[五十里准备中弹, HPositive[五十里中弹, HPositive[五十里流血, HPositive[五十里死亡准备, 重组]]]]
   class 重组    extends HPositive[五十里准备中弹, 情报体历史]
 
   type 改写后的五十里 = HPositive[五十里好好的, 情报体历史]
