@@ -14,7 +14,12 @@ object 重组 {
 
   type 后续事件 = HList
 
-  type 五十里1 = HPositive[五十里好好的, HPositive[五十里准备中弹, HPositive[五十里中弹, HPositive[五十里流血, HPositive[五十里死亡准备, 后续事件]]]]]
+  type 五十里1 = HPositive[五十里好好的, HPositive[五十里准备中弹, 后续事件]]
+  type 五十里2 = HPositive[五十里好好的, HPositive[五十里准备中弹, HPositive[五十里中弹, 后续事件]]]
+  type 五十里3 = HPositive[五十里好好的, HPositive[五十里准备中弹, HPositive[五十里中弹, HPositive[五十里流血, 后续事件]]]]
+  type 五十里4 = HPositive[五十里好好的, HPositive[五十里准备中弹, HPositive[五十里中弹, HPositive[五十里流血, HPositive[五十里死亡准备, 后续事件]]]]]
+
+  println("开始回溯")
 
   class 情报体历史 extends HPositive[五十里中弹, HPositive[五十里流血, HPositive[五十里死亡准备, 重组]]]
   class 重组    extends HPositive[五十里准备中弹, 情报体历史]
