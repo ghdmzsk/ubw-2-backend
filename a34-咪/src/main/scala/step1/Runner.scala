@@ -17,6 +17,17 @@ object Runner {
     val 指数3: 指数 = new 指数Positive(new 指数Positive(new 指数Positive(new 指数Zero)))
     val 咪2      = 指数3.指(new 底数1)
     println(咪2.length) // 咪(27)
+
+    val 指数2: 指数 = new 指数Positive(new 指数Positive(new 指数Zero))
+    val 咪3      = 指数2.指(new 底数1)
+    println(咪3.length) // 咪(9)
+
+    val 指数1: 指数 = new 指数Positive(new 指数Zero)
+    val 咪4      = 指数1.指(new 底数1)
+    println(咪4.length) // 咪(3)
+
+    val 咪5 = (new 指数Zero).指(new 底数1)
+    println(咪5.length) // 咪(1)
   }
 
 }
