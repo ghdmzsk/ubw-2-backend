@@ -67,5 +67,5 @@ class ZeroProduct extends Product {
   override val length: Int = 0
 }
 object Product {
-  def mutiply(t1: NumberT1, t2: NumberT2, t3: NumberT3): Product = t3.multiplyT3(t1, t2)
+  def multiply(t1: NumberT1, t2: NumberT2, t3: NumberT3): Product = t3.multiplyT3(t1, t2)
 }
