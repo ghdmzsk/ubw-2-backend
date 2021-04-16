@@ -1,4 +1,4 @@
-package 练习23
+package 练习24
 
 trait Summand {
   def length: Int

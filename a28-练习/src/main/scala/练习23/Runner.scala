@@ -3,11 +3,14 @@ package 练习23
 object Runner {
 
   def main(arr: Array[String]): Unit = {
-    val summand = Summand.fromInt(532)
-    val addend  = Addend.fromInt(35455)
-    val sum     = Summand.sum(summand, addend)
-    println(s"value1: ${532 + 35455}")
-    println(s"value2: ${sum.length}")
+    {
+      val t1 = NumberT1.fromInt(212)
+      val t2 = NumberT2.fromInt(33)
+      val t3 = NumberT3.fromInt(24)
+      val p  = Product.multiply(t1, t2, t3)
+      println(s"value: ${p.length}")
+      println(s"value: ${212 * 33 * 24}")
+    }
   }
 
 }
