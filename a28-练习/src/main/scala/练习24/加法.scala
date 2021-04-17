@@ -8,15 +8,7 @@ object Summand {
     case n1 if n1 > 0 => new PositiveSummand(fromInt(n1 - 1))
     case 0            => new ZeroSummand
   }
-  def sum(summand: Summand, addend: Addend) = addend.plus(summand)
 }
-class PositiveSummand(tail: Summand) extends Summand {
-  override def length: Int = tail.length + 1
-}
-class ZeroSummand extends Summand {
-  override def length: Int = 0
-}
-
 trait Addend {
   def plus(summand: Summand): Summand
 }
@@ -26,6 +18,17 @@ object Addend {
     case 0            => new ZeroAddend
   }
 }
+object Sum {
+  def sum(summand: Summand, addend: Addend): Summand = addend.plus(summand)
+}
+
+class PositiveSummand(tail: Summand) extends Summand {
+  override def length: Int = tail.length + 1
+}
+class ZeroSummand extends Summand {
+  override def length: Int = 0
+}
+
 class PositiveAddend(tail: Addend) extends Addend {
   override def plus(summand: Summand): Summand = new PositiveSummand(tail.plus(summand))
 }
