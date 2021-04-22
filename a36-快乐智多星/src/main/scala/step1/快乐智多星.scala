@@ -7,8 +7,8 @@ object NumberT1 {
   def fromInt(n: Int): NumberT1 = {
     def fromIntImpl(n1: Int, p: () => NumberT1): NumberT1 = {
       n1 match {
-        case n2 if n2 > 0 => new NumberT1Positive(fromIntImpl(n1 - 1, p))
-        case 0            => new NumberT1Zero(p)
+        case n2 if n2 > 1 => new NumberT1Positive(fromIntImpl(n1 - 1, p))
+        case 1            => new NumberT1Zero(p)
       }
     }
     def nn: NumberT1 = fromIntImpl(n, () => nn)
@@ -50,7 +50,7 @@ class NumberT2Positive(tail: NumberT2) extends NumberT2 {
   override def method2(t3: NumberT3, t1: NumberT1): NumberT4 = t1.method1(tail, t3)
 }
 class NumberT2One(tail: () => NumberT2) extends NumberT2 {
-  override def method2(t3: NumberT3, t1: NumberT1): NumberT4 = t1.method1(tail(), t3)
+  override def method2(t3: NumberT3, t1: NumberT1): NumberT4 = t3.method3(t1, tail())
 }
 class NumberT3Positive(tail: NumberT3) extends NumberT3 {
   override def method3(t1: NumberT1, t2: NumberT2): NumberT4 = t2.method2(tail, t1)
