@@ -35,8 +35,8 @@ trait NumberT3 {
 }
 object NumberT3 {
   def fromInt(n: Int): NumberT3 = n match {
-    case n1 if n1 > 0 => new NumberT3Positive(fromInt(n1 - 1))
-    case 0            => new NumberT3Zero
+    case n1 if n1 > 1 => new NumberT3Positive(fromInt(n1 - 1))
+    case 1            => new NumberT3Zero
   }
 }
 

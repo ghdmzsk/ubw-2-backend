@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a35-碧波千秋"
+name := "a36-快乐智多星"
