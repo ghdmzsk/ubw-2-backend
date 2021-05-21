@@ -2,11 +2,9 @@ package 练习05
 
 object Runner {
 
+  def i1[T1, T2]: (类型匹配[T1], 类型匹配[T2])            = (new 类型匹配[T1], new 类型匹配[T2])
+  def i2[T](i: (类型匹配[T], 类型匹配[T])): List[类型匹配[T]] = List(i._1, i._2)
   class 类型匹配[T]
-  object 类型匹配 {
-    def i1[T1, T2]: (类型匹配[T1], 类型匹配[T2])            = (new 类型匹配[T1], new 类型匹配[T2])
-    def i2[T](i: (类型匹配[T], 类型匹配[T])): List[类型匹配[T]] = List(i._1, i._2)
-  }
 
   class Item1
   class Item2
@@ -21,12 +19,12 @@ object Runner {
   class 乘数值2 extends 乘数Positive[乘数Positive[乘数值3, Item4], Item5]
   class 乘数值3 extends 乘数Zero[乘数值2]
 
-  类型匹配.i2(
-    类型匹配.i1[乘数值1#被乘[乘数值2], 自然数Positive[
-      自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item4, Item1], Item5, Item1], Item4, Item2], Item5, Item2], Item4, Item3],
-      Item5,
-      Item3
-    ]]
-  )
+  type 结果1 = 自然数Positive[
+    自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item4, Item1], Item5, Item1], Item4, Item2], Item5, Item2], Item4, Item3],
+    Item5,
+    Item3
+  ]
+
+  i2(i1[乘数值1#被乘[乘数值2], 结果1])
 
 }
