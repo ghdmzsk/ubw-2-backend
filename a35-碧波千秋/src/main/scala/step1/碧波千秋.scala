@@ -13,14 +13,14 @@ trait 底数中间 {
 class 底数被吃Positive[Tail <: 底数被吃] extends 底数被吃 {
   override type 被吃[T <: 底数吃, M <: 底数中间] = T#吃[M, Tail]
 }
-class 底数被吃1 extends 底数被吃 {
+class 底数被吃Zero extends 底数被吃 {
   override type 被吃[T <: 底数吃, M <: 底数中间] = 指数Zero
 }
 
 class 底数中间Positive[Tail <: 底数中间] extends 底数中间 {
   override type 中间[T <: 底数吃, B <: 底数被吃] = T#吃[Tail, B]
 }
-class 底数中间1[Tail <: 底数中间] extends 底数中间 {
+class 底数中间Zero[Tail <: 底数中间] extends 底数中间 {
   override type 中间[T <: 底数吃, B <: 底数被吃] = B#被吃[T, Tail]
 }
 
