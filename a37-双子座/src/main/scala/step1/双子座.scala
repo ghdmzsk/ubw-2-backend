@@ -55,3 +55,7 @@ class 阳商Positive[Tail <: 阳商, Head] extends 阳商 {
 class 阳商Zero extends 阳商 {
   override type 被降[T <: 被双子数, Y <: 圆数] = Y#升阴商[T, 阴商Zero]
 }
+
+class 双子运算 {
+  type 运算[T <: 被双子数, Y <: 圆数] = 阴商Zero#被降[T, Y]
+}
