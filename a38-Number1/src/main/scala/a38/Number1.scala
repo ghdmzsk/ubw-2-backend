@@ -17,12 +17,17 @@ case object Number4_Bottom_3 extends Number1
 
 object Number5 {
 
+  def pow(i1: Int, i2: Int): Int = i2 match {
+    case i3 if i3 > 1 => pow(i1, i3 - 1) * i1
+    case 1            => i1
+  }
+
   def value(num: Number1): Int = num match {
-    case Number3_1(tail)        => math.pow(3, len(tail)).toInt + value(tail)
-    case Number3_2(tail)        => math.pow(3, len(tail)).toInt * 2 + value(tail)
+    case Number3_1(tail)        => pow(3, len(tail)) + value(tail)
+    case Number3_2(tail)        => pow(3, len(tail)) * 2 + value(tail)
     case Number4_Middle_1(tail) => value(tail)
-    case Number4_Middle_2(tail) => math.pow(3, len(tail)).toInt + value(tail)
-    case Number4_Middle_3(tail) => math.pow(3, len(tail)).toInt * 2 + value(tail)
+    case Number4_Middle_2(tail) => pow(3, len(tail)) + value(tail)
+    case Number4_Middle_3(tail) => pow(3, len(tail)) * 2 + value(tail)
     case Number4_Bottom_1       => 0
     case Number4_Bottom_2       => 1
     case Number4_Bottom_3       => 2

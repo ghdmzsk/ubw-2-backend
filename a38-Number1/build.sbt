@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a38-双头龙"
+name := "a38-Number1"
