@@ -1,7 +1,10 @@
 package a38
 
+import scala.annotation.tailrec
+
 object Runner {
 
+  @tailrec
   def fromIntImpl(n: Int, num: Number1): Number1 = n match {
     case i if i > 0 => fromIntImpl(i - 1, Number5.method1(num))
     case 0          => num

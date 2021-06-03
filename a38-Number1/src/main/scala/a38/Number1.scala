@@ -1,5 +1,7 @@
 package a38
 
+import scala.annotation.tailrec
+
 case class Value(value: Int, literal: String)
 
 trait Number1
