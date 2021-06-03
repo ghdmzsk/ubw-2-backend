@@ -2,58 +2,43 @@ package a38
 
 case class Value(value: Int, literal: String)
 
-trait Number1 {
-  def value: Value
-}
+trait Number1
 
-case class Number3_1(tail: Number1) extends Number1 {
-  override def value: Value = {
-    val lit    = "1" + tail.value.literal
-    val length = Number5.len(tail)
-    Value(value = math.pow(3, length).toInt + tail.value.value, literal = lit)
-  }
-}
-case class Number3_2(tail: Number1) extends Number1 {
-  override def value: Value = {
-    val lit    = "2" + tail.value.literal
-    val length = Number5.len(tail)
-    Value(value = math.pow(3, length).toInt * 2 + tail.value.value, literal = lit)
-  }
-}
+case class Number3_1(tail: Number1) extends Number1
+case class Number3_2(tail: Number1) extends Number1
 
-case class Number4_Middle_1(tail: Number1) extends Number1 {
-  override def value: Value = {
-    val lit    = "0" + tail.value.literal
-    val length = Number5.len(tail)
-    Value(value = tail.value.value, literal = lit)
-  }
-}
-case class Number4_Middle_2(tail: Number1) extends Number1 {
-  override def value: Value = {
-    val lit    = "1" + tail.value.literal
-    val length = Number5.len(tail)
-    Value(value = math.pow(3, length).toInt + tail.value.value, literal = lit)
-  }
-}
-case class Number4_Middle_3(tail: Number1) extends Number1 {
-  override def value: Value = {
-    val lit    = "2" + tail.value.literal
-    val length = Number5.len(tail)
-    Value(value = math.pow(3, length).toInt * 2 + tail.value.value, literal = lit)
-  }
-}
+case class Number4_Middle_1(tail: Number1) extends Number1
+case class Number4_Middle_2(tail: Number1) extends Number1
+case class Number4_Middle_3(tail: Number1) extends Number1
 
-case object Number4_Bottom_1 extends Number1 {
-  override def value: Value = Value(value = 0, literal = "0")
-}
-case object Number4_Bottom_2 extends Number1 {
-  override def value: Value = Value(value = 1, literal = "1")
-}
-case object Number4_Bottom_3 extends Number1 {
-  override def value: Value = Value(value = 2, literal = "2")
-}
+case object Number4_Bottom_1 extends Number1
+case object Number4_Bottom_2 extends Number1
+case object Number4_Bottom_3 extends Number1
 
 object Number5 {
+
+  def value(num: Number1): Int = num match {
+    case Number3_1(tail)        => math.pow(3, len(tail)).toInt + value(tail)
+    case Number3_2(tail)        => math.pow(3, len(tail)).toInt * 2 + value(tail)
+    case Number4_Middle_1(tail) => value(tail)
+    case Number4_Middle_2(tail) => math.pow(3, len(tail)).toInt + value(tail)
+    case Number4_Middle_3(tail) => math.pow(3, len(tail)).toInt * 2 + value(tail)
+    case Number4_Bottom_1       => 0
+    case Number4_Bottom_2       => 1
+    case Number4_Bottom_3       => 2
+  }
+
+  def str(num: Number1): String = num match {
+    case Number3_1(tail)        => s"1${str(tail)}"
+    case Number3_2(tail)        => s"2${str(tail)}"
+    case Number4_Middle_1(tail) => s"0${str(tail)}"
+    case Number4_Middle_2(tail) => s"1${str(tail)}"
+    case Number4_Middle_3(tail) => s"2${str(tail)}"
+    case Number4_Bottom_1       => "0"
+    case Number4_Bottom_2       => "1"
+    case Number4_Bottom_3       => "2"
+  }
+
   def len(num: Number1): Int = num match {
     case Number3_1(tail)        => len(tail) + 1
     case Number3_2(tail)        => len(tail) + 1

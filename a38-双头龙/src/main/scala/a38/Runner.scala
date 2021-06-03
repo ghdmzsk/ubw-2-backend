@@ -10,7 +10,8 @@ object Runner {
 
   def main(arr: Array[String]): Unit = {
     for (i <- 0 to 200) {
-      println(fromInt(i).value)
+      val num = fromInt(i)
+      println(Value(value = Number5.value(num), literal = Number5.str(num)))
     }
   }
 
