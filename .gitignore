@@ -6,3 +6,7 @@ target
 /list/生/sbt.bat
 /list/死/sbt.bat
 /.bsp/
+.bloop/
+/.metals/
+/.vscode/
+metals.sbt
