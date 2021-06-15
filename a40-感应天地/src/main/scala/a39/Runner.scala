@@ -27,11 +27,12 @@ object Runner {
   val number2   = Number2Item1(Number2Item1(Number2Item1(Number2Zero)))
 
   def main(arr: Array[String]): Unit = {
-    println(number1_1.method1(number2).length)
-    println(number1_2.method1(number2).length)
-    println(number1_3.method1(number2).length)
-    println(number1_4.method1(number2).length)
-    println(number1_5.method1(number2).length)
+    println(Number1Zero.method1(number2).length) // 1
+    println(number1_1.method1(number2).length) // 4
+    println(number1_2.method1(number2).length) // 16
+    println(number1_3.method1(number2).length) // 64
+    println(number1_4.method1(number2).length) // 256
+    println(number1_5.method1(number2).length) // 1024
   }
 
 }
