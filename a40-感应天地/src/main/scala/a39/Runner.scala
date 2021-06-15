@@ -2,7 +2,7 @@ package a39
 
 object Runner {
 
-  case class Number2Item1(override val tail: Number2) extends Number2Positive {
+  case class Number2Item1(tail: Number2) extends Number2Positive {
     override def method2(number1: Number1, number2: Number2): Number3 = Number3Positive(
       tail.method2(number1, Number2Item1(Number2Item1(Number2Item1(Number2Item1(number2)))))
     )

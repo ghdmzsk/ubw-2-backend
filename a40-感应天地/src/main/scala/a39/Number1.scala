@@ -14,7 +14,6 @@ trait Number2 {
   def method2(number1: Number1, number2: Number2): Number3
 }
 trait Number2Positive extends Number2 {
-  def tail: Number2
   override def method2(number1: Number1, number2: Number2): Number3
 }
 case object Number2Zero extends Number2 {
