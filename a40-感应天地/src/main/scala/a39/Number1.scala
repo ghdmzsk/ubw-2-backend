@@ -1,7 +1,5 @@
 package a39
 
-case class Item(name: String)
-
 trait Number1 {
   def method1(number2: Number2): Number3
 }
