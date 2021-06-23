@@ -1,4 +1,4 @@
-package a40_test
+package c01
 
 trait Number1 {
   def method1: Number4
