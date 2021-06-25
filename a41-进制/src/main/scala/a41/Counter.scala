@@ -3,6 +3,7 @@ package a41
 case class Item(name: String)
 
 trait Number1 {
+  def apply(number8: Number8): Item = number8.method9(this)
   def method1(item: Item): Number1
 }
 trait Number2 {
@@ -26,9 +27,9 @@ trait Number7 {
 }
 
 case class Number1PSimple1(t1: Item) extends Number1 {
-  override def method1(item: Item): Number1 = Number2PSimple2(t1 = t1, t2 = item)
+  override def method1(item: Item): Number1 = Number1PSimple2(t1 = t1, t2 = item)
 }
-case class Number2PSimple2(t1: Item, t2: Item) extends Number1 {
+case class Number1PSimple2(t1: Item, t2: Item) extends Number1 {
   override def method1(item: Item): Number1 = Number1PSimple3(t1 = t1, t2 = t2, Number2Zero0(Number5Bottom0(item)))
 }
 case class Number1PSimple3(t1: Item, t2: Item, tail: Number2) extends Number1 {
