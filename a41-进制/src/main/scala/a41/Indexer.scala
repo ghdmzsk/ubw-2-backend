@@ -13,6 +13,17 @@ trait Number11 {
   def method13(number5: Number5): Item
 }
 
+trait Number12 {
+  self: Number9 =>
+  def _0 = Number9Middle0(this)
+  def _1 = Number9Middle1(this)
+  def _2 = Number9Middle2(this)
+
+  def _0_th = Number8P0(this)
+  def _1_th = Number8P1(this)
+  def _2_th = Number8P2(this)
+}
+
 case class Number8P0(tail: Number9) extends Number8 {
   override def method9(number1: Number1): Item = number1 match {
     case Number1PSimple3(_, _, t) => tail.method11(Number11Bottom0, t)
@@ -29,78 +40,40 @@ case class Number8P2(tail: Number9) extends Number8 {
   }
 }
 
-case class Number9Middle0(tail: Number9) extends Number9 {
-  def _0 = Number9Middle0(this)
-  def _1 = Number9Middle1(this)
-  def _2 = Number9Middle2(this)
-
-  def _0_th = Number8P0(this)
-  def _1_th = Number8P1(this)
-  def _2_th = Number8P2(this)
-
+case class Number9Middle0(tail: Number9) extends Number9 with Number12 {
   override def method11(number11: Number11, number2: Number2): Item = number2 match {
     case Number2PDeep3(_, _, t) => tail.method11(Number11Middle0(number11), t)
   }
 }
-case class Number9Middle1(tail: Number9) extends Number9 {
-  def _0 = Number9Middle0(this)
-  def _1 = Number9Middle1(this)
-  def _2 = Number9Middle2(this)
-
-  def _0_th = Number8P0(this)
-  def _1_th = Number8P1(this)
-  def _2_th = Number8P2(this)
-
+case class Number9Middle1(tail: Number9) extends Number9 with Number12 {
   override def method11(number11: Number11, number2: Number2): Item = number2 match {
     case Number2PDeep3(_, _, t) => tail.method11(Number11Middle1(number11), t)
   }
 }
-case class Number9Middle2(tail: Number9) extends Number9 {
-  def _0 = Number9Middle0(this)
-  def _1 = Number9Middle1(this)
-  def _2 = Number9Middle2(this)
-
-  def _0_th = Number8P0(this)
-  def _1_th = Number8P1(this)
-  def _2_th = Number8P2(this)
-
+case class Number9Middle2(tail: Number9) extends Number9 with Number12 {
   override def method11(number11: Number11, number2: Number2): Item = number2 match {
     case Number2PDeep3(_, _, t) => tail.method11(Number11Middle2(number11), t)
   }
 }
 
-class Number9Bottom1 extends Number9 {
-  def _0 = Number9Middle0(this)
-  def _1 = Number9Middle1(this)
-  def _2 = Number9Middle2(this)
-
-  def _0_th = Number8P0(this)
-  def _1_th = Number8P1(this)
-  def _2_th = Number8P2(this)
-
+class Number9Bottom1 extends Number9 with Number12 {
   override def method11(tail: Number11, number2: Number2): Item = Number10P1(tail).method12(number2)
 }
-class Number9Bottom2 extends Number9 {
-  def _0 = Number9Middle0(this)
-  def _1 = Number9Middle1(this)
-  def _2 = Number9Middle2(this)
-
-  def _0_th = Number8P0(this)
-  def _1_th = Number8P1(this)
-  def _2_th = Number8P2(this)
-
+class Number9Bottom2 extends Number9 with Number12 {
   override def method11(tail: Number11, number2: Number2): Item = Number10P2(tail).method12(number2)
 }
 
 case class Number10P1(tail: Number11) extends Number10 {
   override def method12(number2: Number2): Item = number2 match {
-    case Number2Zero0(t)    => tail.method13(t)
-    case Number2Zero1(t, _) => tail.method13(t)
+    case Number2Zero0(t)        => tail.method13(t)
+    case Number2Zero1(t, _)     => tail.method13(t)
+    case Number2PDeep3(t, _, _) => tail.method13(t)
   }
 }
 case class Number10P2(tail: Number11) extends Number10 {
   override def method12(number2: Number2): Item = number2 match {
-    case Number2Zero1(_, t) => tail.method13(t)
+    case Number2Zero1(_, t)     => tail.method13(t)
+    case Number2PDeep3(_, t, _) => tail.method13(t)
   }
 }
 

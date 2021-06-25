@@ -2,8 +2,12 @@ package a41
 
 case class Item(name: String)
 
-trait Number1 {
+trait Number13 {
+  self: Number1 =>
   def apply(number8: Number8): Item = number8.method9(this)
+}
+
+trait Number1 extends Number13 {
   def method1(item: Item): Number1
 }
 trait Number2 {
@@ -59,7 +63,7 @@ case class Number4Zero0(n0: Number5, tail: Number3) extends Number4 {
   def method4(item: Item): Number1 = n0.method5(Number7Bottom0(tail = tail), item)
 }
 case class Number4Zero1(n0: Number5, n1: Number5, tail: Number3) extends Number4 {
-  def method4(item: Item): Number1 = n0.method5(Number7Bottom1(n0 = n0, tail = tail), item)
+  def method4(item: Item): Number1 = n1.method5(Number7Bottom1(n0 = n0, tail = tail), item)
 }
 
 case class Number5Middle0(n0: Number5) extends Number5 {
@@ -111,5 +115,5 @@ case class Number7Bottom0(tail: Number3) extends Number7 {
 }
 case class Number7Bottom1(n0: Number5, tail: Number3) extends Number7 {
   override def method7(number5: Number5): Number1                = tail.method3(Number2Zero1(n0, number5))
-  override def method8(number5: Number5, item: Number5): Number1 = tail.method3(Number2PDeep3(n0, number5, Number2Zero0(item)))
+  override def method8(number5: Number5, item: Number5): Number1 = tail.method3(Number2PDeep3(n0, number5, Number2Zero0(Number5Middle0(item))))
 }
