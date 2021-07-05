@@ -3,6 +3,15 @@ package step1
 case class Item(name: String)
 
 trait Number1 {
+  def send(item: Item): Number2
+  def end: Number2
+}
+
+trait Number2
+case class Number2Positive(tail: Number2, head: Item) extends Number2
+case class Number2Zero extends Nubmer2
+
+trait Number1 {
   def produce(number2: Number2): Number1
 }
 case class Number1Positive(tail: Number1, head: Item) extends Number1 {
@@ -22,3 +31,5 @@ case class Number2Zero(next: Number2) extends Number2 {
   def append = next.end
   def end    = next.end
 }
+
+println(new Number2 { })
