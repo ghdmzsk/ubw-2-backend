@@ -37,6 +37,9 @@ object Runner extends App {
   )
 
   println(count1.run)
+  // ((((((((((((Zero, Item01), Item02), Item03), Item04), Item05), Item06), Item07), Item08), Item09), Item10), Item11), Item12)
+
   println(count2.run)
+  // ((((((((((Zero, Item01), Item02), Item03), Item04), Item05), Item06), Item07), Item08), Item09), Item10)
 
 }
