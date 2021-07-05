@@ -4,10 +4,14 @@ trait Number1 {
   def send(item: Item): Number2
   def end: Number2
 }
+case object Number1Zero {
+  def send(item: Item): Number2
+  def end: Number2
+}
 
 trait Number2
 case class Number2Positive(tail: Number2, head: Item) extends Number2
-case class Number2Zero extends Nubmer2
+case object Number2Zero extends Nubmer2
 
 trait Number3 extends Number1 {
   override def send(item: Item): Number2
@@ -17,13 +21,13 @@ case class Number3Outter(tail: Number3, head: Item, next: Number1) extends Numbe
   override def send(item: Item): Number2
   override def end: Number2
 }
-case class Number1Inner(tail: Number3, head: Item) extends Number3 {
+case class Number3Inner(tail: Number3, head: Item) extends Number3 {
   override def send(item: Item): Number2
   override def end: Number2
 }
-trait Nubmer1Zero extends Number1 {
+trait Nubmer3Zero extends Number1 {
   override def send(item: Item): Number2
-  override def end: Number2
+  override def end: Number2 = Number2Zero
 }
 
 trait Number2
