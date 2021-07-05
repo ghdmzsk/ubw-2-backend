@@ -27,27 +27,33 @@ case object Nubmer3Zero extends Number3 {
 }
 
 trait Number4 extends Number1 {
-  override def send(item: Item): Number2
-  override def end: Number2
+  override def send(item: Item, monad3: Monad3): Number2
+  override def end(monad4: Monad4): Number2
 }
 case class Number4Outter(tail: Number3, head: Item, next: Number1) extends Number4 {
-  override def send(item: Item, monad1: Monad1): Number2 = 
-  override def end: Number2
+  override def send(item: Item, monad3: Monad3): Number2 = 
+  override def end(monad4: Monad4): Number2
 }
 case class Number4Positive(tail: Number2, head: Item) extends Number4 {
-  override def send(item: Item, monad1: Monad1): Number2 = 
-  override def end: Number2
+  override def send(item: Item, monad3: Monad3): Number2 = 
+  override def end(monad4: Monad4): Number2
 }
 case class Number4Zero(next: Number2) extends Number4 {
-  override def send(item: Item): Number2
-  override def end: Number2
+  override def send(item: Item, monad3: Monad3): Number2
+  override def end(monad4: Monad4): Number2
 }
 
 trait Monad1
 
-trait Monad3 extends Monad1
-case class Monad3Positive(tail: Monad1) extends Monad3
-case class Monad3Zero extends Monad3
+trait Monad3 extends Monad1 {
+  def next(monad4: Monad4): Number2
+}
+case class Monad3Positive(tail: Monad1) extends Monad3 {
+  def next(monad4: Monad4): Number2
+}
+case class Monad3Zero extends Monad3 {
+  def next(monad4: Monad4): Number2
+}
 
 trait Monad4 extends Monad1
 case class Monad4Positive(tail: Monad1) extends Monad4
