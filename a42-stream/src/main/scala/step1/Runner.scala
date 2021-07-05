@@ -21,11 +21,22 @@ object Runner extends App {
   val number4 = PlusNumberPositive(PlusNumberZero, item10)
   val number5 = PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item11), item12)
 
-  val count = ReverseStreamPositive(
+  val count1 = ReverseStreamPositive(
     ReverseStreamPositive(ReverseStreamPositive(ReverseStreamPositive(ReverseStreamPositive(ReverseStreamZero, number1), number2), number3), number4),
     number5
   )
 
-  println(count.run)
+  val number6 = MinusNumberPositive(MinusNumberPositive(MinusNumberZero))
+
+  val count2 = ReverseStreamPositive(
+    ReverseStreamPositive(
+      ReverseStreamPositive(ReverseStreamPositive(ReverseStreamPositive(ReverseStreamPositive(ReverseStreamZero, number1), number2), number3), number5),
+      number6
+    ),
+    number4
+  )
+
+  println(count1.run)
+  println(count2.run)
 
 }

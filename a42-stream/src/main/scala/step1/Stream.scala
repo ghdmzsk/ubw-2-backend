@@ -38,6 +38,19 @@ case object PlusNumberZero extends PlusNumber {
   override def reverse(stream: Stream, reverseStream: ReverseStream): Number2 = reverseStream.reverse(stream)
 }
 
+trait MinusNumber extends Number with ReverseNumber {
+  override def next(stream: Stream, reverseStream: ReverseStream, item: Item): Number2
+  override def reverse(stream: Stream, reverseStream: ReverseStream): Number2
+}
+case class MinusNumberPositive(tail: MinusNumber) extends Number with MinusNumber {
+  override def next(stream: Stream, reverseStream: ReverseStream, item: Item): Number2 = reverseStream.reverse(StreamPositive(stream, tail))
+  override def reverse(stream: Stream, reverseStream: ReverseStream): Number2          = reverseStream.reverse(StreamPositive(stream, MinusNumberPositive(tail)))
+}
+case object MinusNumberZero extends Number with MinusNumber {
+  override def next(stream: Stream, reverseStream: ReverseStream, item: Item): Number2 = stream.next(reverseStream, item)
+  override def reverse(stream: Stream, reverseStream: ReverseStream): Number2          = reverseStream.reverse(stream)
+}
+
 trait Stream {
   def next(reverseStream: ReverseStream, item: Item): Number2
 }
