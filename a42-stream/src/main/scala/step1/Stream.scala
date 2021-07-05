@@ -10,7 +10,7 @@ trait ReverseNumber {
   def reverse(stream: Stream, reverseStream: ReverseStream): Number2
 }
 
-trait Number2 {}
+trait Number2
 case class Number2Positive(tail: Number2, head: Item) extends Number2 {
   override def toString: String = s"(${tail}, ${head.name})"
 }
