@@ -16,7 +16,7 @@ object Runner extends App {
   val item12 = Item("Item12")
 
   def minusFromNum(n: Int): MinusNumber = n match {
-    case i if i > 0 => MinusNumberPositive(minusFromNum(n - 1))
+    case i if i > 0 => MinusNumberPositive(minusFromNum(i - 1))
     case 0          => MinusNumberZero
   }
 
