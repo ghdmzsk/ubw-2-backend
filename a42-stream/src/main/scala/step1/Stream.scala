@@ -1,5 +1,3 @@
-package step1
-
 case class Item(name: String)
 
 trait Number1 {
@@ -11,14 +9,21 @@ trait Number2
 case class Number2Positive(tail: Number2, head: Item) extends Number2
 case class Number2Zero extends Nubmer2
 
-trait Number1 {
-  def produce(number2: Number2): Number1
+trait Number3 extends Number1 {
+  override def send(item: Item): Number2
+  override def end: Number2
 }
-case class Number1Positive(tail: Number1, head: Item) extends Number1 {
-  override def produce(number2: Number2): Number1 = number2.append(head)
+case class Number3Outter(tail: Number3, head: Item, next: Number1) extends Number3 {
+  override def send(item: Item): Number2
+  override def end: Number2
+}
+case class Number1Inner(tail: Number3, head: Item) extends Number3 {
+  override def send(item: Item): Number2
+  override def end: Number2
 }
 trait Nubmer1Zero extends Number1 {
-  override def produce(number2: Number2): Number1 = number2.end
+  override def send(item: Item): Number2
+  override def end: Number2
 }
 
 trait Number2
