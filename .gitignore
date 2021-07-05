@@ -1,9 +1,12 @@
-*target
-*.idea
-/logs
+target
+/.idea/
 /sbt
 /sbt.bat
 /sbt-launch.jar
 /list/生/sbt.bat
 /list/死/sbt.bat
-/.bsp
+/.bsp/
+.bloop/
+/.metals/
+/.vscode/
+metals.sbt
