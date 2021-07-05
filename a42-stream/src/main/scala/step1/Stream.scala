@@ -46,7 +46,11 @@ case class Number4Zero(next: Number2) extends Number4 {
 trait Monad1
 
 trait Monad3 extends Monad1
-case class Monad3Positive extends Monad3
+case class Monad3Positive(tail: Monad1) extends Monad3
 case class Monad3Zero extends Monad3
+
+trait Monad4 extends Monad1
+case class Monad4Positive(tail: Monad1) extends Monad4
+case class Monad4Zero extends Monad4
 
 println(new Number2 { })
