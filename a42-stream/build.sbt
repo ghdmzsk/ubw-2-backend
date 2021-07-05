@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a37-stream"
+name := "a42-stream"

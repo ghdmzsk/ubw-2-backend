@@ -63,4 +63,3 @@ val a39 = project in (rootDir / "a39-双头龙")
 val a40 = project in (rootDir / "a40-感应天地")
 val a41 = project in (rootDir / "a41-进制")
 val a42 = project in (rootDir / "a42-stream")
-
