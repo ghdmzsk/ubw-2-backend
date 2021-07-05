@@ -18,16 +18,6 @@ case object ResultZero extends Result {
   override def toString: String = "Zero"
 }
 
-trait FirstNumber extends ReverseNumber {
-  override def reverse(stream: Stream, reverseStream: ReverseStream): Result
-}
-case class FirstNumberPositive(tail: FirstNumber, head: Item) extends FirstNumber {
-  override def reverse(stream: Stream, reverseStream: ReverseStream): Result = stream.next(ReverseStreamPositive(reverseStream, tail), head)
-}
-case object FirstNumberZero extends FirstNumber {
-  override def reverse(stream: Stream, reverseStream: ReverseStream): Result = reverseStream.reverse(stream)
-}
-
 trait PlusNumber extends ReverseNumber {
   override def reverse(stream: Stream, reverseStream: ReverseStream): Result
 }

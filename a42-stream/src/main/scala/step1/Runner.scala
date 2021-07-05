@@ -20,7 +20,7 @@ object Runner extends App {
     case 0          => MinusNumberZero
   }
 
-  val number1 = FirstNumberPositive(FirstNumberPositive(FirstNumberPositive(FirstNumberZero, item01), item02), item03)                         // 3
+  val number1 = PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item01), item02), item03)                             // +3
   val number2 = PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item04), item05), item06), item07) // + 4
   val number3 = PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item08), item09)                                                         // + 2
   val number4 = PlusNumberPositive(PlusNumberZero, item10)                                                                                     // + 1
