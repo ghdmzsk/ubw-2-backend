@@ -56,8 +56,11 @@ trait ReverseStream {
 }
 case class ReverseStreamPositive(tail: ReverseStream, reverseNumber: ReverseNumber) extends ReverseStream {
   override def reverse(stream: Stream): Result = reverseNumber.reverse(stream, tail)
-  def run: Result                              = reverse(StreamZero)
 }
 case object ReverseStreamZero extends ReverseStream {
   override def reverse(stream: Stream): Result = ResultZero
+}
+
+object Num {
+  def run(reverseStream: ReverseStream): Result = reverseStream.reverse(StreamZero)
 }
