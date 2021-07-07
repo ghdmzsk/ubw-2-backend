@@ -15,4 +15,10 @@ object Runner extends App {
   val item11 = Item("Item11")
   val item12 = Item("Item12")
 
+  val number1 = PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item01), item02), item03)
+  val number2 = PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item04), item05), item06), item07), item08)
+  val number3 = MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberZero)))
+  println(number1.相冲(number2))
+  println(number2.交缠(number3))
+
 }
