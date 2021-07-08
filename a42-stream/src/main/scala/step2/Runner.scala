@@ -17,8 +17,9 @@ object Runner extends App {
 
   val number1 = PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item01), item02), item03)
   val number2 = PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item04), item05), item06), item07), item08)
-  val number3 = MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberZero)))
-  println(number1.相冲(number2))
-  println(number2.交缠(number3))
+  // val number3 = MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberZero)))
+  // println(number1.计算)
+  // println(number2.计算)
+  println(被动消耗Positive(被动消耗Positive(被动消耗Zero, number1), number2).计算)
 
 }
