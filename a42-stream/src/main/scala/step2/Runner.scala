@@ -61,4 +61,13 @@ object Runner extends App {
   println(count5.向左计算)
   // (((((Zero, Item(Item01)), Item(Item02)), Item(Item03)), Item(Item04)), Item(Item05))
 
+  val count6 = 被动消耗Positive(
+    被动消耗Positive(被动消耗Positive(被动消耗Zero, number1), 被动消耗Positive(被动消耗Positive(被动消耗Zero, number2), number4)),
+    被动消耗Positive(被动消耗Positive(被动消耗Zero, number3), number4)
+  )
+  // 3 + (5 - 3) + (4 - 3) = 5
+
+  println(count6.向左计算)
+  // (((((((Zero, Item(Item01)), Item(Item02)), Item(Item03)), Item(Item04)), Item(Item05)), Item(Item09))
+
 }
