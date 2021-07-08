@@ -59,8 +59,8 @@ trait 主动消耗 extends 数
 case class 主动消耗Positive(主动消耗Tail: 数, 计算数: 数) extends 主动消耗 {
   override def 向左走(被动消耗: 数): Result             = 计算数.向左走(都套大壳(被动消耗, 主动消耗Tail))
   override def 向右走(被动消耗: 数, item: Item): Result = 计算数.向右走(都套大壳(被动消耗, 主动消耗Tail), item)
-  override def 向左计算: Result                     = 向左走(被动消耗Zero)
-  override def 向右计算(item: Item): Result         = 向右走(被动消耗Zero, item)
+  override def 向左计算: Result                     = 计算数.向左走(都套大壳(被动消耗Zero, 主动消耗Tail))
+  override def 向右计算(item: Item): Result         = 计算数.向右走(都套大壳(被动消耗Zero, 主动消耗Tail), item)
 }
 case object 主动消耗Zero extends 主动消耗 {
   override def 向左走(被动消耗: 数): Result             = 被动消耗.向左计算
@@ -73,8 +73,8 @@ trait 被动消耗 extends 数
 case class 被动消耗Positive(被动消耗Tail: 数, 计算数: 数) extends 被动消耗 {
   override def 向左走(主动消耗: 数): Result             = 计算数.向左走(都套大壳(被动消耗Tail, 主动消耗))
   override def 向右走(主动消耗: 数, item: Item): Result = 计算数.向右走(都套大壳(被动消耗Tail, 主动消耗), item)
-  override def 向左计算: Result                     = 向左走(主动消耗Zero)
-  override def 向右计算(item: Item): Result         = 向右走(主动消耗Zero, item)
+  override def 向左计算: Result                     = 计算数.向左走(都套大壳(被动消耗Tail, 主动消耗Zero))
+  override def 向右计算(item: Item): Result         = 计算数.向右走(都套大壳(被动消耗Tail, 主动消耗Zero), item)
 }
 case object 被动消耗Zero extends 被动消耗 {
   override def 向左走(主动消耗: 数): Result             = 主动消耗.向左计算
