@@ -63,7 +63,7 @@ object Runner extends App {
 
   val count6 = 被动消耗Positive(
     被动消耗Positive(被动消耗Positive(被动消耗Zero, number1), 被动消耗Positive(被动消耗Positive(被动消耗Zero, number2), number4)),
-    被动消耗Positive(被动消耗Positive(被动消耗Zero, number3), number4)
+    被动消耗Positive(被动消耗Positive(被动消耗Zero, number3), MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(number5))))
   )
   // 3 + (5 - 3) + (4 - 3) = 5
 
