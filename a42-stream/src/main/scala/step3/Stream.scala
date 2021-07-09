@@ -70,8 +70,8 @@ trait MinusNumber extends 法 {
 case class MinusNumberPositive(tail: MinusNumber, head: Item) extends MinusNumber {
   override def 向左走(number: 壳, item: Item): Result = number.向左走(this, item)
   override def 向左无害(number: 壳): Result            = number.向左无害(this)
-  override def 向右走(number: 壳, item: Item): Result = number.向左走(tail, head)
-  override def 向右无害(number: 壳): Result            = number.向左无害(tail)
+  override def 向右走(number: 壳, item: Item): Result = number.向左无害(tail)
+  override def 向右无害(number: 壳): Result            = number.向左走(tail, head)
   override def toString: String                   = s"减正($tail)"
 }
 case object MinusNumberZero extends MinusNumber {
