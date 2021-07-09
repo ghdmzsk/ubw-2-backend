@@ -1,4 +1,4 @@
-package step2
+package step3
 
 object Runner extends App {
 
@@ -68,9 +68,7 @@ object Runner extends App {
     被动消耗Positive(被动消耗Positive(被动消耗Zero, number3), MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(number5, itemX), itemX), itemX))
   )*/
 
-  val count6 =
-    被动消耗Positive(被动消耗Positive(被动消耗Positive(被动消耗Zero, number1), number2), MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(number5, itemX), itemX), itemX))
-
+  val count6 = 被动消耗Positive(被动消耗Positive(被动消耗Positive(被动消耗Zero, number1), number2), number5)
   // 3 + (5 - 3) + (4 - 8) = 5
 
   println(count6.向左无害计算)
