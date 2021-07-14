@@ -16,4 +16,12 @@ object Runner extends App {
   val item11 = Item("Item11")
   val item12 = Item("Item12")
 
+  val number1 = 加法正(加法正(加法正(加法正(加法零, item01), item02), item03), item04)
+  val number2 = 加法正(加法正(加法正(加法零, item05), item06), item07)
+
+  val l = 黑左正右正(number2, number1)
+
+  println(Number.count(l))
+  // (((((((Zero, Item01), Item02), Item03), Item04), Item05), Item06), Item07)
+
 }
