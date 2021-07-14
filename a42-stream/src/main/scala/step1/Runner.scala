@@ -34,7 +34,7 @@ object Runner extends App {
   )
   // 3 + 4 + 2 + 1 + 2 = 12
 
-  println(count1.run)
+  println(Num.run(count1))
   // ((((((((((((Zero, Item01), Item02), Item03), Item04), Item05), Item06), Item07), Item08), Item09), Item10), Item11), Item12)
 
   val count2 = ReverseStreamPositive(
@@ -46,7 +46,7 @@ object Runner extends App {
   )
   // 3 + 4 + 2 + 2 - 2 + 1 = 10
 
-  println(count2.run)
+  println(Num.run(count2))
   // ((((((((((Zero, Item01), Item02), Item03), Item04), Item05), Item06), Item07), Item08), Item09), Item10)
 
   val count3 = ReverseStreamPositive(
@@ -73,7 +73,7 @@ object Runner extends App {
   )
   // 3 + 4 + 2 + 2 + 2 + 2 + 2 + 2 - 200 + 1 + 2 = 3
 
-  println(count3.run)
+  println(Num.run(count3))
   // (((Zero, Item10), Item11), Item12)
 
   val count4 = ReverseStreamPositive(
@@ -85,7 +85,7 @@ object Runner extends App {
   )
   // 3 + 4 + 2 + 2 + 1 - 200 = 0
 
-  println(count4.run)
+  println(Num.run(count4))
   // Zero
 
 }
