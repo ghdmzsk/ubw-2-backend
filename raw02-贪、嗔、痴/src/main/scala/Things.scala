@@ -56,7 +56,7 @@ class 事情结果 extends 事物表象 {
   override type 首 = 结果
   override type 尾 = 事情结果
 
-  override protected def 首: 结果 = 结果.value
+  override protected def 首: 结果   = 结果.value
   override protected def 尾: 事情结果 = self
 
   override type 叠加顺境[II] = 顺境[II, 事情结果]
@@ -76,8 +76,7 @@ object 事情结果 {
   val value: 事情结果 = new 事情结果
 }
 
-class 顺境[H, T <: 事物表象](override protected val 首: H, override protected val 尾: T)
-    extends 事物表象 {
+class 顺境[H, T <: 事物表象](override protected val 首: H, override protected val 尾: T) extends 事物表象 {
   self =>
   override type 首 = H
   override type 尾 = T
@@ -95,9 +94,7 @@ class 顺境[H, T <: 事物表象](override protected val 首: H, override prote
   override def 推进事情: T = 尾
 }
 
-class 逆境开始[H, T <: 事物表象](override protected val 首: H,
-                         override protected val 尾: T)
-    extends 逆境 {
+class 逆境开始[H, T <: 事物表象](override protected val 首: H, override protected val 尾: T) extends 逆境 {
   self =>
   override type 首 = H
   override type 尾 = T
@@ -122,8 +119,7 @@ class 逆境开始[H, T <: 事物表象](override protected val 首: H,
 
 }
 
-class 逆境过程[H, T <: 逆境](override protected val 首: H, override protected val 尾: T)
-    extends 逆境 {
+class 逆境过程[H, T <: 逆境](override protected val 首: H, override protected val 尾: T) extends 逆境 {
   self =>
   override type 首 = H
   override type 尾 = T
@@ -147,9 +143,7 @@ class 逆境过程[H, T <: 逆境](override protected val 首: H, override prote
   override def 推进逆境: T#逆流而上[H] = 尾.逆流而上(首)
 }
 
-class 困境1[H, T <: 事物表象](override protected val 首: H,
-                        override protected val 尾: T)
-    extends 事物表象 {
+class 困境1[H, T <: 事物表象](override protected val 首: H, override protected val 尾: T) extends 事物表象 {
   self =>
   override type 首 = H
   override type 尾 = T

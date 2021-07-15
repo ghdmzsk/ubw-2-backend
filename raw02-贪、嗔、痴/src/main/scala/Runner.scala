@@ -1,5 +1,3 @@
-import shapeless._
-
 object Runner extends App {
 
   class I1
