@@ -16,8 +16,15 @@ trait 黑树 {
   def 计算: Result
 }
 
+case class BlackTree(left: Number1, f: 法, right: Number1) extends 黑树 {
+  override def 计算: Result = f.计算(双白树(left = left, right = right))
+}
+
 trait 白树 {
   def 向右获取(tree: 法): Result
+}
+case class 双白树(left: Number1, right: Number1) extends 白树 {
+  override def 向右获取(tree: 法): Result = 
 }
 
 trait 法 {
