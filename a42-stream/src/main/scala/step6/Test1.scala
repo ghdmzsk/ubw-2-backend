@@ -1,3 +1,5 @@
+package step6
+
 case class Item(name: String)
 
 trait Result

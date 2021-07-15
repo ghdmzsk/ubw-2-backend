@@ -4,6 +4,8 @@ addCommandAlias("fmt", "all scalafmtSbt")
 
 val rootDir = file(".")
 
+val law01 = project in rootDir / "law01-香火、圣火与传承"
+
 val file_a01 = rootDir / "a01-整数加法"
 val a01_1    = project in (file_a01 / "错误代码1")
 val a01_2    = project in (file_a01 / "正确代码1")
