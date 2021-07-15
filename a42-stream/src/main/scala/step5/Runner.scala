@@ -1,6 +1,6 @@
 package step5
 
-object Runner extends App {
+object Runner {
 
   val itemX  = Item("ItemX")
   val item01 = Item("Item01")
@@ -22,13 +22,48 @@ object Runner extends App {
   val number4 = 加法正(加法零, item12)
 
   val l1 = 黑左正右正(number2, number1)
-
-  println(Number.count(l1))
-  // (((((((Zero, Item01), Item02), Item03), Item04), Item05), Item06), Item07)
-
   val l2 = 黑左树右正(黑左树右正(黑左正右正(number4, number3), number2), number1)
 
-  println(Number.count(l2))
-  // ((((((((((((Zero, Item01), Item02), Item03), Item04), Item05), Item06), Item07), Item08), Item09), Item10), Item11), Item12)
+  def main(arr: Array[String]): Unit = {
+    {
+      val result1 = Number.count(l1)
+      println("result1: " + result1)
+      assert(
+        result1 == ResultPositive(
+          ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultZero, item01), item02), item03), item04), item05), item06),
+          item07
+        )
+      )
+    }
+
+    {
+      val result2 = Number.count(l2)
+      println("result2: " + result2)
+      assert(
+        result2 == ResultPositive(
+          ResultPositive(
+            ResultPositive(
+              ResultPositive(
+                ResultPositive(
+                  ResultPositive(
+                    ResultPositive(
+                      ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultZero, item01), item02), item03), item04), item05),
+                      item06
+                    ),
+                    item07
+                  ),
+                  item08
+                ),
+                item09
+              ),
+              item10
+            ),
+            item11
+          ),
+          item12
+        )
+      )
+    }
+  }
 
 }
