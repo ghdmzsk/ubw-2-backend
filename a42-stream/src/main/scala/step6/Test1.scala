@@ -1,1 +1,3 @@
-123
+trait 法 {
+  sdfsdfsdf
+}
