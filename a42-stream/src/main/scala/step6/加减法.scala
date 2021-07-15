@@ -37,8 +37,8 @@ case class 右白树(right: Number1) extends 白树 {
   override def 向左获取(f: 向左法): Result = f.左侧没有反馈(this)
 }
 case object 空树 extends 白树 {
-  override def 向右获取(f: 向右法): Result = f.右侧没有反馈(空树)
-  override def 向左获取(f: 向左法): Result = f.左侧没有反馈(空树)
+  override def 向右获取(f: 向右法): Result = ResultZero
+  override def 向左获取(f: 向左法): Result = ResultZero
 }
 
 trait 法半树 {
@@ -75,18 +75,18 @@ case object 加法 extends 向左法 with 向右法 {
   override def 右侧反馈(tree: 白树, item: Item): Result = ResultP(tree.向右获取(加法), item)
   override def 右侧没有反馈(tree: 白树): Result           = tree.向左获取(加法)
   override def 左侧反馈(tree: 白树, item: Item): Result = ResultP(tree.向左获取(加法), item)
-  override def 左侧没有反馈(tree: 白树): Result           = ResultZero
+  override def 左侧没有反馈(tree: 白树): Result           = tree.向右获取(加法)
 }
 
 case object 减法 extends 向右法 with 向左法 {
   override def 右侧反馈(tree: 白树, item: Item): Result = tree.向左获取(有暂存减法(item))
   override def 右侧没有反馈(tree: 白树): Result           = tree.向左获取(减法)
   override def 左侧反馈(tree: 白树, item: Item): Result = ResultP(tree.向右获取(减法), item)
-  override def 左侧没有反馈(tree: 白树): Result           = ResultZero
+  override def 左侧没有反馈(tree: 白树): Result           = tree.向右获取(减法)
 }
 case class 有暂存减法(item: Item) extends 向左法 {
   override def 左侧反馈(tree: 白树, item: Item): Result = tree.向右获取(减法)
-  override def 左侧没有反馈(tree: 白树): Result           = ResultZero
+  override def 左侧没有反馈(tree: 白树): Result           = tree.向右获取(减法)
 }
 
 object Number {
