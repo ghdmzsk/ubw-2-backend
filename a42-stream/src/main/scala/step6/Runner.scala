@@ -16,8 +16,8 @@ object Runner {
   val item11 = Item("Item11")
   val item12 = Item("Item12")
 
-  val number1 = Number1P(Number1P(Number1P(Number1P(Number1P(Nubmer1Zero, item01), item02), item03), item04), item05)
-  val number2 = Number1P(Number1P(Number1P(Nubmer1Zero, item06), item07), item08)
+  val number1 = Number1PL(Number1PL(Number1PL(Number1PL(Number1PL(Nubmer1ZeroL, item01), item02), item03), item04), item05)
+  val number2 = Number1PR(Number1PR(Number1PR(Nubmer1ZeroR, item06), item07), item08)
 
   val btNumber = 双白树(left = number1, right = number2)
 
