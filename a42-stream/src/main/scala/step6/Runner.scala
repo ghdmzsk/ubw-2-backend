@@ -24,6 +24,7 @@ object Runner {
   def main(arr: Array[String]): Unit = {
     {
       val result1 = Number.count(btNumber, 加法)
+      println("result1: " + result1)
       assert(
         result1 == ResultP(
           ResultP(ResultP(ResultP(ResultP(ResultP(ResultP(ResultP(ResultZero, item01), item02), item03), item04), item05), item06), item07),
@@ -34,6 +35,7 @@ object Runner {
 
     {
       val result2 = Number.count(btNumber, 减法)
+      println("result2: " + result2)
       assert(result2 == ResultP(ResultP(ResultZero, item01), item02))
     }
   }
