@@ -104,10 +104,17 @@ case class RTreeB(right: ATree, sub: CTree) extends BTree {
 }
 
 trait CTree {
-  def 数反馈元素(num: Num, item: Item): Result     = ResultZero
-  def 树反馈元素(aTree: ATree, item: Item): Result = ResultZero
-  def 数结束反馈: Result                           = ResultZero
-  def 树结束反馈(aTree: ATree): Result             = ResultZero
+  def 数反馈元素(num: Num, item: Item): Result
+  def 树反馈元素(aTree: ATree, item: Item): Result
+  def 数结束反馈: Result
+  def 树结束反馈(aTree: ATree): Result
+}
+
+object CTreeZero extends CTree {
+  override def 数反馈元素(num: Num, item: Item): Result     = ResultP(num.被索取(CTreeZero), item)
+  override def 树反馈元素(aTree: ATree, item: Item): Result = ResultP(aTree.被索取(CTreeZero), item)
+  override def 数结束反馈: Result                           = ResultZero
+  override def 树结束反馈(aTree: ATree): Result             = aTree.被索取(CTreeZero)
 }
 
 case class LTreeC(left: ATree, method: Method, sub: CTree) extends CTree {
@@ -162,4 +169,8 @@ object 加法 extends Method {
   override def 右结束反馈(bTree: BTree): Result             = bTree.向左获取(this)
   override def 左反馈元素(bTree: BTree, item: Item): Result = bTree.向上反馈元素(method = this, item)
   override def 左结束反馈(bTree: BTree): Result             = bTree.向上结束反馈(this)
+}
+
+object Number {
+  def count(aTree: ATree): Result = aTree.被索取(CTreeZero)
 }
