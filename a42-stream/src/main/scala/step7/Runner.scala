@@ -119,6 +119,12 @@ object Runner {
       // (3 + -(-(6 - (3 + 1)))) + 2 = 5
       println("result6: " + result6)
       assert(result6 == resultFromItem(item01, item02, item03, item04, item05))
+
+      val count7  = LRA(left = NumP(NumP(LRA(left = number1, method = 减法, right = number2), item04), item05), method = 加法, right = fromItem(item06, item07))
+      val result7 = Number.count(count7)
+      // 后继(后继(6 - 3)) + 2 = 7
+      println("count7: " + result7)
+      assert(result7 == resultFromItem(item01, item02, item03, item04, item05, item06, item07))
     }
   }
 
