@@ -81,6 +81,8 @@ object Runner {
       val number1 = fromItem(item01, item02, item03, item04, item05, item06)
       val number2 = fromItem(item07, item08, item09)
       val number3 = fromItem(item10)
+      val number4 = fromItem(item01, item02, item03)
+      val number5 = fromItem(item04, item05)
 
       val count1  = LNumRNumA(left = number1, method = 减法, right = number2)
       val result1 = Number.count(count1)
@@ -111,6 +113,12 @@ object Runner {
       // -(-(6 - (3 + 1))) = 0
       println("result5: " + result5)
       assert(result5 == ResultZero)
+
+      val count6  = LTreeRNumA(left = LNumRTreeA(left = number4, method = 加法, LTreeA(left = count4, method = 减法)), method = 加法, right = number5)
+      val result6 = Number.count(count6)
+      // (3 + -(-(6 - (3 + 1)))) + 2 = 5
+      println("result6: " + result6)
+      assert(result6 == resultFromItem(item01, item02, item03, item04, item05))
     }
   }
 
