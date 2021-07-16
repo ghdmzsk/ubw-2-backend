@@ -171,6 +171,22 @@ object 加法 extends Method {
   override def 左结束反馈(bTree: BTree): Result             = bTree.向上结束反馈(this)
 }
 
+object 减法 extends Method {
+  override def 计算(bTree: BTree): Result                = bTree.向左获取(this)
+  override def 右反馈元素(bTree: BTree, item: Item): Result = bTree.向右获取(this)
+  override def 右结束反馈(bTree: BTree): Result             = bTree.向上结束反馈(this)
+  override def 左反馈元素(bTree: BTree, item: Item): Result = bTree.向右获取(method = 附加减法(item))
+  override def 左结束反馈(bTree: BTree): Result             = bTree.向右获取(this)
+}
+
+case class 附加减法(item: Item) extends Method {
+  override def 计算(bTree: BTree): Result                = bTree.向右获取(this)
+  override def 右反馈元素(bTree: BTree, item: Item): Result = bTree.向左获取(减法)
+  override def 右结束反馈(bTree: BTree): Result             = bTree.向上反馈元素(减法,item)
+  override def 左反馈元素(bTree: BTree, item: Item): Result = ResultZero
+  override def 左结束反馈(bTree: BTree): Result             = ResultZero
+}
+
 object Number {
   def count(aTree: ATree): Result = aTree.被索取(CTreeZero)
 }
