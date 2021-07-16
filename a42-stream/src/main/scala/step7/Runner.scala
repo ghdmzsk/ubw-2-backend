@@ -33,38 +33,55 @@ object Runner {
   val item12  = Item("Item12")
 
   def main(arr: Array[String]): Unit = {
-    val number1 = fromItem(minus03, minus02, minus01, minus00)
-    val number2 = fromItem(item01, item02, item03)
-    val number3 = fromItem(item04, item05, item06, item07)
-    val number4 = fromItem(item08, item09, item10)
-    val number5 = fromItem(item11, item12)
+    {
+      val number1 = fromItem(minus03, minus02, minus01, minus00)
+      val number2 = fromItem(item01, item02, item03)
+      val number3 = fromItem(item04, item05, item06, item07)
+      val number4 = fromItem(item08, item09, item10)
+      val number5 = fromItem(item11, item12)
 
-    val count1 = LNumRNumA(left = number2, method = 加法, right = number3)
-    val count2 = LTreeRNumA(left = count1, method = 加法, right = number4)
-    val count3 = LNumRTreeA(left = number1, method = 加法, right = count2)
-    val count4 = LTreeRNumA(left = count3, method = 加法, right = number5)
-    val count5 = RTreeA(method = 加法, right = LTreeA(method = 加法, left = RTreeA(method = 加法, right = RTreeA(method = 加法, right = count3))))
+      val count1 = LNumRNumA(left = number2, method = 加法, right = number3)
+      val count2 = LTreeRNumA(left = count1, method = 加法, right = number4)
+      val count3 = LNumRTreeA(left = number1, method = 加法, right = count2)
+      val count4 = LTreeRNumA(left = count3, method = 加法, right = number5)
+      val count5 = RTreeA(method = 加法, right = LTreeA(method = 加法, left = RTreeA(method = 加法, right = RTreeA(method = 加法, right = count3))))
 
-    val result1 = Number.count(count1)
-    println(result1)
-    assert(result1 == resultFromItem(item01, item02, item03, item04, item05, item06, item07))
+      val result1 = Number.count(count1)
+      println(result1)
+      assert(result1 == resultFromItem(item01, item02, item03, item04, item05, item06, item07))
 
-    val result2 = Number.count(count2)
-    println(result2)
-    assert(result2 == resultFromItem(item01, item02, item03, item04, item05, item06, item07, item08, item09, item10))
+      val result2 = Number.count(count2)
+      println(result2)
+      assert(result2 == resultFromItem(item01, item02, item03, item04, item05, item06, item07, item08, item09, item10))
 
-    val result3_1 = resultFromItem(minus03, minus02, minus01, minus00, item01, item02, item03, item04, item05, item06, item07, item08, item09, item10)
-    val result3   = Number.count(count3)
-    println(result3)
-    assert(result3 == result3_1)
+      val result3_1 = resultFromItem(minus03, minus02, minus01, minus00, item01, item02, item03, item04, item05, item06, item07, item08, item09, item10)
+      val result3   = Number.count(count3)
+      println(result3)
+      assert(result3 == result3_1)
 
-    val result4 = Number.count(count4)
-    println(result4)
-    assert(result4 == resultFromItem(minus03, minus02, minus01, minus00, item01, item02, item03, item04, item05, item06, item07, item08, item09, item10, item11, item12))
+      val result4 = Number.count(count4)
+      println(result4)
+      assert(
+        result4 == resultFromItem(minus03, minus02, minus01, minus00, item01, item02, item03, item04, item05, item06, item07, item08, item09, item10, item11, item12)
+      )
 
-    val result5 = Number.count(count5)
-    println(result5)
-    assert(result5 == result3_1)
+      val result5 = Number.count(count5)
+      println(result5)
+      assert(result5 == result3_1)
+    }
+
+    {
+      val number1 = fromItem(item01, item02, item03, item04, item05, item06)
+      val number2 = fromItem(item07, item08, item09)
+
+      val count1  = LNumRNumA(left = number1, method = 减法, right = number2)
+      val result1 = Number.count(count1)
+      println(result1)
+
+      val count2  = LNumRNumA(left = number2, method = 减法, right = number1)
+      val result2 = Number.count(count2)
+      println(result2)
+    }
   }
 
 }
