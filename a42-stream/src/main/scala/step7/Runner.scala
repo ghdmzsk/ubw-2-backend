@@ -40,11 +40,11 @@ object Runner {
       val number4 = fromItem(item08, item09, item10)
       val number5 = fromItem(item11, item12)
 
-      val count1 = LNumRNumA(left = number2, method = 加法, right = number3)
-      val count2 = LTreeRNumA(left = count1, method = 加法, right = number4)
-      val count3 = LNumRTreeA(left = number1, method = 加法, right = count2)
-      val count4 = LTreeRNumA(left = count3, method = 加法, right = number5)
-      val count5 = RTreeA(method = 加法, right = LTreeA(method = 加法, left = RTreeA(method = 加法, right = RTreeA(method = 加法, right = count3))))
+      val count1 = LRA(left = number2, method = 加法, right = number3)
+      val count2 = LRA(left = count1, method = 加法, right = number4)
+      val count3 = LRA(left = number1, method = 加法, right = count2)
+      val count4 = LRA(left = count3, method = 加法, right = number5)
+      val count5 = RA(method = 加法, right = LA(method = 加法, left = RA(method = 加法, right = RA(method = 加法, right = count3))))
 
       val result1 = Number.count(count1)
       // 3 + 4 = 7
@@ -84,37 +84,37 @@ object Runner {
       val number4 = fromItem(item01, item02, item03)
       val number5 = fromItem(item04, item05)
 
-      val count1  = LNumRNumA(left = number1, method = 减法, right = number2)
+      val count1  = LRA(left = number1, method = 减法, right = number2)
       val result1 = Number.count(count1)
       // 6 - 3 = 3
       println("result1: " + result1)
       assert(result1 == resultFromItem(item01, item02, item03))
 
-      val count2  = LNumRNumA(left = number2, method = 减法, right = number1)
+      val count2  = LRA(left = number2, method = 减法, right = number1)
       val result2 = Number.count(count2)
       // 3 - 6 = 0
       println("result2: " + result2)
       assert(result2 == ResultZero)
 
-      val count3  = LNumRTreeA(left = number1, method = 减法, right = LNumRNumA(left = number2, method = 加法, right = number3))
+      val count3  = LRA(left = number1, method = 减法, right = LRA(left = number2, method = 加法, right = number3))
       val result3 = Number.count(count3)
       // 6 - (3 + 1) = 2
       println("result3: " + result3)
       assert(result3 == resultFromItem(item01, item02))
 
-      val count4  = RTreeA(right = count3, method = 减法)
+      val count4  = RA(right = count3, method = 减法)
       val result4 = Number.count(count4)
       // -(6 - (3 + 1)) = 0
       println("result4: " + result4)
       assert(result4 == ResultZero)
 
-      val count5  = LTreeA(left = count4, method = 减法)
+      val count5  = LA(left = count4, method = 减法)
       val result5 = Number.count(count5)
       // -(-(6 - (3 + 1))) = 0
       println("result5: " + result5)
       assert(result5 == ResultZero)
 
-      val count6  = LTreeRNumA(left = LNumRTreeA(left = number4, method = 加法, LTreeA(left = count4, method = 减法)), method = 加法, right = number5)
+      val count6  = LRA(left = LRA(left = number4, method = 加法, LA(left = count4, method = 减法)), method = 加法, right = number5)
       val result6 = Number.count(count6)
       // (3 + -(-(6 - (3 + 1)))) + 2 = 5
       println("result6: " + result6)
