@@ -58,16 +58,19 @@ trait BTree {
 }
 case class LTreeRTreeB(left: ATree, right: ATree, sub: CTree) extends BTree {
   override def 向右获取(method: Method): Result               = right.被索取(LTreeC(left = left, method = method, sub = sub))
-  override def 向上反馈元素(method: Method, item: Item): Result = sub.接收反馈(LTreeRTreeA(left = left, method = method, right = right), item)
+  override def 向上反馈元素(method: Method, item: Item): Result = sub.右树反馈元素(LTreeRTreeA(left = left, method = method, right = right), item)
 }
 case class LNumRTreeB(left: NumLeft, right: ATree, sub: CTree) extends BTree {
   override def 向右获取(method: Method): Result = right.被索取(LNumC(left = left, method = method, sub = sub))
+  override def 向上反馈元素(method: Method, item: Item): Result = sub.右树反馈元素(LNumRTreeA(left = left, method = method, right = right), item)
 }
 case class LTreeRNumB(left: ATree, right: NumRight, sub: CTree) extends BTree {
   override def 向右获取(method: Method): Result = right.右被索取(LTreeC(left = left, method = method, sub = sub))
+  override def 向上反馈元素(method: Method, item: Item): Result = sub.右树反馈元素(LTreeRNumA(left = left, method = method, right = right), item)
 }
 case class LNumRNumB(left: NumLeft, right: NumRight, sub: CTree) extends BTree {
   override def 向右获取(method: Method): Result = right.右被索取(LNumC(left = left, method = method, sub = sub))
+  override def 向上反馈元素(method: Method, item: Item): Result = sub.右树反馈元素(LNumRNumA(left = left, method = method, right = right), item)
 }
 case class LTreeB(left: ATree, sub: CTree) extends BTree {
   override def 向右获取(method: Method): Result = ResultZero
@@ -77,39 +80,41 @@ case class LNumB(left: NumLeft, sub: CTree) extends BTree {
 }
 case class RNumB(right: NumRight, sub: CTree) extends BTree {
   override def 向右获取(method: Method): Result = right.右被索取(RNumMethodC(method = method, sub = sub))
+  override def 向上反馈元素(method: Method, item: Item): Result = sub.右树反馈元素(RNumA(method = method, right = right), item)
 }
 case class RTreeB(right: ATree, sub: CTree) extends BTree {
   override def 向右获取(method: Method): Result = right.被索取(RTreeMethodC(method = method, sub = sub))
+  override def 向上反馈元素(method: Method, item: Item): Result = sub.右树反馈元素(RTreeA(method = method, right = right), item)
 }
 
 trait CTree {
   def 右数反馈元素(method: NumRight, item: Item): Result
   def 右树反馈元素(aTree: ATree, item: Item): Result
-  def 接收反馈(aTree: ATree, item: Item): Result
+  def 接收右反馈(aTree: ATree, item: Item): Result
   def 右结束反馈: Result
 }
 case class LTreeC(left: ATree, method: Method, sub: CTree) extends CTree {
   override def 右数反馈元素(num: NumRight, item: Item): Result = method.右反馈元素(LTreeRNumB(left = left, right = num, sub = sub), item)
   override def 右树反馈元素(aTree: ATree, item: Item): Result  = method.右反馈元素(LTreeRTreeB(left = left, right = aTree, sub = sub), item)
-  override def 接收反馈(aTree: ATree, item: Item): Result    = ResultZero
+  override def 接收右反馈(aTree: ATree, item: Item): Result    = ResultZero
   override def 右结束反馈: Result                             = ResultZero
 }
 case class LNumC(left: NumLeft, method: Method, sub: CTree) extends CTree {
   override def 右数反馈元素(num: NumRight, item: Item): Result = ResultZero
   override def 右树反馈元素(aTree: ATree, item: Item): Result  = ResultZero
-  override def 接收反馈(aTree: ATree, item: Item): Result    = ResultZero
+  override def 接收右反馈(aTree: ATree, item: Item): Result    = ResultZero
   override def 右结束反馈: Result                             = ResultZero
 }
 case class RNumMethodC(method: Method, sub: CTree) extends CTree {
   override def 右数反馈元素(num: NumRight, item: Item): Result = ResultZero
   override def 右树反馈元素(aTree: ATree, item: Item): Result  = ResultZero
-  override def 接收反馈(aTree: ATree, item: Item): Result    = ResultZero
+  override def 接收右反馈(aTree: ATree, item: Item): Result    = ResultZero
   override def 右结束反馈: Result                             = ResultZero
 }
 case class RTreeMethodC(method: Method, sub: CTree) extends CTree {
   override def 右数反馈元素(num: NumRight, item: Item): Result = ResultZero
   override def 右树反馈元素(aTree: ATree, item: Item): Result  = ResultZero
-  override def 接收反馈(aTree: ATree, item: Item): Result    = ResultZero
+  override def 接收右反馈(aTree: ATree, item: Item): Result    = ResultZero
   override def 右结束反馈: Result                             = ResultZero
 }
 
@@ -122,3 +127,5 @@ object 加法 extends Method {
   override def 计算(bTree: BTree): Result                = bTree.向右获取(this)
   override def 右反馈元素(bTree: BTree, item: Item): Result = bTree.向上反馈元素(method = this, item)
 }
+
+println("11 " * 10000)
