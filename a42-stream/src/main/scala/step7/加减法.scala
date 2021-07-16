@@ -82,39 +82,41 @@ case class RTreeB(right: ATree, sub: CTree) extends BTree {
 
 trait CTree {
   def 右反馈元素(method: NumRight, item: Item): Result
-  def 反馈上层(aTree: ATree, item: Item): Result
+  def 右树反馈元素(aTree: ATree, item: Item): Result
   def 结束反馈上层(aTree: ATree): Result
   def 右结束反馈: Result
 }
 case class LTreeC(left: ATree, method: Method, sub: CTree) extends CTree {
-  override def 右反馈元素(num: NumRight, item: Item): Result = sub.反馈上层(LTreeRNumA(left = left, method = method, right = num), item)
-  override def 反馈上层(aTree: ATree, item: Item): Result   = sub.反馈上层(LTreeRTreeA(left = left, method = method, right = aTree), item)
-  override def 结束反馈上层(aTree: ATree): Result             = sub.结束反馈上层(LTreeRTreeA(left = left, method = method, right = aTree))
-  override def 右结束反馈: Result                            = sub.结束反馈上层(LTreeA(left = left, method = method))
+  override def 右数反馈元素(num: NumRight, item: Item): Result = method.右反馈元素(LTreeRNumB(left = left, right = num, sub = sub), item)
+  override def 右树反馈元素(aTree: ATree, item: Item): Result  = method.右反馈元素(LTreeRTreeB(left = left, right = aTree, sub = sub), item)
+  override def 结束反馈上层(aTree: ATree): Result              = sub.结束反馈上层(LTreeRTreeA(left = left, method = method, right = aTree))
+  override def 右结束反馈: Result                             = sub.结束反馈上层(LTreeA(left = left, method = method))
 }
 case class LNumC(left: NumLeft, method: Method, sub: CTree) extends CTree {
-  override def 右反馈元素(num: NumRight, item: Item): Result = sub.反馈上层(LNumRNumA(left = left, method = method, right = num), item)
-  override def 反馈上层(aTree: ATree, item: Item): Result   = sub.反馈上层(LNumRTreeA(left = left, method = method, right = aTree), item)
+  override def 右反馈元素(num: NumRight, item: Item): Result = ResultZero
+  override def 右树反馈元素(aTree: ATree, item: Item): Result = ResultZero
   override def 结束反馈上层(aTree: ATree): Result             = sub.结束反馈上层(LNumRTreeA(left = left, method = method, right = aTree))
   override def 右结束反馈: Result                            = sub.结束反馈上层(LNumA(left = left, method = method))
 }
 case class RNumMethodC(method: Method, sub: CTree) extends CTree {
-  override def 右反馈元素(num: NumRight, item: Item): Result = sub.反馈上层(RNumA(method = method, right = num), item)
-  override def 反馈上层(aTree: ATree, item: Item): Result   = sub.反馈上层(RTreeA(method = method, right = aTree), item) // ×
+  override def 右反馈元素(num: NumRight, item: Item): Result = ResultZero
+  override def 右树反馈元素(aTree: ATree, item: Item): Result = ResultZero
   override def 结束反馈上层(aTree: ATree): Result             = sub.结束反馈上层(RTreeA(method = method, right = aTree))
-  override def 右结束反馈: Result                            = sub.右结束反馈                                              // ×
+  override def 右结束反馈: Result                            = sub.右结束反馈 // ×
 }
 case class RTreeMethodC(method: Method, sub: CTree) extends CTree {
-  override def 右反馈元素(num: NumRight, item: Item): Result = sub.反馈上层(RNumA(method = method, right = num), item)
-  override def 反馈上层(aTree: ATree, item: Item): Result   = sub.反馈上层(RTreeA(method = method, right = aTree), item) // ×
+  override def 右反馈元素(num: NumRight, item: Item): Result = ResultZero
+  override def 右树反馈元素(aTree: ATree, item: Item): Result = ResultZero
   override def 结束反馈上层(aTree: ATree): Result             = sub.结束反馈上层(RTreeA(method = method, right = aTree))
-  override def 右结束反馈: Result                            = sub.右结束反馈                                              // ×
+  override def 右结束反馈: Result                            = sub.右结束反馈 // ×
 }
 
 trait Method {
   def 计算(bTree: BTree): Result
+  def 右反馈元素(bTree: BTree, item: Item): Result
 }
 
 object 加法 extends Method {
   override def 计算(bTree: BTree): Result = bTree.向右获取(this)
+  override def 右反馈元素(bTree: BTree, item: Item): Result
 }
