@@ -61,12 +61,6 @@ trait CTree {
   def 树结束反馈(aTree: Num): Result
 }
 
-object CTreeZero extends CTree {
-  override def 反馈元素(num: Num, item: Item): Result = ResultP(num.被索取(CTreeZero), item)
-  override def 数结束反馈: Result                      = ResultZero
-  override def 树结束反馈(aTree: Num): Result          = aTree.被索取(CTreeZero)
-}
-
 case class LC(left: Num, method: MethodRight, sub: CTree) extends CTree {
   override def 反馈元素(num: Num, item: Item): Result = method.右反馈元素(LRB(left = left, right = num, sub = sub), item)
   override def 数结束反馈: Result                      = method.右结束反馈(LB(left = left, sub = sub))
@@ -77,7 +71,6 @@ case class HasRightMethodC(method: MethodRight, sub: CTree) extends CTree {
   override def 数结束反馈: Result                      = sub.数结束反馈
   override def 树结束反馈(aTree: Num): Result          = method.右结束反馈(RB(right = aTree, sub = sub))
 }
-
 case class RC(right: Num, method: MethodLeft, sub: CTree) extends CTree {
   override def 反馈元素(num: Num, item: Item): Result = method.左反馈元素(LRB(left = num, right = right, sub = sub), item)
   override def 数结束反馈: Result                      = method.左结束反馈(RB(right = right, sub = sub))
@@ -87,6 +80,12 @@ case class HasLeftMethodC(method: MethodLeft, sub: CTree) extends CTree {
   override def 反馈元素(num: Num, item: Item): Result = method.左反馈元素(LB(left = num, sub = sub), item)
   override def 数结束反馈: Result                      = sub.数结束反馈
   override def 树结束反馈(aTree: Num): Result          = method.左结束反馈(LB(left = aTree, sub = sub))
+}
+
+object CTreeZero extends CTree {
+  override def 反馈元素(num: Num, item: Item): Result = ResultP(num.被索取(CTreeZero), item)
+  override def 数结束反馈: Result                      = ResultZero
+  override def 树结束反馈(aTree: Num): Result          = aTree.被索取(CTreeZero)
 }
 
 trait Method {
