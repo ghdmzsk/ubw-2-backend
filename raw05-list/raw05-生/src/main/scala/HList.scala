@@ -41,9 +41,9 @@ case class Appendable[H, T <: HList](override val head: H, override val tail: T)
 
   override def append[T1](t: T1): Appendable[H, T#append[T1]] = new Appendable(head, tail.append(t))
 
-  override type :::[T1 <: HList] = T#`:::`[T1#append[H]]
+  override type :::[T1 <: HList] = T# `:::`[T1#append[H]]
 
-  override def :::[T1 <: HList](t: T1): T#`:::`[T1#append[H]] = tail.:::(t.append(head))
+  override def :::[T1 <: HList](t: T1): T# `:::`[T1#append[H]] = tail.:::(t.append(head))
 
   override type apply[F <: Fetch] = F#fetch[Appendable[H, Tail]]#Head
 

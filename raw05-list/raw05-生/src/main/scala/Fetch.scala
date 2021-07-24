@@ -66,7 +66,7 @@ trait Fetch1 extends Any with Fetch {
 }
 
 object Fetch1 {
-  val fetch1 = new Fetch1 { }
+  val fetch1 = new Fetch1 {}
 }
 
 class FetchN[I <: Fetch](val tail: I) extends AnyVal with Fetch {
@@ -83,7 +83,6 @@ class FetchN[I <: Fetch](val tail: I) extends AnyVal with Fetch {
     new FetchN(new FetchN(new FetchN(new FetchN(new FetchN(new FetchN(new FetchN(new FetchN(new FetchN(new FetchN(tail.next10))))))))))
 
 }
-
 
 trait F extends Any {
   type _1 = Fetch1
