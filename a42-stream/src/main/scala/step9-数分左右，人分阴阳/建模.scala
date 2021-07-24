@@ -13,24 +13,32 @@ case object ResultZero extends Result {
 trait NumLeft {
   def 左被索取(cTree: LeftCTree, method: MethodLeft): Result
 }
-case class NumP(tail: NumLeft, head: Item) extends NumLeft {
-  override def 左被索取(cTree: LeftCTree, method: MethodLeft): Result = cTree.反馈元素(tail, head)
+case class NumLeftP(tail: NumLeft, head: Item) extends NumLeft {
+  override def 左被索取(cTree: LeftCTree, method: MethodLeft): Result = ResultZero
 }
 case object NumLeftZero extends NumLeft {
-  override def 左被索取(cTree: LeftCTree, method: MethodLeft): Result = cTree.数结束反馈
+  override def 左被索取(cTree: LeftCTree, method: MethodLeft): Result = ResultZero
 }
 
 trait NumRight {
   def 右被索取(cTree: RightCTree, method: MethodRight): Result
 }
-case class NumP(tail: NumRight, head: Item) extends NumRight {
-  override def 右被索取(cTree: RightCTree, method: MethodRight): Result = cTree.反馈元素(tail, head)
+case class NumRightP(tail: NumRight, head: Item) extends NumRight {
+  override def 右被索取(cTree: RightCTree, method: MethodRight): Result = ResultZero
 }
 case object NumRightZero extends NumRight {
-  override def 右被索取(cTree: RightCTree, method: MethodRight): Result = cTree.数结束反馈
+  override def 右被索取(cTree: RightCTree, method: MethodRight): Result = ResultZero
 }
 
 case class NumLR(left: NumLeft, right: NumRight) extends NumLeft with NumRight {
   override def 左被索取(cTree: LeftCTree, method: MethodLeft): Result   = ResultZero
   override def 右被索取(cTree: RightCTree, method: MethodRight): Result = ResultZero
 }
+
+trait LeftCTree
+
+trait RightCTree
+
+trait MethodLeft
+
+trait MethodRight
