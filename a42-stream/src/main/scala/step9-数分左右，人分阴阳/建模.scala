@@ -1,4 +1,11 @@
-package step9
+object HelloWorld {
+	import step9._
+   def main(args: Array[String]) {
+      println(Item("11" * 100))
+   }
+}
+
+package step9 {
 
 case class Item(name: String)
 
@@ -14,10 +21,10 @@ trait NumLeft {
   def 左被索取(cTree: LeftCTree, method: MethodLeft): Result
 }
 case class NumLeftP(tail: NumLeft, head: Item) extends NumLeft {
-  override def 左被索取(cTree: LeftCTree, method: MethodLeft): Result = ResultZero
+  override def 左被索取(cTree: LeftCTree, method: MethodLeft): Result = method.左返回数据(cTree, tail, head)
 }
 case object NumLeftZero extends NumLeft {
-  override def 左被索取(cTree: LeftCTree, method: MethodLeft): Result = ResultZero
+  override def 左被索取(cTree: LeftCTree, method: MethodLeft): Result = method.左结束返回(cTree)
 }
 
 trait NumRight {
@@ -39,6 +46,11 @@ trait LeftCTree
 
 trait RightCTree
 
-trait MethodLeft
+trait MethodLeft {
+	def 左返回数据(cTree: LeftCTree, num: NumLeft, item: Item): Result
+	def 左结束返回(cTree: LeftCTree): Result
+}
 
 trait MethodRight
+
+}
