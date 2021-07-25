@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a43-阳一"
+name := "a43-淬炼"
