@@ -10,36 +10,40 @@ case object ResultZero extends Result {
   override def toString: String = "Zero"
 }
 
-trait NumLeft {
-  def 左被索取(method: MethodLeft): Result
-}
-case class NumLeftP(tail: NumLeft, head: Item) extends NumLeft {
-  override def 左被索取(method: MethodLeft): Result = method.接收反馈(tail, head)
-}
-case object NumLeftZero extends NumLeft {
-  override def 左被索取(method: MethodLeft): Result = ResultZero
+trait NumLP {
+  def countRP(num: NumRP, item: Item): Result
 }
 
-trait NumRight {
-  def 右被索取(method: MethodRight): Result
-}
-case class NumRightP(tail: NumRight, head: Item) extends NumRight {
-  override def 右被索取(method: MethodRight): Result = ResultZero
-}
-case object NumRightZero extends NumRight {
-  override def 右被索取(method: MethodRight): Result = ResultZero
+trait NumLO {
+  def countRO: Result
 }
 
-case class NumLTree (left: NumLeft)
-
-trait MethodLeft {
-  def 接收反馈(numLeft: NumLeft, item: Item): Result
+trait NumRP {
+  def countLP(num: NumLO): Result
 }
 
-object MethodL extends MethodLeft {
-  override def 接收反馈(numLeft: NumLeft, item: Item): Result = ResultP(numLeft.左被索取(this), item)
+trait NumRO {
+  def countLO: Result
 }
 
-trait MethodRight
+trait 被加数 extends NumLO
 
+case class 被加数P(tail: 被加数, head: Item) extends 被加数 {
+  override def countRO: Result = ResultP(tail.countRO, head)
+}
 
+case object 被加数O extends 被加数 {
+  override def countRO: Result = ResultZero
+}
+
+trait 加数 extends NumRP with NumRO
+
+case class 加数P(tail: 加数, head: Item) extends 加数 {
+  override def countLP(num: NumLO): Result = ResultP(tail.countLP(num), head)
+  override def countLO: Result             = ResultP(tail.countLO, head)
+}
+
+case object 加数O extends 加数 {
+  override def countLP(num: NumLO): Result = num.countRO
+  override def countLO: Result             = ResultZero
+}

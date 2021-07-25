@@ -21,8 +21,9 @@ object Runner1 {
   val item12  = Item("Item12")
 
   def main(arr: Array[String]): Unit = {
-    val number1 = NumLeftP(NumLeftP(NumLeftP(NumLeftP(NumLeftP(NumLeftP(NumLeftZero, item01), item02), item03), item04), item05), item06)
-    println(number1.左被索取(MethodL))
+    val number1 = 被加数P(被加数P(被加数P(被加数P(被加数P(被加数P(被加数O, item01), item02), item03), item04), item05), item06)
+    val number2 = 加数P(加数P(加数P(加数P(加数P(加数P(加数O, item07), item08), item09), item10), item11), item12)
+    println(number2.countLP(number1))
   }
 
 }
