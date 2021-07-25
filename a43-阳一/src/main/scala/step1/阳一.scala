@@ -33,6 +33,21 @@ case object 加数O extends 加数 {
   override def methodL(num: NumL, item: Item): Result = ResultP(num.methodR(加数O), item)
 }
 
+trait 被减数 extends NumL
+case class 被减数P(tail: 被减数, head: Item) extends 被减数 {
+  override def methodR(num: NumR): Result = num.methodL(tail, head)
+}
+case object 被减数O extends 被减数 {
+  override def methodR(num: NumR): Result = ResultO
+}
+trait 减数 extends NumR
+case class 减数P(tail: 减数, head: Item) extends 减数 {
+  override def methodL(num: NumL, item: Item): Result = num.methodR(tail)
+}
+case object 减数O extends 减数 {
+  override def methodL(num: NumL, item: Item): Result = ResultP(num.methodR(减数O), item)
+}
+
 trait 被乘数 extends NumL
 case class 被乘数P(tail: 被乘数, head: Item) extends 被乘数 {
   override def methodR(num: NumR): Result = num.methodL(tail, head)
@@ -46,4 +61,20 @@ case class 乘数P(tail: 乘数, head: Item) extends 乘数 {
 }
 case class 乘数O(tail: () => 乘数) extends 乘数 {
   override def methodL(num: NumL, item: Item): Result = num.methodR(tail())
+}
+
+trait 被除数 extends NumL
+
+case class 被除数P(tail: 被除数, head: Item) extends 被除数 {
+  override def methodR(num: NumR): Result = num.methodL(tail, head)
+}
+case object 被除数O extends 被除数 {
+  override def methodR(num: NumR): Result = ResultO
+}
+trait 除数 extends NumR
+case class 除数P(tail: 除数, head: Item) extends 除数 {
+  override def methodL(num: NumL, item: Item): Result = num.methodR(tail)
+}
+case class 除数O(tail: () => 除数) extends 除数 {
+  override def methodL(num: NumL, item: Item): Result = ResultP(tail().methodL(num, item), item)
 }
