@@ -2,11 +2,15 @@ package step3
 
 case class Item(name: String)
 
-trait Result
+trait Result {
+  def length: Int
+}
 case class ResultP(tail: Result, head: Item) extends Result {
+  override def length: Int      = tail.length + 1
   override def toString: String = s"(${tail}, ${head.name})"
 }
 case object ResultO extends Result {
+  override def length: Int      = 0
   override def toString: String = "Zero"
 }
 

@@ -133,4 +133,50 @@ object Runner extends App {
 
   def number22(tail: => Number21): Number21 = Number21P(Number21P(Number21P(tail, item01), item02), item03)*/
 
+  class Number21(tailSelf: () => NumR) extends 正法 {
+    override def tail: NumR = new 正法 {
+      override def tail: NumR = new 正法 {
+        override def tail: NumR = new 正法 {
+          override def tail: NumR = new 正法 {
+            override def tail: NumR = new 正法 {
+              override def tail: NumR = new Number22(() => new Number22(() => new Number22(() => new Number22(() => new Number22(() => new Number22(tailSelf))))))
+              override val head: Item = item03
+            }
+            override val head: Item = item02
+          }
+          override val head: Item = item01
+        }
+        override val head: Item = item03
+      }
+      override val head: Item = item02
+    }
+    override val head: Item = item01
+  }
+
+  class Number22(tailSelf: () => NumR) extends 正法 {
+    override def tail: NumR = new 正法 {
+      override def tail: NumR = new 正法 {
+        override def tail: NumR = new 正法 {
+          override def tail: NumR = new 正法 {
+            override def tail: NumR = new 正法 {
+              override def tail: NumR = new 逆法 {
+                override def tail: NumR = new Number21(tailSelf)
+              }
+              override val head: Item = item03
+            }
+            override val head: Item = item02
+          }
+          override val head: Item = item01
+        }
+        override val head: Item = item03
+      }
+      override val head: Item = item02
+    }
+    override val head: Item = item01
+  }
+
+  lazy val number21: Number21 = new Number21(() => number22)
+  lazy val number22: Number22 = new Number22(() => number21)
+  println(左数有(左数有(number1, item01), item02).methodR(number21).length)
+
 }
