@@ -110,4 +110,27 @@ object Runner extends App {
   lazy val number20       = 正法(number19, itemX)
   assert(number18.methodR(number20) == results(itemX, itemX, itemX, itemX, itemX, itemX))
 
+  /*trait Number21 extends NumR {
+    def tail: Number21
+    def next: Number21
+  }
+
+  trait Number21P extends Number21 with 正法 {
+    override def tail: Number21
+    override def head: Item
+    override def next: Number21
+  }
+  object Number21P {
+    def apply(tail: => Number21, head: Item): Number21P = {
+      def tail1 = tail
+      val head1 = head
+      new Number21P {
+        override def tail: Number21 = tail1
+        override def head: Item     = head1
+      }
+    }
+  }
+
+  def number22(tail: => Number21): Number21 = Number21P(Number21P(Number21P(tail, item01), item02), item03)*/
+
 }

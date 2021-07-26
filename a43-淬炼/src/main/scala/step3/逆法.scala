@@ -1,8 +1,14 @@
 package step3
 
-class 逆法(tail: () => NumR) extends NumR {
-  override def methodL(num: NumL, item: Item): Result = num.methodR(tail())
+trait 逆法 extends NumR {
+  def tail: NumR
+  override def methodL(num: NumL, item: Item): Result = num.methodR(tail)
 }
 object 逆法 {
-  def apply(tail: => NumR): NumR = new 逆法(() => tail)
+  def apply(tail: => NumR): NumR = {
+    def tail1 = tail
+    new 逆法 {
+      override def tail: NumR = tail1
+    }
+  }
 }
