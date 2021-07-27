@@ -7,6 +7,12 @@ object Runner extends App {
     items.foreach(i => r = ResultP(r, i))
     r
   }
+  def 左数go(n: Int): NumL = {
+    n match {
+      case n1 if n1 > 0 => 左数有(左数go(n1 - 1), Item(s"Item${n1}"))
+      case 0            => 左数零
+    }
+  }
 
   val itemX  = Item("ItemX")
   val item01 = Item("Item01")
@@ -111,11 +117,11 @@ object Runner extends App {
   assert(number18.methodR(number20) == results(itemX, itemX, itemX, itemX, itemX, itemX))
 
   trait Number21 extends NumR {
-    var tail1: Number21
+    var tail1: NumR
   }
 
-  case class Number21P(var tail1: Number21, head: Item) extends Number21 with 正法 {
-    override def tail: Number21 = {
+  case class Number21P(override var tail1: NumR, override val head: Item) extends Number21 with 正法 {
+    override def tail: NumR = {
       val zero1 = Number21O2(null)
       val num   = Number21P(Number21P(Number21P(zero1, item01), item02), item03)
       number21.tail1 = num
@@ -123,23 +129,77 @@ object Runner extends App {
       tail1
     }
   }
-  case class Number21O1(var tail1: Number21) extends Number21 with 逆法 {
-    override def tail: Number21 = {
-      val zero1 = Number21O1(null)
-      number21.tail1 = zero1
-      number21 = zero1
+  case class Number21O1(override var tail1: NumR) extends Number21 with 逆法 {
+    override def tail: NumR = {
+      val zero = Number21O1(null)
+      number21.tail1 = zero
+      number21 = zero
       tail1
     }
   }
-  case class Number21O2(var tail1: Number21) extends Number21 with 微法 {
+  case class Number21O2(override var tail1: NumR) extends Number21 with 微法 {
     override def tail: NumR = tail1
   }
 
-  var number21: Number21 = Number21O1(null)
-  var number22: Number21 = Number21P(Number21P(number21, item01), item02)
+  var number21: Number21 = null
+  var number22: NumR     = null
 
-  println(ResultP(左数有(左数有(number1, item05), item06).methodR(number22), item01).length)              // 3 ^ 6 = 729
-  println(ResultP(左数有(左数有(左数有(number1, item05), item06), item07).methodR(number22), item01).length) // 3 ^ 7 = 2187
-  println(ResultP(左数零.methodR(number22), item01).length)                                            // 3 ^ 0 = 1
+  def reset1 = {
+    number21 = Number21O1(null)
+    number22 = Number21P(Number21P(number21, item01), item02)
+  }
+
+  reset1
+  assert(ResultP(左数go(6).methodR(number22), item01).length == 729) // 3 ^ 6 = 729
+  reset1
+  assert(ResultP(左数go(7).methodR(number22), item01).length == 2187) // 3 ^ 7 = 2187
+  reset1
+  assert(ResultP(左数go(8).methodR(number22), item01).length == 6561) // 3 ^ 8 = 6561
+  reset1
+  assert(ResultP(左数零.methodR(number22), item01).length == 1) // 3 ^ 0 = 1
+
+  case class Number22P(override var tail1: NumR) extends Number21 with 逆法 {
+    override def tail: NumR = {
+      val zero1 = Number22O2(null)
+      val num   = Number22P(Number22P(Number22P(zero1)))
+      number23.tail1 = num
+      number23 = zero1
+      tail1
+    }
+  }
+  case class Number22O1(override var tail1: NumR, override val head: Item) extends Number21 with 正法 {
+    override def tail: NumR = {
+      val zero = Number22O1(null, head)
+      number23.tail1 = zero
+      number23 = zero
+      tail1
+    }
+  }
+  case class Number22O2(override var tail1: NumR) extends Number21 with 微法 {
+    override def tail: NumR = tail1
+  }
+
+  var number23: Number21 = null
+  var number24: NumR     = null
+
+  def reset2 = {
+    number23 = Number22O1(null, item01)
+    number24 = Number22P(Number22P(number23))
+  }
+
+  reset2
+  assert(左数go(728).methodR(number24).length == 5) // log(3, 728) = 5
+  reset2
+  assert(左数go(729).methodR(number24).length == 6) // log(3, 729) = 6
+  reset2
+  assert(左数go(730).methodR(number24).length == 6) // log(3, 730) = 6
+  reset2
+  assert(左数go(2186).methodR(number24).length == 6) // log(3, 2186) = 6
+  reset2
+  assert(左数go(2187).methodR(number24).length == 7) // log(3, 2187) = 7
+  reset2
+  assert(左数go(2188).methodR(number24).length == 7) // log(3, 2188) = 7
+  reset2
+  assert(左数go(1).methodR(number24).length == 0) // log(3, 1) = 0
 
 }
