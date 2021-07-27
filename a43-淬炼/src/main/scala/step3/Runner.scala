@@ -110,73 +110,36 @@ object Runner extends App {
   lazy val number20       = 正法(number19, itemX)
   assert(number18.methodR(number20) == results(itemX, itemX, itemX, itemX, itemX, itemX))
 
-  /*trait Number21 extends NumR {
-    def tail: Number21
-    def next: Number21
+  trait Number21 extends NumR {
+    var tail1: Number21
   }
 
-  trait Number21P extends Number21 with 正法 {
-    override def tail: Number21
-    override def head: Item
-    override def next: Number21
-  }
-  object Number21P {
-    def apply(tail: => Number21, head: Item): Number21P = {
-      def tail1 = tail
-      val head1 = head
-      new Number21P {
-        override def tail: Number21 = tail1
-        override def head: Item     = head1
-      }
+  case class Number21P(var tail1: Number21, head: Item) extends Number21 with 正法 {
+    override def tail: Number21 = {
+      val zero1 = Number21O2(null)
+      val num   = Number21P(Number21P(Number21P(zero1, item01), item02), item03)
+      number21.tail1 = num
+      number21 = zero1
+      tail1
     }
   }
-
-  def number22(tail: => Number21): Number21 = Number21P(Number21P(Number21P(tail, item01), item02), item03)*/
-
-  class Number21(tailSelf: () => NumR) extends 正法 {
-    override def tail: NumR = new 正法 {
-      override def tail: NumR = new 正法 {
-        override def tail: NumR = new 正法 {
-          override def tail: NumR = new 正法 {
-            override def tail: NumR = new 正法 {
-              override def tail: NumR = new Number22(() => new Number22(() => new Number22(() => new Number22(() => new Number22(() => new Number22(tailSelf))))))
-              override val head: Item = item03
-            }
-            override val head: Item = item02
-          }
-          override val head: Item = item01
-        }
-        override val head: Item = item03
-      }
-      override val head: Item = item02
+  case class Number21O1(var tail1: Number21) extends Number21 with 逆法 {
+    override def tail: Number21 = {
+      val zero1 = Number21O1(null)
+      number21.tail1 = zero1
+      number21 = zero1
+      tail1
     }
-    override val head: Item = item01
+  }
+  case class Number21O2(var tail1: Number21) extends Number21 with 微法 {
+    override def tail: NumR = tail1
   }
 
-  class Number22(tailSelf: () => NumR) extends 正法 {
-    override def tail: NumR = new 正法 {
-      override def tail: NumR = new 正法 {
-        override def tail: NumR = new 正法 {
-          override def tail: NumR = new 正法 {
-            override def tail: NumR = new 正法 {
-              override def tail: NumR = new 逆法 {
-                override def tail: NumR = new Number21(tailSelf)
-              }
-              override val head: Item = item03
-            }
-            override val head: Item = item02
-          }
-          override val head: Item = item01
-        }
-        override val head: Item = item03
-      }
-      override val head: Item = item02
-    }
-    override val head: Item = item01
-  }
+  var number21: Number21 = Number21O1(null)
+  var number22: Number21 = Number21P(Number21P(number21, item01), item02)
 
-  lazy val number21: Number21 = new Number21(() => number22)
-  lazy val number22: Number22 = new Number22(() => number21)
-  println(左数有(左数有(number1, item01), item02).methodR(number21).length)
+  println(ResultP(左数有(左数有(number1, item05), item06).methodR(number22), item01).length)              // 3 ^ 6 = 729
+  println(ResultP(左数有(左数有(左数有(number1, item05), item06), item07).methodR(number22), item01).length) // 3 ^ 7 = 2187
+  println(ResultP(左数零.methodR(number22), item01).length)                                            // 3 ^ 0 = 1
 
 }
