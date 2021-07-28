@@ -26,7 +26,7 @@ trait Number2O1 extends Number2 {
   override def method2(number1: Number1, item: Item): Result = number1.method1(tail)
 }
 
-case class Number2O2(override var tail: Number2) extends Number2 {
+trait Number2O2 extends Number2 {
   override def method2(number1: Number1, item: Item): Result = tail.method2(number1, item)
 }
 
