@@ -12,4 +12,6 @@ object Dependencies {
 
   val shapeless = Seq("com.chuusai" %% "shapeless" % "2.3.7")
 
+  def scalaReflect(scalaVersion:String) = Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
+
 }
