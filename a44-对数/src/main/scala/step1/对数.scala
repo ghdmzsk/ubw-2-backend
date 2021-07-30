@@ -11,9 +11,6 @@ case object ResultO extends Result {
 }
 
 trait NumL {
-  def methodR(num: NumR): Result
-}
-trait NumLPositive extends NumL {
   var tail: NumL
   def methodR(num: NumR): Result
 }
@@ -21,14 +18,13 @@ trait NumR {
   def methodL(num: NumL, item: Item): Result
 }
 
-trait 土 extends NumLPositive {
-  def head: Item
+case class 土(override var tail: NumL, head: Item) extends NumL {
   override def methodR(num: NumR): Result = ResultP(num.methodL(tail, head), head)
 }
-case class 左水(var tail: NumL, head: Item) extends NumLPositive {
+case class 左水(var tail: NumL, head: Item) extends NumL {
   override def methodR(num: NumR): Result = num.methodL(tail, head)
 }
-case object 左零 extends NumL {
+trait 零 extends NumL {
   override def methodR(num: NumR): Result = ResultO
 }
 case class 右水(tail: NumR) extends NumR {
