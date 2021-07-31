@@ -29,12 +29,15 @@ trait 火 extends NumL {
 case class 左水(var tail: NumL, head: Item) extends NumL {
   override def methodR(num: NumR): Result = num.methodL(tail, head)
 }
-trait 零 extends NumL {
-  override def methodR(num: NumR): Result = ResultO
-}
 case class 右水(tail: NumR) extends NumR {
-  override def methodL(num: NumL, item: Item): Result = num.methodR(tail)
+  override def methodL(num: NumL, item: Item): Result = {
+    // println(s"右水：${num}")
+    num.methodR(tail)
+  }
 }
 class 风(tail: () => NumR) extends NumR {
-  override def methodL(num: NumL, item: Item): Result = tail().methodL(num, item)
+  override def methodL(num: NumL, item: Item): Result = {
+    // println(s"右风：${num}")
+    tail().methodL(num, item)
+  }
 }
