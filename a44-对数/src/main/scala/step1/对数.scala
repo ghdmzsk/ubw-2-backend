@@ -2,11 +2,15 @@ package step1
 
 case class Item(name: String)
 
-trait Result
+trait Result {
+  def length: Int
+}
 case class ResultP(tail: Result, head: Item) extends Result {
+  override def length: Int      = tail.length + 1
   override def toString: String = s"(${tail}, ${head.name})"
 }
 case object ResultO extends Result {
+  override def length: Int      = 0
   override def toString: String = "Zero"
 }
 
@@ -18,8 +22,9 @@ trait NumR {
   def methodL(num: NumL, item: Item): Result
 }
 
-case class 土(override var tail: NumL, head: Item) extends NumL {
-  override def methodR(num: NumR): Result = ResultP(num.methodL(tail, head), head)
+trait 火 extends NumL {
+  def head: Item
+  override def methodR(num: NumR): Result = ResultP(tail.methodR(num), head)
 }
 case class 左水(var tail: NumL, head: Item) extends NumL {
   override def methodR(num: NumR): Result = num.methodL(tail, head)
