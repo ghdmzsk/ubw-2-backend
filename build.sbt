@@ -38,8 +38,8 @@ val a06_2    = project in file_a06 / "a06-正确代码1"
 val a06_3    = project in file_a06 / "a06-更正代码1"
 
 val file_a07 = rootDir / "a07-消融"
-val a07_1    = project in file_a07 / "错误代码1"
-val a07_2    = project in file_a07 / "修正代码1"
+val a07_1    = project in file_a07 / "a07-错误代码1"
+val a07_2    = project in file_a07 / "a07-修正代码1"
 
 val a08 = project in rootDir / "a08-整数加法"
 val a09 = project in rootDir / "a09-改变"
