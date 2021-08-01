@@ -1,6 +1,6 @@
 package step1
 
-object Runner {
+class RunnerContext {
 
   var zero: NumL = null
   var winR: NumR = null
@@ -58,10 +58,6 @@ object Runner {
     val result2 = number4.methodR(winR, Item("Item01")).length
 
     NumberResult(di = number1, leftTrue = number3, rightTrue = number2, leftResult = result2, rightResult = result1)
-  }
-
-  for (i <- 1 to 2000) {
-    println(printlnLog(4, i))
   }
 
 }
