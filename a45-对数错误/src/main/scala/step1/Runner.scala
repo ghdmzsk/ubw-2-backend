@@ -1,6 +1,6 @@
 package step1
 
-object Runner extends App {
+object Runner {
 
   var zero: NumL = null
   var winR: NumR = null
