@@ -25,6 +25,12 @@ trait NumR {
 case class 水(tail: NumR) extends NumR {
   override def methodL(num: NumL, item: Item): Result = num.methodR(tail)
 }
-case class 风(tail: () => NumR) extends NumR {
-  override def methodL(num: NumL, item: Item): Result = tail().methodL(num, item)
+trait 风 extends NumR {
+  def tail: NumR
+  override def methodL(num: NumL, item: Item): Result = tail.methodL(num, item)
+}
+object 风 {
+  def apply(tail1: => NumR): NumR = new 风 {
+    override def tail: NumR = tail1
+  }
 }

@@ -50,7 +50,7 @@ object Runner extends App {
       }
     }
     lazy val num2: NumR = num1(n, num3)
-    lazy val num3: NumR = 风(() => num2)
+    lazy val num3: NumR = 风(num2)
     numRP = num2
     numRZero = num3
   }
