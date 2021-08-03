@@ -1,4 +1,4 @@
-import io.circe.{Encoder, Json, JsonObject, ObjectEncoder}
+import io.circe.{Encoder, Json, JsonObject}
 
 object EncoderTest extends App {
 
@@ -12,8 +12,8 @@ object EncoderTest extends App {
   }
 
   trait EncoderApply[H] {
-    def implicitEncoder[R, I <: TypeParam](
-      implicit ll: FooApply[H, R],
+    def implicitEncoder[R, I <: TypeParam](implicit
+      ll: FooApply[H, R],
       app: Application[KContext, R, I],
       cv1: FooApply[H, I#T#H],
       cv2: I#H
@@ -24,8 +24,8 @@ object EncoderTest extends App {
     def implicitEncoder1[R](implicit ll: FooApply[H, R]): EncoderApply2[H, R] = new EncoderApply2[H, R] {}
 
     trait EncoderApply2[H, R] {
-      def implicitEncoder[I <: TypeParam](
-        implicit app: Application[KContext, R, I],
+      def implicitEncoder[I <: TypeParam](implicit
+        app: Application[KContext, R, I],
         cv1: FooApply[H, I#T#H],
         cv2: I#H
       ): H => Json = { h: H =>
@@ -36,8 +36,8 @@ object EncoderTest extends App {
         new EncoderApply2[I](app)
 
       class EncoderApply2[I <: TypeParam](app: Application[KContext, R, I]) {
-        def implicitEncoder(
-          implicit cv1: FooApply[H, I#T#H],
+        def implicitEncoder(implicit
+          cv1: FooApply[H, I#T#H],
           cv2: I#H
         ): H => Json = { h: H =>
           app.application(ii).addName(cv2)(cv1(h))
@@ -53,7 +53,7 @@ object EncoderTest extends App {
 
     def p(obj: T, name: II, m: List[(String, Json)]): List[(String, Json)]
 
-    def addName(name: II): ObjectEncoder[T] = ObjectEncoder.instance { i =>
+    def addName(name: II): Encoder.AsObject[T] = Encoder.AsObject { i =>
       JsonObject.fromIterable(self.p(i, name, List.empty))
     }
 
@@ -91,8 +91,8 @@ object EncoderTest extends App {
     override type T = TypeParam1[T2]
   }
 
-  implicit def propertyEncoder[T1](
-    implicit encoder: ByNameImplicit[Encoder[T1]]
+  implicit def propertyEncoder[T1](implicit
+    encoder: ByNameImplicit[Encoder[T1]]
   ): Application[KContext, T1, TypeParam2[String, T1]] = new Application[KContext, T1, TypeParam2[String, T1]] {
     override def application(context: Context[KContext]): JsonEncoder[T1, String] = new JsonEncoder[T1, String] {
       override def p(obj: T1, name: String, m: List[(String, Json)]): List[(String, Json)] =

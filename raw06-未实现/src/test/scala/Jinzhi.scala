@@ -30,8 +30,8 @@ object Item2Impl {
     H2,
     T1 <: TypeParam,
     T2 <: TypeParam
-  ](
-    implicit t1: Application[K, H1, T1],
+  ](implicit
+    t1: Application[K, H1, T1],
     t2: Application[K, H2, T2]
   ): Application[K, Item2Impl[H1, H2], Item2Type[T1, T2]] =
     new Application[K, Item2Impl[H1, H2], Item2Type[T1, T2]] {
@@ -60,8 +60,8 @@ object KongWei {
     K <: KindContext,
     H1 <: Jinzhi,
     T1 <: JinzhiTypeParam
-  ](
-    implicit t1: Application[K, H1, T1]
+  ](implicit
+    t1: Application[K, H1, T1]
   ): Application[K, KongWei[H1], KongWeiType[T1]] =
     new Application[K, KongWei[H1], KongWeiType[T1]] {
       override def application(context: Context[K]): K#M[KongWeiType[T1]] = {
@@ -93,8 +93,8 @@ object Manwei {
     H2 <: Jinzhi,
     T1 <: TypeParam,
     T2 <: JinzhiTypeParam
-  ](
-    implicit t1: Application[K, H1, T1],
+  ](implicit
+    t1: Application[K, H1, T1],
     t2: Application[K, H2, T2]
   ): Application[K, Manwei[H1, H2], ManweiType[T1, T2]] =
     new Application[K, Manwei[H1, H2], ManweiType[T1, T2]] {
@@ -173,25 +173,15 @@ object Runner extends App {
   miao2: Manwei[I5, KongWei[Manwei[Item2Impl[Item2Impl[I4, I3], Item2Impl[I2, I1]], KongWeiZero]]]
   println(miao2)
 
-  val miao3
-    : KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4]#UpdateCurrent[I5]#UpdateCurrent[
-      I6
-    ] = KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5).add(new I6)
+  val miao3: KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4]#UpdateCurrent[I5]#UpdateCurrent[
+    I6
+  ] = KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5).add(new I6)
 
   miao3: KongWei[Manwei[Item2Impl[I6, I5], Manwei[Item2Impl[Item2Impl[I4, I3], Item2Impl[I2, I1]], KongWeiZero]]]
   println(miao3)
 
   println(
-    KongWeiZero.value
-      .add(new I1)
-      .add(new I2)
-      .add(new I3)
-      .add(new I4)
-      .add(new I5)
-      .add(new I6)
-      .add(new I7)
-      .add(new I8)
-      .add(new I9)
+    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4).add(new I5).add(new I6).add(new I7).add(new I8).add(new I9)
   )
 
 }
