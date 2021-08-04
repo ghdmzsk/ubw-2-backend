@@ -1,10 +1,10 @@
-package 练习28
+package 练习29
 
 object Runner extends App {
 
-  class LogCount(num1: Int, num2: Int) {
+  case class LogCount(num1: Int, num2: Int) {
     var zero: NumL = null
-    val (numRP, numRO): (NumR, NumR) = {
+    val numRP: NumR = {
       def n(num: Int, tail: => NumR): NumR = {
         num match {
           case n1 if n1 > 0 => 水(n(num - 1, tail))
@@ -13,20 +13,20 @@ object Runner extends App {
       }
       lazy val numR1: NumR = n(num1, numR2)
       lazy val numR2       = 风(numR1)
-      (numR1, numR2)
+      numR1
     }
 
     case class 左火(override var tail: NumL, head: Item) extends NumL {
       override def methodR(num: NumR): Result = {
-        if (num eq numRO) {
+        if (num.isInstanceOf[风]) {
           val newZero = 左水(null, Item("Item01"))
           zero.tail = newZero
           zero = newZero
         }
-        if (this eq zero) {
+        if (zero.isInstanceOf[左火]) {
           ResultO
         } else {
-          val newZero = new 左火(null, Item("Item02"))
+          val newZero = 左火(null, Item("Item02"))
           zero.tail = newZero
           zero = newZero
           ResultR(tail.methodR(numRP), head)
@@ -36,7 +36,7 @@ object Runner extends App {
 
     case class 左水(override var tail: NumL, head: Item) extends NumL {
       override def methodR(num: NumR): Result = {
-        if (num eq numRO) {
+        if (num.isInstanceOf[风]) {
           val newZero = 左水(null, Item("Item01"))
           zero.tail = newZero
           zero = newZero
@@ -60,8 +60,8 @@ object Runner extends App {
 
   }
 
-  assert(new LogCount(3, 242).log == 4)
-  assert(new LogCount(3, 243).log == 5)
-  assert(new LogCount(3, 244).log == 5)
+  assert(LogCount(3, 242).log == 4)
+  assert(LogCount(3, 243).log == 5)
+  assert(LogCount(3, 244).log == 5)
 
 }
