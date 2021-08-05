@@ -6,9 +6,11 @@ case class Item(name: String) {
 
 trait Result
 case class ResultP(tail: Result, head: Item) extends Result {
+  println("result: " + head)
   override def toString: String = s"($tail, $head)"
 }
 case object ResultO extends Result {
+  println("result: " + this)
   override def toString: String = s"zero"
 }
 
@@ -27,7 +29,10 @@ trait NumR {
   def methodL(num: NumL, item: Item): Result
 }
 case class NumRP(override val tail: NumR, head: Item) extends NumR {
-  override def methodL(num: NumL, item: Item): Result = ResultP(tail.methodL(num, item), head)
+  override def methodL(num: NumL, item: Item): Result = {
+    println("method: " + head)
+    ResultP(tail.methodL(num, item), head)
+  }
 }
 trait NumRO extends NumR {
   override def methodL(num: NumL, item: Item): Result = ResultP(num.methodR(tail), item)
