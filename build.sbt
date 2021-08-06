@@ -14,6 +14,7 @@ val raw05_1    = project in file_raw05 / "raw05-死"
 val raw05_2    = project in file_raw05 / "raw05-生"
 
 val raw06 = project in rootDir / "raw06-未实现"
+val raw07 = project in rootDir / "raw07-晒太阳"
 
 val file_a01 = rootDir / "a01-整数加法"
 val a01_1    = project in file_a01 / "a01-错误代码1"
