@@ -1,7 +1,5 @@
 package 练习32
 
-import java.math.MathContext
-
 object Runner extends App {
 
   case class LongContext(number1: Int, number2: Int) {
