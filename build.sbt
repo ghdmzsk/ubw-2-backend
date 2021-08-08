@@ -15,6 +15,11 @@ val raw05_2    = project in file_raw05 / "raw05-生"
 
 val raw06 = project in rootDir / "raw06-未实现"
 val raw07 = project in rootDir / "raw07-晒太阳"
+val raw08 = project in rootDir / "raw08-战神刑天"
+val raw09 = project in rootDir / "raw09-张羽煮海"
+val raw10 = project in rootDir / "raw10-女娲补天"
+val raw11 = project in rootDir / "raw11-夸父逐日"
+val raw12 = project in rootDir / "raw12-干柴烈火"
 
 val file_a01 = rootDir / "a01-整数加法"
 val a01_1    = project in file_a01 / "a01-错误代码1"
