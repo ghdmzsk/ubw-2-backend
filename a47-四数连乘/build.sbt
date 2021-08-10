@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a03-core"
+name := "a47-四数连乘"
