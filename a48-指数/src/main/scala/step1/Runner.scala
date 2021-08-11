@@ -50,6 +50,6 @@ object Runner extends App {
   lazy val num火: NumR = 火(火(火(num火1)))
   lazy val num火1      = 水(() => num火)
 
-  println(numL.methodR(numR).length)
+  println(numL.methodR(numR).length) // 81
 
 }
