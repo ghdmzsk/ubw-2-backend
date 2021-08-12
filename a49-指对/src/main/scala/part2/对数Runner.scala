@@ -1,5 +1,7 @@
 package part2
 
+import part3.{左正, 水, 风, NumL, NumR}
+
 object 对数Runner extends App {
 
   def numRFromInt(n: Int): NumR = {
@@ -10,7 +12,7 @@ object 对数Runner extends App {
       }
     }
     lazy val num2: NumR = num1(n, num3)
-    lazy val num3: NumR = 风(() => num2)
+    lazy val num3: NumR = 风(num2)
     num2
   }
 

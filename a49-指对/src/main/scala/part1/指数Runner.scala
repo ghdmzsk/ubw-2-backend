@@ -1,44 +1,56 @@
 package part1
 
-import scala.annotation.tailrec
+import part3.{左正, 水, 火, 风, NumL, NumR}
 
 object 指数Runner extends App {
 
-  @tailrec
-  final def appendLeft(num: NumL, toAppend: NumL): Unit =
-    if (num.tail eq null)
-      num.tail = toAppend
-    else
-      appendLeft(num.tail, toAppend)
-
-  @tailrec
-  final def last(num: NumL): NumL = if (num.tail eq null) num else last(num.tail)
-
-  case class 左零(override var tail: NumL) extends NumL {
-    override def methodR(num: NumR): Result = {
-      if (tail.isInstanceOf[左零]) {
-        appendLeft(tail, 左零(null))
-        tail.methodR(num)
-      } else if (last(tail).isInstanceOf[左正]) {
-        appendLeft(tail, 左终结)
-        tail.methodR(num火)
-      } else tail.methodR(num)
-    }
-  }
-
-  case class 风(override val tail: NumR) extends NumR {
-    override def methodL(num: NumL): Result = {
-      appendLeft(num, 左正(null))
-      tail.methodL(num)
-    }
-  }
-
-  val numL            = 左零(左零(左零(左零(左正(null)))))
   lazy val numR: NumR = 风(风(风(numR1)))
-  lazy val numR1      = 水(() => numR)
+  lazy val numR1      = 水(numR)
   lazy val num火: NumR = 火(火(火(num火1)))
-  lazy val num火1      = 水(() => num火)
+  lazy val num火1      = 水(num火)
+  val numL            = 左零(左零(左零(左零(左正(null), num火), num火), num火), num火)
 
-  println(numL.methodR(numR).length) // 81
+  assert(numL.methodR(numR).length == 81)
+
+  for {
+    i1 <- 1 to 10
+    i2 <- 1 to 5
+  } yield {
+    val num火 = {
+      def num1(n1: Int, tail: => NumR): NumR = {
+        n1 match {
+          case n2 if n2 > 0 => 火(num1(n2 - 1, tail))
+          case 0            => tail
+        }
+      }
+      lazy val numa: NumR = num1(i1, numb)
+      lazy val numb: NumR = 水(numa)
+      numa
+    }
+    val num风 = {
+      def num1(n1: Int, tail: => NumR): NumR = {
+        n1 match {
+          case n2 if n2 > 0 => 风(num1(n2 - 1, tail))
+          case 0            => tail
+        }
+      }
+      lazy val numa: NumR = num1(i1, numb)
+      lazy val numb: NumR = 水(numa)
+      numa
+    }
+    val numL = {
+      def num1(n1: Int): NumL = {
+        n1 match {
+          case n2 if n2 > 0 => 左零(num1(n2 - 1), num火)
+          case 0            => 左正(null)
+        }
+      }
+      num1(i2)
+    }
+    val num1 = numL.methodR(num风).length
+    val num2 = math.pow(i1, i2)
+    println(s"${(i1, i2)}, ${(num1, num2.toInt)}")
+    assert(num1 == num2)
+  }
 
 }
