@@ -2,33 +2,13 @@ package part1
 
 import part2.{NumL, NumLO, NumLP, NumR, Result, ResultO, ResultP}
 
-trait Queue {
-  self =>
-
-  val num: Vector[NumL]
-  val reverse: Vector[NumL]
-
-  def tail: (Queue, NumL, NumL) = (
-    new Queue {
-      override val num: Vector[NumL]     = self.num.drop(1)
-      override val reverse: Vector[NumL] = self.reverse.dropRight(1)
-    },
-    num.head,
-    reverse.head
-  )
-
-  def insert(numL: NumL): Queue = new Queue {
-    override val num: Vector[NumL]     = self.num.appended(numL)
-    override val reverse: Vector[NumL] = numL +: self.reverse
-  }
-
+class Queue(num: Vector[NumL]) {
+  def tail: (Queue, NumL, NumL) = (new Queue(num.drop(1)), num.head, num.last)
+  def insert(numL: NumL): Queue = new Queue(num.appended(numL))
 }
 
 object Queue {
-  def apply(list: NumL*): Queue = new Queue {
-    override val num: Vector[NumL]     = Vector.from(list)
-    override val reverse: Vector[NumL] = num.reverse
-  }
+  def apply(list: NumL*): Queue = new Queue(Vector.from(list))
 
   def merge(queue: Queue, num: NumR): Result = queue.tail match {
     case (tailQueue, NumLP, NumLP)       => num.methodL(tailQueue)
