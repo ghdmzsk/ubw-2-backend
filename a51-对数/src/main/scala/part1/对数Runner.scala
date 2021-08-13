@@ -23,15 +23,15 @@ object 对数Runner extends App {
     if (math.pow(num1, result).toInt > num2) result - 1 else result
   }
 
-  /*for {
+  for {
     i1 <- 2 to 40
     i2 <- 1 to 1000
   } yield {
-    val (queue, numR) = numFromInt(i2,i1)
-    val num1      = numR.methodL(queue).length
-    val num2      = log(i1, i2)
+    val (queue, numR) = numFromInt(i2, i1)
+    val num1          = numR.methodL(queue).length
+    val num2          = log(i1, i2)
     assert(num1 == num2)
-  }*/
+  }
 
   for {
     i2 <- 1 to 400
