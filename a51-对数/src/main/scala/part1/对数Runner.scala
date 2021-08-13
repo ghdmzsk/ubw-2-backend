@@ -33,13 +33,10 @@ object 对数Runner extends App {
     assert(num1 == num2)
   }
 
-  for {
-    i2 <- 1 to 400
-  } yield {
+  for (i2 <- 1 to 400) yield {
     val (queue, numR) = numFromInt(i2, 3)
     val num1          = numR.methodL(queue).length
-
-    val num2 = log(3, i2)
+    val num2          = log(3, i2)
     println(s"result left: $num1, result right: $num2")
   }
 
