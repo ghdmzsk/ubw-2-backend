@@ -21,6 +21,7 @@ object Dependencies {
     "org.scalacheck" %% "scalacheck" % "1.14.1"         % "test"
   )
 
-  val spire = "org.typelevel" %% "spire" % "0.17.0"
+  val spire     = "org.typelevel" %% "spire"      % "0.17.0"
+  val commonsIO = "commons-io"     % "commons-io" % "2.6"
 
 }

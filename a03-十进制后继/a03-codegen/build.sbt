@@ -1,4 +1,4 @@
 UbwSettings.scalaVersionSettings
 enablePlugins(SbtTwirl)
-libraryDependencies += "commons-io" % "commons-io" % "2.6"
+libraryDependencies += Dependencies.commonsIO
 name := "a03-codegen"
