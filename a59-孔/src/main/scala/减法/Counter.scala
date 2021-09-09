@@ -12,13 +12,10 @@ case object Number1T extends Number1 {
 
 trait Number2 {
   def method2(number1: Number1): Number2
-  def length: Int
 }
 case class Number2S(tail: Number2) extends Number2 {
   override def method2(number1: Number1): Number2 = number1.method1(tail)
-  override def length: Int                        = tail.length + 1
 }
 case object Number2T extends Number2 {
   override def method2(number1: Number1): Number2 = Number2T
-  override def length: Int                        = 0
 }

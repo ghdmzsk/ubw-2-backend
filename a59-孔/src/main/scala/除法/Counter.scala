@@ -20,12 +20,6 @@ case object Number2T extends Number2 {
   override def method2(number1: Number1): Number3 = Number3T
 }
 
-trait Number3 {
-  def length: Int
-}
-case class Number3S(tail: Number3) extends Number3 {
-  override val length: Int = tail.length + 1
-}
-case object Number3T extends Number3 {
-  override val length: Int = 0
-}
+trait Number3
+case class Number3S(tail: Number3) extends Number3
+case object Number3T               extends Number3
