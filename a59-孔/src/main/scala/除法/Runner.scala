@@ -29,11 +29,13 @@ object Runner {
     val number1 = 5
     for (i <- 1 to number1 + 1000) {
       if (i % 5 == 0) {
+        // 整除，上舍法和下舍法结果一样
         val r1 = number1阳(number1).method1(number2FromInt(i)).length
         val r2 = number2FromInt(i).method2(number1阴(number1)).length
         assert(r2 == r1)
         assert(r2 >= 1)
       } else {
+        // 有余数，上舍法和下舍法结果差一
         val r1 = number1阳(number1).method1(number2FromInt(i)).length
         val r2 = number2FromInt(i).method2(number1阴(number1)).length
         assert(r2 - r1 == 1)
