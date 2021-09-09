@@ -27,17 +27,17 @@ object Runner {
 
   def main(args: Array[String]): Unit = {
     val number1 = 5
-    for (i <- 5 to number1 + 1000) {
+    for (i <- 1 to number1 + 1000) {
       if (i % 5 == 0) {
         val r1 = number1阳(number1).method1(number2FromInt(i)).length
         val r2 = number2FromInt(i).method2(number1阴(number1)).length
-        assert(r1 == r2)
-        assert(r1 >= 1)
+        assert(r2 == r1)
+        assert(r2 >= 1)
       } else {
         val r1 = number1阳(number1).method1(number2FromInt(i)).length
         val r2 = number2FromInt(i).method2(number1阴(number1)).length
         assert(r2 - r1 == 1)
-        assert(r1 >= 1)
+        assert(r2 >= 1)
       }
     }
   }
