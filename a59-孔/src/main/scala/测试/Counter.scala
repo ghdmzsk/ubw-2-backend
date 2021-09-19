@@ -6,8 +6,18 @@ trait Number1 {
 case class Number1S(tail: Number1) extends Number1 {
   override def method1(number2: Number2): Result = number2.method2(tail)
 }
-case object Number1T extends Number1 {
-  override def method1(number2: Number2): Result = ResultS(无中生有(number2))
+case class Number1T(tail: () => Number1) extends Number1 {
+  override def method1(number2: Number2): Result = {
+    val a1 = Number1T(tail)
+    val a2 = number2
+    a2
+    ResultT
+    // 要和不要更高一阶法之间
+    // 如果要，必然正无穷，如果不要，必然只有两阶
+    // 所以是介于轮和 HList 的数据结构，不能构成双轮
+    // 介于
+
+  }
 }
 
 trait Number2 {
