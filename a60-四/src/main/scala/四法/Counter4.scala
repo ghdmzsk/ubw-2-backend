@@ -13,9 +13,9 @@ case object P4Num1T extends P4Num1 {
 trait P4Num2 {
   def method1(num4: P4Num1): Result
 }
-case class P4Num2T(tail: P4Num2) extends P4Num2 {
+case class P4Num2S(tail: P4Num2) extends P4Num2 {
   override def method1(num4: P4Num1): Result = num4.method2(tail)
 }
-case class P4Num2S(tail: () => P4Num2) extends P4Num2 {
+case class P4Num2T(tail: () => P4Num2) extends P4Num2 {
   override def method1(num4: P4Num1): Result = ResultS(tail().method1(num4))
 }

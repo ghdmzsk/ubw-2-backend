@@ -19,7 +19,3 @@ case class P3Num2S(tail: P3Num2) extends P3Num2 {
 case class P3Num2T(tail: () => P3Num2) extends P3Num2 {
   override def method1(num3: P3Num1): Result = num3.method2(tail())
 }
-
-trait Result
-case class ResultS(tail: Result) extends Result
-case object ResultT              extends Result
