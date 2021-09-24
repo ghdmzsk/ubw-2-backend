@@ -68,11 +68,11 @@ object AA extends App {
 
   println(dd(30).mkString)
 
-  println(lookAndSaySeries(30).head == dd(30).mkString) // true
+  println(lookAndSay(30) == dd(30).mkString) // true
 
   val date1_1 = System.currentTimeMillis()
   for (_ <- 1 to 10000) {
-    lookAndSaySeries(30).head
+    lookAndSay(30)
   }
   val date1_2 = System.currentTimeMillis()
 
@@ -82,8 +82,8 @@ object AA extends App {
   }
   val date2_2 = System.currentTimeMillis()
 
-  println(date1_2 - date1_1) // 31530
+  println(date1_2 - date1_1) // 31963
 
-  println(date2_2 - date2_1) // 3642
+  println(date2_2 - date2_1) // 3688
 
 }
