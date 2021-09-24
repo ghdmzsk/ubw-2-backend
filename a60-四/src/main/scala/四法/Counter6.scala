@@ -16,6 +16,6 @@ trait P6Num2 {
 case class P6Num2S(tail: P6Num2) extends P6Num2 {
   override def method1(num6: P6Num1): Result = num6.method2(tail)
 }
-case object P6Num2T extends P6Num2 {
-  override def method1(num6: P6Num1): Result = ResultT
+case class P6Num2T(tail: () => P6Num2) extends P6Num2 {
+  override def method1(num6: P6Num1): Result = ResultS(tail().method1(num6))
 }
