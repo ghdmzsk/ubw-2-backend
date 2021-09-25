@@ -11,10 +11,7 @@ package 测试1 {
     override def method2(num7: P7Num2): P7Result = num7.method1(tail)
   }
   case class P7Num1T(tail: () => P7Num1) extends P7Num1 {
-    override def method2(num7: P7Num2): P7Result = {
-      Counter.count -= 1
-      P7ResultM(tail().method2(num7))
-    }
+    override def method2(num7: P7Num2): P7Result = tail().method2(num7)
   }
 
   trait P7Num2 {
@@ -36,7 +33,6 @@ package 测试1 {
 
   trait P7Result
   case class P7ResultP(tail: P7Result) extends P7Result
-  case class P7ResultM(tail: P7Result) extends P7Result
 
   object Test1 extends App {
     lazy val num1: P7Num1     = P7Num1S(P7Num1S(P7Num1S(P7Num1S(P7Num1S(num1Zero)))))
