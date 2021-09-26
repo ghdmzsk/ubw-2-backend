@@ -48,4 +48,15 @@ package 测试1 {
     }
     println(Counter.count)
   }
+
+  object Test2 extends App {
+    for (i <- 1 to 20) {
+      var num = 0d
+      for (num1 <- 1 to 200) {
+        num += math.pow(1d / i.toDouble - 1d, num1 * 2 - 1) / (num1 * 2 - 1).toDouble
+        num -= math.pow(1d / i.toDouble - 1d, num1 * 2) / (num1 * 2).toDouble
+      }
+      assert(math.log(i) + num < 0.000001d)
+    }
+  }
 }
