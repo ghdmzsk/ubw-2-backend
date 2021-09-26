@@ -53,10 +53,13 @@ package 测试1 {
     for (i <- 1 to 20) {
       var num = 0d
       for (num1 <- 1 to 200) {
-        num += math.pow(1d / i.toDouble - 1d, num1 * 2 - 1) / (num1 * 2 - 1).toDouble
-        num -= math.pow(1d / i.toDouble - 1d, num1 * 2) / (num1 * 2).toDouble
+        val yuan   = 1d / i.toDouble - 1d
+        val index1 = num1 * 2 - 1
+        val index2 = num1 * 2
+        num -= math.pow(yuan, index1) / index1.toDouble
+        num += math.pow(yuan, index2) / index2.toDouble
       }
-      assert(math.log(i) + num < 0.000001d)
+      assert(math.abs(math.log(i) - num) < 0.000001d)
     }
   }
 }
