@@ -48,29 +48,4 @@ package 测试1 {
     }
     println(Counter.count)
   }
-
-  object Test2 extends App {
-    for (i <- 1 to 20) {
-      var num = 0d
-      for (num1 <- 1 to 200) {
-        val yuan   = 1d / i.toDouble - 1d
-        val index1 = num1 * 2 - 1
-        val index2 = num1 * 2
-        num -= math.pow(yuan, index1) / index1.toDouble
-        num += math.pow(yuan, index2) / index2.toDouble
-      }
-      assert(math.abs(math.log(i) - num) < 0.000001d)
-    }
-  }
-
-  object Test3 extends App {
-    for (i <- 1 to 100) {
-      val yuan        = (i - 1).toDouble / i
-      var num: Double = 0
-      for (num1 <- 1 to 4000) {
-        num += math.pow(yuan, num1) / num1
-      }
-      assert(math.abs(math.log(i) - num) < 0.000001d)
-    }
-  }
 }
