@@ -19,8 +19,8 @@ object Runner {
     case NumT       => 0
   }
 
-  // 乘法和除法都是，number1 先调用，则代表 number1 弱化了，number2 需要给它补充，所以需要函数体有后继的部分
-  // 如果是 number1 后调用，则代表 number1 强大了，需要弱化，number2 就用函数体没有后继的部分
+  // 乘法和除法都是，number1 作为主调用方，那么他就会优先弱小，number2 是无限，没法通过大小补充，所以它会使用函数体有后继的那个部分投入运算
+  // 如果是 number1 作为传入参数，则代表 number1 延后减弱，相对于情况一强化了，为了表示行为上的弱化，number2 就用函数体没有后继的部分
   def main(arr: Array[String]): Unit = {
     {
       val number1      = number1gen(23154)
