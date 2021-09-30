@@ -25,12 +25,12 @@ object Runner {
     {
       val number1      = number1gen(23154)
       val (_, number2) = number2gen(125)
-      println(count(number1.method1(number2)) == 23154 / 125 + 1)
+      assert(count(number1.method1(number2)) == 23154 / 125 + 1)
     }
     {
       val number1      = number1gen(23154)
       val (number2, _) = number2gen(125)
-      println(count(number2.method2(number1)) == 23154 / 125)
+      assert(count(number2.method2(number1)) == 23154 / 125)
     }
   }
 }
