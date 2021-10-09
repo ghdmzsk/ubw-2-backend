@@ -42,9 +42,16 @@ object Runner2 {
     var m_2: Int   = 0
     var m_3: Int   = 0
     var m_4: Int   = 0
+    var n_1_2: Int = 0
+    var n_1_3: Int = 0
+    var n_1_4: Int = 0
+    var n_2_3: Int = 0
+    var n_2_4: Int = 0
+    var n_3_4: Int = 0
     for (_ <- 1 to 10000) {
-      val random1 = math.abs(Random.nextInt()) % 2000
+      var random1 = math.abs(Random.nextInt()) % 2000
       var random2 = math.abs(Random.nextInt()) % 400
+      if (random1 == 0) random1 += 1
       if (random2 == 0) random2 += 1
       val result1 = {
         val (number1Tail, number1Zero) = chufaFromInt((1 to random2).to(List))
@@ -76,12 +83,30 @@ object Runner2 {
       val d_2_3 = math.abs(result2 - result3)
       val d_2_4 = math.abs(result2 - result4)
       val d_3_4 = math.abs(result3 - result4)
-      if (d_1_2 == 0) r_1_2 += 1
-      if (d_1_3 == 0) r_1_3 += 1
-      if (d_1_4 == 0) r_1_4 += 1
-      if (d_2_3 == 0) r_2_3 += 1
-      if (d_2_4 == 0) r_2_4 += 1
-      if (d_3_4 == 0) r_3_4 += 1
+      if (d_1_2 == 0) {
+        r_1_2 += 1
+        if (result1 * random2 == random1) n_1_2 += 1
+      }
+      if (d_1_3 == 0) {
+        r_1_3 += 1
+        if (result1 * random2 == random1) n_1_3 += 1
+      }
+      if (d_1_4 == 0) {
+        r_1_4 += 1
+        if (result1 * random2 == random1) n_1_4 += 1
+      }
+      if (d_2_3 == 0) {
+        r_2_3 += 1
+        if (result2 * random2 == random1) n_2_3 += 1
+      }
+      if (d_2_4 == 0) {
+        r_2_4 += 1
+        if (result2 * random2 == random1) n_2_4 += 1
+      }
+      if (d_3_4 == 0) {
+        r_3_4 += 1
+        if (result3 * random2 == random1) n_3_4 += 1
+      }
 
       if (result1 * random2 == random1) m_1 += 1
       if (result2 * random2 == random1) m_2 += 1
@@ -89,10 +114,12 @@ object Runner2 {
       if (result4 * random2 == random1) m_4 += 1
     }
 
-    // 选择两种计算方式，当一种计算方式的商乘以除数可以还原成被除数的时候，另一种计算方式必然出现相同的情况
-    // 那这两种计算方式，就可以成为除法运算的两种表现。
-    println(r_1_2, r_1_3, r_1_4, r_2_3, r_2_4, r_3_4) // (0,9817,190,0,9810,7)
-    println(m_1, m_2, m_3, m_4)                       // (190,0,7,190)
+    // 使被除数和除数的值为不为零的任何自然数，如果有一种计算方式的商乘以除数有可以还原成被除数的情况
+    // 那这种计算方式，就可以成为除法运算
+    // 并且这样的运算方式有两种，可以预知，当还原操作成立的时候，两种运算的商是相等的
+    println(r_1_2, r_1_3, r_1_4, r_2_3, r_2_4, r_3_4) // (0,9833,167,0,9833,0)
+    println(n_1_2, n_1_3, n_1_4, n_2_3, n_2_4, n_3_4) // (0,0,167,0,0,0)
+    println(m_1, m_2, m_3, m_4)                       // (167,0,0,167)
   }
 
 }
