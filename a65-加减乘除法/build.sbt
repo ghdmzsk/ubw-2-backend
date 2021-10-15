@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a65-练习"
+name := "a65-加减乘除法"
