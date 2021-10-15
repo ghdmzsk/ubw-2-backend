@@ -36,8 +36,9 @@ object Runner2 {
     {
       val number1                        = number1gen(256)
       val (number2Positive, number2Zero) = 除数(4)
-      lazy val result: Number1           = Log.longNumber(number1, number2Positive)
-      println(count(result))
+      val result: Number1                = Log.longNumber(number1, number2Positive)
+      val result1                        = Log.log(4, 256)
+      println(count(result) == result1)
     }
   }
 
