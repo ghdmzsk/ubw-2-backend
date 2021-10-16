@@ -43,12 +43,7 @@ object Runner3 {
       val (number2Positive, number2Zero) = 乘数(2)
       val result: Number1                = number1.method3(number2Positive)
       val countResult                    = Pow.pow(2, 10)
-      println(count(result))
-      println(count(result))
-      println(count(result))
-      println(count(result))
-      println(count(result))
-      println(count(result))
+      assert(count(result) == countResult)
     }
   }
 
