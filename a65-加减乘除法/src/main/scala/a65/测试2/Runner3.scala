@@ -1,10 +1,15 @@
-package a65.测试
+package a65.测试2
 
-object Runner2 {
+object Runner3 {
 
   def number1gen(n: Int): Number1 = n match {
     case n1 if n1 > 0 => new Number1S(number1gen(n1 - 1))
     case 0            => Number1T
+  }
+
+  def number3gen(n: Int): Number3 = n match {
+    case n1 if n1 > 0 => new Number3S(number3gen(n1 - 1))
+    case 0            => Number3T
   }
 
   def 乘数(n: Int): (Number2, Number2) = {
@@ -34,11 +39,16 @@ object Runner2 {
 
   def main(arr: Array[String]): Unit = {
     {
-      val number1                        = number1gen(256)
-      val (number2Positive, number2Zero) = 除数(4)
-      val result: Number1                = Log.longNumber(number1, number2Positive)
-      val result1                        = Log.log(4, 256)
-      println(count(result) == result1)
+      val number1                        = number3gen(10)
+      val (number2Positive, number2Zero) = 乘数(2)
+      val result: Number1                = number1.method3(number2Positive)
+      val countResult                    = Pow.pow(2, 10)
+      println(count(result))
+      println(count(result))
+      println(count(result))
+      println(count(result))
+      println(count(result))
+      println(count(result))
     }
   }
 

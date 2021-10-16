@@ -1,4 +1,4 @@
-package a65.测试
+package a65.测试1
 
 trait Number1 {
   def method1(number2: Number2): Number1
@@ -34,10 +34,33 @@ object Log {
     result
   }
 
-  def longNumber(number1: Number1, number2: Number2): Number1 = {
+  def logNumber(number1: Number1, number2: Number2): Number1 = {
     number2.method2(number1) match {
-      case a: Number1S => Number1S(longNumber(a, number2))
+      case a: Number1S => Number1S(logNumber(a, number2))
       case Number1T    => Number1T
+    }
+  }
+
+}
+
+object Pow {
+
+  def pow(底数: Int, 指数: Int): Int = {
+    var result = 1
+    def innerPow(di: Int): Unit = {
+      if (di > 0) {
+        result *= 底数
+        innerPow(di - 1)
+      }
+    }
+    innerPow(指数)
+    result
+  }
+
+  def powNumber(number1: Number1, number2: Number2): Number1 = {
+    number1 match {
+      case Number1S(tail) => powNumber(tail, number2).method1(number2)
+      case Number1T       => Number1S(Number1T)
     }
   }
 
