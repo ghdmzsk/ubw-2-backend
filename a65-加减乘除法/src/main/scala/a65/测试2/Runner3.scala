@@ -3,7 +3,7 @@ package a65.测试2
 object Runner3 {
 
   def number1gen(n: Int): Number1 = n match {
-    case n1 if n1 > 0 => new Number1S(number1gen(n1 - 1))
+    case n1 if n1 > 0 => Number1S(number1gen(n1 - 1))
     case 0            => Number1T
   }
 
@@ -38,12 +38,25 @@ object Runner3 {
   }
 
   def main(arr: Array[String]): Unit = {
-    {
-      val number1                        = number3gen(10)
-      val (number2Positive, number2Zero) = 乘数(2)
+    for {
+      i <- 1 to 8
+      n <- 1 to 5
+    } yield {
+      val number1                        = number3gen(n)
+      val (number2Positive, number2Zero) = 乘数(i)
       val result: Number1                = number1.method3(number2Positive)
-      val countResult                    = Pow.pow(2, 10)
+      val countResult                    = Pow.pow(i, n)
       assert(count(result) == countResult)
+    }
+    for {
+      i <- 1 to 2000
+      n <- 2 to 20
+    } {
+      val number1                        = number1gen(i)
+      val (number2Positive, number2Zero) = 除数(n)
+      val result: Number1                = number2Positive.method5(number1)
+      val countResult                    = Pow.log(n, i)
+      assert(count(result) == countResult + 1)
     }
   }
 
