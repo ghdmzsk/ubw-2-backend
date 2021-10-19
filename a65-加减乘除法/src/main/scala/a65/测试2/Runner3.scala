@@ -22,13 +22,13 @@ object Runner3 {
     (number2s, number2t)
   }
 
-  def 除数(n: Int): (Number2, Number2) = {
-    def gen(n1: Int, zero: => Number2): Number2 = n1 match {
-      case n2 if n2 > 0 => Number2T(() => gen(n2 - 1, zero))
-      case 0            => zero
+  def 除数(n: Int): (Number2T, Number2S) = {
+    def gen(n1: Int, zero: => Number2S): Number2T = n1 match {
+      case n2 if n2 > 1 => Number2T(() => gen(n2 - 1, zero))
+      case 1            => Number2T(() => zero)
     }
-    lazy val number2t: Number2 = gen(n, number2s)
-    lazy val number2s: Number2 = Number2S(() => number2t)
+    lazy val number2t: Number2T = gen(n, number2s)
+    lazy val number2s: Number2S = Number2S(() => number2t)
     (number2t, number2s)
   }
 

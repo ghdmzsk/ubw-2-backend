@@ -15,15 +15,13 @@ case object Number1T extends Number1 {
 
 trait Number2 {
   def method2(number1: Number1): Number1
-  def method5(number1: Number1): Number1
 }
 case class Number2S(tail: () => Number2) extends Number2 {
   override def method2(number1: Number1): Number1 = Number1S(tail().method2(number1))
-  override def method5(number1: Number1): Number1 = Number1T
 }
 case class Number2T(tail: () => Number2) extends Number2 {
   override def method2(number1: Number1): Number1 = number1.method1(tail())
-  override def method5(number1: Number1): Number1 = number1.method4(tail())
+  def method5(number1: Number1): Number1          = number1.method4(tail())
 }
 
 trait Number3 {
