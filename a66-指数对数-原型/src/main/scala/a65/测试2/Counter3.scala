@@ -60,11 +60,4 @@ object Pow {
     result
   }
 
-  def logNumber(number1: Number1, number2: Number2): Number1 = {
-    number2.method2(number1) match {
-      case a: Number1S => Number1S(logNumber(a, number2))
-      case Number1T    => Number1T
-    }
-  }
-
 }
