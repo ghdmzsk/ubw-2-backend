@@ -8,7 +8,6 @@ object Runner6 {
       case n1 if n1 > 0 => Number1S(() => number1s(n1 - 1))
       case 0            => taZero
     }
-
   }
   def number1t(n: Int): Number1 = {
     lazy val ntZero: Number1 = Number1S(() => ntZero)
