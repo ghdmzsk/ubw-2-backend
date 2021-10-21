@@ -13,9 +13,8 @@ object UbwSettings {
   val setting4 = licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
   val setting5 = scalafmtOnCompile := true
   val setting6 = scalaVersion := dottyVersion
-  val setting7 = scalafmtOnCompile := false
 
   val scalaVersionSettings = Seq(setting1, setting2, setting3, setting4, setting5)
-  val dottyVersionSettings = Seq(setting2, setting3, setting4, setting6, setting7)
+  val dottyVersionSettings = Seq(setting2, setting3, setting4, setting6, setting5)
 
 }
