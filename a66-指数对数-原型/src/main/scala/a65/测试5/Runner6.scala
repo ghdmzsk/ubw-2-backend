@@ -67,7 +67,7 @@ object Runner6 {
 
   def main(arr: Array[String]): Unit = {
     for {
-      i <- 1 to 2
+      i <- 4 to 8
       n <- 2 to 3
     } {
       val result1         = MathCount.log(n, i)
@@ -79,16 +79,16 @@ object Runner6 {
         println(n, i, resultNum2, result1)
       }
     }
-    /*for {
-      i <- 1 to 8
-      n <- 1 to 5
+    for {
+      i <- 8 to 8
+      n <- 3 to 3
     } {
       val result1         = MathCount.pow(n, i)
       val number1         = number1t(i)
       val number2Positive = number2s(n)
       val result2         = number1.method3(number2Positive)
       println(i, n, result1, counts(result2), result1 == counts(result2))
-    }*/
+    }
   }
 
 }
