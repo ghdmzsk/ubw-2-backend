@@ -3,10 +3,10 @@ package a65.测试7
 object Runner8 {
 
   def 加数被加数(n: Int): Number1 = {
-    lazy val taZero: Number1 = Number1S(() => taZero)
+    lazy val number1s: Number1 = Number1S(() => number1s)
     n match {
       case n1 if n1 > 0 => Number1T(() => 加数被加数(n1 - 1))
-      case 0            => taZero
+      case 0            => number1s
     }
   }
   def 被减数(n: Int): Number1 = {
