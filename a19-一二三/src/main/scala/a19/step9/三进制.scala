@@ -82,7 +82,7 @@ class 中层满位_0[T0, T1, T2, II0 <: 三进制后继, II1 <: 三进制后继,
   type _1 = II1
   type _2 = II2
 
-  override type Next[T]                         = II0#是否进位[中层满位_0[T0, T1, T2, II0#Next[T], II1, II2], 中层满位_1[T0, T1, T2, II0, II1#开辟[T], II2]]
+  override type Next[T] = II0#是否进位[中层满位_0[T0, T1, T2, II0#Next[T], II1, II2], 中层满位_1[T0, T1, T2, II0, II1#开辟[T], II2]]
   override type 是否进位[不进位 <: 三进制后继, 进位 <: 三进制后继] = 不进位
 }
 
@@ -95,7 +95,7 @@ class 中层满位_1[T0, T1, T2, II0 <: 三进制后继, II1 <: 三进制后继,
   type _1 = II1
   type _2 = II2
 
-  override type Next[T]                         = II1#是否进位[中层满位_1[T0, T1, T2, II0, II1#Next[T], II2], 中层满位_2[T0, T1, T2, II0, II1, II2#开辟[T]]]
+  override type Next[T] = II1#是否进位[中层满位_1[T0, T1, T2, II0, II1#Next[T], II2], 中层满位_2[T0, T1, T2, II0, II1, II2#开辟[T]]]
   override type 是否进位[不进位 <: 三进制后继, 进位 <: 三进制后继] = 不进位
 }
 

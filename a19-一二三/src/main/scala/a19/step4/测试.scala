@@ -96,17 +96,23 @@ object 测试 {
   type jihjkhjih       = P_3_Step_2[Item1, Item2, S_2[Item3, Item4, Item5], S_0[Item6]]
   type nlhnjsnroewrnwe = jihjkhjih#Next[Item7]#Next[Item8]#Next[Item9]#Next[Item10]#Next[Item11]
   type dfgdfgereter    = nlhnjsnroewrnwe#Next[Item12]#Next[Item13]#Next[Item14]#Next[Item15]#Next[Item16]#Next[Item17]
-  type rhgrtrbrbrtbrtg = dfgdfgereter#Next[Item18]#Next[Item19]#Next[Item20]#Next[Item21]#Next[Item22]#Next[Item23]#Next[Item24]#Next[Item25]#Next[Item26]#Next[
-    Item27
-  ]#Next[Item28]#Next[Item29]#Next[Item30]#Next[Item31]#Next[Item32]#Next[Item33]#Next[Item34]#Next[Item35]#Next[Item36]
+  type rhgrtrbrbrtbrtg =
+    dfgdfgereter#Next[Item18]#Next[Item19]#Next[Item20]#Next[Item21]#Next[Item22]#Next[Item23]#Next[Item24]#Next[Item25]#Next[Item26]#Next[
+      Item27
+    ]#Next[Item28]#Next[Item29]#Next[Item30]#Next[Item31]#Next[Item32]#Next[Item33]#Next[Item34]#Next[Item35]#Next[Item36]
 
-  type r50 = rhgrtrbrbrtbrtg#Next[Item37]#Next[Item38]#Next[Item39]#Next[Item40]#Next[Item41]#Next[Item42]#Next[Item43]#Next[Item44]#Next[Item45]#Next[Item46]#Next[
+  type r50 = rhgrtrbrbrtbrtg#Next[Item37]#Next[Item38]#Next[Item39]#Next[Item40]#Next[Item41]#Next[Item42]#Next[Item43]#Next[Item44]#Next[
+    Item45
+  ]#Next[Item46]#Next[
     Item47
   ]#Next[Item48]#Next[Item49]#Next[Item50]
 
-  type r60 = r50#Next[Item51]#Next[Item52]#Next[Item53]#Next[Item54]#Next[Item55]#Next[Item56]#Next[Item57]#Next[Item58]#Next[Item59]#Next[Item60]
-  type r70 = r60#Next[Item61]#Next[Item62]#Next[Item63]#Next[Item64]#Next[Item65]#Next[Item66]#Next[Item67]#Next[Item68]#Next[Item69]#Next[Item70]
-  type r80 = r70#Next[Item71]#Next[Item72]#Next[Item73]#Next[Item74]#Next[Item75]#Next[Item76]#Next[Item77]#Next[Item78]#Next[Item79]#Next[Item80]
+  type r60 =
+    r50#Next[Item51]#Next[Item52]#Next[Item53]#Next[Item54]#Next[Item55]#Next[Item56]#Next[Item57]#Next[Item58]#Next[Item59]#Next[Item60]
+  type r70 =
+    r60#Next[Item61]#Next[Item62]#Next[Item63]#Next[Item64]#Next[Item65]#Next[Item66]#Next[Item67]#Next[Item68]#Next[Item69]#Next[Item70]
+  type r80 =
+    r70#Next[Item71]#Next[Item72]#Next[Item73]#Next[Item74]#Next[Item75]#Next[Item76]#Next[Item77]#Next[Item78]#Next[Item79]#Next[Item80]
   type r83 = r80#Next[Item81]#Next[Item82]#Next[Item83]
 
   类型匹配(类型匹配[nlhnjsnroewrnwe#_2_th], 类型匹配[Item2])

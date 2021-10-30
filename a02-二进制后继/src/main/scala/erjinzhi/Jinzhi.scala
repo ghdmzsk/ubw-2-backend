@@ -131,7 +131,8 @@ object Runner extends App {
   miao1: Manwei[Manwei[KongWeiZero, Item2Impl[I1, I2]], I3]
   println(miao1) // 无限0 :: 满位1(Item2(i1, i0)) :: 满位1(i3)
 
-  val miao2: KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4] = KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4)
+  val miao2: KongWeiZero#UpdateCurrent[I1]#UpdateCurrent[I2]#UpdateCurrent[I3]#UpdateCurrent[I4] =
+    KongWeiZero.value.add(new I1).add(new I2).add(new I3).add(new I4)
 
   miao2: KongWei[KongWei[Manwei[KongWeiZero, Item2Impl[Item2Impl[I1, I2], Item2Impl[I3, I4]]]]]
   println(miao2) // 无限0 :: 满位1(Item2(Item2(i1, i0), Item2(i3, i4))) :: 空位0 :: 空位0

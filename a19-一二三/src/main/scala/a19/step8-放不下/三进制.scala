@@ -104,7 +104,7 @@ class 中层_1[T0, T1, T2, II0 <: 三进制后继, II1 <: 三进制后继] exten
   type _0 = II0
   type _1 = II1
 
-  override type Next[T]                             = II1#后继上一级操作[中层_1[T0, T1, T2, II0, II1#Next[T]], 中层准备进位_1[T0, T1, T2, II0, II1#Next[T]]]
+  override type Next[T] = II1#后继上一级操作[中层_1[T0, T1, T2, II0, II1#Next[T]], 中层准备进位_1[T0, T1, T2, II0, II1#Next[T]]]
   override type 后继上一级操作[II <: 三进制后继, Need <: 三进制后继] = II
   override type Pred                                = II0#前驱上一级操作[中层_1[T0, T1, T2, II0, II1#Pred], 中层准备退位_1[T0, T1, T2, II0, II1#Pred]]
   override type 前驱上一级操作[不退位 <: 三进制后继, 退位 <: 三进制后继]  = 不退位
@@ -146,9 +146,9 @@ class 中层满位_0[T0, T1, T2, II0 <: 三进制后继, II1 <: 三进制后继,
   type _1 = II1
   type _2 = II2
 
-  override type Next[T]                            = II0#后继上一级操作[中层满位_0[T0, T1, T2, II0#Next[T], II1, II2], 中层满位_1[T0, T1, T2, II0#Next[T], II1, II2]]
+  override type Next[T] = II0#后继上一级操作[中层满位_0[T0, T1, T2, II0#Next[T], II1, II2], 中层满位_1[T0, T1, T2, II0#Next[T], II1, II2]]
   override type 后继上一级操作[不进位 <: 三进制后继, 进位 <: 三进制后继] = 不进位
-  override type Pred                               = II0#前驱上一级操作[中层满位_0[T0, T1, T2, II0#Pred, II1, II2], 中层满位_2[T0, T1, T2, II0#Pred, II1, II2]]
+  override type Pred = II0#前驱上一级操作[中层满位_0[T0, T1, T2, II0#Pred, II1, II2], 中层满位_2[T0, T1, T2, II0#Pred, II1, II2]]
   override type 前驱上一级操作[不退位 <: 三进制后继, 退位 <: 三进制后继] = II0#前驱上一级操作[不退位, 退位]
 }
 
@@ -161,9 +161,9 @@ class 中层满位_1[T0, T1, T2, II0 <: 三进制后继, II1 <: 三进制后继,
   type _1 = II1
   type _2 = II2
 
-  override type Next[T]                            = II1#后继上一级操作[中层满位_1[T0, T1, T2, II0, II1#Next[T], II2], 中层满位_2[T0, T1, T2, II0, II1#Next[T], II2]]
+  override type Next[T] = II1#后继上一级操作[中层满位_1[T0, T1, T2, II0, II1#Next[T], II2], 中层满位_2[T0, T1, T2, II0, II1#Next[T], II2]]
   override type 后继上一级操作[不进位 <: 三进制后继, 进位 <: 三进制后继] = 不进位
-  override type Pred                               = II0#前驱上一级操作[中层满位_1[T0, T1, T2, II0, II1#Pred, II2], 中层满位_0[T0, T1, T2, II0, II1#Pred, II2]]
+  override type Pred = II0#前驱上一级操作[中层满位_1[T0, T1, T2, II0, II1#Pred, II2], 中层满位_0[T0, T1, T2, II0, II1#Pred, II2]]
   override type 前驱上一级操作[不退位 <: 三进制后继, 退位 <: 三进制后继] = 不退位
 }
 
@@ -176,8 +176,8 @@ class 中层满位_2[T0, T1, T2, II0 <: 三进制后继, II1 <: 三进制后继,
   type _1 = II1
   type _2 = II2
 
-  override type Next[T]                            = II2#后继上一级操作[中层满位_2[T0, T1, T2, II0, II1, II2#Next[T]], 中层满位_0[T0, T1, T2, II0, II1, II2#Next[T]]]
+  override type Next[T] = II2#后继上一级操作[中层满位_2[T0, T1, T2, II0, II1, II2#Next[T]], 中层满位_0[T0, T1, T2, II0, II1, II2#Next[T]]]
   override type 后继上一级操作[不进位 <: 三进制后继, 进位 <: 三进制后继] = II2#后继上一级操作[不进位, 进位]
-  override type Pred                               = II0#前驱上一级操作[中层满位_2[T0, T1, T2, II0, II1, II2#Pred], 中层满位_1[T0, T1, T2, II0, II1, II2#Pred]]
+  override type Pred = II0#前驱上一级操作[中层满位_2[T0, T1, T2, II0, II1, II2#Pred], 中层满位_1[T0, T1, T2, II0, II1, II2#Pred]]
   override type 前驱上一级操作[不退位 <: 三进制后继, 退位 <: 三进制后继] = 不退位
 }

@@ -52,7 +52,9 @@ object Runner {
   }
 
   def main(arr: Array[String]): Unit = {
-    type Nat1 = 自然数零#Next[Item16]#Next[Item15]#Next[Item14]#Next[Item13]#Next[Item12]#Next[Item11]#Next[Item10]#Next[Item9]#Next[Item8]#Next[Item7]#Next[Item6]#Next[
+    type Nat1 = 自然数零#Next[Item16]#Next[Item15]#Next[Item14]#Next[Item13]#Next[Item12]#Next[Item11]#Next[Item10]#Next[Item9]#Next[
+      Item8
+    ]#Next[Item7]#Next[Item6]#Next[
       Item5
     ]#Next[Item4]#Next[Item3]#Next[Item2]#Next[Item1]
     val nat1: Nat1 = 自然数零.value

@@ -41,7 +41,10 @@ class P_3_Step_1[T1, T2, II1 <: 进位准备, II2 <: 进位准备] extends 进�
   type _1 = II1
   type _2 = II2
 
-  override type Next[T] = II1#加数后上级进位操作[P_3_Step_1[T1, T2, II1#Next[T], II2], II2#加数后上级进位操作[P_3_Step_1[T1, T2, II1, II2#Next[T]], P_3_Step_1[T1, T2, II1#Next[T], II2]]]
+  override type Next[T] = II1#加数后上级进位操作[
+    P_3_Step_1[T1, T2, II1#Next[T], II2],
+    II2#加数后上级进位操作[P_3_Step_1[T1, T2, II1, II2#Next[T]], P_3_Step_1[T1, T2, II1#Next[T], II2]]
+  ]
   // override type 加数后上级进位操作[NoNeed <: 进位准备, Need <: 进位准备] = II1#加数后上级进位操作[NoNeed, II2#加数后上级进位操作[NoNeed, Need]]
 }
 
@@ -109,7 +112,10 @@ class I_1[T0, T1, T2, II0 <: 进位准备, II1 <: 进位准备] extends 进位�
   type _0 = II0
   type _1 = II1
 
-  override type Next[T]                                 = II0#加数后上级进位操作[I_1[T0, T1, T2, II0#Next[T], II1], II1#加数后上级进位操作[I_1[T0, T1, T2, II0, II1#Next[T]], I_2_Step_0[T0, T1, T2, II0, II1, S_0[T]]]]
+  override type Next[T] =
+    II0#加数后上级进位操作[I_1[T0, T1, T2, II0#Next[T], II1], II1#加数后上级进位操作[I_1[T0, T1, T2, II0, II1#Next[T]], I_2_Step_0[T0, T1, T2, II0, II1, S_0[
+      T
+    ]]]]
   override type 加数后上级进位操作[NoNeed <: 进位准备, Need <: 进位准备] = NoNeed
 }
 

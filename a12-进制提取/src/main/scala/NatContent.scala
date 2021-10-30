@@ -55,11 +55,16 @@ class 自然数容器I[Pair <: 自然数, TagPair <: 自然数标记](override v
   override type _6 = 自然数容器I[Pair, 自然数容器I.Tag_6#加[自然数容器I.Tag_10#乘以[TagPair]]]
   override def _6: _6 = 自然数容器I(数对 = 数对, 数标记 = new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(自然数容器I.tag_10.乘以(数标记))))))))
   override type _7 = 自然数容器I[Pair, 自然数容器I.Tag_7#加[自然数容器I.Tag_10#乘以[TagPair]]]
-  override def _7: _7 = 自然数容器I(数对 = 数对, 数标记 = new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(自然数容器I.tag_10.乘以(数标记)))))))))
+  override def _7: _7 =
+    自然数容器I(数对 = 数对, 数标记 = new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(自然数容器I.tag_10.乘以(数标记)))))))))
   override type _8 = 自然数容器I[Pair, 自然数容器I.Tag_8#加[自然数容器I.Tag_10#乘以[TagPair]]]
-  override def _8: _8 = 自然数容器I(数对 = 数对, 数标记 = new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(自然数容器I.tag_10.乘以(数标记))))))))))
+  override def _8: _8 =
+    自然数容器I(数对 = 数对, 数标记 = new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(自然数容器I.tag_10.乘以(数标记))))))))))
   override type _9 = 自然数容器I[Pair, 自然数容器I.Tag_9#加[自然数容器I.Tag_10#乘以[TagPair]]]
-  override def _9: _9 = 自然数容器I(数对 = 数对, 数标记 = new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(自然数容器I.tag_10.乘以(数标记)))))))))))
+  override def _9: _9 = 自然数容器I(
+    数对 = 数对,
+    数标记 = new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(new 正整数标记(自然数容器I.tag_10.乘以(数标记))))))))))
+  )
 
   override def toString: String = s"自然数容器I(数对 = ${数对}, 数标记 = ${数标记})"
 }
