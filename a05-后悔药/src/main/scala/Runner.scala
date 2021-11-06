@@ -25,16 +25,26 @@ object Runner {
   }
 
   def main(arr: Array[String]): Unit = {
-    type HList7 = Zero#Add[Test1]#Add[Test2]#Add[Test3]#Add[Test4]#Add[Test5]#Add[Test6]#Add[Test7]
-    val hlist7: HList7 = Zero.value.add(new Test1).add(new Test2).add(new Test3).add(new Test4).add(new Test5).add(new Test6).add(new Test7)
+
+    type HList7 = Appendable[
+      Appendable[Appendable[Appendable[Appendable[Appendable[Appendable[Zero, Test1], Test2], Test3], Test4], Test5], Test6],
+      Test7
+    ]
+    val hlist7: HList7 = Appendable(
+      Appendable(
+        Appendable(Appendable(Appendable(Appendable(Appendable(Zero.value, new Test1), new Test2), new Test3), new Test4), new Test5),
+        new Test6
+      ),
+      new Test7
+    )
     println(hlist7) // Zero :: Test1 :: Test2 :: Test3 :: Test4 :: Test5 :: Test6 :: Test7
 
     hlist7.chouqu: HList7#Chouqu
-    hlist7.chouqu: Zero#Add[Test2]#Add[Test3]#Add[Test4]#Add[Test5]#Add[Test6]#Add[Test7]
+    hlist7.chouqu: Appendable[Appendable[Appendable[Appendable[Appendable[Appendable[Zero, Test2], Test3], Test4], Test5], Test6], Test7]
     println(hlist7.chouqu) // Zero :: Test2 :: Test3 :: Test4 :: Test5 :: Test6 :: Test7
 
     hlist7.chouqu.chouqu.chouqu: HList7#Chouqu#Chouqu#Chouqu
-    hlist7.chouqu.chouqu.chouqu: Zero#Add[Test4]#Add[Test5]#Add[Test6]#Add[Test7]
+    hlist7.chouqu.chouqu.chouqu: Appendable[Appendable[Appendable[Appendable[Zero, Test4], Test5], Test6], Test7]
     println(hlist7.chouqu.chouqu.chouqu) // Zero :: Test4 :: Test5 :: Test6 :: Test7
   }
 
