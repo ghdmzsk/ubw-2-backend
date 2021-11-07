@@ -70,14 +70,10 @@ object Runner {
     println(
       number
         .map { s =>
-          val ctx1  = Context.empty
-          val ctx2  = Context.empty
-          val ctx3  = Context.empty
-          val ctx4  = Context.empty
-          val n1    = Counter.count(() => s._1._1.method1(s._1._2, ctx1))
-          val n2    = Counter.count(() => s._2._1.method1(s._2._2, ctx2))
-          val n3    = Counter.count(() => s._3._1.method1(s._3._2, ctx3))
-          val n4    = Counter.count(() => s._4._1.method1(s._4._2, ctx4))
+          val n1    = Counter.count(() => s._1._1.method1(s._1._2))
+          val n2    = Counter.count(() => s._2._1.method1(s._2._2))
+          val n3    = Counter.count(() => s._3._1.method1(s._3._2))
+          val n4    = Counter.count(() => s._4._1.method1(s._4._2))
           val 不是无限大 = n1.isDefined && n2.isDefined && n3.isDefined && n4.isDefined
           def 不为零   = n1.get > 0 || n2.get > 0
           def 不过大   = n1.get < 200 && n2.get < 200 && n3.get < 200 && n4.get < 200
@@ -85,14 +81,10 @@ object Runner {
         }
         .filter(_._1)
         .map { case (_, s) =>
-          val ctx5  = Context.empty
-          val ctx6  = Context.empty
-          val ctx7  = Context.empty
-          val ctx8  = Context.empty
-          val n5    = Counter.count(() => s._5._1.method1(s._5._2, ctx5)).get
-          val n6    = Counter.count(() => s._6._1.method1(s._6._2, ctx6)).get
-          val n7    = Counter.count(() => s._7._1.method1(s._7._2, ctx7)).get
-          val n8    = Counter.count(() => s._8._1.method1(s._8._2, ctx8)).get
+          val n5    = Counter.count(() => s._5._1.method1(s._5._2)).get
+          val n6    = Counter.count(() => s._6._1.method1(s._6._2)).get
+          val n7    = Counter.count(() => s._7._1.method1(s._7._2)).get
+          val n8    = Counter.count(() => s._8._1.method1(s._8._2)).get
           val m1    = n5 - s._5._3
           val m2    = n5 - s._5._4
           val m3    = n6 - s._6._3
@@ -138,7 +130,6 @@ object Runner {
     // (Number1S: Positive, Number1V: Zero).method1(Number1U: Positive, Number1V: Zero)
     // (Number1U: Positive, Number1V: Zero).method1(Number1S: Positive, Number1V: Zero)
     // (Number1U: Positive, Number1V: Zero).method1(Number1U: Positive, Number1V: Zero)
-
 
   }
 
