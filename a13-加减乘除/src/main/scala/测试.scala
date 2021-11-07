@@ -57,7 +57,8 @@ object 测试 {
 
   type 乘以1 = 自然数零#Next[Item01]#Next[Item02]
   type 乘以2 = 自然数零#Next[Item03]#Next[Item04]#Next[Item05]
-  type 乘以3 = 自然数对零#Next[Item01, Item03]#Next[Item01, Item04]#Next[Item01, Item05]#Next[Item02, Item03]#Next[Item02, Item04]#Next[Item02, Item05]
+  type 乘以3 =
+    自然数对零#Next[Item01, Item03]#Next[Item01, Item04]#Next[Item01, Item05]#Next[Item02, Item03]#Next[Item02, Item04]#Next[Item02, Item05]
   类型匹配[乘以1#乘以[乘以2]].匹配(类型匹配[乘以3])
 
   type 除以1 = 被除数零#Next[Item01]#Next[Item02]#Next[Item03]#Next[Item04]#Next[Item05]#Next[Item06]#Next[Item07]#Next[Item08]
@@ -89,7 +90,8 @@ object 测试 {
   type 商4  = 商零#Next[对7]#Next[对8]#Next[对9]
   类型匹配[除以7#除以[除以8]].匹配(类型匹配[商4])
 
-  type 除以9  = 被除数零#Next[Item01]#Next[Item02]#Next[Item03]#Next[Item04]#Next[Item05]#Next[Item06]#Next[Item07]#Next[Item08]#Next[Item09]#Next[Item10]
+  type 除以9 =
+    被除数零#Next[Item01]#Next[Item02]#Next[Item03]#Next[Item04]#Next[Item05]#Next[Item06]#Next[Item07]#Next[Item08]#Next[Item09]#Next[Item10]
   type 除以10 = 除数零#Next[除数01]#Next[除数02]#Next[除数03]
   type 对10  = a13.除法修正版.自然数对零#Next[Item02, 除数01]#Next[Item03, 除数02]#Next[Item04, 除数03]
   type 对11  = a13.除法修正版.自然数对零#Next[Item05, 除数01]#Next[Item06, 除数02]#Next[Item07, 除数03]

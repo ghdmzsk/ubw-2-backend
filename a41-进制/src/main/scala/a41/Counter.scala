@@ -105,8 +105,9 @@ case class Number7Middle1(n0: Number5, tail: Number7) extends Number7 {
   override def method8(number5: Number5, item: Number5): Number1 = tail.method7(Number5Middle2(n0 = n0, n1 = number5, n2 = item))
 }
 case class Number7Middle2(n0: Number5, n1: Number5, tail: Number7) extends Number7 {
-  override def method7(number5: Number5): Number1                = tail.method7(Number5Middle2(n0 = n0, n1 = n1, n2 = number5))
-  override def method8(number5: Number5, item: Number5): Number1 = tail.method8(Number5Middle2(n0 = n0, n1 = n1, n2 = number5), Number5Middle0(item))
+  override def method7(number5: Number5): Number1 = tail.method7(Number5Middle2(n0 = n0, n1 = n1, n2 = number5))
+  override def method8(number5: Number5, item: Number5): Number1 =
+    tail.method8(Number5Middle2(n0 = n0, n1 = n1, n2 = number5), Number5Middle0(item))
 }
 
 case class Number7Bottom0(tail: Number3) extends Number7 {
@@ -114,6 +115,7 @@ case class Number7Bottom0(tail: Number3) extends Number7 {
   override def method8(number5: Number5, item: Number5): Number1 = tail.method3(Number2Zero1(number5, item))
 }
 case class Number7Bottom1(n0: Number5, tail: Number3) extends Number7 {
-  override def method7(number5: Number5): Number1                = tail.method3(Number2Zero1(n0, number5))
-  override def method8(number5: Number5, item: Number5): Number1 = tail.method3(Number2PDeep3(n0, number5, Number2Zero0(Number5Middle0(item))))
+  override def method7(number5: Number5): Number1 = tail.method3(Number2Zero1(n0, number5))
+  override def method8(number5: Number5, item: Number5): Number1 =
+    tail.method3(Number2PDeep3(n0, number5, Number2Zero0(Number5Middle0(item))))
 }

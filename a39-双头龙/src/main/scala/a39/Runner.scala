@@ -16,9 +16,15 @@ object Runner {
   val item10 = Item("item10")
 
   lazy val number1: Number1 =
-    Number1Positive(Number1Positive(Number1Positive(Number1Positive(Number1Positive(Number1Zero(() => number2), item01), item02), item03), item04), item05)
+    Number1Positive(
+      Number1Positive(Number1Positive(Number1Positive(Number1Positive(Number1Zero(() => number2), item01), item02), item03), item04),
+      item05
+    )
   lazy val number2: Number2 =
-    Number2Positive(Number2Positive(Number2Positive(Number2Positive(Number2Positive(Number2Zero(() => number1), item06), item07), item08), item09), item10)
+    Number2Positive(
+      Number2Positive(Number2Positive(Number2Positive(Number2Positive(Number2Zero(() => number1), item06), item07), item08), item09),
+      item10
+    )
 
   def main(arr: Array[String]): Unit = {
     @tailrec

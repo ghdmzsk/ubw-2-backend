@@ -24,7 +24,10 @@ object Runner1 {
   i(
     new Tag[log#run[底数2, 指数值3]],
     new Tag[
-      隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数1, Item1], Item1], Item1], Item1], Item1], Item1], Item1]
+      隐数Positive[
+        隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数1, Item1], Item1], Item1], Item1], Item1], Item1],
+        Item1
+      ]
     ]
   )
 
@@ -33,7 +36,10 @@ object Runner1 {
     new Tag[log#run[底数2, 指数值4]],
     new Tag[
       隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[
-        隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数1, Item1], Item1], Item1], Item1], Item1], Item1], Item1], Item1],
+        隐数Positive[隐数Positive[
+          隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数1, Item1], Item1], Item1], Item1], Item1], Item1],
+          Item1
+        ], Item1],
         Item1
       ], Item1], Item1], Item1], Item1], Item1], Item1]
     ]

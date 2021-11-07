@@ -92,7 +92,10 @@ object Runner1 {
   i(new Tag[log#run[底数2, 真数值16]], new Tag[对数Positive[对数Positive[对数Positive[对数Positive[对数Zero]]]]])
 
   type 真数值27 = 真数Positive[真数Positive[真数Positive[
-    真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值16, Item17], Item18], Item19], Item20], Item21], Item22], Item23], Item24],
+    真数Positive[真数Positive[
+      真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值16, Item17], Item18], Item19], Item20], Item21], Item22],
+      Item23
+    ], Item24],
     Item25
   ], Item26], Item27]
   i(new Tag[log#run[底数2, 真数值27]], new Tag[对数Positive[对数Positive[对数Positive[对数Positive[对数Zero]]]]])

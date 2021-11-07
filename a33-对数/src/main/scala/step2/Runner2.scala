@@ -22,16 +22,25 @@ object Runner2 {
 
   i(
     new Tag[log#run[底数3, 指数Positive[指数1, Di1]]],
-    new Tag[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数1, Item2], Item1], Item2], Item1], Item2], Item1], Item2], Item1]]
+    new Tag[隐数Positive[隐数Positive[
+      隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数1, Item2], Item1], Item2], Item1], Item2], Item1],
+      Item2
+    ], Item1]]
   )
 
   i(
     new Tag[log#run[底数3, 指数Positive[指数Positive[指数1, Di1], Di2]]],
     new Tag[隐数Positive[隐数Positive[隐数Positive[隐数Positive[
-      隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[
-        隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数1, Item2], Item1], Item2], Item1], Item2], Item1], Item2], Item1],
+      隐数Positive[隐数Positive[
+        隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[
+          隐数Positive[隐数Positive[
+            隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数Positive[隐数1, Item2], Item1], Item2], Item1], Item2], Item1],
+            Item2
+          ], Item1],
+          Item2
+        ], Item1], Item2], Item1], Item2], Item1], Item2], Item1], Item2], Item1], Item2], Item1],
         Item2
-      ], Item1], Item2], Item1], Item2], Item1], Item2], Item1], Item2], Item1], Item2], Item1], Item2], Item1],
+      ], Item1],
       Item2
     ], Item1], Item2], Item1]]
   )

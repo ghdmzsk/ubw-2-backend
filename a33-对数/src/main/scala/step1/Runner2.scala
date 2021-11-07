@@ -94,7 +94,10 @@ object Runner2 {
   i(new Tag[log#run[底数3, 真数值16]], new Tag[对数Positive[对数Positive[对数Zero]]])
 
   type 真数值26 = 真数Positive[真数Positive[
-    真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值16, Item17], Item18], Item19], Item20], Item21], Item22], Item23], Item24],
+    真数Positive[真数Positive[
+      真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值16, Item17], Item18], Item19], Item20], Item21], Item22],
+      Item23
+    ], Item24],
     Item25
   ], Item26]
   i(new Tag[log#run[底数3, 真数值26]], new Tag[对数Positive[对数Positive[对数Zero]]])
@@ -116,13 +119,25 @@ object Runner2 {
 
   type 真数值40 = 真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值33, IY], IY], IY], IY], IY], IY], IY]
   type 真数值50 =
-    真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值40, IY], IY], IY], IY], IY], IY], IY], IY], IY], IY]
+    真数Positive[真数Positive[
+      真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值40, IY], IY], IY], IY], IY], IY], IY], IY],
+      IY
+    ], IY]
   type 真数值60 =
-    真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值50, IY], IY], IY], IY], IY], IY], IY], IY], IY], IY]
+    真数Positive[真数Positive[
+      真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值50, IY], IY], IY], IY], IY], IY], IY], IY],
+      IY
+    ], IY]
   type 真数值70 =
-    真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值60, IY], IY], IY], IY], IY], IY], IY], IY], IY], IY]
+    真数Positive[真数Positive[
+      真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值60, IY], IY], IY], IY], IY], IY], IY], IY],
+      IY
+    ], IY]
   type 真数值80 =
-    真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值70, IY], IY], IY], IY], IY], IY], IY], IY], IY], IY]
+    真数Positive[真数Positive[
+      真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数Positive[真数值70, IY], IY], IY], IY], IY], IY], IY], IY],
+      IY
+    ], IY]
   i(new Tag[log#run[底数3, 真数值80]], new Tag[对数Positive[对数Positive[对数Positive[对数Zero]]]])
 
   type 真数值81 = 真数Positive[真数值80, Item33]
