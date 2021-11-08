@@ -42,7 +42,7 @@ object Runner {
     } yield (num1._1, num2._1, NumberTag(zdPositive = num1._2, zdZero = num1._3, bdPositive = num2._2, bdZero = num2._3))
   }
 
-  val data = ((52, 26), (26, 52), (93, 93), (0, 0), (56, 25), (86, 32), (52, 72), (20, 32))
+  val data = ((10, 3), (3, 10), (93, 93), (0, 0), (56, 25), (86, 32), (52, 72), (20, 32))
 
   val number = gen3(data._1._1, data._1._2)
     .zip(gen3(data._2._1, data._2._2))
@@ -70,14 +70,13 @@ object Runner {
     println(
       number
         .map { s =>
-          val n1    = Counter.count(() => s._1._1.method1(s._1._2))
-          val n2    = Counter.count(() => s._2._1.method1(s._2._2))
-          val n3    = Counter.count(() => s._3._1.method1(s._3._2))
-          val n4    = Counter.count(() => s._4._1.method1(s._4._2))
-          val 不是无限大 = n1.isDefined && n2.isDefined && n3.isDefined && n4.isDefined
-          def 不为零   = n1.get > 0 || n2.get > 0
-          def 不过大   = n1.get < 200 && n2.get < 200 && n3.get < 200 && n4.get < 200
-          (不是无限大 && 不为零 && 不过大, s)
+          val n1 = Counter.count(() => s._1._1.method1(s._1._2))
+          val n2 = Counter.count(() => s._2._1.method1(s._2._2))
+          val n3 = Counter.count(() => s._3._1.method1(s._3._2))
+          // val n4    = Counter.count(() => s._4._1.method1(s._4._2))
+          val 不是无限大 = n1.isDefined && n2.isDefined && n3.isDefined
+          def 不过大   = n1.get < 200 && n2.get < 200 && n3.get < 200
+          (不是无限大 && 不过大, s)
         }
         .filter(_._1)
         .map { case (_, s) =>
@@ -107,8 +106,8 @@ object Runner {
           val 是最小值2 = m9 == m11 || m13 == m15
           val 是最大值2 = m10 == m12 || m14 == m16
 
-          val 不为固定值1 = if (n5 > 0 || n6 > 0) n5 != n6 else true
-          val 不为固定值2 = if (n7 > 0 || n8 > 0) n7 != n8 else true
+          val 不为固定值1 = n5 != n6
+          val 不为固定值2 = n7 != n8
           val 不为固定值3 = 不为固定值1 || 不为固定值2
 
           (!是最小值1 && !是最大值1 && !是最小值2 && !是最大值2 && 不为固定值3, s)
