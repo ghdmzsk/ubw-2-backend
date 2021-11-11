@@ -20,20 +20,20 @@ sealed trait Number2
 case class Number2S(tail: () => Number2) extends Number2
 
 object Counter {
-  def countImpl(number2: () => Number2): Int = {
+  def countThrow(number2: () => Number2): Int = {
     val value =
       try Option(number2())
       catch {
         case _: StackOverflowError => Option.empty
       }
     value match {
-      case Some(Number2S(tail)) => countImpl(tail) + 1
+      case Some(Number2S(tail)) => countThrow(tail) + 1
       case None                 => 0
     }
   }
 
   def count(number2: () => Number2): Option[Int] = {
-    try Option(countImpl(number2))
+    try Option(countThrow(number2))
     catch {
       case _: StackOverflowError => Option.empty
     }
