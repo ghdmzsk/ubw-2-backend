@@ -4,18 +4,16 @@ trait Number1 {
   def method1(number2: Number2): Number3
 }
 case class Number1S(tail: Number1) extends Number1 {
-  override def method1(number2: Number2): Number3 = number2.method2(tail)
+  override def method1(number2: Number2): Number3 = Number3T
 }
-case class Number1T(tail: () => Number1) extends Number1 {
+case object Number1T extends Number1 {
   override def method1(number2: Number2): Number3 = Number3T
 }
 
-trait Number2 {
-  def method2(number1: Number1): Number3
-}
-class Number2S(tail: Number2) extends Number2 {
-  override def method2(number1: Number1): Number3 = number1.method1(tail)
-}
+trait Number2
+case class Number2S(tail: Number2)                                       extends Number2
+case class Number2T(tailCurrent: () => Number2, tailNext: () => Number2) extends Number2
+case class Number2Zero(genTail: () => Number2)                           extends Number2
 
 trait Number3
 case class Number3S(tail: Number3) extends Number3
