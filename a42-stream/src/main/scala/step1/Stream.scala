@@ -34,7 +34,8 @@ trait MinusNumber extends Number with ReverseNumber {
 }
 case class MinusNumberPositive(tail: MinusNumber) extends Number with MinusNumber {
   override def next(stream: Stream, reverseStream: ReverseStream, item: Item): Result = reverseStream.reverse(StreamPositive(stream, tail))
-  override def reverse(stream: Stream, reverseStream: ReverseStream): Result          = reverseStream.reverse(StreamPositive(stream, MinusNumberPositive(tail)))
+  override def reverse(stream: Stream, reverseStream: ReverseStream): Result =
+    reverseStream.reverse(StreamPositive(stream, MinusNumberPositive(tail)))
 }
 case object MinusNumberZero extends Number with MinusNumber {
   override def next(stream: Stream, reverseStream: ReverseStream, item: Item): Result = stream.next(reverseStream, item)

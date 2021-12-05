@@ -9,8 +9,8 @@ class Typer {
   type Number4 = BePlusP[BePlusP[BePlusP[BePlusP[BePlusP[BePlusP[BePlusP[BePlusO, 1], 2], 3], 4], "5"], "6"], "7"]
 
   class Tag[T]
-  def i[T](tag1:Tag[T],tag2:Tag[T]):List[Tag[T]] = List(tag1,tag2)
+  def i[T](tag1: Tag[T], tag2: Tag[T]): List[Tag[T]] = List(tag1, tag2)
 
-  i(new Tag[Number3],new Tag[Number4])
+  i(new Tag[Number3], new Tag[Number4])
 
 }

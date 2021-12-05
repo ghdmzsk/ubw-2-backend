@@ -1,4 +1,4 @@
-package a71.指数
+package a71.对数
 
 trait Number1 {
   def method1(number2: Number2): Number4
@@ -24,13 +24,13 @@ trait Number2Bottom {
   def method3(number1: Number1, number3: Number3): Number4
 }
 case class Number2SBottom(tail: Number2Bottom) extends Number2Bottom {
-  override def method3(number1: Number1, number3: Number3): Number4 = Number4S(tail.method3(number1, number3))
+  override def method3(number1: Number1, number3: Number3): Number4 = number3.method3(number1, tail)
 }
 case class Number2TBottom(tailNext: () => Number2Bottom, genTailNext: Number2Bottom => Number2Bottom) extends Number2Bottom {
   override def method3(number1: Number1, number3: Number3): Number4 = tailNext().method3(number1, Number3S(number3, genTailNext))
 }
 case class Number2Zero(genTail: () => Number2Bottom) extends Number2Bottom {
-  override def method3(number1: Number1, number3: Number3): Number4 = number3.method3(number1, genTail())
+  override def method3(number1: Number1, number3: Number3): Number4 = Number4S(number3.method3(number1, genTail()))
 }
 
 trait Number3 {

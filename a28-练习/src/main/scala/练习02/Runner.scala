@@ -15,7 +15,9 @@ object Runner {
   class Item7
 
   type 被除数值1 =
-    被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Zero]]]]]]]]]]] // 11
+    被除数Positive[被除数Positive[
+      被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Zero]]]]]]]]]
+    ]] // 11
   type 被除数值2 = 被除数Positive[被除数值1] // 12
   type 被除数值3 = 被除数Positive[被除数值2] // 13
 

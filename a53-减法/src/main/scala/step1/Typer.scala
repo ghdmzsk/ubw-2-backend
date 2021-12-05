@@ -3,7 +3,7 @@ package step1
 class Typer {
 
   class Tag[T]
-  def i[T](tag1:Tag[T],tag2:Tag[T]):List[Tag[T]] = List(tag1,tag2)
+  def i[T](tag1: Tag[T], tag2: Tag[T]): List[Tag[T]] = List(tag1, tag2)
 
   type Number1 = BeMinusP[BeMinusP[BeMinusP[BeMinusP[BeMinusO, 1], 2], 3], 4]
   type Number2 = MinusP[MinusP[MinusP[MinusO, "5"], "6"], "7"]
@@ -21,7 +21,7 @@ class Typer {
 
   i(new Tag[Number7], new Tag[Number8])
 
-  type Number9 = BeMinusP[BeMinusP[BeMinusO, 1], 2]
+  type Number9  = BeMinusP[BeMinusP[BeMinusO, 1], 2]
   type Number10 = MinusP[MinusP[MinusP[MinusP[MinusP[MinusO, "3"], "4"], "5"], "6"], "7"]
 
   type Number11 = 减法[Number9, Number10]

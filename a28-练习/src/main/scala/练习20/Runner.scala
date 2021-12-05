@@ -27,7 +27,11 @@ object Runner {
               new 乘数T1Positive(
                 new 乘数T1Positive(
                   new 乘数T1Positive(
-                    new 乘数T1Positive(new 乘数T1Positive(new 乘数T1Positive(new 乘数T1Positive(new 乘数T1Positive(new 乘数T1Positive(new 乘数T1Positive(new 乘数T1One)))))))
+                    new 乘数T1Positive(
+                      new 乘数T1Positive(
+                        new 乘数T1Positive(new 乘数T1Positive(new 乘数T1Positive(new 乘数T1Positive(new 乘数T1Positive(new 乘数T1One)))))
+                      )
+                    )
                   )
                 )
               )
@@ -42,7 +46,11 @@ object Runner {
           new 乘数T2Positive(
             new 乘数T2Positive(
               new 乘数T2Positive(
-                new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(乘数One2))))))))
+                new 乘数T2Positive(
+                  new 乘数T2Positive(
+                    new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(new 乘数T2Positive(乘数One2))))))
+                  )
+                )
               )
             )
           )
@@ -50,7 +58,8 @@ object Runner {
       )
     )
     lazy val 乘数One2: 乘数T2 = new 乘数T2One(() => 乘数值2)
-    lazy val 乘数值3: 乘数T3   = new 乘数T3Positive(new 乘数T3Positive(new 乘数T3Positive(new 乘数T3Positive(乘数One3, new Item1), new Item2), new Item3), new Item4)
+    lazy val 乘数值3: 乘数T3 =
+      new 乘数T3Positive(new 乘数T3Positive(new 乘数T3Positive(new 乘数T3Positive(乘数One3, new Item1), new Item2), new Item3), new Item4)
     lazy val 乘数One3: 乘数T3 = new 乘数T3Zero(() => 乘数值3)
 
     println(s"value1: ${乘数值3.length}")

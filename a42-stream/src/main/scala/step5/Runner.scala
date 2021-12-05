@@ -30,7 +30,13 @@ object Runner {
       println("result1: " + result1)
       assert(
         result1 == ResultPositive(
-          ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultZero, item01), item02), item03), item04), item05), item06),
+          ResultPositive(
+            ResultPositive(
+              ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultZero, item01), item02), item03), item04),
+              item05
+            ),
+            item06
+          ),
           item07
         )
       )
@@ -47,7 +53,10 @@ object Runner {
                 ResultPositive(
                   ResultPositive(
                     ResultPositive(
-                      ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultZero, item01), item02), item03), item04), item05),
+                      ResultPositive(
+                        ResultPositive(ResultPositive(ResultPositive(ResultPositive(ResultZero, item01), item02), item03), item04),
+                        item05
+                      ),
                       item06
                     ),
                     item07

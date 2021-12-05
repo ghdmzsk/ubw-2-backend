@@ -63,6 +63,6 @@ object Test01 {
     override def sub: 玩具2 = new 玩具2
   }
 
-  val a1: 玩具1 = (throw new Exception("ii")): 天空1#Sub //不可再获取天空1
+  val a1: 玩具1 = (throw new Exception("ii")): 天空1#Sub // 不可再获取天空1
 
 }

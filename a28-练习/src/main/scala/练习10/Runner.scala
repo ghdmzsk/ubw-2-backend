@@ -26,7 +26,11 @@ object Runner {
   class 乘数1  extends 乘数Positive[乘数Positive[乘数Positive[乘数零1, Item5], Item6], Item7]
   class 乘数零1 extends 乘数Zero[乘数1]
   type 积1 = 积Positive[积Positive[积Positive[积Positive[积Positive[积Positive[
-    积Positive[积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item5, Item1], Item6, Item1], Item7, Item1], Item5, Item2], Item6, Item2], Item7, Item2],
+    积Positive[
+      积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item5, Item1], Item6, Item1], Item7, Item1], Item5, Item2], Item6, Item2],
+      Item7,
+      Item2
+    ],
     Item5,
     Item3
   ], Item6, Item3], Item7, Item3], Item5, Item4], Item6, Item4], Item7, Item4]

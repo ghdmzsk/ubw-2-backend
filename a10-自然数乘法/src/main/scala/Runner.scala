@@ -19,10 +19,11 @@ object Runner {
   }
 
   def main(arr: Array[String]): Unit = {
-    type Nat1       = 自然数零#Next[Item1]#Next[Item2]#Next[Item3]
-    type Nat2       = 自然数零#Next[Item4]#Next[Item5]
-    type Mutiply    = Nat1#乘以[Nat2]
-    type MutiplyNat = 元素对自然数零#Next[Item4, Item1]#Next[Item5, Item1]#Next[Item4, Item2]#Next[Item5, Item2]#Next[Item4, Item3]#Next[Item5, Item3]
+    type Nat1    = 自然数零#Next[Item1]#Next[Item2]#Next[Item3]
+    type Nat2    = 自然数零#Next[Item4]#Next[Item5]
+    type Mutiply = Nat1#乘以[Nat2]
+    type MutiplyNat =
+      元素对自然数零#Next[Item4, Item1]#Next[Item5, Item1]#Next[Item4, Item2]#Next[Item5, Item2]#Next[Item4, Item3]#Next[Item5, Item3]
     val nat1: Nat1             = 自然数零.value.next(new Item1).next(new Item2).next(new Item3)
     val nat2: Nat2             = 自然数零.value.next(new Item4).next(new Item5)
     val mutiply: Mutiply       = nat1.乘以(nat2)

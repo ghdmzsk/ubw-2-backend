@@ -16,13 +16,17 @@ object Runner {
   class Item9
 
   type 被减数1 = 被减数Positive[被减数Positive[被减数Zero, Item1], Item2]
-  type 减数1  = 减数Positive[减数Positive[减数Positive[减数Positive[减数Positive[减数Positive[减数Positive[减数Zero, Item3], Item4], Item5], Item6], Item7], Item8], Item9]
-  type 差1   = 减数Positive[减数Positive[减数Positive[减数Positive[减数Positive[减数Zero, Item3], Item4], Item5], Item6], Item7]
+  type 减数1 = 减数Positive[
+    减数Positive[减数Positive[减数Positive[减数Positive[减数Positive[减数Positive[减数Zero, Item3], Item4], Item5], Item6], Item7], Item8],
+    Item9
+  ]
+  type 差1 = 减数Positive[减数Positive[减数Positive[减数Positive[减数Positive[减数Zero, Item3], Item4], Item5], Item6], Item7]
   i(new Tag[减数1#减[被减数1]], new Tag[差1])
 
-  type 被减数2 = 被减数Positive[被减数Positive[被减数Positive[被减数Positive[被减数Positive[被减数Positive[被减数Zero, Item1], Item2], Item3], Item4], Item5], Item6]
-  type 减数2  = 减数Positive[减数Positive[减数Positive[减数Zero, Item7], Item8], Item9]
-  type 差2   = 被减数Positive[被减数Positive[被减数Positive[被减数Zero, Item1], Item2], Item3]
+  type 被减数2 =
+    被减数Positive[被减数Positive[被减数Positive[被减数Positive[被减数Positive[被减数Positive[被减数Zero, Item1], Item2], Item3], Item4], Item5], Item6]
+  type 减数2 = 减数Positive[减数Positive[减数Positive[减数Zero, Item7], Item8], Item9]
+  type 差2  = 被减数Positive[被减数Positive[被减数Positive[被减数Zero, Item1], Item2], Item3]
   i(new Tag[减数2#减[被减数2]], new Tag[差2])
 
 }

@@ -8,7 +8,11 @@ object Runner {
 
   def main(arr: Array[String]): Unit = {
     val 指数10: 指数 = new 指数Positive(
-      new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Zero)))))))))
+      new 指数Positive(
+        new 指数Positive(
+          new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Positive(new 指数Zero)))))))
+        )
+      )
     )
     val 咪1 = 指数10.指(new 底数1)
     println(scala.math.pow(3, 10)) // 59049.0

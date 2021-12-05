@@ -33,7 +33,8 @@ object Runner {
   类型匹配(类型匹配[除数值2#除[被除数1], 商Positive[商Positive[商Zero]]])
 
   type 被除数2 = 被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数1, Item6], Item7], Item8], Item9], Item10]
-  type 被除数3 = 被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数2, Item11], Item12], Item13], Item14], Item15], Item16]
+  type 被除数3 =
+    被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数2, Item11], Item12], Item13], Item14], Item15], Item16]
 
   class 除数值3    extends 除数Positive[除数Positive[除数Positive[除数Zero2]]]
   class 除数Zero2 extends 除数Zero[除数值3]

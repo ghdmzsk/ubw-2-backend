@@ -28,7 +28,11 @@ object Runner1 {
 
   type 积1 = 积Positive[积Positive[积Positive[
     积Positive[积Positive[积Positive[
-      积Positive[积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item1, Item5], Item2, Item5], Item3, Item5], Item4, Item5], Item1, Item6], Item2, Item6],
+      积Positive[
+        积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item1, Item5], Item2, Item5], Item3, Item5], Item4, Item5], Item1, Item6],
+        Item2,
+        Item6
+      ],
       Item3,
       Item6
     ], Item4, Item6], Item1, Item7],

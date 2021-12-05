@@ -20,7 +20,8 @@ object Runner {
   class 底3     extends 底Positive[底Positive[底Zero1, Item2], Item3]
   class 底Zero1 extends 底1[底3, Item1]
   type 指数值1 = 指数Positive[指数Positive[指数1]]
-  type 自然数1 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item3], Item1], Item2], Item3]
+  type 自然数1 =
+    自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item3], Item1], Item2], Item3]
   type 自然数2 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数1, Item1], Item2], Item3], Item1], Item2], Item3]
   type 自然数3 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数2, Item1], Item2], Item3], Item1], Item2], Item3]
   type 自然数4 = 自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数3, Item1], Item2], Item3], Item1], Item2], Item3]
@@ -32,7 +33,10 @@ object Runner {
   class 底Zero4 extends 底1[底4, Item1]
   type 指数值2 = 指数Positive[指数Positive[指数1]]
   type 自然数6 = 自然数Positive[
-    自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item1], Item2], Item1], Item2], Item1],
+    自然数Positive[
+      自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item1], Item2], Item1], Item2],
+      Item1
+    ],
     Item2
   ]
 

@@ -20,7 +20,11 @@ object Runner {
   class 乘数值3 extends 乘数Zero[乘数值2]
 
   type 结果1 = 自然数Positive[
-    自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item4, Item1], Item5, Item1], Item4, Item2], Item5, Item2], Item4, Item3],
+    自然数Positive[
+      自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item4, Item1], Item5, Item1], Item4, Item2], Item5, Item2],
+      Item4,
+      Item3
+    ],
     Item5,
     Item3
   ]

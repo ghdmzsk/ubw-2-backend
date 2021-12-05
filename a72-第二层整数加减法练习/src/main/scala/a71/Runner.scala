@@ -1,4 +1,4 @@
-package a71.指数
+package a71.对数
 
 import a71.MathCount
 
@@ -29,14 +29,12 @@ object Runner {
 
   def main(arr: Array[String]): Unit = {
     for {
-      i1 <- 1 to 5
-      i2 <- 2 to 5
+      i1 <- 0 to 600
+      i2 <- 2 to 20
     } {
       val result    = number1FromInt(i1).method1(number2FromInt(i2 - 1))
       val numResult = count(result)
-      println(s"$i2 ^ $i1 = $numResult")
-      assert(numResult == MathCount.pow(底数 = i2, 指数 = i1))
-
+      assert(numResult == MathCount.log(底数 = i2, 真数 = i1))
     }
   }
 

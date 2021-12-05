@@ -19,7 +19,8 @@ object Runner {
   class 乘数值5 extends c乘数Positive[c乘数Positive[c乘数Positive[乘数值6]]] // 3
   class 乘数值6 extends c乘数Zero[乘数值5]
 
-  type 结果2 = z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[结果1]]]]]]]]] // 15
+  type 结果2 =
+    z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[z自然数Positive[结果1]]]]]]]]] // 15
 
   i2(i1[乘数值4#被乘[乘数值5], 结果2]) // 5 * 3 = 15
   i2(i1[乘数值6#乘[乘数值4], 结果2])  // 3 * 5 = 15

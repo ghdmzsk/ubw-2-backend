@@ -23,12 +23,18 @@ object Runner {
   class Item16
 
   type 被除数16 = 被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[
-    被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Zero, Item1], Item2], Item3], Item4], Item5], Item6], Item7],
+    被除数Positive[
+      被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Zero, Item1], Item2], Item3], Item4], Item5], Item6],
+      Item7
+    ],
     Item8
   ], Item9], Item10], Item11], Item12], Item13], Item14], Item15], Item16]
 
   class 除数8
-      extends 除数Positive[除数Positive[除数Positive[除数Positive[除数Positive[除数Positive[除数Positive[除数Positive[除数零1, Item1], Item2], Item3], Item4], Item5], Item6], Item7], Item8]
+      extends 除数Positive[除数Positive[
+        除数Positive[除数Positive[除数Positive[除数Positive[除数Positive[除数Positive[除数零1, Item1], Item2], Item3], Item4], Item5], Item6],
+        Item7
+      ], Item8]
   class 除数零1 extends 除数Zero[除数8]
 
   type 商2 = 商Postive[商Postive[商Zero]]

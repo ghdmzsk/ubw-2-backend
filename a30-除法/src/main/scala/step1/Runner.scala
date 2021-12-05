@@ -18,7 +18,10 @@ object Runner {
   class 除数值1[T1] extends 除数1[除数值1, T1]
 
   type 被除数值1 = 被除数Positive[
-    被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Zero, Item1], Item2], Item3], Item4], Item5], Item6], Item7],
+    被除数Positive[
+      被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Zero, Item1], Item2], Item3], Item4], Item5], Item6],
+      Item7
+    ],
     Item8
   ]
   type 商1 = 商Positive[商Positive[商Positive[商Positive[商Positive[商Positive[商Positive[商Positive[商Zero]]]]]]]]

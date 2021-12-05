@@ -34,7 +34,10 @@ object Runner extends App {
   val hlist4: HList4 = Zero.value.add(new Item4).add(new Item5).add(new Item6).add(new Item7)
   println(hlist4) // Zero , Item4 , Item5 , Item6 , Item7
 
-  type HList7 = Appendable[Appendable[Appendable[Appendable[Appendable[Appendable[Appendable[Zero, Item1], Item2], Item3], Item4], Item5], Item6], Item7]
+  type HList7 = Appendable[
+    Appendable[Appendable[Appendable[Appendable[Appendable[Appendable[Zero, Item1], Item2], Item3], Item4], Item5], Item6],
+    Item7
+  ]
   val hlist7_4: HList3#RePlus[HList4] = hlist3.rePlus(hlist4)
   hlist7_4: HList7
   println(hlist7_4) // Zero , Item1 , Item2 , Item3 , Item4 , Item5 , Item6 , Item7
