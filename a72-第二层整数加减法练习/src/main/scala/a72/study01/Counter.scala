@@ -1,4 +1,4 @@
-package a72
+package a72.study01
 
 trait Number1 {
   def method1(number2: Number2): Number2

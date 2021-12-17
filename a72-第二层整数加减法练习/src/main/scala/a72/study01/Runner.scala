@@ -1,4 +1,4 @@
-package a72
+package a72.study01
 
 object Runner {
 
@@ -29,7 +29,7 @@ object Runner {
       Number2T
   }
 
-  def main(arr: Array[String]): Unit = {
+  def main1(arr: Array[String]): Unit = {
     for {
       i <- 8 to 20
       _ <- 1 to 3
