@@ -26,7 +26,7 @@ object Runner {
   } else
     Number2T
 
-  def main(arr: Array[String]): Unit = {
+  def main1(arr: Array[String]): Unit = {
     for {
       i1 <- -10 to 0
       i2 <- -10 to 0
