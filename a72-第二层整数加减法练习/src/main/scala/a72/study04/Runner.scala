@@ -16,7 +16,7 @@ object Runner {
 
   def number1Gen(n: Int): Number1 = if (n > 0) Number1S(() => number1Gen(n - 1)) else Number1U
 
-  def main(arr: Array[String]): Unit = {
+  def main1(arr: Array[String]): Unit = {
     {
       val number1_01 = Number1S(() => Number1S(() => Number1S(() => Number1S(() => Number1U))))
       val number1_02 = Number1S(() => Number1S(() => Number1S(() => Number1S(() => number1_01))))
