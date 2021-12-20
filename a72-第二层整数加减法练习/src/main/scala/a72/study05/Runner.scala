@@ -44,7 +44,7 @@ object Runner {
 
   }
 
-  def main(arr: Array[String]): Unit = {
+  def main1(arr: Array[String]): Unit = {
     for {
       i1 <- -20 to 20
       i2 <- -50 to 50
