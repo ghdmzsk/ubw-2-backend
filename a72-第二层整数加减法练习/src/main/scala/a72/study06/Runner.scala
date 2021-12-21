@@ -34,7 +34,7 @@ object Runner {
     }
   }
 
-  def main(arr: Array[String]): Unit = {
+  def main1(arr: Array[String]): Unit = {
     {
       val number1: Number1 = genNumber1(8888)
       val number2: Number2 = genNumber2(3221)
