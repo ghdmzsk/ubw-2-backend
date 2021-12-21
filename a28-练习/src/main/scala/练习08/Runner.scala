@@ -23,7 +23,10 @@ object Runner {
   class Item16
 
   type 被除数1 = 被除数Positive[被除数Positive[
-    被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Zero, Item1], Item2], Item3], Item4], Item5], Item6], Item7],
+    被除数Positive[
+      被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Positive[被除数Zero, Item1], Item2], Item3], Item4], Item5], Item6],
+      Item7
+    ],
     Item8
   ], Item9]
 

@@ -38,7 +38,7 @@ trait Context[K <: KindContext] {
       x: K#M[X],
       y: K#M[Y],
       p: Plus[X, Y, Z]
-    ): K#M[Z]                            = self.append(x, y, p)
+    ): K#M[Z] = self.append(x, y, p)
     override def start: K#M[JinzhiType0] = self.start
   }
 
@@ -49,7 +49,7 @@ trait Context[K <: KindContext] {
       x: K#M[X],
       y: K#M[Y],
       p: Plus[X, Y, Z]
-    ): K#M[Z]                            = self.append(x, y, p)
+    ): K#M[Z] = self.append(x, y, p)
     override def start: K#M[JinzhiType0] = self.start
   }
 
@@ -60,7 +60,7 @@ trait Context[K <: KindContext] {
       x: K#M[X],
       y: K#M[Y],
       p: Plus[X, Y, Z]
-    ): K#M[Z]                            = self.append(x, y, p)
+    ): K#M[Z] = self.append(x, y, p)
     override def start: K#M[JinzhiType0] = self.start
   }
 

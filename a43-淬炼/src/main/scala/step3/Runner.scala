@@ -60,7 +60,13 @@ object Runner extends App {
     左数有(
       左数有(
         左数有(
-          左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数零, item01), item02), item03), item04), item05), item06), item07), item08), item09), item10), item11),
+          左数有(
+            左数有(
+              左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数零, item01), item02), item03), item04), item05), item06), item07), item08), item09),
+              item10
+            ),
+            item11
+          ),
           item12
         ),
         item13
@@ -77,7 +83,10 @@ object Runner extends App {
         左数有(
           左数有(
             左数有(
-              左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数零, item01), item02), item03), item04), item05), item06), item07), item08), item09), item10),
+              左数有(
+                左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数零, item01), item02), item03), item04), item05), item06), item07), item08), item09),
+                item10
+              ),
               item11
             ),
             item12
@@ -99,7 +108,10 @@ object Runner extends App {
           左数有(
             左数有(
               左数有(
-                左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数零, item01), item02), item03), item04), item05), item06), item07), item08), item09), item10),
+                左数有(
+                  左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数有(左数零, item01), item02), item03), item04), item05), item06), item07), item08), item09),
+                  item10
+                ),
                 item11
               ),
               item12

@@ -12,7 +12,7 @@ object Typer {
 
   val h1: HNil#Append[身体5]#Append[身体4]#Append[身体3]#Append[身体2]#Append[身体1] = (throw new Exception("ii")): 人的身体#Contribute
   val h2: HNil#Append[身体4]#Append[身体3]#Append[身体2]#Append[身体1]             = (throw new Exception("ii")): 人的身体#Contribute#Contribute
-  val h3: HNil#Append[身体3]#Append[身体2]#Append[身体1]                         = (throw new Exception("ii")): 人的身体#Contribute#Contribute#Contribute
-  val h4: HNil#Append[身体2]#Append[身体1]                                     = (throw new Exception("ii")): 人的身体#Contribute#Contribute#Contribute#Contribute
+  val h3: HNil#Append[身体3]#Append[身体2]#Append[身体1] = (throw new Exception("ii")): 人的身体#Contribute#Contribute#Contribute
+  val h4: HNil#Append[身体2]#Append[身体1]             = (throw new Exception("ii")): 人的身体#Contribute#Contribute#Contribute#Contribute
 
 }

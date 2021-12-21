@@ -25,7 +25,14 @@ object Runner {
 
   type 整数5 = 负数[({ type T1[I1] = 负数代理[({ type T2[I2] = 负数代理[({ type T3[I3] = 负数代理零 })#T3, I2] })#T2, I1] })#T1]
   type 整数6 =
-    负数[({ type T1[I1] = 负数代理[({ type T2[I2] = 负数代理[({ type T3[I3] = 负数代理[({ type T4[I4] = 负数代理[({ type T5[I5] = 负数代理零 })#T5, I4] })#T4, I3] })#T3, I2] })#T2, I1] })#T1]
+    负数[
+      ({
+        type T1[I1] = 负数代理[
+          ({ type T2[I2] = 负数代理[({ type T3[I3] = 负数代理[({ type T4[I4] = 负数代理[({ type T5[I5] = 负数代理零 })#T5, I4] })#T4, I3] })#T3, I2] })#T2,
+          I1
+        ]
+      })#T1
+    ]
   i(new Tag[整数5#前驱#前驱], new Tag[整数6])
   i(new Tag[整数5], new Tag[整数6#后继[Item2]#后继[Item1]])
   i(new Tag[整数5#前驱], new Tag[整数6#后继[Item2]])

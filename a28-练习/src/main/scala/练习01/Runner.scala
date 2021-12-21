@@ -21,7 +21,10 @@ object Runner {
 
   type 指数值1 = 指数Positive[指数Positive[指数1]]
   type 结果1 = 自然数Positive[
-    自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item1], Item2], Item1], Item2], Item1],
+    自然数Positive[
+      自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item1], Item2], Item1], Item2], Item1], Item2],
+      Item1
+    ],
     Item2
   ]
   类型匹配.i2(类型匹配.i1[指数运算#指[底值2, 指数值1], 结果1])

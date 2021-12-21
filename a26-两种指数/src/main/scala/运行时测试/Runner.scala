@@ -35,7 +35,7 @@ object Runner {
     val 指数值1 = new 指数Positive(new 指数Positive(new 指数1))
     println(
       指数.指数(底3, 指数值1)
-    )                               // 自然数Zero :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3
+    ) // 自然数Zero :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3 :: Item1 :: Item2 :: Item3
     println(指数.指数(底3, 指数值1).length) // 27
 
     val 底4   = new 底4

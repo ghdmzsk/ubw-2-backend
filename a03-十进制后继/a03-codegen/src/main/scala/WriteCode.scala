@@ -8,8 +8,9 @@ import scala.util.Using
 
 object WriteCode {
 
-  def trimLines(i: String): String = Source.fromString(i).getLines.map(p => (p.trim, p)).filter(!_._1.isEmpty).map(_._2).mkString(System.lineSeparator)
-  val filePath                     = Paths.get(".").resolve("a03-十进制后继").resolve("a03-core").resolve("src").resolve("main").resolve("scala")
+  def trimLines(i: String): String =
+    Source.fromString(i).getLines.map(p => (p.trim, p)).filter(!_._1.isEmpty).map(_._2).mkString(System.lineSeparator)
+  val filePath = Paths.get(".").resolve("a03-十进制后继").resolve("a03-core").resolve("src").resolve("main").resolve("scala")
 
   def main(arr: Array[String]): Unit = {
     {

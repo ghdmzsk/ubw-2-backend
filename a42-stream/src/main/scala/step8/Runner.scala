@@ -56,8 +56,9 @@ object Runner {
       println("result2: " + result2)
       assert(result2 == resultFromItem(item01, item02, item03, item04, item05, item06, item07, item08, item09, item10))
 
-      val result3_1 = resultFromItem(minus03, minus02, minus01, minus00, item01, item02, item03, item04, item05, item06, item07, item08, item09, item10)
-      val result3   = Number.count(count3)
+      val result3_1 =
+        resultFromItem(minus03, minus02, minus01, minus00, item01, item02, item03, item04, item05, item06, item07, item08, item09, item10)
+      val result3 = Number.count(count3)
       // 4 + ((3 + 4) + 3) = 14
       println("result3: " + result3)
       assert(result3 == result3_1)
@@ -66,7 +67,24 @@ object Runner {
       // (4 + ((3 + 4) + 3)) + 2 = 16
       println("result4: " + result4)
       assert(
-        result4 == resultFromItem(minus03, minus02, minus01, minus00, item01, item02, item03, item04, item05, item06, item07, item08, item09, item10, item11, item12)
+        result4 == resultFromItem(
+          minus03,
+          minus02,
+          minus01,
+          minus00,
+          item01,
+          item02,
+          item03,
+          item04,
+          item05,
+          item06,
+          item07,
+          item08,
+          item09,
+          item10,
+          item11,
+          item12
+        )
       )
 
       val result5 = Number.count(count5)
@@ -120,7 +138,11 @@ object Runner {
       println("result6: " + result6)
       assert(result6 == resultFromItem(item01, item02, item03, item04, item05))
 
-      val count7  = LRA(left = NumP(NumP(LRA(left = number1, method = 减法, right = number2), item04), item05), method = 加法, right = fromItem(item06, item07))
+      val count7 = LRA(
+        left = NumP(NumP(LRA(left = number1, method = 减法, right = number2), item04), item05),
+        method = 加法,
+        right = fromItem(item06, item07)
+      )
       val result7 = Number.count(count7)
       // 后继(后继(6 - 3)) + 2 = 7
       println("count7: " + result7)

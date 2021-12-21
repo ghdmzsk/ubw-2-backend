@@ -25,7 +25,11 @@ object Runner {
   class 被乘数1  extends 被乘数Positive[被乘数Positive[被乘数Positive[被乘数零1, Item1], Item2], Item3]
   class 被乘数零1 extends 被乘数Zero[被乘数1]
   type 乘数1 = 乘数Positive[乘数Positive[乘数Zero, Item4], Item5]
-  type 积1  = 积Positive[积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item1, Item4], Item2, Item4], Item3, Item4], Item1, Item5], Item2, Item5], Item3, Item5]
+  type 积1 = 积Positive[
+    积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item1, Item4], Item2, Item4], Item3, Item4], Item1, Item5], Item2, Item5],
+    Item3,
+    Item5
+  ]
 
   i(new Tag[乘数1#乘[被乘数1]], new Tag[积1])
 

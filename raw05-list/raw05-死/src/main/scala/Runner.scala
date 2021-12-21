@@ -15,9 +15,9 @@ object Runner extends App {
   println(bighlist.toString)
 
   val i1: Int = bighlist(F._6)
-  println(s"第 6 个元素是: ${i1}") //第 76 个元素是: 76
+  println(s"第 6 个元素是: ${i1}") // 第 76 个元素是: 76
 
   val i2: String = bighlist(F._4._2)
-  println(s"第 42 个元素是: ${i2}") //第 42 个元素是: 42
+  println(s"第 42 个元素是: ${i2}") // 第 42 个元素是: 42
 
 }

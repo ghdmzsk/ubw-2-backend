@@ -125,7 +125,7 @@ class AppendAble[T1, T2 <: HList](override val head: T1, override val tail: T2) 
     type MM = R#M[T1]
 
     val mm: MM = xyy.put(head)
-    //tail.:::(mm.head: MM#H).::(mm.tail: MM#T)
+    // tail.:::(mm.head: MM#H).::(mm.tail: MM#T)
     new AppendAble(mm.head: MM#Head, tail.:::(mm.tail: MM#Tail))
   }
 

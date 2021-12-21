@@ -72,14 +72,14 @@ object Runner {
     val b = new b
     b.i
 
-    /** 特质4
-      * 特质2
-      * 特质5
-      * 特质6
-      * 特质1
-      * 特质3
+    /** 特质4 特质2 特质5 特质6 特质1 特质3
       */
-    ii(bb, new Tag[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item3], Item1], Item6], Item5], Item2], Item4]])
+    ii(
+      bb,
+      new Tag[
+        自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Positive[自然数Zero, Item3], Item1], Item6], Item5], Item2], Item4]
+      ]
+    )
   }
 
 }

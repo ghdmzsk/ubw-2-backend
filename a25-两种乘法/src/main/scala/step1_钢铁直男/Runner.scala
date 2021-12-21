@@ -19,7 +19,11 @@ object Runner {
   type 被乘数1 = 被乘数Positive[被乘数Positive[被乘数Positive[被乘数Positive[被乘数Positive[被乘数Zero, Item1], Item2], Item3], Item4], Item5]
   type 乘数1  = 乘数Positive[乘数Positive[乘数Zero, Item6], Item7]
   type 积1 = 积Positive[积Positive[积Positive[积Positive[
-    积Positive[积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item1, Item6], Item2, Item6], Item3, Item6], Item4, Item6], Item5, Item6], Item1, Item7],
+    积Positive[
+      积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item1, Item6], Item2, Item6], Item3, Item6], Item4, Item6], Item5, Item6],
+      Item1,
+      Item7
+    ],
     Item2,
     Item7
   ], Item3, Item7], Item4, Item7], Item5, Item7]
@@ -29,7 +33,11 @@ object Runner {
   type 被乘数2 = 被乘数Positive[被乘数Positive[被乘数Positive[被乘数Zero, Item1], Item2], Item3]
   type 乘数2  = 乘数Positive[乘数Positive[乘数Positive[乘数Positive[乘数Zero, Item4], Item5], Item6], Item7]
   type 积2 = 积Positive[积Positive[积Positive[积Positive[积Positive[积Positive[
-    积Positive[积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item1, Item4], Item2, Item4], Item3, Item4], Item1, Item5], Item2, Item5], Item3, Item5],
+    积Positive[
+      积Positive[积Positive[积Positive[积Positive[积Positive[积Zero, Item1, Item4], Item2, Item4], Item3, Item4], Item1, Item5], Item2, Item5],
+      Item3,
+      Item5
+    ],
     Item1,
     Item6
   ], Item2, Item6], Item3, Item6], Item1, Item7], Item2, Item7], Item3, Item7]

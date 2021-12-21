@@ -1052,7 +1052,19 @@ trait JinzhiWeikaifa[
       override def _9: T   = t
     }
 }
-class JinzhiZero extends JinzhiWeikaifa[JinzhiZero, JinzhiZero, JinzhiZero, JinzhiZero, JinzhiZero, JinzhiZero, JinzhiZero, JinzhiZero, JinzhiZero, JinzhiZero] {
+class JinzhiZero
+    extends JinzhiWeikaifa[
+      JinzhiZero,
+      JinzhiZero,
+      JinzhiZero,
+      JinzhiZero,
+      JinzhiZero,
+      JinzhiZero,
+      JinzhiZero,
+      JinzhiZero,
+      JinzhiZero,
+      JinzhiZero
+    ] {
   self =>
   override type _0 = JinzhiZero
   override def _0: JinzhiZero = self

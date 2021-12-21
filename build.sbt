@@ -110,4 +110,4 @@ val a68 = project in rootDir / "a68-练习"
 val a69 = project in rootDir / "a69-测试"
 val a70 = project in rootDir / "a70-大胆的测试"
 val a71 = project in rootDir / "a71-行李箱密码锁"
-
+val a72 = project in rootDir / "a72-第二层整数加减法练习"

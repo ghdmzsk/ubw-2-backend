@@ -26,7 +26,7 @@ class 元素对正整数[Tail <: 元素对自然数, Head1, Head2](val tail: Tai
   override type Next[T1, T2]   = 元素对正整数[元素对正整数[Tail, Head1, Head2], T1, T2]
   override type 加[I <: 元素对自然数] = 元素对正整数[Tail#加[I], Head1, Head2]
   override def next[T1, T2](t1: T1, t2: T2): 元素对正整数[元素对正整数[Tail, Head1, Head2], T1, T2] = new 元素对正整数(tail = self, head1 = t1, head2 = t2)
-  override def 加[I <: 元素对自然数](i: I): 元素对正整数[Tail#加[I], Head1, Head2]                    = new 元素对正整数(tail = tail.加(i), head1 = head1, head2 = head2)
+  override def 加[I <: 元素对自然数](i: I): 元素对正整数[Tail#加[I], Head1, Head2] = new 元素对正整数(tail = tail.加(i), head1 = head1, head2 = head2)
 
   override def toString: String = s"$tail :: ($head1, $head2)"
 }

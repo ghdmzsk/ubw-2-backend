@@ -1,22 +1,29 @@
 package a71
 
-trait Number1 {
-  def method1(number2: Number2): Number3
-}
-case class Number1S(tail: Number1) extends Number1 {
-  override def method1(number2: Number2): Number3 = number2.method2(tail)
-}
-case class Number1T(tail: () => Number1) extends Number1 {
-  override def method1(number2: Number2): Number3 = Number3T
-}
+object MathCount {
 
-trait Number2 {
-  def method2(number1: Number1): Number3
-}
-class Number2S(tail: Number2) extends Number2 {
-  override def method2(number1: Number1): Number3 = number1.method1(tail)
-}
+  def pow(底数: Int, 指数: Int): Int = {
+    var result = 1
+    def innerPow(di: Int): Unit = {
+      if (di > 0) {
+        result *= 底数
+        innerPow(di - 1)
+      }
+    }
+    innerPow(指数)
+    result
+  }
 
-trait Number3
-case class Number3S(tail: Number3) extends Number3
-case object Number3T               extends Number3
+  def log(底数: Int, 真数: Int): Int = {
+    var result = 0
+    def innerLog(di: Int): Unit = {
+      if (di <= 真数) {
+        result += 1
+        innerLog(di * 底数)
+      }
+    }
+    innerLog(底数)
+    result
+  }
+
+}

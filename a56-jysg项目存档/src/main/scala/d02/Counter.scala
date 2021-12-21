@@ -22,8 +22,10 @@ trait Context2 {
 }
 object Context2 {
   def merge(context1: => Context2, context2: => Context2): Context2 = new Context2 {
-    override def receive0(number2: Number2): PartialFunction[Number3, Number1] =context1.receive0(number2).orElse(context2.receive0(number2))
-    override def receive1(number2: Number2): PartialFunction[Number3, Number1] = context1.receive1(number2).orElse(context2.receive1(number2))
+    override def receive0(number2: Number2): PartialFunction[Number3, Number1] =
+      context1.receive0(number2).orElse(context2.receive0(number2))
+    override def receive1(number2: Number2): PartialFunction[Number3, Number1] =
+      context1.receive1(number2).orElse(context2.receive1(number2))
   }
 }
 

@@ -46,8 +46,11 @@ object Runner {
   def main(arr: Array[String]): Unit = {
 
     val 被减数1: 被减数1 = new 被减数Positive(new 被减数Positive(new 被减数Zero, new Item1), new Item2)
-    val 减数1: 减数1   = new 减数Positive(new 减数Positive(new 减数Positive(new 减数Positive(new 减数Positive(new 减数Zero, new Item3), new Item4), new Item5), new Item6), new Item7)
-    val 差1: 差1     = 减数1.减(被减数1)
+    val 减数1: 减数1 = new 减数Positive(
+      new 减数Positive(new 减数Positive(new 减数Positive(new 减数Positive(new 减数Zero, new Item3), new Item4), new Item5), new Item6),
+      new Item7
+    )
+    val 差1: 差1 = 减数1.减(被减数1)
     println(被减数1.length) // 2
     println(减数1.length)  // 5
     println(差1)          // 零 :: Item3 :: Item4 :: Item5
@@ -55,9 +58,10 @@ object Runner {
 
     println("======================================")
 
-    val 被减数2: 被减数2 = new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Zero, new Item1), new Item2), new Item3), new Item4)
-    val 减数2: 减数2   = new 减数Positive(new 减数Positive(new 减数Positive(new 减数Zero, new Item5), new Item6), new Item7)
-    val 差2: 差2     = 减数2.减(被减数2)
+    val 被减数2: 被减数2 =
+      new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Zero, new Item1), new Item2), new Item3), new Item4)
+    val 减数2: 减数2 = new 减数Positive(new 减数Positive(new 减数Positive(new 减数Zero, new Item5), new Item6), new Item7)
+    val 差2: 差2   = 减数2.减(被减数2)
     println(被减数2.length) // 4
     println(减数2.length)  // 3
     println(差2)          // 零 :: Item1
@@ -65,9 +69,10 @@ object Runner {
 
     println("======================================")
 
-    val 被减数3: 被减数3 = new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Zero, new Item1), new Item2), new Item3), new Item4)
-    val 减数3: 减数3   = new 减数Positive(new 减数Positive(new 减数Positive(new 减数Positive(new 减数Zero, new Item4), new Item5), new Item6), new Item7)
-    val 差3: 差3     = 减数3.减(被减数3)
+    val 被减数3: 被减数3 =
+      new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Positive(new 被减数Zero, new Item1), new Item2), new Item3), new Item4)
+    val 减数3: 减数3 = new 减数Positive(new 减数Positive(new 减数Positive(new 减数Positive(new 减数Zero, new Item4), new Item5), new Item6), new Item7)
+    val 差3: 差3   = 减数3.减(被减数3)
     println(被减数3.length) // 4
     println(减数3.length)  // 4
     println(差3)          // 零

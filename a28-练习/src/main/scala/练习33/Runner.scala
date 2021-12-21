@@ -9,11 +9,13 @@ object Runner extends App {
     item1
   }
 
-  val number1            = NumLP(NumLP(NumLP(NumLP(NumLP(NumLP(NumLP(NumLP(NumLP(NumLO, item), item), item), item), item), item), item), item), item)
-  lazy val number2: NumR = 火(火(火(火(火(火(火(火(火(火(火(火(水(number2), item), item), item), item), item), item), item), item), item), item), item), item)
+  val number1 = NumLP(NumLP(NumLP(NumLP(NumLP(NumLP(NumLP(NumLP(NumLP(NumLO, item), item), item), item), item), item), item), item), item)
+  lazy val number2: NumR =
+    火(火(火(火(火(火(火(火(火(火(火(火(水(number2), item), item), item), item), item), item), item), item), item), item), item), item)
   println(number1.methodR(number2).length)
 
-  lazy val number3: NumR = 火(火(火(火(火(火(火(火(火(火(火(火(number4, item), item), item), item), item), item), item), item), item), item), item), item)
+  lazy val number3: NumR =
+    火(火(火(火(火(火(火(火(火(火(火(火(number4, item), item), item), item), item), item), item), item), item), item), item), item)
   lazy val number4: NumR = 水(number3)
   println(number4.methodL(number1, item).length)
 

@@ -18,16 +18,24 @@ object Runner extends App {
 
   val number1 = PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item01), item02), item03)
   // + 3
-  val number2 = PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item04), item05), item06), item07), item08)
+  val number2 = PlusNumberPositive(
+    PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item04), item05), item06), item07),
+    item08
+  )
   // + 5
-  val number3 = PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item09), item10), item11), item12)
+  val number3 =
+    PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberPositive(PlusNumberZero, item09), item10), item11), item12)
   // + 4
   val number4 = MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberZero, itemX), itemX), itemX)
   // - 3
   val number5 =
-    MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberZero, itemX), itemX), itemX), itemX), itemX)
+    MinusNumberPositive(
+      MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberZero, itemX), itemX), itemX), itemX),
+      itemX
+    )
   // - 5
-  val number6 = MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberZero, itemX), itemX), itemX), itemX)
+  val number6 =
+    MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(MinusNumberZero, itemX), itemX), itemX), itemX)
   // - 4
 
   /*val count1 = 被动消耗Positive(被动消耗Positive(被动消耗Positive(被动消耗Zero, number1), number2), number3)
@@ -69,7 +77,10 @@ object Runner extends App {
   )*/
 
   val count6 =
-    被动消耗Positive(被动消耗Positive(被动消耗Positive(被动消耗Zero, number1), number2), MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(number5, itemX), itemX), itemX))
+    被动消耗Positive(
+      被动消耗Positive(被动消耗Positive(被动消耗Zero, number1), number2),
+      MinusNumberPositive(MinusNumberPositive(MinusNumberPositive(number5, itemX), itemX), itemX)
+    )
 
   // 3 + (5 - 3) + (4 - 8) = 5
 

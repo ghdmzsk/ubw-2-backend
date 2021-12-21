@@ -18,11 +18,14 @@ object Runner {
   type T1[_] = 零
   type 负数1   = 负数[({ type T7[T8] = 负数[T1, T8] })#T7, Item7]
   type 负数2   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[T1, T5] })#T4, T3] })#T2, Item8]
-  type 负数3   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[({ type T6[_] = 负数[({ type T7[T8] = 负数[T1, T8] })#T7, Item7] })#T6, T5] })#T4, T3] })#T2, Item8]
-  type 负数4   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[({ type T6[_] = 负数1 })#T6, T5] })#T4, T3] })#T2, Item8]
-  type 负数5   = 负数[T1, Item1]
-  type 负数6   = 负数[({ type T4[T5] = 负数[T1, T5] })#T4, Item7]
-  type 负数7   = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[T1, T5] })#T4, Item7] })#T2, Item1]
+  type 负数3 = 负数[
+    ({ type T2[T3] = 负数[({ type T4[T5] = 负数[({ type T6[_] = 负数[({ type T7[T8] = 负数[T1, T8] })#T7, Item7] })#T6, T5] })#T4, T3] })#T2,
+    Item8
+  ]
+  type 负数4 = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[({ type T6[_] = 负数1 })#T6, T5] })#T4, T3] })#T2, Item8]
+  type 负数5 = 负数[T1, Item1]
+  type 负数6 = 负数[({ type T4[T5] = 负数[T1, T5] })#T4, Item7]
+  type 负数7 = 负数[({ type T2[T3] = 负数[({ type T4[T5] = 负数[T1, T5] })#T4, Item7] })#T2, Item1]
 
   type 正数1 = 正数[零, Item1]
   type 正数2 = 正数[正数[零, Item1], Item2]
