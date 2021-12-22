@@ -16,7 +16,7 @@ object Runner {
   else if (n < 0) Number2S(Number2T, gen1(-n + 1))
   else Number2T
 
-  def main(arr: Array[String]): Unit = {
+  def main1(arr: Array[String]): Unit = {
     {
       for {
         i1 <- -80 to 80
