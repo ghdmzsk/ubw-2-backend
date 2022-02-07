@@ -12,6 +12,8 @@ case class ExeFlatMap[U, T](u: Exe[U], func: U => Exe[T]) extends Exe[T]
 
 object Exe {
 
+  def succeed[T](v: T): Exe[T] = ExeSuccess(v)
+
   def unsafeRun[T](e: Exe[T]): T = {
     var v: List[Either[Any => Any, Any => Exe[Any]]] = List.empty
     @tailrec
@@ -27,7 +29,7 @@ object Exe {
     }
     loop(e)
 
-    var temp: Any = v.head.asInstanceOf[Unit => Any](())
+    var temp: Any = v.head.asInstanceOf[Left[Unit => Any, Any]].left.getOrElse(throw new Exception("Not allowed head"))(())
     v = v.tail
     var i = 0
     while (i < v.size - 1) {
