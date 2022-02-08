@@ -21,21 +21,21 @@ case object Number2T extends Number2 {
 }
 
 trait Number3 {
-  def method1(number2: Number4): Number4
+  def method3(number2: Number1): Number1
 }
 case class Number3S(tail: Number3, head: Number4) extends Number3 {
-  override def method1(number2: Number4): Number4 = Number4S(number2, head.method2(tail))
+  override def method3(number2: Number1): Number1 = Number1S(number2, head.method4(tail))
 }
 case object Number3T extends Number3 {
-  override def method1(number2: Number4): Number4 = number2
+  override def method3(number2: Number1): Number1 = number2
 }
 
 trait Number4 {
-  def method2(number1: Number3): Number3
+  def method4(number1: Number3): Number2
 }
 case class Number4S(tail: Number4, head: Number3) extends Number4 {
-  override def method2(number1: Number3): Number3 = Number3S(number1, head.method1(tail))
+  override def method4(number1: Number3): Number2 = Number2S(number1, head.method3(tail))
 }
 case object Number4T extends Number4 {
-  override def method2(number1: Number3): Number3 = Number3S(Number3S(number1, Number4T), Number4T)
+  override def method4(number1: Number3): Number2 = Number3S(Number3S(number1, Number4T), Number4T)
 }
