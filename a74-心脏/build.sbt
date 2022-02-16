@@ -1,2 +1,2 @@
 UbwSettings.scalaVersionSettings
-name := "a74-相反数"
+name := "a74-心脏"
