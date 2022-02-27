@@ -1,4 +1,4 @@
-package a74
+package a74.step2
 
 trait Number1
 case class Number1S(tail: Number1, head: Number2) extends Number1
