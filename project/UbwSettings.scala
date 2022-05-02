@@ -4,7 +4,7 @@ import sbt.Keys._
 
 object UbwSettings {
 
-  val currentScalaVersion = "2.13.6"
+  val currentScalaVersion = "2.13.8"
   val dottyVersion        = "3.1.0"
 
   val setting1 = scalaVersion      := currentScalaVersion
