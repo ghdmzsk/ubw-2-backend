@@ -4,4 +4,4 @@
 ### 星座开荒
 <https://www.grimtools.com/calc/4ZDnlz12>  
 修  
-<https://www.grimtools.com/calc/4ZDnlz12>
+<https://www.grimtools.com/calc/0V01479Z>
