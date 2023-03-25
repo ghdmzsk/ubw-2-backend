@@ -111,3 +111,7 @@ val a69 = project in rootDir / "a69-测试"
 val a70 = project in rootDir / "a70-大胆的测试"
 val a71 = project in rootDir / "a71-行李箱密码锁"
 val a72 = project in rootDir / "a72-第二层整数加减法练习"
+val a73 = project in rootDir / "a73-带套执行器（未完成）"
+val a74 = project in rootDir / "a74-心脏"
+
+val a75_01 = project in rootDir / "a75-放弃练习" / "a75-01"

@@ -21,7 +21,7 @@ object Runner extends App {
   println(number2.plus(number1))
 
   /** result: ResultO result: Item01 result: Item02 result: Item03 result: Item04
-    * =============================================== method: Item10 method: Item09 method: Item08 method: Item07 method: Item06 method:
+    * \=============================================== method: Item10 method: Item09 method: Item08 method: Item07 method: Item06 method:
     * Item05 result: Item05 result: Item06 result: Item07 result: Item08 result: Item09 result: Item10
     */
 
